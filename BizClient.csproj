@@ -48,13 +48,20 @@
 	<ItemGroup>
 	  <None Remove="Newtonsoft.Json" />
 	  <None Remove="CommunityToolkit.Mvvm" />
+	  <None Remove="View\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiXaml Update="View\LoginPage.xaml">
+	  <Folder Include="View\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Update="View\LoginPageView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\BusinessesPageView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>
