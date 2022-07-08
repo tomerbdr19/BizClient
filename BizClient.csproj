@@ -49,6 +49,8 @@
 	  <None Remove="Newtonsoft.Json" />
 	  <None Remove="CommunityToolkit.Mvvm" />
 	  <None Remove="View\" />
+	  <None Remove="Pages\" />
+	  <None Remove="ViewModel\Pages\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -56,12 +58,20 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="View\" />
+	  <Folder Include="Pages\" />
+	  <Folder Include="ViewModel\Pages\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\LoginPageView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="View\BusinessesPageView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\PostView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\HomePage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>

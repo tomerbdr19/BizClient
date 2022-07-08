@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.View.PostView"
+             x:Name="self"
+             MaximumHeightRequest="500"
+             RowDefinitions="Auto,*,266,Auto"
+             ColumnDefinitions="*"
+             RowSpacing="6"
+             Padding="10,10,10,10"
+             HorizontalOptions="Start">
+    <Grid Grid.Row="0" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+        <Frame Grid.Column="0" WidthRequest="40" HeightRequest="40" CornerRadius="20"  IsClippedToBounds="True">
+            <Image Source="{Binding BusinessImageUrl}" Aspect="AspectFill" Margin="-20"/>
+        </Frame>
+        <VerticalStackLayout Grid.Column="1">
+            <Label Text="{Binding BusinessName}"/>
+            <Label Text="{Binding CreatedAt}"/>
+        </VerticalStackLayout>
+    </Grid>
+    <Label Grid.Row="1" Text="{Binding Caption}"/>
+    <Frame Grid.Row="2" IsClippedToBounds="True">
+        <Image Source="{Binding ImageUrl}" WidthRequest="370" Aspect="AspectFill" Margin="-20"/>
+    </Frame>
+    <Button Grid.Row="3" Text="Like"/>
+</Grid>
