@@ -62,16 +62,16 @@
 	  <Folder Include="ViewModel\Pages\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiXaml Update="View\LoginPageView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="View\BusinessesPageView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
 	  <MauiXaml Update="View\PostView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Pages\BusinessesPageView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Pages\LoginPageView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>
