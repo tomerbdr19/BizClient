@@ -23,7 +23,7 @@ public partial class LoginPageViewModel : BaseViewModel
     async Task OnLoginClick()
     {
         // TODO: handle login
-        await Shell.Current.GoToAsync(Routes.Businesses);
+        await Shell.Current.GoToAsync(Routes.Home);
     }
 
     void Validation()

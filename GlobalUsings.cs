@@ -8,3 +8,4 @@ global using Newtonsoft.Json;
 global using BizClient.ViewModel;
 global using BizClient.Model;
 global using BizClient.View;
+global using BizClient.Pages;
