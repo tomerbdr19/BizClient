@@ -82,5 +82,11 @@
 	  <MauiXaml Update="Shells\BootstrapShell.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\CouponsPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\CouponView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 </Project>

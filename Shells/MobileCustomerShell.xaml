@@ -13,7 +13,8 @@
         <Tab Title="Businesses">
             <ShellContent ContentTemplate="{DataTemplate pages:BusinessesPage}"/>
         </Tab>
-        <Tab Title="Messages">
+        <Tab Title="Coupons">
+            <ShellContent ContentTemplate="{DataTemplate pages:CouponsPage}"/>
         </Tab>
     </TabBar>
 </Shell>

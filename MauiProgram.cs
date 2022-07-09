@@ -17,6 +17,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddSingleton<BusinessesPage>();
         builder.Services.AddSingleton<HomePage>();
+        builder.Services.AddSingleton<CouponsPage>();
 
         // Views
 
@@ -24,6 +25,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<LoginPageViewModel>();
         builder.Services.AddSingleton<BusinessesPageViewModel>();
         builder.Services.AddSingleton<HomePageViewModel>();
+        builder.Services.AddSingleton<CouponsPageViewModel>();
 
         return builder.Build();
     }

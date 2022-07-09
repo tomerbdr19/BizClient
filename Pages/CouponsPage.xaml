@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.Pages.CouponsPage"
+             xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
+             xmlns:views="clr-namespace:BizClient.View"
+             xmlns:models="clr-namespace:BizClient.Model"
+             x:DataType="viewmodels:CouponsPageViewModel"
+             Title="CouponsPage">
+    <VerticalStackLayout>
+        <Label 
+            Text="Coupons"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+         <Grid ColumnDefinitions="*">
+            <CollectionView ItemsSource="{Binding Coupons}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Coupon">
+                        <views:CouponView
+                        BusinessName="{Binding BusinessName}"
+                        BusinessImageUrl="{Binding BusinessImageUrl}"
+                        Description="{Binding Description}"
+                        ExpiredAt="{Binding ExpiredAt}"
+                        IsRedeemed="{Binding IsRedeemed}"
+                        />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
