@@ -51,6 +51,7 @@
 	  <None Remove="View\" />
 	  <None Remove="Pages\" />
 	  <None Remove="ViewModel\Pages\" />
+	  <None Remove="Shells\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -60,6 +61,7 @@
 	  <Folder Include="View\" />
 	  <Folder Include="Pages\" />
 	  <Folder Include="ViewModel\Pages\" />
+	  <Folder Include="Shells\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\PostView.xaml">
@@ -72,6 +74,12 @@
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Pages\LoginPageView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Shells\MobileCustomerShell.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Shells\BootstrapShell.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>

@@ -1,8 +1,8 @@
-﻿namespace BizClient;
+﻿namespace BizClient.Shells;
 
-public partial class AppShell : Shell
+public partial class MobileCustomerShell : Shell
 {
-    public AppShell()
+    public MobileCustomerShell()
     {
         InitializeComponent();
 

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BizClient.Shells.MobileCustomerShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:BizClient.Pages"
+    Shell.FlyoutBehavior="Disabled"
+    >
+    <TabBar>
+        <Tab Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate pages:HomePage}"/>
+        </Tab>
+        <Tab Title="Businesses">
+            <ShellContent ContentTemplate="{DataTemplate pages:BusinessesPage}"/>
+        </Tab>
+        <Tab Title="Messages">
+        </Tab>
+    </TabBar>
+</Shell>
