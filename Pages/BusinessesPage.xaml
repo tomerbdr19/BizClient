@@ -17,12 +17,17 @@
             ItemsSource="{Binding Businesses}"
             Grid.Row="1"
             >
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Business">
+                    <Frame StyleClass="card">
                     <Grid
                         ColumnDefinitions="Auto,*"
                         Padding="20"
                         VerticalOptions="Center"
+                        HorizontalOptions="Start"
                         ColumnSpacing="30"
                         >
                         <Frame Margin="10"
@@ -44,6 +49,7 @@
                             VerticalTextAlignment="Center"
                             Text="{Binding Name}"/>
                     </Grid>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
           </CollectionView>

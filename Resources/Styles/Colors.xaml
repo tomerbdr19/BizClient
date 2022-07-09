@@ -41,4 +41,34 @@
     <Color x:Key="Blue200Accent">#72ACF1</Color>
     <Color x:Key="Blue300Accent">#A7CBF6</Color>
 
+    <!--GENERAL-->
+    <Color x:Key="D00">#000624</Color>
+    <Color x:Key="D10">#333853</Color>
+    <Color x:Key="D20">#595D70</Color>
+    <Color x:Key="D30">#868AA5</Color>
+    <Color x:Key="D70">#ECEFF3</Color>
+    <Color x:Key="D80">#FFFFFF</Color>
+    <!--PRIMARY-->
+    <Color x:Key="B00">#084EBD</Color>
+    <Color x:Key="B10">#116DFF</Color>
+    <Color x:Key="B20">#5999FF</Color>
+    <Color x:Key="B30">#A8CAFF</Color>
+    <!--DESTRUCTIVE-->
+    <Color x:Key="R00">#B81206</Color>
+    <Color x:Key="R10">#E62214</Color>
+    <Color x:Key="R20">#FF6D63</Color>
+    <Color x:Key="R30">#F69891</Color>
+    <!--SUCCESS-->
+    <Color x:Key="G00">#1D8649</Color>
+    <Color x:Key="G10">#25A55A</Color>
+    <Color x:Key="G20">#51B77B</Color>
+    <Color x:Key="G30">#87CEA5</Color>
+    <!--WARNING-->
+    <Color x:Key="Y00">#D59900</Color>
+    <Color x:Key="Y10">#FFB700</Color>
+    <Color x:Key="Y20">#FFC23D</Color>
+    <Color x:Key="Y30">#FFD16E</Color>
+    <!--URGENT-->
+    <Color x:Key="O00">#DF4D00</Color>
+    <Color x:Key="O10">#FE620F</Color>
 </ResourceDictionary>
