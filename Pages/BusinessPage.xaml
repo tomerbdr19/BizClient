@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.Pages.BusinessPage"
+             xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
+             xmlns:views="clr-namespace:BizClient.View"
+             xmlns:models="clr-namespace:BizClient.Model"
+             x:DataType="viewmodels:BusinessPageViewModel"
+             Title="BusinessPage">
+    <Grid RowDefinitions="Auto,300,Auto,*" ColumnDefinitions="*" RowSpacing="12">
+        <Frame StyleClass="card" Grid.Row="0">
+            <Label Text="{Binding Business.Name}" HorizontalOptions="Center"/>
+        </Frame>
+        <Frame StyleClass="card" Grid.Row="1" IsClippedToBounds="True">
+            <Image Source="{Binding Business.ImageUrl}" Aspect="AspectFill"/>
+        </Frame>
+        <Frame StyleClass="card" Grid.Row="2">
+            <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
+                <Label Grid.Column="0" Text="Subscriptions: 20"/>
+                <Button Grid.Column="2" Text="Subscribe"/>
+            </Grid>
+        </Frame>
+        <Frame StyleClass="card" Grid.Row="3"/>
+    </Grid>
+</ContentPage>

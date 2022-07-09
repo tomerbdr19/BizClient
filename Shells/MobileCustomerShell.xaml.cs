@@ -9,5 +9,6 @@ public partial class MobileCustomerShell : Shell
         Routing.RegisterRoute(Routes.Login, typeof(LoginPage));
         Routing.RegisterRoute(Routes.Businesses, typeof(BusinessesPage));
         Routing.RegisterRoute(Routes.Home, typeof(HomePage));
+        Routing.RegisterRoute(Routes.Business, typeof(BusinessPage));
     }
 }

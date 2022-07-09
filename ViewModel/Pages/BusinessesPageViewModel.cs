@@ -12,6 +12,18 @@ public partial class BusinessesPageViewModel : BaseViewModel
 
     public ObservableCollection<Business> Businesses { get; } = new();
 
+    [ICommand]
+    async Task GoToBusiness(Business business)
+    {
+        if (business == null)
+            return;
+
+        await Shell.Current.GoToAsync(Routes.Business, true, new Dictionary<string, object>
+        {
+            {"Business", business}
+        });
+    }
+
     protected override void OnPropertyChanged(PropertyChangedEventArgs e)
     {
         base.OnPropertyChanged(e);
