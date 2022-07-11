@@ -5,8 +5,7 @@
              xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
              xmlns:views="clr-namespace:BizClient.View"
              xmlns:models="clr-namespace:BizClient.Model"
-             x:DataType="viewmodels:HomePageViewModel"
-             Title="HomePage">
+             x:DataType="viewmodels:HomePageViewModel">
     <VerticalStackLayout Spacing="30">
         <Label 
             Text="Recent Posts"

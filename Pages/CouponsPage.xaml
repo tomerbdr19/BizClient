@@ -5,8 +5,7 @@
              xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
              xmlns:views="clr-namespace:BizClient.View"
              xmlns:models="clr-namespace:BizClient.Model"
-             x:DataType="viewmodels:CouponsPageViewModel"
-             Title="CouponsPage">
+             x:DataType="viewmodels:CouponsPageViewModel">
     <VerticalStackLayout>
         <Label 
             Text="Coupons"

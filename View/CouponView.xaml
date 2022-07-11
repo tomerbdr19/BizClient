@@ -22,6 +22,6 @@
             </VerticalStackLayout>
         </Grid>
         <Label Grid.Row="1" Text="{Binding Description}"/>
-        <Button Grid.Row="2" Text="Reddem" IsEnabled="{Binding IsRedeemed}"/>
+        <Button Grid.Row="2" Text="Redeem" IsEnabled="{Binding !IsRedeemed}"/>
     </Grid>
 </Frame>

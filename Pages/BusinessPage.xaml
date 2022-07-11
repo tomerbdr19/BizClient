@@ -5,8 +5,7 @@
              xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
              xmlns:views="clr-namespace:BizClient.View"
              xmlns:models="clr-namespace:BizClient.Model"
-             x:DataType="viewmodels:BusinessPageViewModel"
-             Title="BusinessPage">
+             x:DataType="viewmodels:BusinessPageViewModel">
     <Grid RowDefinitions="Auto,300,Auto,*" ColumnDefinitions="*" RowSpacing="12">
         <Frame StyleClass="card" Grid.Row="0">
             <Label Text="{Binding Business.Name}" HorizontalOptions="Center"/>

@@ -4,8 +4,7 @@
              x:Class="BizClient.Pages.BusinessesPage"
              x:DataType="viewmodel:BusinessesPageViewModel"
              xmlns:model="clr-namespace:BizClient.Model"
-             xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
-             Title="BusinessesPageView">
+             xmlns:viewmodel="clr-namespace:BizClient.ViewModel">
     <Grid ColumnDefinitions="*"
           RowDefinitions="Auto,*">
         <Label
