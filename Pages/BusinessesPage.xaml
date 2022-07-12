@@ -4,17 +4,13 @@
              x:Class="BizClient.Pages.BusinessesPage"
              x:DataType="viewmodel:BusinessesPageViewModel"
              xmlns:model="clr-namespace:BizClient.Model"
-             xmlns:viewmodel="clr-namespace:BizClient.ViewModel">
+             xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
+             Title="My Businesses">
     <Grid ColumnDefinitions="*"
-          RowDefinitions="Auto,*">
-        <Label
-            Grid.Row="0"
-            Text="Connected Businesses"
-            Padding="0,30,0,30"
-            HorizontalOptions="Center" />
+          RowDefinitions="*">
         <CollectionView
             ItemsSource="{Binding Businesses}"
-            Grid.Row="1"
+            Grid.Row="0"
             >
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>

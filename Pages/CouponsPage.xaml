@@ -5,12 +5,9 @@
              xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
              xmlns:views="clr-namespace:BizClient.View"
              xmlns:models="clr-namespace:BizClient.Model"
-             x:DataType="viewmodels:CouponsPageViewModel">
+             x:DataType="viewmodels:CouponsPageViewModel"
+             Title="My Coupons">
     <VerticalStackLayout>
-        <Label 
-            Text="Coupons"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
          <Grid ColumnDefinitions="*">
             <CollectionView ItemsSource="{Binding Coupons}">
                 <CollectionView.ItemsLayout>

@@ -5,12 +5,9 @@
              xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
              xmlns:views="clr-namespace:BizClient.View"
              xmlns:models="clr-namespace:BizClient.Model"
-             x:DataType="viewmodels:HomePageViewModel">
+             x:DataType="viewmodels:HomePageViewModel"
+             Title="Home">
     <VerticalStackLayout Spacing="30">
-        <Label 
-            Text="Recent Posts"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
         <Grid ColumnDefinitions="*">
             <CollectionView ItemsSource="{Binding Posts}">
                 <CollectionView.ItemsLayout>
