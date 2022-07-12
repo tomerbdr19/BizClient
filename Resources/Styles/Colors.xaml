@@ -71,4 +71,8 @@
     <!--URGENT-->
     <Color x:Key="O00">#DF4D00</Color>
     <Color x:Key="O10">#FE620F</Color>
+    <!--Premium-->
+    <Color x:Key="P00">#7416A5</Color>
+    <Color x:Key="P10">#9A27D5</Color>
+
 </ResourceDictionary>

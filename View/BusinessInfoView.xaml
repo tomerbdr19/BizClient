@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VerticalStackLayout
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:BizClient.Model"
+             x:Class="BizClient.View.BusinessInfoView"
+             StyleClass="card"
+             x:Name="self"
+             Spacing="12"
+             HorizontalOptions="Start"
+             x:DataType="model:BusinessInfo"
+             >
+    <VerticalStackLayout StyleClass="formField">
+        <Label Text="Descripition"/>
+        <Label Text="{Binding Description}"/>
+    </VerticalStackLayout>
+    <VerticalStackLayout StyleClass="formField">
+        <Label Text="Address"/>
+        <Label Text="{Binding Location}"/>
+    </VerticalStackLayout>
+    <VerticalStackLayout StyleClass="formField">
+        <Label Text="Phone Number"/>
+        <Label Text="{Binding Contact.Phones}"/>
+    </VerticalStackLayout>
+    <VerticalStackLayout StyleClass="formField">
+        <Label Text="Email"/>
+        <Label Text="{Binding Contact.Email}"/>
+    </VerticalStackLayout>
+</VerticalStackLayout>

@@ -52,10 +52,12 @@
 	  <None Remove="Pages\" />
 	  <None Remove="ViewModel\Pages\" />
 	  <None Remove="Shells\" />
+	  <None Remove="CommunityToolkit.Maui" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="View\" />
@@ -89,6 +91,9 @@
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\BusinessPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\BusinessInfoView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>

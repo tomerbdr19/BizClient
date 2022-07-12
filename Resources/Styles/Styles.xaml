@@ -23,6 +23,13 @@
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
+     <Style TargetType="Button" x:Key="secondary">
+        <Setter Property="TextColor" Value="{StaticResource B10}"/>
+        <Setter Property="BorderColor" Value="{StaticResource B10}"/>
+        <Setter Property="BorderWidth" Value="1"/>
+        <Setter Property="BackgroundColor" Value="White" />
+    </Style>
+
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource D80}, Dark={StaticResource Primary}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource B10}, Dark={StaticResource White}}" />
@@ -387,6 +394,15 @@
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="HorizontalOptions" Value="Start"/>
+    </Style>
+
+    <Style x:Key="formField" TargetType="VerticalStackLayout">
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="Spacing" Value="6"/>
+    </Style>
+
+    <Style TargetType="Line">
+        <Setter Property="Fill" Value="{StaticResource D70}"/>
     </Style>
 
 </ResourceDictionary>

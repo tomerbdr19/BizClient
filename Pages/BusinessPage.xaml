@@ -6,19 +6,45 @@
              xmlns:views="clr-namespace:BizClient.View"
              xmlns:models="clr-namespace:BizClient.Model"
              x:DataType="viewmodels:BusinessPageViewModel">
-    <Grid RowDefinitions="Auto,300,Auto,*" ColumnDefinitions="*" RowSpacing="12">
-        <Frame StyleClass="card" Grid.Row="0">
-            <Label Text="{Binding Business.Name}" HorizontalOptions="Center"/>
-        </Frame>
-        <Frame StyleClass="card" Grid.Row="1" IsClippedToBounds="True">
-            <Image Source="{Binding Business.ImageUrl}" Aspect="AspectFill"/>
-        </Frame>
-        <Frame StyleClass="card" Grid.Row="2">
-            <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
-                <Label Grid.Column="0" Text="Subscriptions: 20"/>
-                <Button Grid.Column="2" Text="Subscribe"/>
-            </Grid>
-        </Frame>
-        <Frame StyleClass="card" Grid.Row="3"/>
-    </Grid>
+    <ScrollView>
+        <Grid RowDefinitions="Auto,200,Auto,Auto" ColumnDefinitions="*" RowSpacing="12">
+            <Frame StyleClass="card" Grid.Row="0">
+                <Grid ColumnDefinitions="*,*,*">
+                    <Label Grid.Column="1" Text="{Binding Business.Name}" HorizontalOptions="Center"/>
+                    <Button Grid.Column="2" Text="Subscribe" HorizontalOptions="End" BackgroundColor="{StaticResource P10}"/>
+                </Grid>
+            </Frame>
+            <Frame StyleClass="card" Grid.Row="1" IsClippedToBounds="True">
+                <Image Source="{Binding Business.ImageUrl}" Aspect="AspectFit"/>
+            </Frame>
+            <Frame StyleClass="card" Grid.Row="2">
+                <VerticalStackLayout Spacing="6">
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" HorizontalOptions="Fill" ColumnSpacing="6" RowSpacing="3">
+                        <Button Grid.Column="0" Grid.Row="0" Text="Info" Command="{Binding OnInfoClickCommand}" IsEnabled="{Binding IsPosts}"/>
+                        <Button Grid.Column="1" Grid.Row="0" Text="Posts" Command="{Binding OnPostsClickCommand}" IsEnabled="{Binding IsInfo}"/>
+                        <Line Grid.Row="1"/>
+                    </Grid>
+                    <VerticalStackLayout IsVisible="{Binding IsInfo}">
+                        <views:BusinessInfoView BindingContext="{Binding Business.Info}"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+            <CollectionView Grid.Row="3" ItemsSource="{Binding Posts}" IsVisible="{Binding IsPosts}" ZIndex="-1">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Post">
+                        <views:PostView
+                        BusinessName="{Binding BusinessName}"
+                        BusinessImageUrl="{Binding BusinessImageUrl}"
+                        Caption="{Binding Caption}"
+                        ImageUrl="{Binding ImageUrl}"
+                        CreatedAt="{Binding CreatedAt}"
+                        />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
 </ContentPage>
