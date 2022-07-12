@@ -12,14 +12,19 @@ public partial class BusinessPageViewModel : BaseViewModel
     public BusinessPageViewModel(Business business)
     {
         this.Business = business;
-        this.posts = new[] { new Post(new PostResponse()), new Post(new PostResponse()), new Post(new PostResponse()), new Post(new PostResponse()) };
+        this.posts = new Collection<Post>();
+        foreach (Post post in Mocks.posts)
+        {
+            if (post.BusinessName == business.Name)
+                this.posts.Add(post);
+        }
     }
 
     [ObservableProperty]
     public Business business;
 
     [ObservableProperty]
-    public Post[] posts;
+    public Collection<Post> posts;
 
     [ObservableProperty]
     [AlsoNotifyChangeFor(nameof(IsPosts))]

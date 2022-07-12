@@ -3,15 +3,15 @@ namespace BizClient.Model
 {
     public class Coupon
     {
-        public Coupon()
+        public Coupon(string Id, string BusinessName, string BusinessImageUrl, string Description, DateTime ExpiredAt, bool IsRedeemed)
         {
-            Id = "123";
-            Description = "100 NIS";
-            ExpiredAt = new DateTime();
+            Id = this.Id;
+            Description = this.Description;
+            ExpiredAt = this.ExpiredAt;
             // TODO: resolve from BusinessService
-            BusinessName = "McDonalds";
-            BusinessImageUrl = "https://st2.depositphotos.com/6331184/9676/i/450/depositphotos_96765686-stock-photo-homemade-hummus-with-pita-bread.jpg";
-            IsRedeemed = false;
+            BusinessName = this.BusinessName;
+            BusinessImageUrl = this.BusinessImageUrl;
+            IsRedeemed = this.IsRedeemed;
         }
         public string Id { get; set; }
 

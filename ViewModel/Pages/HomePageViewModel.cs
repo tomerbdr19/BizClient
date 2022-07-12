@@ -5,9 +5,10 @@ public partial class HomePageViewModel : BaseViewModel
 
     public HomePageViewModel()
     {
-        Posts.Add(new Post(new PostResponse()));
-        Posts.Add(new Post(new PostResponse()));
-        Posts.Add(new Post(new PostResponse()));
+        foreach (Post post in Mocks.posts)
+        {
+            Posts.Add(post);
+        }
     }
 
     public ObservableCollection<Post> Posts { get; } = new();

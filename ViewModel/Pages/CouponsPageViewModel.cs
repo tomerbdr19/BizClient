@@ -5,9 +5,10 @@ namespace BizClient.ViewModel
     {
         public CouponsPageViewModel()
         {
-            Coupons.Add(new Coupon());
-            Coupons.Add(new Coupon());
-            Coupons.Add(new Coupon());
+            foreach (Coupon coupon in Mocks.coupons)
+            {
+                Coupons.Add(coupon);
+            }
         }
 
         public ObservableCollection<Coupon> Coupons { get; } = new();
