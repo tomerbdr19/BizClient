@@ -1,4 +1,6 @@
 ﻿using System;
+//using static Android.Icu.Text.IDNA;
+
 namespace BizClient.Model
 {
 
@@ -48,6 +50,15 @@ namespace BizClient.Model
 
     public class Business : ObservableObject
     {
+        public Business(BusinessResponse response)
+        {
+            Id = response.Id;
+            OwnerId = response.OwnerId;
+            Info = new BusinessInfo(response.Info.Description, response.Info.Location.Country, response.Info.Location.City, response.Info.Location.Street, response.Info.Contact.Phones, response.Info.Contact.Email);
+            ImageUrl = response.ImageUrl;
+            Name = response.Name;
+        }
+
         public Business(string id, string ownerId, string name, string description, string imageUrl, string country, string city, string street, string phones, string email)
         {
             Id = id;
@@ -56,6 +67,27 @@ namespace BizClient.Model
             ImageUrl = imageUrl;
             Name = name;
         }
+        public BusinessInfo Info { get; set; }
+
+        public string Id { get; set; }
+        public string OwnerId { get; set; }
+        public string ImageUrl { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class BusinessResponse
+    {
+        public BusinessResponse(string id, string ownerId, string name, string description, string imageUrl, string country, string city, string street, string phones, string email)
+        {
+            Id = id;
+            OwnerId = ownerId;
+            Info = new BusinessInfo(description, country, city, street, phones, email);
+            ImageUrl = imageUrl;
+            Name = name;
+        }
+
+        public BusinessResponse() { }
+
         public BusinessInfo Info { get; set; }
 
         public string Id { get; set; }

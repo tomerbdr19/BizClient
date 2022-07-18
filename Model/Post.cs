@@ -7,8 +7,10 @@ namespace BizClient.Model
         {
             Id = response.Id;
             Caption = response.Caption;
-            ImageUrl = response.Image;
+            ImageUrl = response.ImageUrl;
             CreatedAt = response.CreatedAt;
+            Content =response.Content;
+            Src = response.Src;
             // TODO: resolve from BusinessService
             this.BusinessName = BusinessName;
             this.BusinessImageUrl = BusinessImageUrl;
@@ -24,11 +26,17 @@ namespace BizClient.Model
 
         public string Id { get; set; }
 
+        public string BusinessId { get; set; }
+
         public string BusinessName { get; set; }
 
         public string BusinessImageUrl { get; set; }
 
         public string Caption { get; set; }
+
+        public string Content { get; set; }
+
+        public string Src { get; set; }
 
         public string ImageUrl { get; set; }
 
@@ -38,23 +46,30 @@ namespace BizClient.Model
     // TODO: move to seperate folder
     public class PostResponse
     {
-        public PostResponse(string Id, string BusinessId, string Caption, string Image, DateTime CreatedAt)
+        public PostResponse(string Id, string BusinessId, string Caption,string Content, string Src, string Image, DateTime CreatedAt)
         {
             this.Id = Id;
             this.BusinessId = BusinessId;
             this.Caption = Caption;
-            this.Image = Image;
+            this.Content = Content;
+            this.Src = Src;
+            this.ImageUrl = Image;
             this.CreatedAt = CreatedAt;
         }
 
         public PostResponse() { }
+
         public string Id { get; set; }
 
         public string BusinessId { get; set; }
 
         public string Caption { get; set; }
 
-        public string Image { get; set; }
+        public string Content { get; set; }
+
+        public string Src { get; set; }
+
+        public string ImageUrl { get; set; }
 
         public DateTime CreatedAt { get; set; }
     }
