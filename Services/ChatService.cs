@@ -59,6 +59,56 @@ namespace BizClient.Services
             //return retVal;
         }
 
+        public async Task<List<ChatResponse>> GetAllChatsByUserId(string userId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<ChatResponse> chats = new();
+            List<ChatResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                chats = await response.Content.ReadFromJsonAsync<List<ChatResponse>>();
+                foreach (ChatResponse chat in chats)
+                {
+                    if (chat.UserId == userId)
+                    {
+                        retVal.Add(chat);
+                    }
+                }
+
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
+        public async Task<List<ChatResponse>> GetAllChatsByBusinessId(string businessId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<ChatResponse> chats = new();
+            List<ChatResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                chats = await response.Content.ReadFromJsonAsync<List<ChatResponse>>();
+                foreach (ChatResponse chat in chats)
+                {
+                    if (chat.BusinessId == businessId)
+                    {
+                        retVal.Add(chat);
+                    }
+                }
+
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
         private HttpClient httpClient;
     }
 }

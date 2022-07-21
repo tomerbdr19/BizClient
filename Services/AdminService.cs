@@ -58,6 +58,56 @@ namespace BizClient.Services
             //return retVal;
         }
 
+        public async Task<List<AdminResponse>> GetAllAdminByBusinessId(string businessId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<AdminResponse> admins = new();
+            List<AdminResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                admins = await response.Content.ReadFromJsonAsync<List<AdminResponse>>();
+                foreach (AdminResponse admin in admins)
+                {
+                    if (admin.BusinessId == businessId)
+                    {
+                        retVal.Add(admin);
+                    }
+                }
+
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
+        public async Task<List<AdminResponse>> GetAllOwners(string businessId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<AdminResponse> admins = new();
+            List<AdminResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                admins = await response.Content.ReadFromJsonAsync<List<AdminResponse>>();
+                foreach (AdminResponse admin in admins)
+                {
+                    if (admin.IsOwner)
+                    {
+                        retVal.Add(admin);
+                    }
+                }
+
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
         private HttpClient httpClient;
     }
 }

@@ -58,6 +58,56 @@ namespace BizClient.Services
             //return retVal;
         }
 
+        public async Task<List<DiscountResponse>> GetAllDiscountsByBusinessId(string businessId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<DiscountResponse> discounts = new();
+            List<DiscountResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                discounts = await response.Content.ReadFromJsonAsync<List<DiscountResponse>>();
+                foreach (DiscountResponse discount in discounts)
+                {
+                    if (discount.BusinessId == businessId)
+                    {
+                        retVal.Add(discount);
+                    }
+                }
+
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
+        public async Task<List<DiscountResponse>> GetAllDiscountsByBusinessIdAndType(string businessId, string type)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<DiscountResponse> discounts = new();
+            List<DiscountResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                discounts = await response.Content.ReadFromJsonAsync<List<DiscountResponse>>();
+                foreach (DiscountResponse discount in discounts)
+                {
+                    if (discount.BusinessId == businessId && discount.Type == type)
+                    {
+                        retVal.Add(discount);
+                    }
+                }
+
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
         private HttpClient httpClient;
     }
 }

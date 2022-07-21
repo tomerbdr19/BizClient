@@ -73,6 +73,18 @@ namespace BizClient.Model
         public string OwnerId { get; set; }
         public string ImageUrl { get; set; }
         public string Name { get; set; }
+
+        public bool PublishPost(string description)//TODO
+        {
+            bool isSuccess = true;
+            return isSuccess;
+        }
+
+        public bool AddCoupon(string description)//TODO
+        {
+            bool isSuccess = true;
+            return isSuccess;
+        }
     }
 
     public class BusinessResponse

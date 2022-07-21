@@ -60,6 +60,31 @@ namespace BizClient.Services
             //return retVal;
         }
 
+        public async Task<List<FBTokenResponse>> GetAllFBTokenByBusinessId(string businessId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<FBTokenResponse> fBTokens = new();
+            List<FBTokenResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                fBTokens = await response.Content.ReadFromJsonAsync<List<FBTokenResponse>>();
+                foreach (FBTokenResponse fBToken in fBTokens)
+                {
+                    if (fBToken.BusinessId == businessId)
+                    {
+                        retVal.Add(fBToken);
+                    }
+                }
+
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
         private HttpClient httpClient;
     }
 }

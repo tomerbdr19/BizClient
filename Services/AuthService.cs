@@ -59,6 +59,36 @@ namespace BizClient.Services
             //return retVal;
         }
 
+        public async Task<AuthResponse> GetAuthByEmailAndPassword(string email, string password)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<AuthResponse> auths = new();
+            AuthResponse retVal = null;
+            if (response.IsSuccessStatusCode)
+            {
+                auths = await response.Content.ReadFromJsonAsync<List<AuthResponse>>();
+                foreach (AuthResponse auth in auths)
+                {
+                    if ((auth.Email == email) && (auth.Password == password))
+                    {
+                        retVal = auth;
+                        break;
+                    }
+                    if(auth.Email == email)
+                    {
+                        //TODO hendle error
+                    }
+                }
+
+            }
+            if (retVal == null)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
         private HttpClient httpClient;
     }
 }
