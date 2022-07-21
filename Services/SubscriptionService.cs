@@ -15,7 +15,7 @@ namespace BizClient.Services
             httpClient = new HttpClient();
         }
 
-        public async Task<SubscriptionResponse> GetUserByUserId(string id)
+        public async Task<SubscriptionResponse> GetSubscriptionByUserIdAndBusinessId(string userId, string businessId)
         {
             var url = "TODO add path";//TODO
             var response = await httpClient.GetAsync(url);
@@ -24,11 +24,11 @@ namespace BizClient.Services
             if (response.IsSuccessStatusCode)
             {
                 Subscriptions = await response.Content.ReadFromJsonAsync<List<SubscriptionResponse>>();
-                foreach (SubscriptionResponse Subscription in Subscriptions)
+                foreach (SubscriptionResponse subscription in Subscriptions)
                 {
-                    if (Subscription.UserId == id)
+                    if (subscription.UserId == userId && subscription.BusinessId == businessId)
                     {
-                        retVal = Subscription;
+                        retVal = subscription;
                         break;
                     }
                 }
@@ -57,6 +57,56 @@ namespace BizClient.Services
             //}
 
             //return retVal;
+        }
+
+        public async Task<List<SubscriptionResponse>> GetAllSubscriptionByBusinessId(string businessId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<SubscriptionResponse> Subscriptions = new();
+            List<SubscriptionResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                Subscriptions = await response.Content.ReadFromJsonAsync<List<SubscriptionResponse>>();
+                foreach (SubscriptionResponse subscription in Subscriptions)
+                {
+                    if (subscription.BusinessId == businessId)
+                    {
+                        retVal.Add(subscription);
+                    }
+                }
+
+            }
+            if (retVal == null)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
+        public async Task<List<SubscriptionResponse>> GetAllSubscriptionByUserId(string userId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<SubscriptionResponse> Subscriptions = new();
+            List<SubscriptionResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                Subscriptions = await response.Content.ReadFromJsonAsync<List<SubscriptionResponse>>();
+                foreach (SubscriptionResponse subscription in Subscriptions)
+                {
+                    if (subscription.UserId == userId)
+                    {
+                        retVal.Add(subscription);
+                    }
+                }
+
+            }
+            if (retVal == null)
+            {
+                //TODO hendle error
+            }
+            return retVal;
         }
 
         private HttpClient httpClient;

@@ -13,13 +13,13 @@ namespace BizClient.Model
             Id = response.Id;
             BusinessId = response.BusinessId;
             this.CreatedAt = response.CreatedAt;
-            this.type = response.type;
+            this.Type = response.Type;
         }
 
         public string Id { get; set; }
         public string BusinessId { get; set; }
         public DateTime CreatedAt { get; set; }
-        public string type { get; set; }
+        public string Type { get; set; }
     }
 
     public class DiscountResponse
@@ -29,12 +29,12 @@ namespace BizClient.Model
             Id = id;
             BusinessId = businessId;
             this.CreatedAt = createdAt;
-            this.type = type;
+            this.Type = type;
         }
 
         public string Id { get; set; }
         public string BusinessId { get; set; }
         public DateTime CreatedAt { get; set; }
-        public string type { get; set; }
+        public string Type { get; set; }
     }
 }

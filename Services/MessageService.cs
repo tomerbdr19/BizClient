@@ -60,6 +60,56 @@ namespace BizClient.Services
             //return retVal;
         }
 
+        public async Task<List<MessageResponse>> GetAllMessageByUserId(string userId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<MessageResponse> Messages = new();
+            List<MessageResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                Messages = await response.Content.ReadFromJsonAsync<List<MessageResponse>>();
+                foreach (MessageResponse Message in Messages)
+                {
+                    if (Message.FromUserId == userId)
+                    {
+                        retVal.Add(Message);
+                    }
+                }
+
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
+        public async Task<List<MessageResponse>> GetAllMessageByBusinessId(string businessId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<MessageResponse> Messages = new();
+            List<MessageResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                Messages = await response.Content.ReadFromJsonAsync<List<MessageResponse>>();
+                foreach (MessageResponse Message in Messages)
+                {
+                    if (Message.FromBusinessId == businessId)
+                    {
+                        retVal.Add(Message);
+                    }
+                }
+
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
         private HttpClient httpClient;
     }
 }

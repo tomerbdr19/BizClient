@@ -18,6 +18,14 @@ namespace BizClient.Model
         public string UserId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+
+        public bool Match(string id, string email, string password)
+        {
+            bool isMatch = false;
+            if (id == UserId && email == Email && password == Password)
+                isMatch = true;
+            return isMatch;
+        }
     }
 
     public class AuthResponse

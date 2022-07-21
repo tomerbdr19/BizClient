@@ -58,6 +58,31 @@ namespace BizClient.Services
             //return retVal;
         }
 
+        public async Task<List<PublishedPostResponse>> GetAllPublishedPostByBusinessId(string businessId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<PublishedPostResponse> publishedPosts = new();
+            List<PublishedPostResponse> retVal = null;
+            if (response.IsSuccessStatusCode)
+            {
+                publishedPosts = await response.Content.ReadFromJsonAsync<List<PublishedPostResponse>>();
+                foreach (PublishedPostResponse publishedPost in publishedPosts)
+                {
+                    if (publishedPost.BusinessId == businessId)
+                    {
+                        retVal.Add(publishedPost);
+                    }
+                }
+
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
         private HttpClient httpClient;
     }
 }

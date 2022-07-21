@@ -60,6 +60,31 @@ namespace BizClient.Services
             //return retVal;
         }
 
+        public async Task<List<BusinessResponse>> GetAllBusinessByOwnerId(string ownerId)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<BusinessResponse> businesses = new();
+            List<BusinessResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                businesses = await response.Content.ReadFromJsonAsync<List<BusinessResponse>>();
+                foreach (BusinessResponse business in businesses)
+                {
+                    if (business.OwnerId == ownerId)
+                    {
+                        retVal.Add(business);
+                        break;
+                    }
+                }
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
         private HttpClient httpClient;
     }
 }

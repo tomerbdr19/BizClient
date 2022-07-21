@@ -58,6 +58,30 @@ namespace BizClient.Services
             //return retVal;
         }
 
+        public async Task<List<UserResponse>> GetAllUserByCity(string city)
+        {
+            var url = "TODO add path";//TODO
+            var response = await httpClient.GetAsync(url);
+            List<UserResponse> users = new();
+            List<UserResponse> retVal = new();
+            if (response.IsSuccessStatusCode)
+            {
+                users = await response.Content.ReadFromJsonAsync<List<UserResponse>>();
+                foreach (UserResponse user in users)
+                {
+                    if (user.info.city == city)
+                    {
+                        retVal.Add(user);
+                    }
+                }
+            }
+            if (retVal.Count == 0)
+            {
+                //TODO hendle error
+            }
+            return retVal;
+        }
+
         private HttpClient httpClient;
     }
 }
