@@ -10,3 +10,4 @@ global using BizClient.Model;
 global using BizClient.View;
 global using BizClient.Pages;
 global using BizClient.Shells;
+global using BizClient.Services;

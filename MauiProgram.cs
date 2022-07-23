@@ -13,11 +13,15 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
+        // Services
+        builder.Services.AddSingleton<ChatService>();
+
         // Pages
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddSingleton<BusinessesPage>();
         builder.Services.AddSingleton<HomePage>();
         builder.Services.AddSingleton<CouponsPage>();
+        builder.Services.AddSingleton<ChatPage>();
 
         // Views
 
@@ -26,6 +30,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<BusinessesPageViewModel>();
         builder.Services.AddSingleton<HomePageViewModel>();
         builder.Services.AddSingleton<CouponsPageViewModel>();
+
+
 
         return builder.Build();
     }

@@ -6,44 +6,41 @@ using System.Threading.Tasks;
 
 namespace BizClient.Model
 {
-    public class Message
+    public class Message : ObservableObject
     {
-        public Message(MessageResponse response)
-        {
-            MessageId = response.MessageId;
-            FromBusinessId = response.FromBusinessId;
-            FromUserId = response.FromUserId;
-            Content = response.Content;
-            CreatedAt = response.CreatedAt;
-        }
+        public string Id { get; set; }
 
-        public string MessageId { get; set; }
+        public string ChatId { get; set; }
 
-        public string FromUserId { get; set; }
+        public string SenderId { get; set; }
 
-        public string FromBusinessId { get; set; }
-
-        public string Content { get; set; }
+        public string MessageContent { get; set; }
 
         public DateTime CreatedAt { get; set; }
+
+        public string SenderImageUrl { get; set; }
+
+        public string SenderName { get; set; }
+
+        public bool IsSelf { get; set; } = true;
     }
 
     public class MessageResponse
     {
-        public MessageResponse(string messageId, string fromUserId, string fromBusinessId, string content, DateTime createdAt)
+        public MessageResponse(string id, string chatId, string senderId, string content, DateTime createdAt)
         {
-            MessageId = messageId;
-            FromUserId = fromUserId;
-            FromBusinessId = fromBusinessId;
+            Id = id;
+            ChatId = chatId;
+            SenderId = senderId;
             Content = content;
             CreatedAt = createdAt;
         }
 
-        public string MessageId { get; set; }
+        public string Id { get; set; }
 
-        public string FromUserId { get; set; }
+        public string ChatId { get; set; }
 
-        public string FromBusinessId { get; set; }
+        public string SenderId { get; set; }
 
         public string Content { get; set; }
 

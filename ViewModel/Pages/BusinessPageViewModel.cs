@@ -47,4 +47,13 @@ public partial class BusinessPageViewModel : BaseViewModel
         IsInfo = false;
         IsPosts = true;
     }
+
+    [ICommand]
+    public async void OnMessageClick()
+    {
+        await Shell.Current.GoToAsync(Routes.Chat, true, new Dictionary<string, object>
+        {
+            {"otherId", Business.Id}
+        });
+    }
 }
