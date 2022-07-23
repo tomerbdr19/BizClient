@@ -33,13 +33,13 @@ public static class Mocks
     public static Chat[] chats = new[]
     {
         new Chat(new ChatResponse("1", "111", "1", DateTime.Now)),
-        new Chat(new ChatResponse("1", "2", "1", DateTime.Now)),
+        new Chat(new ChatResponse("2", "111", "2", DateTime.Now)),
     };
 
     public static MessageResponse[] messages = new[]
     {
         new MessageResponse("1", "1", "111", "Hello", DateTime.Now),
-        new MessageResponse("2", "1", "2", "Hey how are you?", DateTime.Now),
+        new MessageResponse("2", "1", "1", "Hey how are you?", DateTime.Now),
         new MessageResponse("3", "2", "2", "Welcome", DateTime.Now),
     };
 }

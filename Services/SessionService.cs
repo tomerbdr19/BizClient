@@ -29,9 +29,8 @@ namespace BizClient.Services
             // TODO: implement
 
             token = "123";
-            var userId = "1";
             mode = LogMode.User;
-            loggedUser = new User(new UserResponse("1", "tomer", "binder", "today", "israel", "tel-aviv"));
+            loggedUser = Mocks.user;
 
             return;
         }

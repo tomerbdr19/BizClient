@@ -10,54 +10,70 @@ namespace BizClient.Services
 {
     public class ChatService
     {
-        public ChatService()
+        public ChatService(SessionService sessionService, BusinessService businessService)
         {
             httpClient = new HttpClient();
+            this.sessionService = sessionService;
+            this.businessService = businessService;
 
-            // the id of the logged user/business -> should be resolved by auth service
-            string authId = "1";
-            GetAllChats(authId);
         }
 
-        public List<Chat> Chats { get; } = new List<Chat>();
+        private readonly SessionService sessionService;
+        private readonly BusinessService businessService;
+        public List<Chat> Chats { get; set; }
 
-        // find all chats by given id
-        public Task GetAllChats(string userOrBusinessId)
+        public Task<List<Chat>> GetAllChats()
         {
-            // TODO : async call
-            Chats.Add(new Chat(new ChatResponse("1", "2", "1", DateTime.Now)));
-            
-            return Task.CompletedTask;
+            var loggedId = sessionService.GetLoggedId();
+            Chats = Mocks.chats.ToList().FindAll(_ => _.UserId == loggedId || _.BusinessId == loggedId).ToList();
+            return Task.FromResult(Chats);
         }
 
-        public Chat GetChatByParticipateId(string participateId)
+        public async Task<Chat> GetChatByParticipateId(string participateId)
         {
+            if (Chats == null)
+            {
+                await GetAllChats();
+            }
+
             return Chats.Find(_ => { return _.UserId == participateId || _.BusinessId == participateId; });
+        }
+
+        public async Task<Chat> GetChatById(string chatId)
+        {
+            if (Chats == null)
+            {
+                await GetAllChats();
+            }
+
+            return Chats.Find(_ => _.Id == chatId);
         }
 
         async public Task<List<Message>> GetChatMessages(string chatId)
         {
             List<Message> messagesList = new();
 
-            // async request
-            var messagesResponse = new List<MessageResponse> { new MessageResponse("1", "1", "2", "user", DateTime.Now), new MessageResponse("1", "1", "2", "business", DateTime.Now) };
+            var messagesResponse = Mocks.messages.ToList().FindAll(_ => _.ChatId == chatId);
+            var chat = Chats.Find(_ => _.Id == chatId);
 
-            // resolve from services
-            Business business = Mocks.businesses[0];
-            // implement mock
-            var UserId = "1";
-            var UserImageUrl = "";
-            var UserName = "Tomer";
+            var isUserMode = sessionService.IsUserMode;
+            var business = await businessService.GetBusinessById(chat.BusinessId);
 
-            messagesResponse.ForEach(_ => messagesList.Add(new Message {
+            var businessName = isUserMode ? business.Name : "";
+            var businessImageUrl = isUserMode ? business.ImageUrl : "";
+            var userName = isUserMode ? sessionService.GetLoggedName() : "";
+            var userImageUrl = isUserMode ? sessionService.GetLoggedImageUrl() : "";
+
+            messagesResponse.ForEach(_ => messagesList.Add(new Message
+            {
                 ChatId = _.ChatId,
                 SenderId = _.SenderId,
-                SenderImageUrl = _.SenderId == UserId ? UserImageUrl : business.ImageUrl,
-                SenderName = _.SenderId == UserId ? UserName : business.Name,
+                SenderImageUrl = _.SenderId == business.Id ? business.ImageUrl : userImageUrl,
+                SenderName = _.SenderId == business.Id ? business.Name : userName,
                 CreatedAt = _.CreatedAt,
                 MessageContent = _.Content,
                 Id = _.Id,
-                IsSelf = _.SenderId == "2",
+                IsSelf = _.SenderId == sessionService.GetLoggedId(),
             }));
 
             return messagesList;
