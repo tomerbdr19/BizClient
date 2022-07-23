@@ -3,15 +3,24 @@
 public partial class BusinessesPageViewModel : BaseViewModel
 {
 
-    public BusinessesPageViewModel()
+    public BusinessesPageViewModel(BusinessService businessService, SubscriptionService subscriptionService)
     {
-        foreach (Business business in Mocks.businesses)
-        {
-            Businesses.Add(business);
-        }
+        this.subscriptionService = subscriptionService;
+        this.businessService = businessService;
+        initPage();
     }
 
+    private readonly BusinessService businessService;
+    private readonly SubscriptionService subscriptionService;
     public ObservableCollection<Business> Businesses { get; } = new();
+
+    public async void initPage()
+    {
+        var subscriptions = await subscriptionService.GetUserSubscriptions();
+        var businesses = await businessService.GetBusinessesByIds(subscriptions.Select(_ => _.BusinessId).ToArray());
+
+        businesses.ForEach(_ => Businesses.Add(_));
+    }
 
     [ICommand]
     async Task GoToBusiness(Business business)

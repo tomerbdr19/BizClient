@@ -3,9 +3,12 @@
 public partial class LoginPageViewModel : BaseViewModel
 {
 
-    public LoginPageViewModel()
+    public LoginPageViewModel(SessionService sessionService)
     {
+        this.sessionService = sessionService;
     }
+
+    private readonly SessionService sessionService;
 
     [ObservableProperty]
     [AlsoNotifyChangeFor(nameof(IsLoginButtonEnabled))]
@@ -23,6 +26,7 @@ public partial class LoginPageViewModel : BaseViewModel
     async Task OnLoginClick()
     {
         // TODO: handle login
+        this.sessionService.Login(email, password);
         Application.Current.MainPage = new MobileCustomerShell();
     }
 

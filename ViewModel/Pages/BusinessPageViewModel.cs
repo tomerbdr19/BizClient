@@ -9,22 +9,25 @@ public partial class BusinessPageViewModel : BaseViewModel
         Posts
     }
 
-    public BusinessPageViewModel(Business business)
+    public BusinessPageViewModel(Business business, PostService postService)
     {
         this.Business = business;
-        this.posts = new Collection<Post>();
-        foreach (Post post in Mocks.posts)
-        {
-            if (post.BusinessName == business.Name)
-                this.posts.Add(post);
-        }
+        this.postService = postService;
+
+        initPage();
+    }
+    private readonly PostService postService;
+
+    private async void initPage()
+    {
+        var businessPosts = await postService.GetBusinessPosts(Business.Id);
+        businessPosts.ForEach(_ => Posts.Add(_));
     }
 
     [ObservableProperty]
     public Business business;
 
-    [ObservableProperty]
-    public Collection<Post> posts;
+    public ObservableCollection<Post> Posts { get; } = new();
 
     [ObservableProperty]
     [AlsoNotifyChangeFor(nameof(IsPosts))]

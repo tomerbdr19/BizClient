@@ -3,15 +3,21 @@
 public partial class HomePageViewModel : BaseViewModel
 {
 
-    public HomePageViewModel()
+    public HomePageViewModel(PostService postService)
     {
-        foreach (Post post in Mocks.posts)
-        {
-            Posts.Add(post);
-        }
+        this.postService = postService;
+        initPage();
     }
 
+    private readonly PostService postService;
     public ObservableCollection<Post> Posts { get; } = new();
+
+    async private void initPage()
+    {
+        var posts = await this.postService.GetUserRecentPosts();
+        posts.ForEach(_ => Posts.Add(_));
+    }
+
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs e)
     {
