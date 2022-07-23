@@ -20,4 +20,26 @@ public static class Mocks
         new Coupon(new CouponResponse("2", Mocks.businesses[0].Name, Mocks.businesses[0].ImageUrl, "Buy 2 Get 1 :)",DateTime.Now, DateTime.Now.AddDays(13),CouponStatus.redeemed, true)),
         new Coupon(new CouponResponse("3", Mocks.businesses[2].Name, Mocks.businesses[2].ImageUrl, "Buy Phone Get screen warranty",DateTime.Now, DateTime.Now.AddDays(14),CouponStatus.available, false)),
     };
+
+    public static Subscription[] subscriptions = new[]
+    {
+        new Subscription(new SubscriptionResponse("111", "1", DateTime.Now)),
+        new Subscription(new SubscriptionResponse("111", "2", DateTime.Now)),
+        new Subscription(new SubscriptionResponse("111", "3", DateTime.Now)),
+    };
+
+    public static User user = new User("111", "Yossi", "Cohen", "now", "israel", "tel-aviv");
+
+    public static Chat[] chats = new[]
+    {
+        new Chat(new ChatResponse("1", "111", "1", DateTime.Now)),
+        new Chat(new ChatResponse("1", "2", "1", DateTime.Now)),
+    };
+
+    public static MessageResponse[] messages = new[]
+    {
+        new MessageResponse("1", "1", "111", "Hello", DateTime.Now),
+        new MessageResponse("2", "1", "2", "Hey how are you?", DateTime.Now),
+        new MessageResponse("3", "2", "2", "Welcome", DateTime.Now),
+    };
 }
