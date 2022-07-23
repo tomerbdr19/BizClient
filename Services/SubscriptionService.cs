@@ -10,105 +10,41 @@ namespace BizClient.Services
 {
     public class SubscriptionService
     {
-        public SubscriptionService()
-{
+        public SubscriptionService(SessionService sessionService)
+        {
             httpClient = new HttpClient();
-        }
-
-        public async Task<SubscriptionResponse> GetSubscriptionByUserIdAndBusinessId(string userId, string businessId)
-        {
-            var url = "TODO add path";//TODO
-            var response = await httpClient.GetAsync(url);
-            List<SubscriptionResponse> Subscriptions = new();
-            SubscriptionResponse retVal = null;
-            if (response.IsSuccessStatusCode)
-            {
-                Subscriptions = await response.Content.ReadFromJsonAsync<List<SubscriptionResponse>>();
-                foreach (SubscriptionResponse subscription in Subscriptions)
-                {
-                    if (subscription.UserId == userId && subscription.BusinessId == businessId)
-                    {
-                        retVal = subscription;
-                        break;
-                    }
-                }
-
-            }
-            if (retVal == null)
-            {
-                //TODO hendle error
-            }
-            return retVal;
-
-            //string json = System.IO.File.ReadAllText(@"TODO add path");
-            //List<SubscriptionResponse> Subscriptions = Newtonsoft.Json.JsonConvert.DeserializeObject<List<SubscriptionResponse>>(json);
-            //SubscriptionResponse retVal = null;
-            //foreach (SubscriptionResponse Subscription in Subscriptions)
-            //{
-            //    if (Subscription.UserId == id)
-            //    {
-            //        retVal = Subscription;
-            //        break;
-            //    }
-            //}
-            //if (retVal == null)
-            //{
-            //    //TODO hendle error
-            //}
-
-            //return retVal;
-        }
-
-        public async Task<List<SubscriptionResponse>> GetAllSubscriptionByBusinessId(string businessId)
-        {
-            var url = "TODO add path";//TODO
-            var response = await httpClient.GetAsync(url);
-            List<SubscriptionResponse> Subscriptions = new();
-            List<SubscriptionResponse> retVal = new();
-            if (response.IsSuccessStatusCode)
-            {
-                Subscriptions = await response.Content.ReadFromJsonAsync<List<SubscriptionResponse>>();
-                foreach (SubscriptionResponse subscription in Subscriptions)
-                {
-                    if (subscription.BusinessId == businessId)
-                    {
-                        retVal.Add(subscription);
-                    }
-                }
-
-            }
-            if (retVal == null)
-            {
-                //TODO hendle error
-            }
-            return retVal;
-        }
-
-        public async Task<List<SubscriptionResponse>> GetAllSubscriptionByUserId(string userId)
-        {
-            var url = "TODO add path";//TODO
-            var response = await httpClient.GetAsync(url);
-            List<SubscriptionResponse> Subscriptions = new();
-            List<SubscriptionResponse> retVal = new();
-            if (response.IsSuccessStatusCode)
-            {
-                Subscriptions = await response.Content.ReadFromJsonAsync<List<SubscriptionResponse>>();
-                foreach (SubscriptionResponse subscription in Subscriptions)
-                {
-                    if (subscription.UserId == userId)
-                    {
-                        retVal.Add(subscription);
-                    }
-                }
-
-            }
-            if (retVal == null)
-            {
-                //TODO hendle error
-            }
-            return retVal;
+            this.sessionService = sessionService;
         }
 
         private HttpClient httpClient;
+        private readonly SessionService sessionService;
+
+
+        public Task GetBusinessSubscriptions()
+        {
+            // TODO: implement
+            var businessId = sessionService.GetLoggedId();
+            return Task.CompletedTask;
+        }
+
+        public Task<List<Subscription>> GetUserSubscriptions()
+        {
+            // TODO: implement
+            return Task.FromResult(Mocks.subscriptions.ToList());
+        }
+
+        public Task Subscribe(string businessId)
+        {
+            // TODO: implement
+            var userId = sessionService.GetLoggedId();
+            return Task.CompletedTask;
+        }
+
+        public Task Unsubscribe(string businessId)
+        {
+            // TODO: implement
+            var userId = sessionService.GetLoggedId();
+            return Task.CompletedTask;
+        }
     }
 }

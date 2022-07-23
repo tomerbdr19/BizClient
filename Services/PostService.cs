@@ -10,80 +10,43 @@ namespace BizClient.Services
 {
     public class PostService
     {
-        public PostService()
+        public PostService(SessionService sessionService)
         {
             httpClient = new HttpClient();
-        }
-
-        public async Task<PostResponse> GetPostById(string id)
-        {
-            var url = "TODO add path";//TODO
-            var response = await httpClient.GetAsync(url);
-            List<PostResponse> posts = new();
-            PostResponse retVal = null;
-            if (response.IsSuccessStatusCode)
-            {
-                posts = await response.Content.ReadFromJsonAsync<List<PostResponse>>();
-                foreach (PostResponse post in posts)
-                {
-                    if (post.Id == id)
-                    {
-                        retVal = post;
-                        break;
-                    }
-                }
-
-            }
-            if (retVal == null)
-            {
-                //TODO hendle error
-            }
-            return retVal;
-
-            //string json = System.IO.File.ReadAllText(@"TODO add path");
-            //List<PostResponse> posts = Newtonsoft.Json.JsonConvert.DeserializeObject<List<PostResponse>>(json);
-            //PostResponse retVal = null;
-            //foreach (PostResponse post in posts)
-            //{
-            //    if (post.Id == id)
-            //    {
-            //        retVal = post;
-            //        break;
-            //    }
-            //}
-            //if (retVal == null)
-            //{
-            //    //TODO hendle error
-            //}
-
-            //return retVal;
-        }
-
-        public async Task<List<PostResponse>> GetAllPostByBusinessId(string businessId)
-        {
-            var url = "TODO add path";//TODO
-            var response = await httpClient.GetAsync(url);
-            List<PostResponse> posts = new();
-            List<PostResponse> retVal = new();
-            if (response.IsSuccessStatusCode)
-            {
-                posts = await response.Content.ReadFromJsonAsync<List<PostResponse>>();
-                foreach (PostResponse post in posts)
-                {
-                    if (post.BusinessId == businessId)
-                    {
-                        retVal.Add(post);
-                    }
-                }
-
-            }
-            if (retVal.Count == 0)
-            {
-                //TODO hendle error
-            }
-            return retVal;
+            this.sessionService = sessionService;
         }
 
         private HttpClient httpClient;
+        private readonly SessionService sessionService;
+
+        public Task<List<Post>> GetUserRecentPosts(int page = 0)
+        {
+            // TODO implement
+            return Task.FromResult(Mocks.posts.ToList());
+        }
+
+        public Task<List<Post>> GetBusinessPosts(string businessId, int page = 0)
+        {
+            // TODO implement
+            return Task.FromResult(Mocks.posts.ToList().FindAll(_ => _.BusinessId == businessId));
+        }
+
+        public Task LikePost(string postId)
+        {
+            // TODO implement
+            return Task.CompletedTask;
+        }
+
+        public Task DeletePost(string postId)
+        {
+            // TODO implement
+            return Task.CompletedTask;
+        }
+
+        public Task PublishPost(Post Post)
+        {
+            // TODO implement
+            return Task.CompletedTask;
+        }
     }
 }

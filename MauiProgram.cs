@@ -15,10 +15,16 @@ public static class MauiProgram
 
         // Services
         builder.Services.AddSingleton<ChatService>();
+        builder.Services.AddSingleton<SessionService>();
+        builder.Services.AddSingleton<UserService>();
+        builder.Services.AddSingleton<PostService>();
+        builder.Services.AddSingleton<SubscriptionService>();
+        builder.Services.AddSingleton<BusinessService>();
 
         // Pages
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddSingleton<BusinessesPage>();
+        builder.Services.AddSingleton<BusinessPage>();
         builder.Services.AddSingleton<HomePage>();
         builder.Services.AddSingleton<CouponsPage>();
         builder.Services.AddSingleton<ChatPage>();
