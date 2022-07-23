@@ -9,7 +9,8 @@ namespace BizClient.Model
             Caption = response.Caption;
             ImageUrl = response.ImageUrl;
             CreatedAt = response.CreatedAt;
-            Content =response.Content;
+            Content = response.Content;
+            BusinessId = response.BusinessId;
             Src = response.Src;
             // TODO: resolve from BusinessService
             this.BusinessName = BusinessName;
@@ -46,7 +47,7 @@ namespace BizClient.Model
     // TODO: move to seperate folder
     public class PostResponse
     {
-        public PostResponse(string Id, string BusinessId, string Caption,string Content, string Src, string Image, DateTime CreatedAt)
+        public PostResponse(string Id, string BusinessId, string Caption, string Content, string Src, string Image, DateTime CreatedAt)
         {
             this.Id = Id;
             this.BusinessId = BusinessId;
