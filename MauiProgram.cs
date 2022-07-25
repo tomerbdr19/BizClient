@@ -1,4 +1,8 @@
-﻿namespace BizClient;
+﻿using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Hosting;
+using SkiaSharp.Views.Maui.Controls.Hosting;
+
+namespace BizClient;
 
 public static class MauiProgram
 {
@@ -6,6 +10,7 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
         builder
+            .UseSkiaSharp(true)
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
@@ -26,6 +31,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<BusinessesPageViewModel>();
         builder.Services.AddSingleton<HomePageViewModel>();
         builder.Services.AddSingleton<CouponsPageViewModel>();
+
+        //builder.Services.AddSingleton<CouponCartesianChartViewModel>();
 
         return builder.Build();
     }
