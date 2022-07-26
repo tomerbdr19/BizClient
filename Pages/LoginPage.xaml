@@ -33,5 +33,13 @@
             Command="{Binding OnLoginClickCommand}"
             IsEnabled="{Binding IsLoginButtonEnabled}"
             />
+        <Button
+            Text="Customer registration"
+            Command="{Binding OnCustomerRegistrationClickCommand}"
+            />
+        <Button
+            Text="Businesses registration"
+            Command="{Binding OnBusinessesRegistrationClickCommand}"
+            />
     </VerticalStackLayout>
 </ContentPage>

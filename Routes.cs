@@ -8,6 +8,9 @@ namespace BizClient
         public static readonly String Businesses = "Businesses";
         public static readonly String Business = "Business";
         public static readonly String Chat = "Chat";
+
+        public static readonly String CustomerRegistration = "Customer registration";
+        public static readonly String BusinessesRegistration = "Businesse registration";
     }
 }
 

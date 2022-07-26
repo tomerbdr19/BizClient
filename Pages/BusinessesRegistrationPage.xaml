@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.Pages.BusinessesRegistrationPage"
+             xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
+             x:DataType="viewmodel:BusinessesRegistrationViewModel"
+             Title="Businesses registration">
+    <VerticalStackLayout
+        Spacing="18"
+        Margin="40"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        WidthRequest="300">
+        <Label 
+            Text="Hi, Please sign in"/>
+        <VerticalStackLayout>
+            <Label Text="First name"/>
+            <Entry 
+                Text="{Binding FirstName, Mode=TwoWay}"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Last name"/>
+            <Entry 
+                Text="{Binding LastName, Mode=TwoWay}"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Owner phone"/>
+            <Entry 
+                Text="{Binding OwnerPhone, Mode=TwoWay}"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Enter the password again please"/>
+            <Entry 
+                Text="{Binding Password2, Mode=TwoWay}"
+                IsPassword="True"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Email"/>
+            <Entry 
+                Text="{Binding Email, Mode=TwoWay}"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Password"/>
+            <Entry 
+                Text="{Binding Password1, Mode=TwoWay}"
+                IsPassword="True"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Enter the password again please"/>
+            <Entry 
+                Text="{Binding Password2, Mode=TwoWay}"
+                IsPassword="True"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Owner phone"/>
+            <Entry 
+                Text="{Binding Street, Mode=TwoWay}"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Owner phone"/>
+            <Entry 
+                Text="{Binding City, Mode=TwoWay}"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Owner phone"/>
+            <Entry 
+                Text="{Binding Description, Mode=TwoWay}"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Owner phone"/>
+            <Entry 
+                Text="{Binding LogoUrl, Mode=TwoWay}"
+                />
+        </VerticalStackLayout>
+        <Button
+            Text="Registration"
+            Command="{Binding OnRegistrationClickCommand}"
+            />
+        <Button
+            Text="Back"
+            Command="{Binding OnBackClickCommand}"
+            />
+    </VerticalStackLayout>
+</ContentPage>

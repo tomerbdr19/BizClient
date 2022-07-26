@@ -55,17 +55,27 @@
 	  <None Remove="CommunityToolkit.Maui" />
 	</ItemGroup>
 	<ItemGroup>
+	  <PackageReference Include="LiveChartsCore.SkiaSharpView.Maui" Version="2.0.0-beta.330" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="View\" />
-	  <Folder Include="Pages\" />
-	  <Folder Include="ViewModel\Pages\" />
-	  <Folder Include="Shells\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <MauiXaml Update="Pages\BusinessesRegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\CustomerRegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Shells\BusinessesRegistrationShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Shells\CustomerRegistrationShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\PostView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>

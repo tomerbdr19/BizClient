@@ -22,12 +22,25 @@ public partial class LoginPageViewModel : BaseViewModel
     [AlsoNotifyChangeFor(nameof(Password))]
     private Boolean isLoginButtonEnabled = false;
 
+
     [ICommand]
     async Task OnLoginClick()
     {
         // TODO: handle login
         this.sessionService.Login(email, password);
         Application.Current.MainPage = new MobileCustomerShell();
+    }
+
+    [ICommand]
+    async Task OnCustomerRegistrationClick()
+    {
+        Application.Current.MainPage = new CustomerRegistrationShell();
+    }
+
+    [ICommand]
+    async Task OnBusinessesRegistrationClick()
+    {
+        Application.Current.MainPage = new BusinessesRegistrationShell();
     }
 
     void Validation()
