@@ -4,7 +4,7 @@ using BizService.Services;
 
 public partial class Program
 {
-    public static void Main()
+    public static void Main2()
     {
         new Fetcher();
         Console.ReadKey();
@@ -46,11 +46,17 @@ public class Fetcher
         return services.SubscriptionService.GetUserSubscriptions(USER_ID);
     }
 
+    public Task<Auth> Login()
+    {
+        return services.AuthService.Login("tomerbdr3@gmail.com", "123");
+    }
+
     public async void PrintResult()
     {
-        //var user = await GetUser();
-        //var businesses = await GetBusinessesByIds();
-        //var business = await GetBusiness();
+        var auth = await Login();
+        var user = await GetUser();
+        var businesses = await GetBusinessesByIds();
+        var business = await GetBusiness();
         var subscriptions = await GetSubscriptions();
 
         Console.WriteLine("Press any key to exit");
