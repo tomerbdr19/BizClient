@@ -28,6 +28,14 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -53,6 +61,47 @@
 	  <None Remove="ViewModel\Pages\" />
 	  <None Remove="Shells\" />
 	  <None Remove="CommunityToolkit.Maui" />
+	  <None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.csproj.AssemblyReference.cache" />
+	  <None Remove="BizModels\obj\BizModels.csproj.nuget.g.props" />
+	  <None Remove="BizModels\obj\BizModels.csproj.nuget.g.targets" />
+	  <None Remove="BizModels\obj\project.assets.json" />
+	  <None Remove="BizModels\obj\project.nuget.cache" />
+	  <None Remove="BizModels\obj\BizModels.csproj.nuget.dgspec.json" />
+	  <None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.assets.cache" />
+	  <None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.GeneratedMSBuildEditorConfig.editorconfig" />
+	  <None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.AssemblyInfoInputs.cache" />
+	  <None Remove="BizService\obj\Debug\netstandard2.1\BizService.csproj.AssemblyReference.cache" />
+	  <None Remove="BizService\obj\BizService.csproj.nuget.g.props" />
+	  <None Remove="BizService\obj\BizService.csproj.nuget.g.targets" />
+	  <None Remove="BizService\obj\project.assets.json" />
+	  <None Remove="BizService\obj\project.nuget.cache" />
+	  <None Remove="BizService\obj\BizService.csproj.nuget.dgspec.json" />
+	  <None Remove="BizService\obj\Debug\netstandard2.1\BizService.assets.cache" />
+	  <None Remove="BizService\obj\Debug\netstandard2.1\BizService.GeneratedMSBuildEditorConfig.editorconfig" />
+	  <None Remove="BizService\obj\Debug\netstandard2.1\BizService.AssemblyInfoInputs.cache" />
+	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.AssemblyReference.cache" />
+	  <None Remove="BizTest\obj\BizTest.csproj.nuget.g.props" />
+	  <None Remove="BizTest\obj\BizTest.csproj.nuget.g.targets" />
+	  <None Remove="BizTest\obj\project.assets.json" />
+	  <None Remove="BizTest\obj\project.nuget.cache" />
+	  <None Remove="BizTest\obj\BizTest.csproj.nuget.dgspec.json" />
+	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.assets.cache" />
+	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.GeneratedMSBuildEditorConfig.editorconfig" />
+	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.AssemblyInfoInputs.cache" />
+	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.CoreCompileInputs.cache" />
+	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.dll" />
+	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.pdb" />
+	  <None Remove="BizTest\obj\Debug\net6.0\refint\BizTest.dll" />
+	  <None Remove="BizTest\obj\Debug\net6.0\apphost" />
+	  <None Remove="BizTest\bin\Debug\net6.0\BizTest" />
+	  <None Remove="BizTest\bin\Debug\net6.0\BizTest.deps.json" />
+	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.genruntimeconfig.cache" />
+	  <None Remove="BizTest\bin\Debug\net6.0\BizTest.runtimeconfig.json" />
+	  <None Remove="BizTest\bin\Debug\net6.0\BizTest.dll" />
+	  <None Remove="BizTest\obj\Debug\net6.0\ref\BizTest.dll" />
+	  <None Remove="BizTest\bin\Debug\net6.0\BizTest.pdb" />
+	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.FileListAbsolute.txt" />
+	  <None Remove="Store\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -64,6 +113,7 @@
 	  <Folder Include="Pages\" />
 	  <Folder Include="ViewModel\Pages\" />
 	  <Folder Include="Shells\" />
+	  <Folder Include="Store\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\PostView.xaml">
@@ -102,5 +152,21 @@
 	  <MauiXaml Update="View\MessageView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="BizModels\Class1.cs" />
+	  <Compile Remove="BizModels\obj\Debug\netstandard2.1\.NETStandard,Version=v2.1.AssemblyAttributes.cs" />
+	  <Compile Remove="BizModels\obj\Debug\netstandard2.1\BizModels.AssemblyInfo.cs" />
+	  <Compile Remove="BizService\Class1.cs" />
+	  <Compile Remove="BizService\obj\Debug\netstandard2.1\.NETStandard,Version=v2.1.AssemblyAttributes.cs" />
+	  <Compile Remove="BizService\obj\Debug\netstandard2.1\BizService.AssemblyInfo.cs" />
+	  <Compile Remove="BizTest\Program.cs" />
+	  <Compile Remove="BizTest\obj\Debug\net6.0\BizTest.GlobalUsings.g.cs" />
+	  <Compile Remove="BizTest\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
+	  <Compile Remove="BizTest\obj\Debug\net6.0\BizTest.AssemblyInfo.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="BizModels\BizModels.csproj" />
+	  <ProjectReference Include="BizService\BizService.csproj" />
 	</ItemGroup>
 </Project>

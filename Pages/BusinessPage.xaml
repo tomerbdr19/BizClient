@@ -4,7 +4,7 @@
              x:Class="BizClient.Pages.BusinessPage"
              xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
              xmlns:views="clr-namespace:BizClient.View"
-             xmlns:models="clr-namespace:BizClient.Model"
+             xmlns:models="clr-namespace:BizModels.Model"
              x:DataType="viewmodels:BusinessPageViewModel"
              Title="{Binding Business.Name}">
     <ScrollView>
@@ -37,8 +37,8 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Post">
                         <views:PostView
-                        BusinessName="{Binding BusinessName}"
-                        BusinessImageUrl="{Binding BusinessImageUrl}"
+                        BusinessName="{Binding Business.Name}"
+                        BusinessImageUrl="{Binding Business.ImageUrl}"
                         Caption="{Binding Caption}"
                         ImageUrl="{Binding ImageUrl}"
                         CreatedAt="{Binding CreatedAt}"

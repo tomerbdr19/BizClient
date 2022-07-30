@@ -4,7 +4,7 @@
              x:Class="BizClient.Pages.CouponsPage"
              xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
              xmlns:views="clr-namespace:BizClient.View"
-             xmlns:models="clr-namespace:BizClient.Model"
+             xmlns:models="clr-namespace:BizModels.Model"
              x:DataType="viewmodels:CouponsPageViewModel"
              Title="My Coupons">
     <VerticalStackLayout>
@@ -16,11 +16,11 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Coupon">
                         <views:CouponView
-                        BusinessName="{Binding BusinessName}"
-                        BusinessImageUrl="{Binding BusinessImageUrl}"
+                        BusinessName="{Binding Business.Name}"
+                        BusinessImageUrl="{Binding Business.ImageUrl}"
                         Description="{Binding Description}"
                         ExpiredAt="{Binding ExpiredAt}"
-                        IsRedeemed="{Binding IsRedeemed}"
+                        IsRedeemed="False"
                         />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

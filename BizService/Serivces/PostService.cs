@@ -2,33 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BizClient.Services
+namespace BizService.Services
 {
-    public class PostService
+    public class PostService : ServiceBase
     {
-        public PostService(SessionService sessionService)
-        {
-            httpClient = new HttpClient();
-            this.sessionService = sessionService;
-        }
-
-        private HttpClient httpClient;
-        private readonly SessionService sessionService;
+        protected override string Path => "post";
 
         public Task<List<Post>> GetUserRecentPosts(int page = 0)
         {
             // TODO implement
-            return Task.FromResult(Mocks.posts.ToList());
+            return Task.FromResult<List<Post>>(null);
         }
 
         public Task<List<Post>> GetBusinessPosts(string businessId, int page = 0)
         {
             // TODO implement
-            return Task.FromResult(Mocks.posts.ToList().FindAll(_ => _.BusinessId == businessId));
+            return Task.FromResult<List<Post>>(null);
         }
 
         public Task LikePost(string postId)
