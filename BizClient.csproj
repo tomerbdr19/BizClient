@@ -28,6 +28,14 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -93,6 +101,7 @@
 	  <None Remove="BizTest\obj\Debug\net6.0\ref\BizTest.dll" />
 	  <None Remove="BizTest\bin\Debug\net6.0\BizTest.pdb" />
 	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.FileListAbsolute.txt" />
+	  <None Remove="Store\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -104,6 +113,7 @@
 	  <Folder Include="Pages\" />
 	  <Folder Include="ViewModel\Pages\" />
 	  <Folder Include="Shells\" />
+	  <Folder Include="Store\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\PostView.xaml">
@@ -154,5 +164,9 @@
 	  <Compile Remove="BizTest\obj\Debug\net6.0\BizTest.GlobalUsings.g.cs" />
 	  <Compile Remove="BizTest\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
 	  <Compile Remove="BizTest\obj\Debug\net6.0\BizTest.AssemblyInfo.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="BizModels\BizModels.csproj" />
+	  <ProjectReference Include="BizService\BizService.csproj" />
 	</ItemGroup>
 </Project>
