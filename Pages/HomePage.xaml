@@ -4,7 +4,7 @@
              x:Class="BizClient.Pages.HomePage"
              xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
              xmlns:views="clr-namespace:BizClient.View"
-             xmlns:models="clr-namespace:BizClient.Model"
+             xmlns:models="clr-namespace:BizModels.Model"
              x:DataType="viewmodels:HomePageViewModel"
              Title="Home">
     <VerticalStackLayout Spacing="30">
@@ -16,8 +16,8 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Post">
                         <views:PostView
-                        BusinessName="{Binding BusinessName}"
-                        BusinessImageUrl="{Binding BusinessImageUrl}"
+                        BusinessName="{Binding Business.Name}"
+                        BusinessImageUrl="{Binding Business.Name}"
                         Caption="{Binding Caption}"
                         ImageUrl="{Binding ImageUrl}"
                         CreatedAt="{Binding CreatedAt}"

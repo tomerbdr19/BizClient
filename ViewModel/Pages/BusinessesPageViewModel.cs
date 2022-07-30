@@ -3,10 +3,11 @@
 public partial class BusinessesPageViewModel : BaseViewModel
 {
 
-    public BusinessesPageViewModel(BusinessService businessService, SubscriptionService subscriptionService)
+    public BusinessesPageViewModel()
     {
-        this.subscriptionService = subscriptionService;
-        this.businessService = businessService;
+        businessService = Store.ServicesStore.BusinessService;
+        subscriptionService = Store.ServicesStore.SubscriptionService;
+
         initPage();
     }
 
@@ -16,10 +17,9 @@ public partial class BusinessesPageViewModel : BaseViewModel
 
     public async void initPage()
     {
-        var subscriptions = await subscriptionService.GetUserSubscriptions();
-        var businesses = await businessService.GetBusinessesByIds(subscriptions.Select(_ => _.BusinessId).ToArray());
-
-        businesses.ForEach(_ => Businesses.Add(_));
+        // TODO: handle error
+        var subscriptions = await subscriptionService.GetUserSubscriptions(Store.UserId);
+        subscriptions.ForEach(_ => Businesses.Add(_.Business));
     }
 
     [ICommand]

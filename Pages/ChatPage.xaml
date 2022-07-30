@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
              xmlns:view="clr-namespace:BizClient.View"
-             xmlns:model="clr-namespace:BizClient.Model"
+             xmlns:model="clr-namespace:BizModels.Model"
              x:DataType="viewmodel:ChatPageViewModel"
              x:Class="BizClient.Pages.ChatPage"
              Title="ChatPage">
@@ -13,9 +13,9 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Message">
                         <view:MessageView
-                            SenderName="{Binding SenderName}"
-                            SenderImageUrl="{Binding SenderImageUrl}"
-                            MessageContent="{Binding MessageContent}"
+                            SenderName="PlaceHolder"
+                            SenderImageUrl="{Binding SenderId}"
+                            MessageContent="{Binding Content}"
                             CreatedAt="{Binding CreatedAt}"
                             />
                     </DataTemplate>

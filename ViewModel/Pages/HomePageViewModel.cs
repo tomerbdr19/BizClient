@@ -3,9 +3,9 @@
 public partial class HomePageViewModel : BaseViewModel
 {
 
-    public HomePageViewModel(PostService postService)
+    public HomePageViewModel()
     {
-        this.postService = postService;
+        this.postService = Store.ServicesStore.PostService;
         initPage();
     }
 

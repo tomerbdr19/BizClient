@@ -9,17 +9,20 @@ public partial class BusinessPageViewModel : BaseViewModel
         Posts
     }
 
-    public BusinessPageViewModel(Business business, PostService postService)
+    public BusinessPageViewModel(Business business)
     {
         this.Business = business;
-        this.postService = postService;
+        this.postService = Store.ServicesStore.PostService;
+        this.businessService = Store.ServicesStore.BusinessService;
 
         initPage();
     }
     private readonly PostService postService;
+    private readonly BusinessService businessService;
 
     private async void initPage()
     {
+        this.Business = await businessService.GetBusinessById(this.Business.Id);
         var businessPosts = await postService.GetBusinessPosts(Business.Id);
         businessPosts.ForEach(_ => Posts.Add(_));
     }
