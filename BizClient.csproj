@@ -123,12 +123,6 @@
 	  <MauiXaml Update="Pages\CustomerRegistrationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Shells\BusinessesRegistrationShell.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Shells\CustomerRegistrationShell.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="View\PostView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>

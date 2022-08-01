@@ -35,13 +35,13 @@ public partial class LoginPageViewModel : BaseViewModel
     [ICommand]
     async Task OnCustomerRegistrationClick()
     {
-        Application.Current.MainPage = new CustomerRegistrationShell();
+        await Shell.Current.GoToAsync(Routes.CustomerRegistration, true);
     }
 
     [ICommand]
     async Task OnBusinessesRegistrationClick()
     {
-        Application.Current.MainPage = new BusinessesRegistrationShell();
+        await Shell.Current.GoToAsync(Routes.BusinessesRegistration, true);
     }
 
     void Validation()
