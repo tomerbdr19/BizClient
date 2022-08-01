@@ -8,6 +8,10 @@ namespace BizModels.Model
 {
     public class User
     {
+        public User()
+        {
+            info = new UserInfo();
+        }
         public string Id { get; set; }
         public string Name { get; set; }
         public string ImageUrl { get; set; }

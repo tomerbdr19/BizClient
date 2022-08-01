@@ -5,10 +5,12 @@ public partial class CustomerRegistrationViewModel : BaseViewModel
 
     public CustomerRegistrationViewModel()
     {
-        this.subscriptionService = Store.ServicesStore.SubscriptionService;
+        this.authServiceService = Store.ServicesStore.AuthService;
     }
 
-    private readonly SubscriptionService subscriptionService;
+    private readonly AuthService authServiceService;
+    private Auth auto;
+    private User user;
 
     [ObservableProperty]
     [AlsoNotifyChangeFor(nameof(isRegistrationButtonEnabled))]
@@ -47,12 +49,14 @@ public partial class CustomerRegistrationViewModel : BaseViewModel
     async Task OnRegistrationClick()
     {
         // TODO: handle Registration
-    }
-
-    [ICommand]
-    async Task OnBackClick()
-    {
-        Application.Current.MainPage = new BootstrapShell();
+        auto = new();
+        user = new();
+        UserInfo userInfo = new();
+        userInfo.firstName = FirstName;
+        userInfo.lastName = LastName;
+        user.info = userInfo;
+        auto.User = user;
+        authServiceService.Registration(auto, Email, Password1);
     }
 
     void Validation()

@@ -56,9 +56,5 @@
             Text="Registration"
             Command="{Binding OnRegistrationClickCommand}"
             />
-        <Button
-            Text="Back"
-            Command="{Binding OnBackClickCommand}"
-            />
     </VerticalStackLayout>
 </ContentPage>
