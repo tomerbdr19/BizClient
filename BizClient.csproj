@@ -116,6 +116,12 @@
 	  <Folder Include="Store\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <MauiXaml Update="Pages\BusinessesRegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\CustomerRegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\PostView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>

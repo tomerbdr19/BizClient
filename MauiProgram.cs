@@ -20,6 +20,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<HomePage>();
         builder.Services.AddSingleton<CouponsPage>();
         builder.Services.AddSingleton<ChatPage>();
+        builder.Services.AddSingleton<CustomerRegistrationPage>();
+        builder.Services.AddSingleton<BusinessesRegistrationPage>();
 
         // Views
 
@@ -28,8 +30,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<BusinessesPageViewModel>();
         builder.Services.AddSingleton<HomePageViewModel>();
         builder.Services.AddSingleton<CouponsPageViewModel>();
-
-
+        builder.Services.AddSingleton<CustomerRegistrationViewModel>();
+        builder.Services.AddSingleton<BusinessesRegistrationViewModel>();
 
         return builder.Build();
     }
