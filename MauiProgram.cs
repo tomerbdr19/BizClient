@@ -1,6 +1,4 @@
-﻿using SkiaSharp.Views.Maui.Controls.Hosting;
-
-namespace BizClient;
+﻿namespace BizClient;
 
 public static class MauiProgram
 {
@@ -8,7 +6,6 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
         builder
-            .UseSkiaSharp(true)
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
