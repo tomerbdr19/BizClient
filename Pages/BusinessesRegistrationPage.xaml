@@ -61,19 +61,19 @@
                 />
         </VerticalStackLayout>
         <VerticalStackLayout>
-            <Label Text="Owner phone"/>
+                <Label Text="Street"/>
             <Entry 
                 Text="{Binding Street, Mode=TwoWay}"
                 />
         </VerticalStackLayout>
         <VerticalStackLayout>
-            <Label Text="Owner phone"/>
+                <Label Text="City"/>
             <Entry 
                 Text="{Binding City, Mode=TwoWay}"
                 />
         </VerticalStackLayout>
         <VerticalStackLayout>
-            <Label Text="Owner phone"/>
+                <Label Text="Description"/>
             <Entry 
                 Text="{Binding Description, Mode=TwoWay}"
                 />
@@ -91,10 +91,6 @@
         <Button
             Text="Registration"
             Command="{Binding OnRegistrationClickCommand}"
-            />
-        <Button
-            Text="Back"
-            Command="{Binding OnBackClickCommand}"
             />
     </VerticalStackLayout>
     </ScrollView>
