@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -14,47 +14,54 @@
         WidthRequest="300">
         <Label 
             Text="Hi, Please sign in"/>
-        <VerticalStackLayout>
+        <VerticalStackLayout StyleClass="formField">
             <Label Text="First name"/>
             <Entry 
-                Text="{Binding FirstName, Mode=TwoWay}"
+                Text="{Binding User.Info.FirstName, Mode=TwoWay}"
                 />
         </VerticalStackLayout>
-        <VerticalStackLayout>
+        <VerticalStackLayout StyleClass="formField">
             <Label Text="Last name"/>
             <Entry 
-                Text="{Binding LastName, Mode=TwoWay}"
+                Text="{Binding User.Info.LastName, Mode=TwoWay}"
                 />
         </VerticalStackLayout>
-        <VerticalStackLayout>
-            <Label Text="Phone"/>
+        <VerticalStackLayout StyleClass="formField">
+            <Label Text="City"/>
             <Entry 
-                Text="{Binding Phone, Mode=TwoWay}"
+                Text="{Binding User.Info.City, Mode=TwoWay}"
                 />
         </VerticalStackLayout>
-        <VerticalStackLayout>
+        <VerticalStackLayout StyleClass="formField">
+            <Label Text="Birth Date"/>
+            <DatePicker 
+                Date="{Binding User.Info.BirthDate, Mode=OneWayToSource}"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout StyleClass="formField">
             <Label Text="Email"/>
             <Entry 
                 Text="{Binding Email, Mode=TwoWay}"
                 />
         </VerticalStackLayout>
-            <VerticalStackLayout>
+            <VerticalStackLayout StyleClass="formField">
                 <Label Text="Password"/>
                 <Entry 
-                Text="{Binding Password1, Mode=TwoWay}"
+                Text="{Binding Password, Mode=TwoWay}"
                 IsPassword="True"
                 />
         </VerticalStackLayout>
-        <VerticalStackLayout>
+        <VerticalStackLayout StyleClass="formField">
             <Label Text="Enter the password again please"/>
             <Entry 
-                Text="{Binding Password2, Mode=TwoWay}"
+                Text="{Binding ConfirmPassword, Mode=TwoWay}"
                 IsPassword="True"
                 />
         </VerticalStackLayout>
         <Button
             Text="Registration"
-            Command="{Binding OnRegistrationClickCommand}"
+            IsEnabled="{Binding IsRegisterButtonEnabled}"
+            Command="{Binding OnRegisterClickCommand}"
             />
     </VerticalStackLayout>
 </ContentPage>
