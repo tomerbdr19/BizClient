@@ -1,9 +1,9 @@
 ﻿namespace BizClient.ViewModel;
 
-public partial class CustomerRegistrationViewModel : BaseViewModel
+public partial class UserRegisterViewModel : BaseViewModel
 {
 
-    public CustomerRegistrationViewModel()
+    public UserRegisterViewModel()
     {
         authService = Store.ServicesStore.AuthService;
         userService = Store.ServicesStore.UserService;

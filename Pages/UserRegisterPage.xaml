@@ -2,18 +2,15 @@
 <ContentPage
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BizClient.Pages.CustomerRegistrationPage"
+             x:Class="BizClient.Pages.UserRegisterPage"
              xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
-             x:DataType="viewmodel:CustomerRegistrationViewModel"
-             Title="Customer registration">
+             x:DataType="viewmodel:UserRegisterViewModel">
     <VerticalStackLayout
         Spacing="18"
         Margin="40"
         HorizontalOptions="Center"
         VerticalOptions="Center"
         WidthRequest="300">
-        <Label 
-            Text="Hi, Please sign in"/>
         <VerticalStackLayout StyleClass="formField">
             <Label Text="First name"/>
             <Entry 
@@ -59,7 +56,7 @@
                 />
         </VerticalStackLayout>
         <Button
-            Text="Registration"
+            Text="Register"
             IsEnabled="{Binding IsRegisterButtonEnabled}"
             Command="{Binding OnRegisterClickCommand}"
             />
