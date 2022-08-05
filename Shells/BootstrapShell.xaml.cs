@@ -8,6 +8,6 @@ public partial class BootstrapShell : Shell
 
         Routing.RegisterRoute(Routes.Login, typeof(LoginPage));
         Routing.RegisterRoute(Routes.BusinessesRegistration, typeof(BusinessesRegistrationPage));
-        Routing.RegisterRoute(Routes.CustomerRegistration, typeof(CustomerRegistrationPage));
+        Routing.RegisterRoute(Routes.UserRegister, typeof(UserRegisterPage));
     }
 }

@@ -5,10 +5,12 @@ public partial class BusinessesRegistrationViewModel : BaseViewModel
 
     public BusinessesRegistrationViewModel()
     {
-        this.subscriptionService = Store.ServicesStore.SubscriptionService;
+        this.authServiceService = Store.ServicesStore.AuthService;
     }
 
-   private readonly SubscriptionService subscriptionService;
+    private readonly AuthService authServiceService;
+    private Auth auto;
+    private User user;
 
     [ObservableProperty]
     [AlsoNotifyChangeFor(nameof(isRegistrationButtonEnabled))]
@@ -106,13 +108,6 @@ public partial class BusinessesRegistrationViewModel : BaseViewModel
         }
     }
 
-
-    [ICommand]
-    async Task OnBackClick()
-    {
-        Application.Current.MainPage = new BootstrapShell();
-    }
-
     void Validation()
     {
         isRegistrationButtonEnabled = ((FirstName != String.Empty) && (LastName != String.Empty) && (Email != String.Empty)
@@ -136,30 +131,4 @@ public partial class BusinessesRegistrationViewModel : BaseViewModel
                 break;
         }
     }
-
-    //async Task<FileResult> PickAndShow(PickOptions options)
-    //{
-    //    try
-    //    {
-    //        var result = await FilePicker.PickAsync(options);
-    //        if (result != null)
-    //        {
-    //            string fileName = $"File Name: {result.FileName}";
-    //            if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
-    //                result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
-    //            {
-    //                var stream = await result.OpenReadAsync();
-    //                Image = ImageSource.FromStream(() => stream);
-    //            }
-    //        }
-
-    //        return result;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // The user canceled or something went wrong
-    //    }
-
-    //    return null;
-    //}
 }

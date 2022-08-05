@@ -19,6 +19,12 @@ namespace BizService.Services
             var auth = await PostAsync<Auth>($"{Path}/login", new { token });
             return auth;
         }
+
+        async public Task<Auth> Register(string email, string password)
+        {
+            var auth = await PostAsync<Auth>($"{Path}/register", new { email, password });
+            return auth;
+        }
     }
 }
 

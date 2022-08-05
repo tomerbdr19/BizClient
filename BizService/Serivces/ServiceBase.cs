@@ -41,7 +41,8 @@ namespace BizService.Services
 
         private StringContent Serialize<T>(T instance)
         {
-            return new StringContent(JsonConvert.SerializeObject(instance), Encoding.UTF8, "application/json");
+            var contentString = JsonConvert.SerializeObject(instance);
+            return new StringContent(contentString, Encoding.UTF8, "application/json");
         }
 
         protected async Task<T> GetAsync<T>(string path, Dictionary<string, string> queryParams = null)

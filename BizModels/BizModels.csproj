@@ -12,8 +12,12 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Model\" />
+    <None Remove="CommunityToolkit.Mvvm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
   </ItemGroup>
 </Project>

@@ -33,9 +33,9 @@ public partial class LoginPageViewModel : BaseViewModel
     }
 
     [ICommand]
-    async Task OnCustomerRegistrationClick()
+    async Task OnUserRegisterClick()
     {
-        await Shell.Current.GoToAsync(Routes.CustomerRegistration, true);
+        await Shell.Current.GoToAsync(Routes.UserRegister, true);
     }
 
     [ICommand]

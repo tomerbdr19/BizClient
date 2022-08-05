@@ -15,5 +15,11 @@ namespace BizService.Services
             var user = await GetAsync<User>(Path, new Dictionary<string, string> { { "user", userId } });
             return user;
         }
+
+        async public Task<User> UpdateUser(User newUser)
+        {
+            var user = await PostAsync<User>(Path, new { user = newUser });
+            return user;
+        }
     }
 }
