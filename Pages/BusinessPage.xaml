@@ -36,13 +36,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Post">
-                        <views:PostView
-                        BusinessName="{Binding Business.Name}"
-                        BusinessImageUrl="{Binding Business.ImageUrl}"
-                        Caption="{Binding Caption}"
-                        ImageUrl="{Binding ImageUrl}"
-                        CreatedAt="{Binding CreatedAt}"
-                        />
+                        <views:PostView Post="{Binding}"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

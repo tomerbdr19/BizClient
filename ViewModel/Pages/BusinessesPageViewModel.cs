@@ -7,19 +7,21 @@ public partial class BusinessesPageViewModel : BaseViewModel
     {
         businessService = Store.ServicesStore.BusinessService;
         subscriptionService = Store.ServicesStore.SubscriptionService;
-
-        initPage();
     }
 
     private readonly BusinessService businessService;
     private readonly SubscriptionService subscriptionService;
     public ObservableCollection<Business> Businesses { get; } = new();
 
-    public async void initPage()
+    public async void OnAppearing()
     {
         // TODO: handle error
+        Businesses.Clear();
+
+        IsLoading = true;
         var subscriptions = await subscriptionService.GetUserSubscriptions(Store.UserId);
         subscriptions.ForEach(_ => Businesses.Add(_.Business));
+        IsLoading = false;
     }
 
     [ICommand]
