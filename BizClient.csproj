@@ -161,6 +161,9 @@
 	  <MauiXaml Update="Pages\UserRegisterPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\QRPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Remove="BizModels\Class1.cs" />

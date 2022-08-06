@@ -16,9 +16,9 @@ namespace BizService.Services
             return coupons;
         }
 
-        public async Task<List<Coupon>> GetRedeemCode(string couponId)
+        public async Task<string> GetRedeemCode(string couponId)
         {
-            var coupons = await GetAsync<List<Coupon>>($"{Path}/redeem-code", new Dictionary<string, string> { { "coupon", couponId } });
+            var coupons = await GetAsync<string>($"{Path}/redeem-qr-code", new Dictionary<string, string> { { "coupon", couponId } });
             return coupons;
         }
 
