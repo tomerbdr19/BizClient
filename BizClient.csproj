@@ -109,17 +109,34 @@
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="View\" />
-	  <Folder Include="Pages\" />
-	  <Folder Include="ViewModel\Pages\" />
-	  <Folder Include="Shells\" />
 	  <Folder Include="Store\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <MauiXaml Update="Pages\AdminAddPostPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AdminCouponsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AdminHomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AdminChatPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\BusinessesRegistrationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\CustomerRegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\SubscribesListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Shells\BusinessDesktopShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AddPostView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\PostView.xaml">
@@ -158,6 +175,9 @@
 	  <MauiXaml Update="View\MessageView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="View\SubscribesListView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Remove="BizModels\Class1.cs" />
@@ -174,5 +194,10 @@
 	<ItemGroup>
 	  <ProjectReference Include="BizModels\BizModels.csproj" />
 	  <ProjectReference Include="BizService\BizService.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Pages\AdminChatPage.xaml.cs">
+	    <DependentUpon>AdminChatPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 </Project>

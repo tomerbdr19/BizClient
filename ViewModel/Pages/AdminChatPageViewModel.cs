@@ -1,8 +1,8 @@
 ﻿namespace BizClient.ViewModel;
 
-public partial class ChatPageViewModel : BaseViewModel
+public partial class AdminChatPageViewModel : BaseViewModel
 {
-    public ChatPageViewModel(string otherParticipantId)
+    public AdminChatPageViewModel(string otherParticipantId)
     {
         this.chatService = Store.ServicesStore.ChatService;
         initPageWithOtherParticipantId(otherParticipantId);
@@ -24,14 +24,10 @@ public partial class ChatPageViewModel : BaseViewModel
 
     private async void initPageWithOtherParticipantId(string otherId)
     {
-        chat = await chatService.GetChatByParticipantsIds(Store.UserId, otherId);
+        chat = await chatService.GetChatByParticipantsIds(Store.Auth.Business.Id, otherId);
         var messagesResponse = await chatService.GetChatMessages(chat.Id);
 
         messagesResponse.ForEach(_ => Messages.Add(_));
-    }
-
-    private async void initPageWithChatId(string chatId)
-    {
     }
 }
 

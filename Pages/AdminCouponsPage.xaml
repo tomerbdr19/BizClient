@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.Pages.AdminCouponsPage"
+             xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
+             xmlns:views="clr-namespace:BizClient.View"
+             xmlns:models="clr-namespace:BizModels.Model"
+             x:DataType="viewmodels:AdminCouponsPageViewModel"
+             Title="AdminCouponsPage">
+    <VerticalStackLayout
+        Spacing="36"
+        Margin="40"
+        HorizontalOptions="Center"
+        WidthRequest="300">
+        <Button
+            Text="Add coupon"
+            Command="{Binding OnAddCouponClickCommand}"
+            />
+        <Grid ColumnDefinitions="*">
+            <CollectionView ItemsSource="{Binding Coupons}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Coupon">
+                        <views:CouponView
+                        BusinessName="{Binding Business.Name}"
+                        BusinessImageUrl="{Binding Business.ImageUrl}"
+                        Description="{Binding Description}"
+                        ExpiredAt="{Binding ExpiredAt}"
+                        IsRedeemed="False"
+                        />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.Pages.AdminAddPostPage"
+             xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
+             xmlns:views="clr-namespace:BizClient.View"
+             xmlns:models="clr-namespace:BizModels.Model"
+             x:DataType="viewmodels:AdminAddPostPageViewModel"
+             Title="AdminAddPostPage">
+    <VerticalStackLayout>
+        <Grid ColumnDefinitions="*">
+            <StackLayout BindableLayout.ItemsSource ="{Binding auth}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:Auth">
+                        <views:AddPostView
+                            Token="{Binding Token}"
+                        />
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

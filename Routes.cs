@@ -11,6 +11,13 @@ namespace BizClient
 
         public static readonly String UserRegister = "UserRegister";
         public static readonly String BusinessesRegistration = "Businesse registration";
+
+        //Admin UI
+        public static readonly String AdminHome = "AdminHome";
+        public static readonly String SubscribesList = "SubscribesList";
+        public static readonly String AdminCoupons = "AdminCoupons";
+        public static readonly String AdminChat = "AdminChat";
+        public static readonly String AdminAddPost = "AdminAddPost";
     }
 }
 
