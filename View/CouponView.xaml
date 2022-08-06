@@ -2,10 +2,11 @@
 <Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BizClient.View.CouponView"
+             xmlns:model="clr-namespace:BizModels.Model"
+             x:Name="self"
              StyleClass="card"
              >
     <Grid        
-             x:Name="self"
              MaximumHeightRequest="500"
              RowDefinitions="Auto,*,Auto"
              ColumnDefinitions="*"
@@ -14,14 +15,14 @@
              >
         <Grid Grid.Row="0" ColumnDefinitions="Auto,*" RowDefinitions="*,Auto" ColumnSpacing="12">
             <Frame Grid.Column="0" WidthRequest="40" HeightRequest="40" CornerRadius="20"  IsClippedToBounds="True">
-                <Image Source="{Binding BusinessImageUrl}" Aspect="AspectFill" Margin="-20"/>
+                <Image Source="{Binding Coupon.Discount.Business.ImageUrl, Source={x:Reference self}}" Aspect="AspectFill" Margin="-20"/>
             </Frame>
             <VerticalStackLayout Grid.Column="1">
-                <Label Text="{Binding BusinessName}"/>
-                <Label Text="{Binding ExpiredAt}"/>
+                <Label Text="{Binding Coupon.Discount.Business.Name, Source={x:Reference self}}"/>
+                <Label Text="{Binding Coupon.Discount.ExpiredAt, Source={x:Reference self}}"/>
             </VerticalStackLayout>
         </Grid>
-        <Label Grid.Row="1" Text="{Binding Description}"/>
-        <Button Grid.Row="2" Text="Redeem" IsEnabled="{Binding !IsRedeemed}"/>
+        <Label Grid.Row="1" Text="{Binding Coupon.Discount.Description, Source={x:Reference self}}"/>
+        <Button Grid.Row="2" Text="Redeem" IsEnabled="{Binding Coupon.IsAvailable,Source={x:Reference self}}" Clicked="OnRedeemClick"/>
     </Grid>
 </Frame>
