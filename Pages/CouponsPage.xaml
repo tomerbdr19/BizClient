@@ -15,13 +15,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Coupon">
-                        <views:CouponView
-                        BusinessName="{Binding Business.Name}"
-                        BusinessImageUrl="{Binding Business.ImageUrl}"
-                        Description="{Binding Description}"
-                        ExpiredAt="{Binding ExpiredAt}"
-                        IsRedeemed="False"
-                        />
+                        <views:CouponView Coupon="{Binding}"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
