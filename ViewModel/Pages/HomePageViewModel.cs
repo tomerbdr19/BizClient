@@ -6,16 +6,19 @@ public partial class HomePageViewModel : BaseViewModel
     public HomePageViewModel()
     {
         this.postService = Store.ServicesStore.PostService;
-        initPage();
     }
 
     private readonly PostService postService;
     public ObservableCollection<Post> Posts { get; } = new();
 
-    async private void initPage()
+    async public void OnAppearing()
     {
-        var posts = await this.postService.GetUserRecentPosts();
+        Posts.Clear();
+
+        this.IsLoading = true;
+        var posts = await this.postService.GetUserRecentPosts(Store.Auth.User.Id);
         posts.ForEach(_ => Posts.Add(_));
+        this.IsLoading = false;
     }
 
 

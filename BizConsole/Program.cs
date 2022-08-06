@@ -4,7 +4,7 @@ using BizService.Services;
 
 public partial class Program
 {
-    public static void Main2()
+    public static void Main1()
     {
         new Fetcher();
         Console.ReadKey();
@@ -51,8 +51,18 @@ public class Fetcher
         return services.AuthService.Login("tomerbdr3@gmail.com", "123");
     }
 
+    async public Task<User> RegisterUser()
+    {
+        var auth = await services.AuthService.Register("testuser@gmail.com", "123");
+        var user = await services.UserService.UpdateUser(new User { Id = auth.User.Id, Info = new UserInfo { FirstName = "Test", LastName = "test" } });
+
+        return user;
+    }
+
     public async void PrintResult()
     {
+        var newUser = await RegisterUser();
+
         var auth = await Login();
         var user = await GetUser();
         var businesses = await GetBusinessesByIds();

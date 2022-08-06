@@ -14,18 +14,10 @@ public partial class BusinessPageViewModel : BaseViewModel
         this.Business = business;
         this.postService = Store.ServicesStore.PostService;
         this.businessService = Store.ServicesStore.BusinessService;
-
-        initPage();
     }
+
     private readonly PostService postService;
     private readonly BusinessService businessService;
-
-    private async void initPage()
-    {
-        this.Business = await businessService.GetBusinessById(this.Business.Id);
-        var businessPosts = await postService.GetBusinessPosts(Business.Id);
-        businessPosts.ForEach(_ => Posts.Add(_));
-    }
 
     [ObservableProperty]
     public Business business;
@@ -45,13 +37,21 @@ public partial class BusinessPageViewModel : BaseViewModel
     {
         IsInfo = true;
         IsPosts = false;
+
     }
 
     [ICommand]
-    public void OnPostsClick()
+    async public void OnPostsClick()
     {
         IsInfo = false;
         IsPosts = true;
+
+        Posts.Clear();
+
+        this.IsLoading = true;
+        var posts = await this.postService.GetBusinessPosts(business.Id);
+        posts.ForEach(_ => Posts.Add(_));
+        this.IsLoading = false;
     }
 
     [ICommand]

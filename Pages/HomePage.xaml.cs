@@ -2,11 +2,18 @@
 
 public partial class HomePage : ContentPage
 {
-    HomePageViewModel viewModel => BindingContext as HomePageViewModel;
+    private HomePageViewModel viewModel { get; set; }
 
     public HomePage(HomePageViewModel viewModel)
     {
         InitializeComponent();
+        this.viewModel = viewModel;
         BindingContext = viewModel;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        viewModel.OnAppearing();
     }
 }
