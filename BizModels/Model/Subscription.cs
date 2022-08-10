@@ -9,8 +9,8 @@ namespace BizModels.Model
     public class Subscription
     {
         public string Id { get; set; }
-        public User User { get; set; } = new();
-        public Business Business { get; set; } = new();
+        public User User { get; set; }
+        public Business Business { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }

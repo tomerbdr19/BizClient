@@ -14,13 +14,28 @@ public partial class BusinessPageViewModel : BaseViewModel
         this.Business = business;
         this.postService = Store.ServicesStore.PostService;
         this.businessService = Store.ServicesStore.BusinessService;
+        this.subscriptionService = Store.ServicesStore.SubscriptionService;
+        initPage();
+    }
+
+    async public void initPage()
+    {
+        IsLoading = true;
+        this.subscription = await this.subscriptionService.getSubscription(Store.UserId, Business.Id);
+        this.IsSubscribed = this.subscription != null;
+        IsLoading = false;
     }
 
     private readonly PostService postService;
     private readonly BusinessService businessService;
+    private readonly SubscriptionService subscriptionService;
+    public Subscription subscription;
 
     [ObservableProperty]
     public Business business;
+
+    [ObservableProperty]
+    public bool isSubscribed;
 
     public ObservableCollection<Post> Posts { get; } = new();
 
@@ -61,5 +76,20 @@ public partial class BusinessPageViewModel : BaseViewModel
         {
             {"otherId", Business.Id}
         });
+    }
+
+    [ICommand]
+    public async void OnSubscriptionClick()
+    {
+        if (IsSubscribed)
+        {
+            await this.subscriptionService.Unsubscribe(this.subscription);
+            this.IsSubscribed = false;
+        }
+        else
+        {
+            subscription = await this.subscriptionService.Subscribe(new Subscription { Business = this.Business, User = Store.Auth.User });
+            this.IsSubscribed = true;
+        }
     }
 }
