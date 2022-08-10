@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Frame       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.View.PublishPostView"
+             x:Name="self"
+             xmlns:model="clr-namespace:BizModels.Model"
+             x:DataType="model:Post"
+             StyleClass="card"
+             >
+    <VerticalStackLayout
+        Spacing="36"
+        Margin="40"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        WidthRequest="300"
+        HeightRequest="120">
+        <VerticalStackLayout>
+            <Label Text="What do you want to share?"/>
+            <Entry 
+                HeightRequest="70" 
+                WidthRequest="300"
+                Text="{Binding PublishPost.Caption,Mode=OneWayToSource,Source={x:Reference self} }"
+                />
+            <Button
+            Text="Add picture"
+            Clicked="OnAddPictureClick"
+            />
+            <Button
+            Text="Publish"
+            Clicked="OnPublishClick"
+            />
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</Frame>

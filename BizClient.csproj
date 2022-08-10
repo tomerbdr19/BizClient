@@ -109,7 +109,6 @@
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="View\" />
 	  <Folder Include="Pages\" />
 	  <Folder Include="ViewModel\Pages\" />
 	  <Folder Include="Shells\" />
@@ -163,6 +162,9 @@
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\QRPage.xaml">
 	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\PublishPostView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
