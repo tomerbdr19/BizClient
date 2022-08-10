@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using BizModels.Model;
 
 namespace BizService.Services
 {
@@ -26,16 +27,21 @@ namespace BizService.Services
             return subscriptionsList;
         }
 
-        public Task Subscribe(string businessId)
+        async public Task<Subscription> getSubscription(string userId, string businessId)
         {
-            // TODO: implement
-            return Task.CompletedTask;
+            var subscriptions = await GetAsync<List<Subscription>>(Path, new Dictionary<string, string>() { { "user", userId }, { "business", businessId } });
+            return subscriptions.Count == 1 ? subscriptions[0] : null;
         }
 
-        public Task Unsubscribe(string businessId)
+        async public Task<Subscription> Subscribe(Subscription newSubscription)
         {
-            // TODO: implement
-            return Task.CompletedTask;
+            var subscription = await PostAsync<Subscription>(Path, newSubscription);
+            return subscription;
+        }
+
+        async public Task Unsubscribe(Subscription subscription)
+        {
+            await PostAsync<Subscription>($"{Path}/delete", subscription);
         }
     }
 }

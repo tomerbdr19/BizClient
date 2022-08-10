@@ -12,7 +12,24 @@
             <Frame StyleClass="card" Grid.Row="0">
                 <HorizontalStackLayout HorizontalOptions="End" Spacing="6">
                     <Button Text="Message" BackgroundColor="{StaticResource White}" BorderColor="{StaticResource B10}" TextColor="{StaticResource B10}" BorderWidth="1" Command="{Binding OnMessageClickCommand}"/>
-                    <Button Text="Subscribe" BackgroundColor="{StaticResource P10}"/>
+                    <Button Command="{Binding OnSubscriptionClickCommand}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Button" Binding="{Binding IsSubscribed}" Value="True">
+                                        <Setter Property="Text" Value="Unsubscribe"/>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource D70}"/>
+                                        <Setter Property="TextColor" Value="{StaticResource P10}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Button" Binding="{Binding IsSubscribed}" Value="False">
+                                        <Setter Property="Text" Value="Subscribe"/>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource P10}"/>
+                                        <Setter Property="TextColor" Value="{StaticResource D70}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                 </HorizontalStackLayout>
             </Frame>
             <Frame StyleClass="card" Grid.Row="1" IsClippedToBounds="True">
