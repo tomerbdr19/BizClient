@@ -7,8 +7,6 @@ public partial class MobileCustomerShell : Shell
         InitializeComponent();
 
         Routing.RegisterRoute(Routes.Login, typeof(LoginPage));
-        Routing.RegisterRoute(Routes.Businesses, typeof(BusinessesPage));
-        Routing.RegisterRoute(Routes.Home, typeof(HomePage));
         Routing.RegisterRoute(Routes.Business, typeof(BusinessPage));
         Routing.RegisterRoute(Routes.Chat, typeof(ChatPage));
         Routing.RegisterRoute(Routes.QRCode, typeof(QRPage));
