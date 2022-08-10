@@ -20,6 +20,7 @@ public partial class BusinessesPageViewModel : BaseViewModel
 
         if (InjectedBusinessesList == null)
         {
+            this.Title = "Subscriptions";
             IsLoading = true;
             var subscriptions = await subscriptionService.GetUserSubscriptions(Store.UserId);
             subscriptions.ForEach(_ => Businesses.Add(_.Business));
@@ -27,6 +28,7 @@ public partial class BusinessesPageViewModel : BaseViewModel
         }
         else
         {
+            this.Title = "Search Result";
             InjectedBusinessesList.ForEach(_ => Businesses.Add(_));
         }
     }

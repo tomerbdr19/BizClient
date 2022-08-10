@@ -4,7 +4,9 @@
              x:Class="BizClient.Pages.BusinessesPage"
              x:DataType="viewmodel:BusinessesPageViewModel"
              xmlns:model="clr-namespace:BizModels.Model"
-             xmlns:viewmodel="clr-namespace:BizClient.ViewModel">
+             xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
+             Title="{Binding Title}"
+             >
     <Grid ColumnDefinitions="*"
           RowDefinitions="*">
         <CollectionView
