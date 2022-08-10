@@ -11,14 +11,16 @@ public partial class HomePageViewModel : BaseViewModel
     private readonly PostService postService;
     public ObservableCollection<Post> Posts { get; } = new();
 
+    public ActivityIndicator activityIndicator = new ActivityIndicator();
+
     async public void OnAppearing()
     {
         Posts.Clear();
-
         this.IsLoading = true;
         var posts = await this.postService.GetUserRecentPosts(Store.Auth.User.Id);
         posts.ForEach(_ => Posts.Add(_));
         this.IsLoading = false;
+        
     }
 
 

@@ -27,8 +27,8 @@ public partial class LoginPageViewModel : BaseViewModel
     async Task OnLoginClick()
     {
         // TODO: handle login
-        var auth = await this.authService.Login(email, password);
-        Store.Auth = auth;
+        //var auth = await this.authService.Login(email, password);
+        //Store.Auth = auth;
         Application.Current.MainPage = new MobileCustomerShell();
     }
 

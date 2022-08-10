@@ -8,6 +8,7 @@
              x:DataType="viewmodels:CouponsPageViewModel"
              Title="My Coupons">
     <VerticalStackLayout>
+        <ActivityIndicator IsRunning="{Binding IsLoading}"/>
          <Grid ColumnDefinitions="*">
             <CollectionView ItemsSource="{Binding Coupons}">
                 <CollectionView.ItemsLayout>

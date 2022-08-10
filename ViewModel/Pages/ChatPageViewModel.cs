@@ -8,6 +8,8 @@ public partial class ChatPageViewModel : BaseViewModel
         initPageWithOtherParticipantId(otherParticipantId);
     }
 
+    public ActivityIndicator activityIndicator = new ActivityIndicator();
+
     private readonly ChatService chatService;
     private Chat chat;
 
@@ -24,8 +26,10 @@ public partial class ChatPageViewModel : BaseViewModel
 
     private async void initPageWithOtherParticipantId(string otherId)
     {
+        IsLoading = true;
         chat = await chatService.GetChatByParticipantsIds(Store.UserId, otherId);
         var messagesResponse = await chatService.GetChatMessages(chat.Id);
+        IsLoading = false;
 
         messagesResponse.ForEach(_ => Messages.Add(_));
     }

@@ -9,6 +9,7 @@
              Title="ChatPage">
     <Grid RowDefinitions="*,Auto">
         <VerticalStackLayout Grid.Row="0">
+            <ActivityIndicator IsRunning="{Binding IsLoading}"/>
             <CollectionView ItemsSource="{Binding Messages}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Message">

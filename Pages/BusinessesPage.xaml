@@ -8,6 +8,7 @@
              Title="My Businesses">
     <Grid ColumnDefinitions="*"
           RowDefinitions="*">
+        <ActivityIndicator IsRunning="{Binding IsLoading}"/>
         <CollectionView
             ItemsSource="{Binding Businesses}"
             Grid.Row="0"

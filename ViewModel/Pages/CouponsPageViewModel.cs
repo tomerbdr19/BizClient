@@ -10,6 +10,8 @@ namespace BizClient.ViewModel
         private CouponService couponService { get; } = Store.ServicesStore.CouponService;
         public ObservableCollection<Coupon> Coupons { get; } = new();
 
+        public ActivityIndicator activityIndicator = new ActivityIndicator();
+
         async public void OnAppearing()
         {
             Coupons.Clear();

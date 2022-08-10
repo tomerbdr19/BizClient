@@ -8,6 +8,7 @@
              x:DataType="viewmodels:HomePageViewModel"
              Title="Home">
     <VerticalStackLayout Spacing="30">
+        <ActivityIndicator IsRunning="{Binding IsLoading}"/>
         <Grid ColumnDefinitions="*">
             <CollectionView ItemsSource="{Binding Posts}">
                 <CollectionView.ItemsLayout>

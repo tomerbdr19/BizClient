@@ -24,6 +24,8 @@ public partial class BusinessPageViewModel : BaseViewModel
 
     public ObservableCollection<Post> Posts { get; } = new();
 
+    public ActivityIndicator activityIndicator = new ActivityIndicator();
+
     [ObservableProperty]
     [AlsoNotifyChangeFor(nameof(IsPosts))]
     public bool isInfo = true;
