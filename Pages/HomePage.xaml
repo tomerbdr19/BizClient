@@ -5,8 +5,12 @@
              xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
              xmlns:views="clr-namespace:BizClient.View"
              xmlns:models="clr-namespace:BizModels.Model"
+             xmlns:controls="clr-namespace:BizClient.Controls"
              x:DataType="viewmodels:HomePageViewModel"
              Title="Home">
+    <Shell.SearchHandler>
+        <controls:BusinessesSearchHandler/>
+    </Shell.SearchHandler>
     <VerticalStackLayout Spacing="30">
         <Grid ColumnDefinitions="*">
             <CollectionView ItemsSource="{Binding Posts}">

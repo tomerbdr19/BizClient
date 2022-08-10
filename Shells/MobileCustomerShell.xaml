@@ -4,16 +4,17 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:BizClient.Pages"
+    x:Name="self"
     Shell.FlyoutBehavior="Disabled"
     >
-    <TabBar>
-        <Tab Title="Home">
+    <TabBar Route="Base">
+        <Tab Title="Home" Route="Home">
             <ShellContent ContentTemplate="{DataTemplate pages:HomePage}"/>
         </Tab>
-        <Tab Title="Businesses">
+        <Tab Title="Businesses" Route="Businesses">
             <ShellContent ContentTemplate="{DataTemplate pages:BusinessesPage}"/>
         </Tab>
-        <Tab Title="Coupons">
+        <Tab Title="Coupons" Route="Coupons">
             <ShellContent ContentTemplate="{DataTemplate pages:CouponsPage}"/>
         </Tab>
     </TabBar>

@@ -26,5 +26,11 @@ namespace BizService.Services
             var business = await GetAsync<Business>(Path, new Dictionary<string, string> { { "businessId", businessId } });
             return business;
         }
+
+        async public Task<List<Business>> SearchBusinesses(string name)
+        {
+            var businessesList = await GetAsync<List<Business>>($"{Path}/search", new Dictionary<string, string> { { "name", name } });
+            return businessesList;
+        }
     }
 }
