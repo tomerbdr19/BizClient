@@ -11,21 +11,27 @@ namespace BizService.Services
     {
         protected override string Path => "chat";
 
-        public async Task<List<Chat>> GetAllChats(string participateId)
+        public async Task<List<Chat>> GetAllChats(User user)
         {
-            var chats = await GetAsync<List<Chat>>($"{Path}/all", new Dictionary<string, string> { { "participateId", participateId } });
+            var chats = await GetAsync<List<Chat>>($"{Path}/all", new Dictionary<string, string> { { "user", user.Id } });
             return chats;
         }
 
-        public async Task<Chat> GetChatByParticipantsIds(string userId, string businessId)
+        public async Task<List<Chat>> GetAllChats(Business business)
         {
-            var chat = await GetAsync<Chat>($"{Path}", new Dictionary<string, string> { { "user", userId }, { "business", businessId } });
-            return chat;
+            var chats = await GetAsync<List<Chat>>($"{Path}/all", new Dictionary<string, string> { { "business", business.Id } });
+            return chats;
         }
 
-        async public Task<List<Message>> GetChatMessages(string chatId)
+        public async Task<Chat> GetChatByParticipants(User user, Business business)
         {
-            var messages = await GetAsync<List<Message>>($"{Path}/messages", new Dictionary<string, string> { { "chat", chatId } });
+            var chats = await GetAsync<List<Chat>>($"{Path}/all", new Dictionary<string, string> { { "user", user.Id }, { "business", business.Id } });
+            return chats[0];
+        }
+
+        async public Task<List<Message>> GetChatMessages(Chat chat)
+        {
+            var messages = await GetAsync<List<Message>>($"{Path}/messages", new Dictionary<string, string> { { "chat", chat.Id } });
             return messages;
         }
     }

@@ -15,6 +15,7 @@ public partial class BusinessPageViewModel : BaseViewModel
         this.postService = Store.ServicesStore.PostService;
         this.businessService = Store.ServicesStore.BusinessService;
         this.subscriptionService = Store.ServicesStore.SubscriptionService;
+        this.chatService = Store.ServicesStore.ChatService;
         initPage();
     }
 
@@ -29,6 +30,7 @@ public partial class BusinessPageViewModel : BaseViewModel
     private readonly PostService postService;
     private readonly BusinessService businessService;
     private readonly SubscriptionService subscriptionService;
+    private readonly ChatService chatService;
     public Subscription subscription;
 
     [ObservableProperty]
@@ -72,9 +74,10 @@ public partial class BusinessPageViewModel : BaseViewModel
     [ICommand]
     public async void OnMessageClick()
     {
+        var chat = await chatService.GetChatByParticipants(Store.Auth.User, Business);
         await Shell.Current.GoToAsync(Routes.Chat, true, new Dictionary<string, object>
         {
-            {"otherId", Business.Id}
+            {"Chat", chat}
         });
     }
 

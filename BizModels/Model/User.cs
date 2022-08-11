@@ -7,11 +7,11 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace BizModels.Model
 {
-    public class User
+    public class User : BaseUserBusiness
     {
         public string Id { get; set; }
-        public string Name { get; set; }
-        public string ImageUrl { get; set; }
+        public new string Name { get; set; }
+        public new string ImageUrl { get; set; }
         public UserInfo Info { get; set; } = new();
 
 

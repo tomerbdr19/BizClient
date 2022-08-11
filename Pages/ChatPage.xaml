@@ -8,16 +8,14 @@
              x:Class="BizClient.Pages.ChatPage"
              Title="ChatPage">
     <Grid RowDefinitions="*,Auto">
+        <FlexLayout IsVisible="{Binding IsLoading}" AlignContent="Center" AlignItems="Center">
+            <ActivityIndicator IsRunning="{Binding IsLoading}"/>
+        </FlexLayout>
         <VerticalStackLayout Grid.Row="0">
             <CollectionView ItemsSource="{Binding Messages}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Message">
-                        <view:MessageView
-                            SenderName="PlaceHolder"
-                            SenderImageUrl="{Binding SenderId}"
-                            MessageContent="{Binding Content}"
-                            CreatedAt="{Binding CreatedAt}"
-                            />
+                        <view:MessageView Message="{Binding}"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
