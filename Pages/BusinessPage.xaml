@@ -10,16 +10,17 @@
     <ScrollView>
         <Grid RowDefinitions="Auto,200,Auto,Auto" ColumnDefinitions="*" RowSpacing="12">
             <ActivityIndicator IsRunning="{Binding IsLoading}"/>
-            <Frame StyleClass="card" Grid.Row="0">
+            <Frame StyleClass="card" Grid.Row="0"
+                   IsVisible="{Binding IsNotLoading}">
                 <HorizontalStackLayout HorizontalOptions="End" Spacing="6">
                     <Button Text="Message" BackgroundColor="{StaticResource White}" BorderColor="{StaticResource B10}" TextColor="{StaticResource B10}" BorderWidth="1" Command="{Binding OnMessageClickCommand}"/>
                     <Button Text="Subscribe" BackgroundColor="{StaticResource P10}"/>
                 </HorizontalStackLayout>
             </Frame>
-            <Frame StyleClass="card" Grid.Row="1" IsClippedToBounds="True">
+            <Frame StyleClass="card" Grid.Row="1" IsClippedToBounds="True" IsVisible="{Binding IsNotLoading}">
                 <Image Source="{Binding Business.ImageUrl}" Aspect="AspectFit"/>
             </Frame>
-            <Frame StyleClass="card" Grid.Row="2">
+            <Frame StyleClass="card" Grid.Row="2" IsVisible="{Binding IsNotLoading}">
                 <VerticalStackLayout Spacing="6">
                     <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" HorizontalOptions="Fill" ColumnSpacing="6" RowSpacing="3">
                         <Button Grid.Column="0" Grid.Row="0" Text="Info" Command="{Binding OnInfoClickCommand}" IsEnabled="{Binding IsPosts}"/>

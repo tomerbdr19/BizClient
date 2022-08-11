@@ -12,6 +12,7 @@
         <CollectionView
             ItemsSource="{Binding Businesses}"
             Grid.Row="0"
+            IsVisible="{Binding IsNotLoading}"
             >
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>

@@ -8,8 +8,10 @@
              x:Class="BizClient.Pages.ChatPage"
              Title="ChatPage">
     <Grid RowDefinitions="*,Auto">
-        <VerticalStackLayout Grid.Row="0">
-            <ActivityIndicator IsRunning="{Binding IsLoading}"/>
+        <ActivityIndicator IsRunning="{Binding IsLoading}"/>
+        <VerticalStackLayout Grid.Row="0"
+                             IsVisible="{Binding IsNotLoading}"
+                             >
             <CollectionView ItemsSource="{Binding Messages}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Message">
@@ -23,7 +25,8 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </VerticalStackLayout>
-        <Grid ColumnDefinitions="3*,Auto,*" Grid.Row="1">
+        <Grid ColumnDefinitions="3*,Auto,*" Grid.Row="1"
+              IsVisible="{Binding IsNotLoading}">
             <Entry Grid.Column="0"/>
             <Button Grid.Column="1" Text="Send"/>
         </Grid>

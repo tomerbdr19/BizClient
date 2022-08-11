@@ -9,7 +9,8 @@
              Title="My Coupons">
     <VerticalStackLayout>
         <ActivityIndicator IsRunning="{Binding IsLoading}"/>
-         <Grid ColumnDefinitions="*">
+         <Grid ColumnDefinitions="*"
+               IsVisible="{Binding IsNotLoading}">
             <CollectionView ItemsSource="{Binding Coupons}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
