@@ -1,6 +1,6 @@
 ﻿namespace BizClient.Pages;
 
-[QueryProperty(nameof(OtherId), "otherId")]
+[QueryProperty(nameof(Chat), "Chat")]
 public partial class ChatPage : ContentPage
 {
     public ChatPage()
@@ -8,8 +8,7 @@ public partial class ChatPage : ContentPage
         InitializeComponent();
     }
 
-    private string otherId;
-    public string OtherId
+    public Chat Chat
     {
         set
         {
