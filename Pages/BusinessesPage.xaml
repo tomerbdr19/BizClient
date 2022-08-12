@@ -5,32 +5,39 @@
              x:DataType="viewmodel:BusinessesPageViewModel"
              xmlns:model="clr-namespace:BizModels.Model"
              xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
-             Title="My Businesses">
-    <Grid ColumnDefinitions="*"
+             xmlns:views="clr-namespace:BizClient.View"
+             Title="{Binding Title}"
+             >
+    <VerticalStackLayout HorizontalOptions="Center"
+                VerticalOptions="Center">
+        <views:ActivityIndicatorView 
+            IsLoading="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}"/>
+        <Grid ColumnDefinitions="*"
           RowDefinitions="*">
-        <CollectionView
+            <CollectionView
             ItemsSource="{Binding Businesses}"
             Grid.Row="0"
             >
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Business">
-                    <Frame StyleClass="card">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer 
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Business">
+                        <Frame StyleClass="card">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:BusinessesPageViewModel}}, Path=GoToBusinessCommand}"
                                         CommandParameter="{Binding .}"/>
-                        </Frame.GestureRecognizers>
-                        <Grid
+                            </Frame.GestureRecognizers>
+                            <Grid
                         ColumnDefinitions="Auto,*,*"
                         Padding="20"
                         VerticalOptions="Center"
                         HorizontalOptions="Start"
                         ColumnSpacing="30"
                         >
-                            <Frame Margin="10"
+                                <Frame Margin="10"
                                Grid.Column="0"
                                BorderColor="Black"
                                CornerRadius="50"
@@ -39,19 +46,20 @@
                                IsClippedToBounds="True"
                                HorizontalOptions="Center"
                                VerticalOptions="Center">
-                                <Image Source="{Binding ImageUrl}"
+                                    <Image Source="{Binding ImageUrl}"
                                  Aspect="AspectFill"
                                  HeightRequest="100"
                                  WidthRequest="100"/>
-                            </Frame>
-                            <Label
+                                </Frame>
+                                <Label
                             Grid.Column="1"
                             VerticalTextAlignment="Center"
                             Text="{Binding Name}"/>
-                        </Grid>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </VerticalStackLayout>
 </ContentPage>

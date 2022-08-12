@@ -23,16 +23,26 @@ public partial class ChatPageViewModel : BaseViewModel
 
     }
 
+//<<<<<<< ActivityIndicator
+//    private async void initPageWithOtherParticipantId(string otherId)
+//    {
+//        IsLoading = true;
+//        chat = await chatService.GetChatByParticipantsIds(Store.UserId, otherId);
+//        var messagesResponse = await chatService.GetChatMessages(chat.Id);
+//        IsLoading = false;
+
+//        messagesResponse.ForEach(_ => Messages.Add(_));
+//    }
+
+//    private async void initPageWithChatId(string chatId)
+//=======
     private async void initPage()
+//>>>>>>> master
     {
-        chat = await chatService.GetChatByParticipantsIds(Store.UserId, otherId);
-        var messagesResponse = await chatService.GetChatMessages(chat.Id);
-
-        messagesResponse.ForEach(_ => Messages.Add(_));
-    }
-
-    private async void initPageWithChatId(string chatId)
-    {
+        IsLoading = true;
+        var messages = await chatService.GetChatMessages(chat);
+        messages.ForEach(_ => Messages.Add(_));
+        IsLoading = false;
     }
 }
 
