@@ -109,7 +109,6 @@
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="View\" />
 	  <Folder Include="Pages\" />
 	  <Folder Include="ViewModel\Pages\" />
 	  <Folder Include="Shells\" />
@@ -120,6 +119,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\CustomerRegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\ActivityIndicatorView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\PostView.xaml">

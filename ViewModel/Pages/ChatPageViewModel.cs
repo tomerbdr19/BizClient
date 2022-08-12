@@ -8,8 +8,6 @@ public partial class ChatPageViewModel : BaseViewModel
         initPageWithOtherParticipantId(otherParticipantId);
     }
 
-    public ActivityIndicator activityIndicator = new ActivityIndicator();
-
     private readonly ChatService chatService;
     private Chat chat;
 

@@ -13,8 +13,6 @@ public partial class BusinessesPageViewModel : BaseViewModel
     private readonly SubscriptionService subscriptionService;
     public ObservableCollection<Business> Businesses { get; } = new();
 
-    public ActivityIndicator activityIndicator = new ActivityIndicator();
-
     public async void OnAppearing()
     {
         // TODO: handle error
