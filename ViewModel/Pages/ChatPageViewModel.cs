@@ -2,10 +2,11 @@
 
 public partial class ChatPageViewModel : BaseViewModel
 {
-    public ChatPageViewModel(string otherParticipantId)
+    public ChatPageViewModel(Chat chat)
     {
         this.chatService = Store.ServicesStore.ChatService;
-        initPageWithOtherParticipantId(otherParticipantId);
+        this.chat = chat;
+        initPage();
     }
 
     private readonly ChatService chatService;
@@ -22,12 +23,10 @@ public partial class ChatPageViewModel : BaseViewModel
 
     }
 
-    private async void initPageWithOtherParticipantId(string otherId)
+    private async void initPage()
     {
-        IsLoading = true;
         chat = await chatService.GetChatByParticipantsIds(Store.UserId, otherId);
         var messagesResponse = await chatService.GetChatMessages(chat.Id);
-        IsLoading = false;
 
         messagesResponse.ForEach(_ => Messages.Add(_));
     }

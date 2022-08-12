@@ -5,29 +5,21 @@
              xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
              xmlns:views="clr-namespace:BizClient.View"
              xmlns:models="clr-namespace:BizModels.Model"
+             xmlns:controls="clr-namespace:BizClient.Controls"
              x:DataType="viewmodels:HomePageViewModel"
              Title="Home">
-    <VerticalStackLayout HorizontalOptions="Center"
-                VerticalOptions="Center">
-        <views:ActivityIndicatorView 
-            IsLoading="{Binding IsLoading}"
-            IsVisible="{Binding IsLoading}"/>
-        <VerticalStackLayout Spacing="30"
-                             IsVisible="{Binding IsNotLoading}">
-            <Grid ColumnDefinitions="*"
-              >
-                <CollectionView ItemsSource="{Binding Posts}">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Post">
-                            <views:PostView Post="{Binding}"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Grid>
-        </VerticalStackLayout>
+    <VerticalStackLayout Spacing="30">
+        <Grid ColumnDefinitions="*">
+            <CollectionView ItemsSource="{Binding Posts}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Post">
+                        <views:PostView Post="{Binding}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </VerticalStackLayout>
-
 </ContentPage>

@@ -102,6 +102,7 @@
 	  <None Remove="BizTest\bin\Debug\net6.0\BizTest.pdb" />
 	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.FileListAbsolute.txt" />
 	  <None Remove="Store\" />
+	  <None Remove="Controls\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -113,6 +114,7 @@
 	  <Folder Include="ViewModel\Pages\" />
 	  <Folder Include="Shells\" />
 	  <Folder Include="Store\" />
+	  <Folder Include="Controls\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Pages\BusinessesRegistrationPage.xaml">

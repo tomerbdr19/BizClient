@@ -13,15 +13,24 @@ public partial class BusinessesPageViewModel : BaseViewModel
     private readonly SubscriptionService subscriptionService;
     public ObservableCollection<Business> Businesses { get; } = new();
 
-    public async void OnAppearing()
+    public async void OnAppearing(List<Business> InjectedBusinessesList)
     {
         // TODO: handle error
         Businesses.Clear();
 
-        IsLoading = true;
-        var subscriptions = await subscriptionService.GetUserSubscriptions(Store.UserId);
-        subscriptions.ForEach(_ => Businesses.Add(_.Business));
-        IsLoading = false;
+        if (InjectedBusinessesList == null)
+        {
+            this.Title = "Subscriptions";
+            IsLoading = true;
+            var subscriptions = await subscriptionService.GetUserSubscriptions(Store.UserId);
+            subscriptions.ForEach(_ => Businesses.Add(_.Business));
+            IsLoading = false;
+        }
+        else
+        {
+            this.Title = "Search Result";
+            InjectedBusinessesList.ForEach(_ => Businesses.Add(_));
+        }
     }
 
     [ICommand]

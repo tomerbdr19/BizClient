@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace BizModels.Model
 {
-    public class Business
+    public class Business : BaseUserBusiness
     {
         public string Id { get; set; }
-        public string Name { get; set; }
-        public string ImageUrl { get; set; }
+        public new string Name { get; set; }
+        public new string ImageUrl { get; set; }
         public BusinessInfo Info { get; set; }
         public string OwnerId { get; set; }
     }
