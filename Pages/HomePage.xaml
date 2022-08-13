@@ -11,12 +11,9 @@
     <Shell.SearchHandler>
         <controls:BusinessesSearchHandler/>
     </Shell.SearchHandler>
-    <VerticalStackLayout HorizontalOptions="Center"
-                VerticalOptions="Center">
-        <views:ActivityIndicatorView 
-            IsLoading="{Binding IsLoading}"
-            IsVisible="{Binding IsLoading}"/>
-        <Grid ColumnDefinitions="*">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <views:ActivityIndicatorView/>
+        <Grid ColumnDefinitions="*" IsVisible="{Binding IsNotLoading}">
             <CollectionView ItemsSource="{Binding Posts}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
@@ -28,5 +25,5 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
-    </VerticalStackLayout>
+    </AbsoluteLayout>
 </ContentPage>
