@@ -8,61 +8,55 @@
              x:DataType="viewmodels:BusinessPageViewModel"
              Title="{Binding Business.Name}">
     <ScrollView>
-        <VerticalStackLayout HorizontalOptions="Center"
-                VerticalOptions="Center">
-            <views:ActivityIndicatorView 
-            IsLoading="{Binding IsLoading}"
-            IsVisible="{Binding IsLoading}"/>
-            <Grid RowDefinitions="Auto,200,Auto,Auto" ColumnDefinitions="*" RowSpacing="12">
-                <Frame StyleClass="card" Grid.Row="0">
-                    <HorizontalStackLayout HorizontalOptions="End" Spacing="6">
-                        <Button Text="Message" BackgroundColor="{StaticResource White}" BorderColor="{StaticResource B10}" TextColor="{StaticResource B10}" BorderWidth="1" Command="{Binding OnMessageClickCommand}"/>
-                        <Button Command="{Binding OnSubscriptionClickCommand}">
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Style.Triggers>
-                                        <DataTrigger TargetType="Button" Binding="{Binding IsSubscribed}" Value="True">
-                                            <Setter Property="Text" Value="Unsubscribe"/>
-                                            <Setter Property="BackgroundColor" Value="{StaticResource D70}"/>
-                                            <Setter Property="TextColor" Value="{StaticResource P10}"/>
-                                        </DataTrigger>
-                                        <DataTrigger TargetType="Button" Binding="{Binding IsSubscribed}" Value="False">
-                                            <Setter Property="Text" Value="Subscribe"/>
-                                            <Setter Property="BackgroundColor" Value="{StaticResource P10}"/>
-                                            <Setter Property="TextColor" Value="{StaticResource D70}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-                    </HorizontalStackLayout>
-                </Frame>
-                <Frame StyleClass="card" Grid.Row="1" IsClippedToBounds="True">
-                    <Image Source="{Binding Business.ImageUrl}" Aspect="AspectFit"/>
-                </Frame>
-                <Frame StyleClass="card" Grid.Row="2">
-                    <VerticalStackLayout Spacing="6">
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" HorizontalOptions="Fill" ColumnSpacing="6" RowSpacing="3">
-                            <Button Grid.Column="0" Grid.Row="0" Text="Info" Command="{Binding OnInfoClickCommand}" IsEnabled="{Binding IsPosts}"/>
-                            <Button Grid.Column="1" Grid.Row="0" Text="Posts" Command="{Binding OnPostsClickCommand}" IsEnabled="{Binding IsInfo}"/>
-                            <Line Grid.Row="1"/>
-                        </Grid>
-                        <VerticalStackLayout IsVisible="{Binding IsInfo}">
-                            <views:BusinessInfoView BindingContext="{Binding Business.Info}"/>
-                        </VerticalStackLayout>
+        <Grid RowDefinitions="Auto,200,Auto,Auto" ColumnDefinitions="*" RowSpacing="12">
+            <Frame StyleClass="card" Grid.Row="0">
+                <HorizontalStackLayout HorizontalOptions="End" Spacing="6">
+                    <Button Text="Message" BackgroundColor="{StaticResource White}" BorderColor="{StaticResource B10}" TextColor="{StaticResource B10}" BorderWidth="1" Command="{Binding OnMessageClickCommand}"/>
+                    <Button Command="{Binding OnSubscriptionClickCommand}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Button" Binding="{Binding IsSubscribed}" Value="True">
+                                        <Setter Property="Text" Value="Unsubscribe"/>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource D70}"/>
+                                        <Setter Property="TextColor" Value="{StaticResource P10}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Button" Binding="{Binding IsSubscribed}" Value="False">
+                                        <Setter Property="Text" Value="Subscribe"/>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource P10}"/>
+                                        <Setter Property="TextColor" Value="{StaticResource D70}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </HorizontalStackLayout>
+            </Frame>
+            <Frame StyleClass="card" Grid.Row="1" IsClippedToBounds="True">
+                <Image Source="{Binding Business.ImageUrl}" Aspect="AspectFit"/>
+            </Frame>
+            <Frame StyleClass="card" Grid.Row="2">
+                <VerticalStackLayout Spacing="6">
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" HorizontalOptions="Fill" ColumnSpacing="6" RowSpacing="3">
+                        <Button Grid.Column="0" Grid.Row="0" Text="Info" Command="{Binding OnInfoClickCommand}" IsEnabled="{Binding IsPosts}"/>
+                        <Button Grid.Column="1" Grid.Row="0" Text="Posts" Command="{Binding OnPostsClickCommand}" IsEnabled="{Binding IsInfo}"/>
+                        <Line Grid.Row="1"/>
+                    </Grid>
+                    <VerticalStackLayout IsVisible="{Binding IsInfo}">
+                        <views:BusinessInfoView BindingContext="{Binding Business.Info}"/>
                     </VerticalStackLayout>
-                </Frame>
-                <CollectionView Grid.Row="3" ItemsSource="{Binding Posts}" ZIndex="-1">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Post">
-                            <views:PostView Post="{Binding}"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Grid>
-        </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+            <CollectionView Grid.Row="3" ItemsSource="{Binding Posts}" ZIndex="-1">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Post">
+                        <views:PostView Post="{Binding}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </ScrollView>
 </ContentPage>

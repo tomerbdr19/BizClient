@@ -7,11 +7,8 @@
              xmlns:models="clr-namespace:BizModels.Model"
              x:DataType="viewmodels:CouponsPageViewModel"
              Title="My Coupons">
-    <VerticalStackLayout HorizontalOptions="Center"
-                VerticalOptions="Center">
-        <views:ActivityIndicatorView 
-            IsLoading="{Binding IsLoading}"
-            IsVisible="{Binding IsLoading}"/>
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <views:ActivityIndicatorView IsVisible="{Binding IsLoading}"/>
         <VerticalStackLayout IsVisible="{Binding IsNotLoading}">
             <Grid ColumnDefinitions="*">
                 <CollectionView ItemsSource="{Binding Coupons}">
@@ -26,5 +23,5 @@
                 </CollectionView>
             </Grid>
      </VerticalStackLayout>
-    </VerticalStackLayout>
+    </AbsoluteLayout>
 </ContentPage>

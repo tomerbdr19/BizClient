@@ -3,24 +3,10 @@
 public partial class BaseViewModel : ObservableObject
 {
     [ObservableProperty]
-    [AlsoNotifyChangeFor(nameof(IsNotLoading))]
     bool isLoading;
 
-    [ObservableProperty]
-    bool isNotLoading;
+    public bool IsNotLoading => !IsLoading;
 
     [ObservableProperty]
     string title;
-
-    protected override void OnPropertyChanged(PropertyChangedEventArgs e)
-    {
-        base.OnPropertyChanged(e);
-
-        switch (e.PropertyName)
-        {
-            case nameof(IsNotLoading):
-                IsNotLoading = !isLoading;
-                break;
-        }
-    }
 }
