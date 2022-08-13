@@ -12,7 +12,7 @@
         <controls:BusinessesSearchHandler/>
     </Shell.SearchHandler>
     <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <views:ActivityIndicatorView/>
+        <views:ActivityIndicatorView IsVisible="{Binding IsLoading}"/>
         <Grid ColumnDefinitions="*" IsVisible="{Binding IsNotLoading}">
             <CollectionView ItemsSource="{Binding Posts}">
                 <CollectionView.ItemsLayout>
