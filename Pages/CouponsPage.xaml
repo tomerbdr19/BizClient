@@ -7,18 +7,24 @@
              xmlns:models="clr-namespace:BizModels.Model"
              x:DataType="viewmodels:CouponsPageViewModel"
              Title="My Coupons">
-    <VerticalStackLayout>
-         <Grid ColumnDefinitions="*">
-            <CollectionView ItemsSource="{Binding Coupons}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Coupon">
-                        <views:CouponView Coupon="{Binding}"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
+    <VerticalStackLayout HorizontalOptions="Center"
+                VerticalOptions="Center">
+        <views:ActivityIndicatorView 
+            IsLoading="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}"/>
+        <VerticalStackLayout IsVisible="{Binding IsNotLoading}">
+            <Grid ColumnDefinitions="*">
+                <CollectionView ItemsSource="{Binding Coupons}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Coupon">
+                            <views:CouponView Coupon="{Binding}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+     </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

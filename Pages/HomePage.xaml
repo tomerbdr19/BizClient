@@ -11,6 +11,11 @@
     <Shell.SearchHandler>
         <controls:BusinessesSearchHandler/>
     </Shell.SearchHandler>
+    <VerticalStackLayout HorizontalOptions="Center"
+                VerticalOptions="Center">
+        <views:ActivityIndicatorView 
+            IsLoading="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}"/>
         <Grid ColumnDefinitions="*">
             <CollectionView ItemsSource="{Binding Posts}">
                 <CollectionView.ItemsLayout>
@@ -23,4 +28,5 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
+    </VerticalStackLayout>
 </ContentPage>

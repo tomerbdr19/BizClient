@@ -49,6 +49,7 @@ public partial class BusinessPageViewModel : BaseViewModel
     [AlsoNotifyChangeFor(nameof(IsInfo))]
     public bool isPosts = false;
 
+
     [ICommand]
     public void OnInfoClick()
     {

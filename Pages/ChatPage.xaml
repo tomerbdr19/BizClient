@@ -7,22 +7,26 @@
              x:DataType="viewmodel:ChatPageViewModel"
              x:Class="BizClient.Pages.ChatPage"
              Title="ChatPage">
-    <Grid RowDefinitions="*,Auto">
-        <FlexLayout IsVisible="{Binding IsLoading}" AlignContent="Center" AlignItems="Center">
-            <ActivityIndicator IsRunning="{Binding IsLoading}"/>
-        </FlexLayout>
-        <VerticalStackLayout Grid.Row="0">
-            <CollectionView ItemsSource="{Binding Messages}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Message">
-                        <view:MessageView Message="{Binding}"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </VerticalStackLayout>
-        <Grid ColumnDefinitions="3*,Auto,*" Grid.Row="1">
-            <Entry Grid.Column="0"/>
-            <Button Grid.Column="1" Text="Send"/>
+
+    <VerticalStackLayout HorizontalOptions="Center"
+                VerticalOptions="Center">
+        <view:ActivityIndicatorView 
+            IsLoading="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}"/>
+        <Grid RowDefinitions="*,Auto"  IsVisible="{Binding IsNotLoading}">
+            <VerticalStackLayout Grid.Row="0">
+                <CollectionView ItemsSource="{Binding Messages}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Message">
+                            <view:MessageView Message="{Binding}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+            <Grid ColumnDefinitions="3*,Auto,*" Grid.Row="1">
+                <Entry Grid.Column="0"/>
+                <Button Grid.Column="1" Text="Send"/>
+            </Grid>
         </Grid>
-    </Grid>
+    </VerticalStackLayout>
 </ContentPage>
