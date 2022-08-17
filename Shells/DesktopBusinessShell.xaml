@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BizClient.Shells.DesktopBusinessShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:BizClient.Pages.BusinessPages"
+    x:Name="self"
+    Shell.TabBarIsVisible="False"
+    >
+    <FlyoutItem Route="Base"
+                FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Home" Route="Home" >
+            <ShellContent ContentTemplate="{DataTemplate pages:BusinessHomePage}"/>
+        </Tab>
+        <Tab Title="My Hub" Route="Hub">
+            <ShellContent/>
+        </Tab>
+        <Tab Title="Subscribers" Route="Subscribers">
+            <ShellContent/>
+        </Tab>
+        <Tab Title="Discounts" Route="Discounts">
+            <ShellContent/>
+        </Tab>
+        <Tab Title="Chats" Route="Chats">
+            <ShellContent/>
+        </Tab>
+    </FlyoutItem>
+</Shell>
