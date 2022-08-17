@@ -7,7 +7,11 @@ namespace BizClient
         public static Auth Auth;
 
         public static string Token => Auth.Token;
-        public static string UserId => Auth.User.Id;
+        public static bool IsUser => Auth.User != null;
+        public static bool IsBusiness => Auth.Business != null;
+        public static string UserId => Auth.User?.Id;
+        public static string BusinessId => Auth.Business?.Id;
+
     }
 }
 
