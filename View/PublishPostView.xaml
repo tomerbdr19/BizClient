@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Frame       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icon="clr-namespace:BizClient."
              xmlns:model="clr-namespace:BizModels.Model"
              x:Class="BizClient.View.PublishPostView"
              xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
@@ -8,16 +9,14 @@
              StyleClass="card"
              >
     <VerticalStackLayout
-        Spacing="36"
-        Margin="40"
+        Spacing="10"
         HorizontalOptions="Center"
          VerticalOptions="Center">
-        <VerticalStackLayout>
-            <Label Text="What do you want to share?"/>
-            <Entry 
-                HeightRequest="70" 
+        <Entry 
+                Placeholder="What do you want to share?"
+                HeightRequest="100" 
                 WidthRequest="300"
-                 Text="{Binding PublishPost.Caption,Mode=OneWayToSource }"
+                Text="{Binding PublishPost.Caption,Mode=OneWayToSource }"
                 />
             <Image Source="{Binding ImageUrl,Mode=OneWay }"
                    x:Name="image"
@@ -25,14 +24,16 @@
                    Aspect="AspectFill"
                    HeightRequest="100"
                    WidthRequest="100" />
-            <Button
-            Text="Add picture"
-                 Command="{Binding OnAddPictureClickCommand}"
+            <ImageButton
+                Source="uploadicon.png"
+                HorizontalOptions="End"                 
+                Command="{Binding OnAddPictureClickCommand}"
             />
-            <Button
+        <Button
+                
             Text="Publish"
+            HorizontalOptions="End"   
             Command="{Binding OnPublishClickCommand}"
             />
-        </VerticalStackLayout>
     </VerticalStackLayout>
 </Frame>

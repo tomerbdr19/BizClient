@@ -7,7 +7,7 @@ public partial class PublishPostViewModel : BaseViewModel
         postService = Store.ServicesStore.PostService;
         publishPost = new();
         publishPost.Business = new();
-        publishPost.Business.Id = Store.Auth.Business.Id;
+        //publishPost.Business.Id = Store.Auth.Business.Id;
     }
 
     [ObservableProperty]
