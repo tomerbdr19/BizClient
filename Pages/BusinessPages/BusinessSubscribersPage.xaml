@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:BizClient.ViewModel.BusinessViewModel"
+             xmlns:controls="clr-namespace:BizClient.Controls"
+             xmlns:views="clr-namespace:BizClient.View"
+             x:DataType="viewmodels:BusinessSubscribersPageViewModel"
+             x:Class="BizClient.Pages.BusinessPages.BusinessSubscribersPage"
+             Title="Your Subscribers">
+    <Grid RowDefinitions="*" ColumnDefinitions="*" Padding="200,0">
+        <views:ActivityIndicatorView Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}"/>
+        <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsNotLoading}" Spacing="45" Padding="0,45">
+            <Frame HorizontalOptions="FillAndExpand" Padding="24">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Filter by:"/>
+                    <HorizontalStackLayout VerticalOptions="Center" Spacing="12">
+                        <CheckBox IsChecked="{Binding CityFilter.IsChecked,Mode=TwoWay}"/>
+                        <Label Text="City"/>
+                        <Picker
+                            WidthRequest="200"
+                            ItemsSource="{Binding CityFilter.Options, Mode=TwoWay}"
+                            SelectedItem="{Binding CityFilter.Value, Mode=TwoWay}"
+                            />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout VerticalOptions="Center" Spacing="12">
+                        <CheckBox IsChecked="{Binding SubscriptionDateFilter.IsChecked,Mode=TwoWay}"/>
+                        <Label Text="Subscription Date"/>
+                        <DatePicker
+                            WidthRequest="200"
+                            Date="{Binding SubscriptionDateFilter.Value.From}"
+                            />
+                        <DatePicker
+                            WidthRequest="200"
+                            Date="{Binding SubscriptionDateFilter.Value.To}"
+                            />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout VerticalOptions="Center" Spacing="12">
+                        <CheckBox IsChecked="{Binding AgeFilter.IsChecked,Mode=TwoWay}"/>
+                        <Label Text="Subscription Date"/>
+                        <Entry
+                            WidthRequest="100"
+                            Text="{Binding AgeFilter.Value.From}"
+                            />
+                        <Entry
+                            WidthRequest="200"
+                            Text="{Binding AgeFilter.Value.To}"
+                            />
+                    </HorizontalStackLayout>
+                    <Button Text="Apply" HorizontalOptions="End" Command="{Binding OnApplyFiltersCommand}"/>
+                </VerticalStackLayout>
+            </Frame>
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Spacing="12" BindableLayout.ItemsSource="{Binding Subscriptions}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <views:SubscriberView HorizontalOptions="CenterAndExpand" Subscription="{Binding}"/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

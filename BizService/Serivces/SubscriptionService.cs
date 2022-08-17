@@ -15,10 +15,10 @@ namespace BizService.Services
         }
         protected override string Path => "subscribe";
 
-        public Task GetBusinessSubscriptions()
+        async public Task<List<Subscription>> GetBusinessSubscriptions(string businessId)
         {
-            // TODO: implement
-            return Task.CompletedTask;
+            var subscriptionsList = await GetAsync<List<Subscription>>(Path, new Dictionary<string, string>() { { "business", businessId } });
+            return subscriptionsList;
         }
 
         async public Task<List<Subscription>> GetUserSubscriptions(string userId)

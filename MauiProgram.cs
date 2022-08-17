@@ -33,9 +33,11 @@ public static class MauiProgram
 
         // Dekstop Business Pages
         builder.Services.AddSingleton<BusinessHomePage>();
+        builder.Services.AddSingleton<BusinessSubscribersPage>();
 
         // Desktop View Models
         builder.Services.AddSingleton<BusinessHomePageViewModel>();
+        builder.Services.AddSingleton<BusinessSubscribersPageViewModel>();
 
 
 

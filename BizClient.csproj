@@ -106,11 +106,13 @@
 	  <None Remove="ViewModel\BusinessPages\" />
 	  <None Remove="Pages\BusinessPages\" />
 	  <None Remove="View\BusinessView\" />
+	  <None Remove="Xamarin.CommunityToolkit.MauiCompat" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
+	  <PackageReference Include="Xamarin.CommunityToolkit.MauiCompat" Version="2.0.2-preview1013" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Pages\" />
@@ -184,6 +186,18 @@
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="View\BusinessView\ActivityView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\BusinessView\SubscriberView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\BusinessPages\BusinessSubscribersPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\Field.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\FilterCheckBox.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>

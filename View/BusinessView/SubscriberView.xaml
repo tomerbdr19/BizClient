@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VerticalStackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:BizModels.Model"
+             xmlns:controls="clr-namespace:BizClient.Controls"
+             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit.MauiCompat"
+             x:Name="self"
+             x:Class="BizClient.View.SubscriberView">
+            <Frame>
+        <xct:Expander
+            ExpandAnimationLength="0"
+            CollapseAnimationLength="0"
+            >
+            <xct:Expander.Header>
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center" Wrap="Wrap">
+                    <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                        <Frame VerticalOptions="Center" WidthRequest="75" HeightRequest="75" CornerRadius="37"  IsClippedToBounds="True">
+                            <Image Source="{Binding Subscription.User.ImageUrl ,Source={x:Reference self}}" Aspect="AspectFill" Margin="-20"/>
+                        </Frame>
+                        <Label VerticalOptions="Center" Text="{Binding Subscription.User.Name ,Source={x:Reference self}}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="12">
+                        <Button VerticalOptions="Center" Text="Message"/>
+                    </HorizontalStackLayout>
+                </FlexLayout>
+            </xct:Expander.Header>
+            <xct:Expander.ContentTemplate>
+                <DataTemplate>
+                        <VerticalStackLayout>
+                            <controls:Field Key="Age" Value="5"/>
+                            <controls:Field Key="Region" Value="5"/>
+                            <controls:Field Key="City" Value="5"/>
+                            <controls:Field Key="Subscription time" Value="5"/>
+                            <controls:Field Key="Copoun redeem" Value="5"/>
+                        </VerticalStackLayout>
+                </DataTemplate>
+            </xct:Expander.ContentTemplate>
+        </xct:Expander>
+        </Frame>
+</VerticalStackLayout>
+

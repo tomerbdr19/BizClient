@@ -16,7 +16,7 @@
             <ShellContent/>
         </Tab>
         <Tab Title="Subscribers" Route="Subscribers">
-            <ShellContent/>
+            <ShellContent ContentTemplate="{DataTemplate pages:BusinessSubscribersPage}"/>
         </Tab>
         <Tab Title="Discounts" Route="Discounts">
             <ShellContent/>
