@@ -1,4 +1,7 @@
-﻿namespace BizClient;
+﻿//using ZXing.Net.Maui;
+using BizClient.ViewModel.Pages;
+
+namespace BizClient;
 
 public static class MauiProgram
 {
@@ -23,6 +26,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<UserRegisterPage>();
         builder.Services.AddSingleton<BusinessesRegistrationPage>();
 
+        builder.Services.AddSingleton<AdminHomePage>();
+        builder.Services.AddSingleton<AdminChatPage>();
+        builder.Services.AddSingleton<QRScannerPage>();
+
         // Views
 
         // View Models
@@ -32,6 +39,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<CouponsPageViewModel>();
         builder.Services.AddSingleton<UserRegisterViewModel>();
         builder.Services.AddSingleton<BusinessesRegistrationViewModel>();
+
+        builder.Services.AddSingleton<AdminHomePageViewModel>();
+        builder.Services.AddSingleton<AdminChatPageViewModel>();
+        builder.Services.AddSingleton<QRScannerPageViewModel>();
 
         return builder.Build();
     }

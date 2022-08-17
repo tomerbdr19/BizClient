@@ -110,17 +110,26 @@
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Pages\" />
-	  <Folder Include="ViewModel\Pages\" />
-	  <Folder Include="Shells\" />
 	  <Folder Include="Store\" />
 	  <Folder Include="Controls\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <MauiXaml Update="Pages\AdminChatPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AdminHomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\BusinessesRegistrationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\CustomerRegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\QRScannerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Shells\MobileAdminShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\ActivityIndicatorView.xaml">
@@ -167,6 +176,9 @@
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\QRPage.xaml">
 	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\PublishPostView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
