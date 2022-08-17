@@ -7,6 +7,7 @@ public partial class AdminHomePage : ContentPage
         InitializeComponent();
         this.viewModel = viewModel;
         BindingContext = viewModel;
+        PublishPost.OnPublishSuccess = viewModel.AddPublishedPost;
     }
 
     private AdminHomePageViewModel viewModel { get; set; }

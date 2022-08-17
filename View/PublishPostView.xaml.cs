@@ -9,4 +9,9 @@ public partial class PublishPostView
         BindingContext = viewModel;
     }
     PublishPostViewModel viewModel;
+
+    public Action<Post> OnPublishSuccess
+    {
+        set { this.viewModel.OnPublishSuccess = value; }
+    }
 }

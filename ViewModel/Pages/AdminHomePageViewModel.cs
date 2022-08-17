@@ -1,4 +1,4 @@
-namespace BizClient.ViewModel;
+﻿namespace BizClient.ViewModel;
 
 public partial class AdminHomePageViewModel : BaseViewModel
 {
@@ -21,6 +21,10 @@ public partial class AdminHomePageViewModel : BaseViewModel
         this.IsLoading = false;
     }
 
+    public void AddPublishedPost(Post post)
+    {
+        Posts.Insert(0, post);
+    }
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs e)
     {
