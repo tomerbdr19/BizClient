@@ -9,6 +9,8 @@ global using BizClient.ViewModel;
 global using BizModels.Model;
 global using BizClient.View;
 global using BizClient.Pages;
+global using BizClient.Pages.BusinessPages;
+global using BizClient.ViewModel.BusinessViewModel;
 global using BizClient.Controls;
 global using BizClient.Shells;
 global using BizService.Services;

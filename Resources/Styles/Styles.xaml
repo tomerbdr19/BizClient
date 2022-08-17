@@ -405,4 +405,8 @@
         <Setter Property="Fill" Value="{StaticResource D70}"/>
     </Style>
 
+    <Style x:Key="title" TargetType="Label">
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
 </ResourceDictionary>
