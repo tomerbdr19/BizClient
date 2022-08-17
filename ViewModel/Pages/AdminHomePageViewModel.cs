@@ -1,4 +1,4 @@
-﻿namespace BizClient.ViewModel;
+namespace BizClient.ViewModel;
 
 public partial class AdminHomePageViewModel : BaseViewModel
 {
@@ -16,8 +16,7 @@ public partial class AdminHomePageViewModel : BaseViewModel
     {
         Posts.Clear();
         this.IsLoading = true;
-        //var posts = await this.postService.GetBusinessPosts(Store.Auth.Business.Id);
-        var posts = await this.postService.GetBusinessPosts("62dea60742831efed2e07c7a");
+        var posts = await this.postService.GetBusinessPosts(Store.Auth.Business.Id);
         posts.ForEach(_ => Posts.Add(_));
         this.IsLoading = false;
     }
