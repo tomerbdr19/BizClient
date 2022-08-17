@@ -1,4 +1,3 @@
-﻿//using ZXing.Net.Maui;
 using BizClient.ViewModel.Pages;
 
 namespace BizClient;
