@@ -15,9 +15,9 @@
                 Placeholder="What do you want to share?"
                 HeightRequest="100" 
                 WidthRequest="300"
-                Text="{Binding PublishPost.Caption,Mode=OneWayToSource }"
+                Text="{Binding PublishPost.Caption,Mode=TwoWay }"
                 />
-        <Image Source="{Binding ImageUrl,Mode=OneWay }"
+        <Image Source="{Binding ImageUrl,Mode=TwoWay }"
                    x:Name="image"
                    IsVisible="{Binding IsVisible,Mode=OneWay}"
                    Aspect="AspectFill"

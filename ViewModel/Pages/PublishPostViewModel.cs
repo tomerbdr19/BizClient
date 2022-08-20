@@ -5,13 +5,10 @@ public partial class PublishPostViewModel : BaseViewModel
     public PublishPostViewModel()
     {
         postService = Store.ServicesStore.PostService;
-        publishPost = new();
-        publishPost.Business = new();
-        //publishPost.Business.Id = Store.Auth.Business.Id;
     }
 
     [ObservableProperty]
-    private Post publishPost;
+    private Post publishPost = new();
 
     [ObservableProperty]
     private String imageUrl;
@@ -46,17 +43,24 @@ public partial class PublishPostViewModel : BaseViewModel
         }
     }
 
+    async private Task UploadAndSetImage()
+    {
+        // TODO: implement
+        return;
+    }
+
+    public Action<Post> OnPublishSuccess { get; set; }
 
 
     [ICommand]
     async Task OnPublishClick()
     {
-        PublishPost.CreatedAt = DateTime.Now;
-        // PublishPost.Business = Store.Auth.Business;
-        if (ImageUrl != null)
-        {
-            //TODO add image to the post
-        }
+        this.IsLoading = true;
+        await this.UploadAndSetImage();
+        PublishPost.Business = Store.Auth.Business;
         var post = await postService.PublishPost(PublishPost);
+        OnPublishSuccess.Invoke(post);
+        PublishPost = new();
+        this.IsLoading = false;
     }
 }
