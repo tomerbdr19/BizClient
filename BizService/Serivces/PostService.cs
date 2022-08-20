@@ -36,10 +36,10 @@ namespace BizService.Services
             return Task.CompletedTask;
         }
 
-        public Task PublishPost(Post Post)
+        async public Task<Post> PublishPost(Post Post)
         {
-            // TODO implement
-            return Task.CompletedTask;
+            var post = await PostAsync<Post>(Path, Post);
+            return post;
         }
     }
 }
