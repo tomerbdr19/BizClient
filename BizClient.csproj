@@ -103,11 +103,20 @@
 	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.FileListAbsolute.txt" />
 	  <None Remove="Store\" />
 	  <None Remove="Controls\" />
+	  <None Remove="ViewModel\BusinessPages\" />
+	  <None Remove="Pages\BusinessPages\" />
+	  <None Remove="View\BusinessView\" />
+	  <None Remove="Xamarin.CommunityToolkit.MauiCompat" />
+	  <None Remove="BizModels\Helpers\" />
+	  <None Remove="Microsoft.Maui.Dependencies" />
+	  <None Remove="Helpers\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
+	  <PackageReference Include="Xamarin.CommunityToolkit.MauiCompat" Version="2.0.2-preview1013" />
+	  <PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.486" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Pages\" />
@@ -115,6 +124,11 @@
 	  <Folder Include="Shells\" />
 	  <Folder Include="Store\" />
 	  <Folder Include="Controls\" />
+	  <Folder Include="ViewModel\BusinessPages\" />
+	  <Folder Include="Pages\BusinessPages\" />
+	  <Folder Include="View\BusinessView\" />
+	  <Folder Include="BizModels\Helpers\" />
+	  <Folder Include="Helpers\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Pages\BusinessesRegistrationPage.xaml">
@@ -166,6 +180,30 @@
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\QRPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\BusinessPages\BusinessHomePage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\BusinessView\GraphView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Shells\DesktopBusinessShell.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\BusinessView\ActivityView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\BusinessView\SubscriberView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\BusinessPages\BusinessSubscribersPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\Field.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\FilterCheckBox.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>

@@ -25,7 +25,7 @@ namespace BizModels.Model
         private string lastName;
 
         [ObservableProperty]
-        private string birthDate;
+        private DateTime birthDate;
 
         [ObservableProperty]
         private string region;

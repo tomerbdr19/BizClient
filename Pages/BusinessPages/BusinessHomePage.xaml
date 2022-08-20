@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:BizClient.View"
+             x:Class="BizClient.Pages.BusinessPages.BusinessHomePage"
+             Title="BusinessHomePage">
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="WidthRequest" Value="150"/>
+            <Setter Property="HeightRequest" Value="80"/>
+        </Style>
+    </ContentPage.Resources>
+    <VerticalStackLayout Spacing="36" Padding="0,36,0,0">
+        <VerticalStackLayout Spacing="24">
+            <Label 
+                Style="{StaticResource title}"
+                Text="Quick Actions"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+           <HorizontalStackLayout Spacing="48" VerticalOptions="Center" HorizontalOptions="Center">
+                <Button Text="New Post"/>
+                <Button Text="New Discount"/>
+                <Button Text="Announce"/>
+                <Button Text="New Copoun"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <VerticalStackLayout Spacing="24">
+                <Label 
+                    Style="{StaticResource title}"
+                    Text="Statistics"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+               <HorizontalStackLayout Spacing="100" VerticalOptions="Center" HorizontalOptions="Center">
+                    <view:GraphView Title="Subscribers Dashboard" Description="You have reached 3 new users this week"/>
+                    <view:GraphView Title="Coupons Dashboard" Description="10 Copoun has been redeemed this week"/>
+                </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <VerticalStackLayout Spacing="24">
+                <Label 
+                    Style="{StaticResource title}"
+                    Text="Activity"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+               <HorizontalStackLayout Spacing="30" VerticalOptions="Center" HorizontalOptions="Center">
+                    <view:ActivityView Description="Average Response Time"/>
+                    <view:ActivityView Description="Business Views"/>
+                    <view:ActivityView Description="Place holder"/>
+                </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

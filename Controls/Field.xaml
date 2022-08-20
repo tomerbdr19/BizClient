@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HorizontalStackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.Controls.Field"
+             x:Name="self"
+             Spacing="12">
+    <Label FontSize="Medium" Text="{Binding Key ,Source={x:Reference self}, StringFormat='{0}: '}"/>
+    <Label FontSize="Medium" Text="{Binding Value ,Source={x:Reference self}}"/>
+</HorizontalStackLayout>
+

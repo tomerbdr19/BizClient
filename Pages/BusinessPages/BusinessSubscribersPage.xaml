@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:BizClient.ViewModel.BusinessViewModel"
+             xmlns:controls="clr-namespace:BizClient.Controls"
+             xmlns:views="clr-namespace:BizClient.View"
+             x:DataType="viewmodels:BusinessSubscribersPageViewModel"
+             x:Class="BizClient.Pages.BusinessPages.BusinessSubscribersPage"
+             Title="Your Subscribers">
+    <Grid RowDefinitions="*" ColumnDefinitions="*" Padding="200,0">
+        <views:ActivityIndicatorView Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}"/>
+        <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" Spacing="24" Padding="0,45">
+            <Frame HorizontalOptions="FillAndExpand" Padding="24">
+                <VerticalStackLayout Spacing="30">
+                    <Label Text="Filter by:"/>
+                    <FlexLayout Direction="Row" AlignItems="Center">
+                        <CheckBox IsChecked="{Binding CityFilter.IsChecked,Mode=TwoWay}"/>
+                        <Label FontSize="Medium" Text="City:" Padding="0,0,24,0"/>
+                        <Picker
+                            WidthRequest="400"
+                            ItemsSource="{Binding CityFilter.Options, Mode=TwoWay}"
+                            SelectedItem="{Binding CityFilter.Value, Mode=TwoWay}"
+                            />
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" AlignItems="Center">
+                        <CheckBox IsChecked="{Binding SubscriptionDateFilter.IsChecked,Mode=TwoWay}"/>
+                        <Label FontSize="Medium" Text="Subscription Date:"/>
+                        <Label FontSize="Medium" Text="From" Padding="24,0"/>
+                        <DatePicker
+                            WidthRequest="100"
+                            Date="{Binding SubscriptionDateFilter.From, Mode=TwoWay}"
+                            />
+                        <Label FontSize="Medium" Text="To" Padding="24,0"/>
+                        <DatePicker
+                            WidthRequest="100"
+                            Date="{Binding SubscriptionDateFilter.To, Mode=TwoWay}"
+                            />
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" AlignItems="Center">
+                        <CheckBox IsChecked="{Binding AgeFilter.IsChecked,Mode=TwoWay}"/>
+                        <Label FontSize="Medium" Text="Age:"/>
+                        <Label FontSize="Medium" Text="From" Padding="24,0"/>
+                        <Entry
+                            WidthRequest="100"
+                            Text="{Binding AgeFilter.From, Mode=TwoWay}"
+                            />
+                        <Label FontSize="Medium" Text="To" Padding="24,0"/>
+                        <Entry
+                            WidthRequest="100"
+                            Text="{Binding AgeFilter.To, Mode=TwoWay}"
+                            />
+                    </FlexLayout>
+                    <HorizontalStackLayout HorizontalOptions="End" Spacing="6">
+                        <Button Style="{StaticResource secondary}" Text="Reset" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnResetClickCommand}" />
+                        <Button Text="Apply" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnApplyFiltersCommand}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+            <Label FontSize="Large" HorizontalOptions="Center" Text="{Binding Subscriptions.Count, StringFormat='Total Subscribers: {0}'}" IsVisible="{Binding IsNotLoading}"/>
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Spacing="12" BindableLayout.ItemsSource="{Binding Subscriptions}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <views:SubscriberView HorizontalOptions="CenterAndExpand" Subscription="{Binding}"/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
