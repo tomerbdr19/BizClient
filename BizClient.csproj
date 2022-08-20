@@ -119,7 +119,6 @@
 	  <PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.486" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Pages\" />
 	  <Folder Include="Shells\" />
 	  <Folder Include="Store\" />
 	  <Folder Include="Controls\" />
@@ -130,6 +129,9 @@
 	  <Folder Include="Helpers\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <MauiXaml Update="Pages\AdminHomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\BusinessesRegistrationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
