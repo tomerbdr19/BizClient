@@ -17,7 +17,7 @@
                         <Frame VerticalOptions="Center" WidthRequest="75" HeightRequest="75" CornerRadius="37"  IsClippedToBounds="True">
                             <Image Source="{Binding Subscription.User.ImageUrl ,Source={x:Reference self}}" Aspect="AspectFill" Margin="-20"/>
                         </Frame>
-                        <Label VerticalOptions="Center" Text="{Binding Subscription.User.Name ,Source={x:Reference self}}"/>
+                        <Label VerticalOptions="Center" FontSize="Large" Text="{Binding Subscription.User.Name ,Source={x:Reference self}}"/>
                     </HorizontalStackLayout>
                     <HorizontalStackLayout Spacing="12">
                         <Button VerticalOptions="Center" Text="Message"/>
@@ -26,13 +26,22 @@
             </xct:Expander.Header>
             <xct:Expander.ContentTemplate>
                 <DataTemplate>
-                        <VerticalStackLayout>
-                            <controls:Field Key="Age" Value="5"/>
-                            <controls:Field Key="Region" Value="5"/>
-                            <controls:Field Key="City" Value="5"/>
-                            <controls:Field Key="Subscription time" Value="5"/>
-                            <controls:Field Key="Copoun redeem" Value="5"/>
+                    <HorizontalStackLayout Spacing="200" Padding="100,12">
+                        <VerticalStackLayout Spacing="12">
+                            <Label Text="Info" FontSize="Large" TextDecorations="Underline"/>
+                            <controls:Field Key="Age" Value="{Binding Age ,Source={x:Reference self}}"/>
+                            <controls:Field Key="City" Value="{Binding Subscription.User.Info.City ,Source={x:Reference self}}"/>
+                            <controls:Field Key="Subscription period" Value="{Binding SubscriptionPeriod ,Source={x:Reference self}}"/>
                         </VerticalStackLayout>
+                        <VerticalStackLayout Spacing="12">
+                            <Label Text="Coupons Activity" FontSize="Large" TextDecorations="Underline"/>
+                            <controls:Field Key="Total" Value="{Binding Subscription.Activity.TotalCoupons ,Source={x:Reference self}}"/>
+                            <controls:Field Key="Active" Value="{Binding Subscription.Activity.ActiveCoupons ,Source={x:Reference self}}"/>
+                            <controls:Field Key="Redeemed" Value="{Binding Subscription.Activity.RedeemedCoupons ,Source={x:Reference self}}"/>
+                            <controls:Field Key="Percentage" Value="{Binding Subscription.Activity.RedeemPercentage ,Source={x:Reference self}, StringFormat='{0}%'}"/>
+                            <controls:Field Key="Last activity" Value="{Binding LastActivity ,Source={x:Reference self}}"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
                 </DataTemplate>
             </xct:Expander.ContentTemplate>
         </xct:Expander>

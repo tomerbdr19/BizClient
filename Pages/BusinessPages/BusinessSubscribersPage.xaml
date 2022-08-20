@@ -15,7 +15,7 @@
                     <Label Text="Filter by:"/>
                     <FlexLayout Direction="Row" AlignItems="Center">
                         <CheckBox IsChecked="{Binding CityFilter.IsChecked,Mode=TwoWay}"/>
-                        <Label Text="City:" Padding="0,0,24,0"/>
+                        <Label FontSize="Medium" Text="City:" Padding="0,0,24,0"/>
                         <Picker
                             WidthRequest="400"
                             ItemsSource="{Binding CityFilter.Options, Mode=TwoWay}"
@@ -24,13 +24,13 @@
                     </FlexLayout>
                     <FlexLayout Direction="Row" AlignItems="Center">
                         <CheckBox IsChecked="{Binding SubscriptionDateFilter.IsChecked,Mode=TwoWay}"/>
-                        <Label Text="Subscription Date:"/>
-                        <Label Text="From" Padding="24,0"/>
+                        <Label FontSize="Medium" Text="Subscription Date:"/>
+                        <Label FontSize="Medium" Text="From" Padding="24,0"/>
                         <DatePicker
                             WidthRequest="100"
                             Date="{Binding SubscriptionDateFilter.From, Mode=TwoWay}"
                             />
-                        <Label Text="To" Padding="24,0"/>
+                        <Label FontSize="Medium" Text="To" Padding="24,0"/>
                         <DatePicker
                             WidthRequest="100"
                             Date="{Binding SubscriptionDateFilter.To, Mode=TwoWay}"
@@ -38,13 +38,13 @@
                     </FlexLayout>
                     <FlexLayout Direction="Row" AlignItems="Center">
                         <CheckBox IsChecked="{Binding AgeFilter.IsChecked,Mode=TwoWay}"/>
-                        <Label Text="Age:"/>
-                        <Label Text="From" Padding="24,0"/>
+                        <Label FontSize="Medium" Text="Age:"/>
+                        <Label FontSize="Medium" Text="From" Padding="24,0"/>
                         <Entry
                             WidthRequest="100"
                             Text="{Binding AgeFilter.From, Mode=TwoWay}"
                             />
-                        <Label Text="To" Padding="24,0"/>
+                        <Label FontSize="Medium" Text="To" Padding="24,0"/>
                         <Entry
                             WidthRequest="100"
                             Text="{Binding AgeFilter.To, Mode=TwoWay}"

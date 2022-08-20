@@ -109,6 +109,7 @@
 	  <None Remove="Xamarin.CommunityToolkit.MauiCompat" />
 	  <None Remove="BizModels\Helpers\" />
 	  <None Remove="Microsoft.Maui.Dependencies" />
+	  <None Remove="Helpers\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -127,6 +128,7 @@
 	  <Folder Include="Pages\BusinessPages\" />
 	  <Folder Include="View\BusinessView\" />
 	  <Folder Include="BizModels\Helpers\" />
+	  <Folder Include="Helpers\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Pages\BusinessesRegistrationPage.xaml">

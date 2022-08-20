@@ -15,4 +15,5 @@ global using BizClient.Controls;
 global using BizClient.Shells;
 global using BizService.Services;
 global using BizModels.Helpers;
+global using BizClient.Helpers;
 global using BizService;
