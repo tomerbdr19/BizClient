@@ -21,6 +21,12 @@ namespace BizService.Services
             return subscriptionsList;
         }
 
+        async public Task<List<Subscription>> GetFilteredSubscriptions(string businessId, List<IFilter> filters)
+        {
+            var subscriptionsList = await PostAsync<List<Subscription>>($"{Path}/filter", new { business = businessId, filters = FilterRequestGenerator.Generate(filters) });
+            return subscriptionsList;
+        }
+
         async public Task<List<Subscription>> GetUserSubscriptions(string userId)
         {
             var subscriptionsList = await GetAsync<List<Subscription>>(Path, new Dictionary<string, string>() { { "user", userId } });

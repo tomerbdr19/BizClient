@@ -9,46 +9,54 @@
              Title="Your Subscribers">
     <Grid RowDefinitions="*" ColumnDefinitions="*" Padding="200,0">
         <views:ActivityIndicatorView Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}"/>
-        <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsNotLoading}" Spacing="45" Padding="0,45">
+        <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" Spacing="24" Padding="0,45">
             <Frame HorizontalOptions="FillAndExpand" Padding="24">
-                <VerticalStackLayout Spacing="12">
+                <VerticalStackLayout Spacing="30">
                     <Label Text="Filter by:"/>
-                    <HorizontalStackLayout VerticalOptions="Center" Spacing="12">
+                    <FlexLayout Direction="Row" AlignItems="Center">
                         <CheckBox IsChecked="{Binding CityFilter.IsChecked,Mode=TwoWay}"/>
-                        <Label Text="City"/>
+                        <Label Text="City:" Padding="0,0,24,0"/>
                         <Picker
-                            WidthRequest="200"
+                            WidthRequest="400"
                             ItemsSource="{Binding CityFilter.Options, Mode=TwoWay}"
                             SelectedItem="{Binding CityFilter.Value, Mode=TwoWay}"
                             />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout VerticalOptions="Center" Spacing="12">
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" AlignItems="Center">
                         <CheckBox IsChecked="{Binding SubscriptionDateFilter.IsChecked,Mode=TwoWay}"/>
-                        <Label Text="Subscription Date"/>
+                        <Label Text="Subscription Date:"/>
+                        <Label Text="From" Padding="24,0"/>
                         <DatePicker
-                            WidthRequest="200"
-                            Date="{Binding SubscriptionDateFilter.Value.From}"
+                            WidthRequest="100"
+                            Date="{Binding SubscriptionDateFilter.From, Mode=TwoWay}"
                             />
+                        <Label Text="To" Padding="24,0"/>
                         <DatePicker
-                            WidthRequest="200"
-                            Date="{Binding SubscriptionDateFilter.Value.To}"
+                            WidthRequest="100"
+                            Date="{Binding SubscriptionDateFilter.To, Mode=TwoWay}"
                             />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout VerticalOptions="Center" Spacing="12">
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" AlignItems="Center">
                         <CheckBox IsChecked="{Binding AgeFilter.IsChecked,Mode=TwoWay}"/>
-                        <Label Text="Subscription Date"/>
+                        <Label Text="Age:"/>
+                        <Label Text="From" Padding="24,0"/>
                         <Entry
                             WidthRequest="100"
-                            Text="{Binding AgeFilter.Value.From}"
+                            Text="{Binding AgeFilter.From, Mode=TwoWay}"
                             />
+                        <Label Text="To" Padding="24,0"/>
                         <Entry
-                            WidthRequest="200"
-                            Text="{Binding AgeFilter.Value.To}"
+                            WidthRequest="100"
+                            Text="{Binding AgeFilter.To, Mode=TwoWay}"
                             />
+                    </FlexLayout>
+                    <HorizontalStackLayout HorizontalOptions="End" Spacing="6">
+                        <Button Style="{StaticResource secondary}" Text="Reset" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnResetClickCommand}" />
+                        <Button Text="Apply" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnApplyFiltersCommand}"/>
                     </HorizontalStackLayout>
-                    <Button Text="Apply" HorizontalOptions="End" Command="{Binding OnApplyFiltersCommand}"/>
                 </VerticalStackLayout>
             </Frame>
+            <Label FontSize="Large" HorizontalOptions="Center" Text="{Binding Subscriptions.Count, StringFormat='Total Subscribers: {0}'}" IsVisible="{Binding IsNotLoading}"/>
             <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Spacing="12" BindableLayout.ItemsSource="{Binding Subscriptions}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>

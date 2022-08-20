@@ -11,30 +11,54 @@ public partial class BusinessSubscribersPageViewModel : BaseViewModel
 
     public ObservableCollection<Subscription> Subscriptions { get; } = new();
 
-    [ObservableProperty]
-    public Filter<string> cityFilter = new Filter<string> { IsChecked = false, Options = new List<string> { "Tel aviv", "modiin", "Rishon" } };
+    private List<IFilter> filters = new();
 
     [ObservableProperty]
-    public Filter<FilterRange<DateTime>> subscriptionDateFilter = new() { Value = new() { From = DateTime.Now, To = DateTime.Now } };
+    public OptionsFilter<string> cityFilter;
 
     [ObservableProperty]
-    public Filter<FilterRange<int>> ageFilter = new() { Value = new() { From = 0, To = 0 } };
+    public RangeFilter<DateTime> subscriptionDateFilter;
+
+    [ObservableProperty]
+    public RangeFilter<Nullable<int>> ageFilter;
 
     async public void OnAppearing()
     {
         Subscriptions.Clear();
+        resetFilters();
+        await OnApplyFilters();
+    }
 
-        IsLoading = true;
-        await Task.Delay(500);
-        var subscriptions = await this.subscriptionService.GetBusinessSubscriptions("62dea60742831efed2e07c7a");
-        subscriptions.ForEach((_) => Subscriptions.Add(_));
-        IsLoading = false;
+    private void resetFilters()
+    {
+        CityFilter = new() { Key = "city", Options = new List<string> { "Tel Aviv", "Modiin", "Rishon" } };
+        SubscriptionDateFilter = new() { Key = "createdAt", From = DateTime.Today, To = DateTime.Today };
+        AgeFilter = new() { Key = "age" };
+
+        filters.Add(CityFilter);
+        filters.Add(AgeFilter);
+        filters.Add(SubscriptionDateFilter);
+
+        filters.ForEach((_) => _.IsChecked = false);
     }
 
     [ICommand]
-    public void OnApplyFilters()
+    public async Task OnApplyFilters()
     {
-        // TODO: implmenet
+        Subscriptions.Clear();
+
+        IsLoading = true;
+        var subscriptions = await this.subscriptionService.GetFilteredSubscriptions("62dea60742831efed2e07c7a", filters.FindAll((_) => _.IsChecked == true));
+        subscriptions.ForEach((_) => Subscriptions.Add(_));
+        IsLoading = false;
+
+    }
+
+    [ICommand]
+    public async Task OnResetClick()
+    {
+        resetFilters();
+        await OnApplyFilters();
     }
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs e)
@@ -42,16 +66,4 @@ public partial class BusinessSubscribersPageViewModel : BaseViewModel
         base.OnPropertyChanged(e);
     }
 
-}
-public class Filter<T>
-{
-    public bool IsChecked { get; set; } = false;
-    public T Value { get; set; }
-    public List<T> Options { get; set; } = new();
-}
-
-public class FilterRange<T>
-{
-    public T From { get; set; }
-    public T To { get; set; }
 }

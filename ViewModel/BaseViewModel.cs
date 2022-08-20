@@ -3,6 +3,7 @@
 public partial class BaseViewModel : ObservableObject
 {
     [ObservableProperty]
+    [AlsoNotifyChangeFor(nameof(IsNotLoading))]
     bool isLoading;
 
     public bool IsNotLoading => !IsLoading;
