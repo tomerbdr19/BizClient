@@ -8,9 +8,9 @@
              xmlns:views="clr-namespace:BizClient.View"
              Title="{Binding Title}"
              >
-    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <Grid RowDefinitions="*" ColumnDefinitions="*" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <views:ActivityIndicatorView IsVisible="{Binding IsLoading}"/>
-        <Grid ColumnDefinitions="*" RowDefinitions="*" IsVisible="{Binding IsNotLoading}">
+        <Grid Grid.Column="0" Grid.Row="0" ColumnDefinitions="*" RowDefinitions="*" IsVisible="{Binding IsNotLoading}">
             <CollectionView
             ItemsSource="{Binding Businesses}"
             Grid.Row="0"
@@ -57,5 +57,5 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
-    </AbsoluteLayout>
+    </Grid>
 </ContentPage>

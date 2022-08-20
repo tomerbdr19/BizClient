@@ -8,9 +8,9 @@
              x:Class="BizClient.Pages.ChatPage"
              Title="ChatPage">
 
-    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <Grid RowDefinitions="*" ColumnDefinitions="*" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <view:ActivityIndicatorView IsVisible="{Binding IsLoading}"/>
-        <Grid RowDefinitions="*,Auto">
+        <Grid Grid.Column="0" Grid.Row="0" RowDefinitions="*,Auto">
             <VerticalStackLayout Grid.Row="0">
                 <CollectionView ItemsSource="{Binding Messages}">
                     <CollectionView.ItemTemplate>
@@ -25,5 +25,5 @@
                 <Button Grid.Column="1" Text="Send"/>
             </Grid>
         </Grid>
-    </AbsoluteLayout>
+    </Grid>
 </ContentPage>
