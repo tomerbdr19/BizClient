@@ -7,9 +7,9 @@
              xmlns:models="clr-namespace:BizModels.Model"
              x:DataType="viewmodels:CouponsPageViewModel"
              Title="My Coupons">
-    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <Grid RowDefinitions="*" ColumnDefinitions="*" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <views:ActivityIndicatorView IsVisible="{Binding IsLoading}"/>
-        <VerticalStackLayout IsVisible="{Binding IsNotLoading}">
+        <VerticalStackLayout Grid.Column="0" Grid.Row="0" IsVisible="{Binding IsNotLoading}">
             <Grid ColumnDefinitions="*">
                 <CollectionView ItemsSource="{Binding Coupons}">
                     <CollectionView.ItemsLayout>
@@ -23,5 +23,5 @@
                 </CollectionView>
             </Grid>
      </VerticalStackLayout>
-    </AbsoluteLayout>
+    </Grid>
 </ContentPage>
