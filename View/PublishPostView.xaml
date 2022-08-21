@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Frame       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:BizModels.Model"
+             x:Class="BizClient.View.PublishPostView"
+             xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
+             x:DataType="viewmodel:PublishPostViewModel"
+             StyleClass="card"
+             >
+    <VerticalStackLayout
+        Spacing="10"
+        HorizontalOptions="Center"
+         VerticalOptions="Center">
+        <Entry 
+                Placeholder="What do you want to share?"
+                HeightRequest="100" 
+                WidthRequest="300"
+                Text="{Binding PublishPost.Caption,Mode=TwoWay }"
+                />
+        <Image Source="{Binding ImageUrl,Mode=TwoWay }"
+                   x:Name="image"
+                   IsVisible="{Binding IsVisible,Mode=OneWay}"
+                   Aspect="AspectFill"
+                   HeightRequest="100"
+                   WidthRequest="100" />
+        <ImageButton
+                Source="uploadicon.png"
+                HorizontalOptions="End" 
+                HeightRequest="35"
+                WidthRequest="50"
+                Command="{Binding OnAddPictureClickCommand}"
+            />
+        <Button
+            Text="Publish"
+            HorizontalOptions="End"   
+            Command="{Binding OnPublishClickCommand}"
+            />
+    </VerticalStackLayout>
+</Frame>
