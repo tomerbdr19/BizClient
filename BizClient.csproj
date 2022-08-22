@@ -40,7 +40,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\bluelogo.svg"/>
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\bluelogo.svg" Color="White" BaseSize="128,128" />
@@ -56,6 +56,7 @@
 	<ItemGroup>
 	  <None Remove="Newtonsoft.Json" />
 	  <None Remove="CommunityToolkit.Mvvm" />
+	  <None Remove="Resources\AppIcon\bluelogo.svg" />
 	  <None Remove="View\" />
 	  <None Remove="Pages\" />
 	  <None Remove="ViewModel\Pages\" />
