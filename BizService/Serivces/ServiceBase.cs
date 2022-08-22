@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -63,6 +64,25 @@ namespace BizService.Services
         {
             var serializedContent = Serialize(content);
             var response = await _httpClient.PostAsync(path, serializedContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("post error");
+            }
+
+            var deserilaizedContent = await Deserialize<T>(response.Content);
+            return deserilaizedContent;
+        }
+
+        protected async Task<T> PostFileAsync<T>(string path, byte[] content, string fileName)
+        {
+            ByteArrayContent bytes = new ByteArrayContent(content);
+            bytes.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+            MultipartFormDataContent form = new MultipartFormDataContent();
+            form.Headers.ContentType.MediaType = "multipart/form-data";
+            form.Add(bytes, "file", fileName);
+
+            var response = await _httpClient.PostAsync(path, form);
 
             if (!response.IsSuccessStatusCode)
             {
