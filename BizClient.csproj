@@ -117,9 +117,9 @@
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
 	  <PackageReference Include="Xamarin.CommunityToolkit.MauiCompat" Version="2.0.2-preview1013" />
 	  <PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.486" />
+	  <PackageReference Include="ZXing.Net.Maui" Version="0.1.0-preview.5" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Shells\" />
 	  <Folder Include="Store\" />
 	  <Folder Include="Controls\" />
 	  <Folder Include="ViewModel\BusinessPages\" />
@@ -129,6 +129,9 @@
 	  <Folder Include="Helpers\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <MauiXaml Update="Pages\AdminChatPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\AdminHomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -136,6 +139,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\CustomerRegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\QRScannerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Shells\MobileAdminShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\ActivityIndicatorView.xaml">

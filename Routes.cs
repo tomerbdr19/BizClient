@@ -17,6 +17,15 @@ namespace BizClient
         public static readonly String HomeTab = $"//{Base}/{Home}";
         public static readonly String BusinessesTab = $"//{Base}/{Businesses}";
         public static readonly String CouponsTab = $"//{Base}/{Coupons}";
+
+        public static readonly String AdminBase = "AdminBase";
+        public static readonly String AdminHome = "AdminHome";
+        public static readonly String QRScanner = "QRScanner";
+        public static readonly String AdminChat = "AdminChat";
+
+        public static readonly String AdminHomeTab = $"//{AdminBase}/{AdminHome}";
+        public static readonly String QRScannerTab = $"//{AdminBase}/{QRScanner}";
+        public static readonly String AdminChatTab = $"//{AdminBase}/{AdminChat}";
     }
 }
 

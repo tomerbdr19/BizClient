@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BizModels.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,10 @@ namespace BizService.Services
             var coupons = await GetAsync<string>($"{Path}/redeem-qr-code", new Dictionary<string, string> { { "coupon", couponId } });
             return coupons;
         }
-
-        public async Task<List<Coupon>> RedeemCoupon(string redeemCode)
+        public async Task<Coupon> RedeemCoupon(string redeemCode, string businessId)
         {
-            throw new Exception("not implemented");
+            var coupons = await PostAsync<Coupon>($"{Path}/redeem", new  { redeemCode,business = businessId  });
+            return coupons;
         }
     }
 }
