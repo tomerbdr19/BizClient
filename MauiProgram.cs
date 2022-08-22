@@ -1,4 +1,6 @@
-﻿namespace BizClient;
+﻿using ZXing.Net.Maui;
+
+namespace BizClient;
 
 public static class MauiProgram
 {
@@ -7,6 +9,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseBarcodeReader()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -23,6 +26,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<UserRegisterPage>();
         builder.Services.AddSingleton<BusinessesRegistrationPage>();
 
+        builder.Services.AddSingleton<AdminHomePage>();
+        //builder.Services.AddSingleton<AdminChatPage>();
+        builder.Services.AddSingleton<QRScannerPage>();
+
         // View Models
         builder.Services.AddSingleton<LoginPageViewModel>();
         builder.Services.AddSingleton<BusinessesPageViewModel>();
@@ -30,6 +37,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<CouponsPageViewModel>();
         builder.Services.AddSingleton<UserRegisterViewModel>();
         builder.Services.AddSingleton<BusinessesRegistrationViewModel>();
+
+        builder.Services.AddSingleton<AdminHomePageViewModel>();
+        //builder.Services.AddSingleton<AdminChatPageViewModel>();
+        builder.Services.AddSingleton<QRScannerPageViewModel>();
 
         // Dekstop Business Pages
         builder.Services.AddSingleton<BusinessHomePage>();

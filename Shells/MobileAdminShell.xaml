@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BizClient.Shells.MobileAdminShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:BizClient.Pages"
+    x:Name="self"
+    Shell.FlyoutBehavior="Disabled"
+    >
+    <TabBar Route="AdminBase">
+        <Tab Title="Home" Route="AdminHome">
+            <ShellContent ContentTemplate="{DataTemplate pages:AdminHomePage}"/>
+        </Tab>
+        <Tab Title="QR scanner" Route="QRScanner">
+            <ShellContent ContentTemplate="{DataTemplate pages:QRScannerPage}"/>
+        </Tab>
+        <Tab Title="Chat" Route="AdminChat">
+            <ShellContent ContentTemplate="{DataTemplate pages:AdminChatPage}"/>
+        </Tab>
+    </TabBar>
+</Shell>
