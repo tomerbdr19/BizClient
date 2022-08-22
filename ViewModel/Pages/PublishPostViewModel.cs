@@ -5,6 +5,7 @@ public partial class PublishPostViewModel : BaseViewModel
     public PublishPostViewModel()
     {
         postService = Store.ServicesStore.PostService;
+        fileService = Store.ServicesStore.FileService;
     }
 
     [ObservableProperty]
@@ -17,6 +18,7 @@ public partial class PublishPostViewModel : BaseViewModel
     private bool isVisible = false;
 
     private readonly PostService postService;
+    private readonly FileService fileService;
 
 
     [ICommand]
@@ -45,8 +47,8 @@ public partial class PublishPostViewModel : BaseViewModel
 
     async private Task UploadAndSetImage()
     {
-        // TODO: implement
-        return;
+        var url = await fileService.UploadImage(imageUrl);
+        PublishPost.ImageUrl = url;
     }
 
     public Action<Post> OnPublishSuccess { get; set; }
