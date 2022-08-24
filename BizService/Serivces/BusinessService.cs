@@ -38,5 +38,11 @@ namespace BizService.Services
             var business = await PostAsync<Business>(Path, new { business = newBusiness });
             return business;
         }
+
+        async public Task<Business> UpdateBusinessTheme(string businessId, string key)
+        {
+            var business = await PostAsync<Business>($"{Path}/theme", new { business = businessId, key });
+            return business;
+        }
     }
 }

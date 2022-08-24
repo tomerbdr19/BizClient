@@ -12,6 +12,8 @@ public partial class BusinessPageViewModel : BaseViewModel
     public BusinessPageViewModel(Business business)
     {
         this.Business = business;
+        this.Palette = Business.Theme.Key != null ? BusinessPalettes.Palettes.Find(_ => _.Key == this.Business.Theme.Key) : BusinessPalettes.Palettes[0];
+
         this.EditedInfo = CloneHelper.Clone<BusinessInfo>(Business.Info);
         this.postService = Store.ServicesStore.PostService;
         this.businessService = Store.ServicesStore.BusinessService;
@@ -34,6 +36,9 @@ public partial class BusinessPageViewModel : BaseViewModel
     private readonly SubscriptionService subscriptionService;
     private readonly ChatService chatService;
     public Subscription subscription;
+
+    [ObservableProperty]
+    public Palette palette;
 
     [ObservableProperty]
     [AlsoNotifyChangeFor(nameof(IsEditVisible))]
@@ -113,9 +118,6 @@ public partial class BusinessPageViewModel : BaseViewModel
     #region Business
 
     [ObservableProperty]
-    public Palette palette = BusinessPalettes.Palettes[0];
-
-    [ObservableProperty]
     public bool isPalettePickerOpen = false;
 
     [ObservableProperty]
@@ -164,10 +166,12 @@ public partial class BusinessPageViewModel : BaseViewModel
         }
     }
 
-    public void OnApplyPalette(Palette palette)
+    public async void OnApplyPalette(Palette palette)
     {
         this.IsPalettePickerOpen = false;
         this.Palette = palette;
+        var updatedBusiness = await this.businessService.UpdateBusinessTheme(Business.Id, Palette.Key);
+        Store.Auth.Business = Business = updatedBusiness;
     }
 
     #endregion

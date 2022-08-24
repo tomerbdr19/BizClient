@@ -9,7 +9,7 @@ namespace BizModels.Model
         public new string Name { get; set; }
         public new string ImageUrl { get; set; }
         public BusinessInfo Info { get; set; } = new();
-        public string OwnerId { get; set; }
+        public BusinessTheme Theme { get; set; } = new();
     }
 
     public class BusinessInfo
@@ -17,6 +17,11 @@ namespace BizModels.Model
         public string Description { get; set; }
         public BusinessLocation Location { get; set; } = new();
         public BusinessContact Contact { get; set; } = new();
+    }
+
+    public class BusinessTheme
+    {
+        public string Key { get; set; }
     }
 
     public class BusinessLocation
