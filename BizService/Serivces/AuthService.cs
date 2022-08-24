@@ -20,9 +20,9 @@ namespace BizService.Services
             return auth;
         }
 
-        async public Task<Auth> Register(string email, string password)
+        async public Task<Auth> Register(string email, string password, string type)
         {
-            var auth = await PostAsync<Auth>($"{Path}/register", new { email, password });
+            var auth = await PostAsync<Auth>($"{Path}/register", new { email, password, type });
             return auth;
         }
     }
