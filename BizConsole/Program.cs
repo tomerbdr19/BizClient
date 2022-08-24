@@ -53,7 +53,7 @@ public class Fetcher
 
     async public Task<User> RegisterUser()
     {
-        var auth = await services.AuthService.Register("testuser@gmail.com", "123");
+        var auth = await services.AuthService.Register("testuser@gmail.com", "123", "user");
         var user = await services.UserService.UpdateUser(new User { Id = auth.User.Id, Info = new UserInfo { FirstName = "Test", LastName = "test" } });
 
         return user;

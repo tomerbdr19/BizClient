@@ -1,4 +1,5 @@
-﻿using ZXing.Net.Maui;
+﻿using Syncfusion.Maui.Core.Hosting;
+using ZXing.Net.Maui;
 
 namespace BizClient;
 
@@ -10,6 +11,7 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseBarcodeReader()
+            .ConfigureSyncfusionCore()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
