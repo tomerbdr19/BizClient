@@ -10,7 +10,6 @@ public partial class UserRegisterViewModel : BaseViewModel
         authService = Store.ServicesStore.AuthService;
         userService = Store.ServicesStore.UserService;
         fileService = Store.ServicesStore.FileService;
-        IsLoading = false;
     }
 
     private readonly AuthService authService;
