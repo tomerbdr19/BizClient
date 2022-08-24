@@ -40,7 +40,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\bluelogo.svg"/>
+		<MauiIcon Include="Resources\AppIcon\bluelogo.svg" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\bluelogo.svg" Color="White" BaseSize="128,128" />
@@ -219,6 +219,9 @@
 	  </MauiXaml>
 	  <MauiXaml Update="View\PublishPostView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\BusinessView\PalettePicker.xaml">
+	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
