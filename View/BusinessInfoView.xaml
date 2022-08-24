@@ -7,23 +7,27 @@
              StyleClass="card"
              x:Name="self"
              Spacing="12"
-             HorizontalOptions="Start"
+             HorizontalOptions="StartAndExpand"
              x:DataType="model:BusinessInfo"
              >
     <VerticalStackLayout StyleClass="formField">
-        <Label Text="Descripition"/>
-        <Label Text="{Binding Description}"/>
+        <Label Style="{StaticResource title}" Text="About us"/>
+        <Label Style="{StaticResource body}" Text="{Binding Info.Description, Source={x:Reference self}}" IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"/>
+        <Entry Text="{Binding Info.Description, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}"/>
     </VerticalStackLayout>
     <VerticalStackLayout StyleClass="formField">
-        <Label Text="Address"/>
-        <Label Text="{Binding Location}"/>
+        <Label Style="{StaticResource title}" Text="Address"/>
+        <Label Style="{StaticResource body}" Text="{Binding Info.Location, Source={x:Reference self}}" IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"/>
+        <Entry Text="{Binding EditedInfo.Location, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}"/>
     </VerticalStackLayout>
     <VerticalStackLayout StyleClass="formField">
-        <Label Text="Phone Number"/>
-        <Label Text="{Binding Contact.Phones}"/>
+        <Label Style="{StaticResource title}" Text="UserRegisterPage Number"/>
+        <Label Style="{StaticResource body}" Text="{Binding Info.Contact.Phone, Source={x:Reference self}}" IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"/>
+        <Entry Text="{Binding EditedInfo.Contact.Phone, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}"/>
     </VerticalStackLayout>
     <VerticalStackLayout StyleClass="formField">
-        <Label Text="Email"/>
-        <Label Text="{Binding Contact.Email}"/>
+        <Label Style="{StaticResource title}" Text="Email"/>
+        <Label Style="{StaticResource body}" Text="{Binding Info.Contact.Email, Source={x:Reference self}}" IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"/>
+        <Entry Text="{Binding EditedInfo.Contact.Email, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}"/>
     </VerticalStackLayout>
 </VerticalStackLayout>

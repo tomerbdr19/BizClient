@@ -13,8 +13,9 @@ public partial class BusinessPage : ContentPage
     {
         set
         {
-            BindingContext = new BusinessPageViewModel(value);
+            var viewModel = new BusinessPageViewModel(value);
+            BindingContext = viewModel;
+            this.PalettePicker.OnApplyClick += viewModel.OnApplyPalette;
         }
     }
-
 }
