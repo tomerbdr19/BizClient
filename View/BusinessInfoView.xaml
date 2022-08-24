@@ -13,7 +13,7 @@
     <VerticalStackLayout StyleClass="formField">
         <Label Style="{StaticResource title}" Text="About us"/>
         <Label Style="{StaticResource body}" Text="{Binding Info.Description, Source={x:Reference self}}" IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"/>
-        <Entry Text="{Binding Info.Description, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}"/>
+        <Entry Text="{Binding EditedInfo.Description, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}"/>
     </VerticalStackLayout>
     <VerticalStackLayout StyleClass="formField">
         <Label Style="{StaticResource title}" Text="Address"/>
