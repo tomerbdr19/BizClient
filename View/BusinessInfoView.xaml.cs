@@ -33,7 +33,7 @@ public partial class BusinessInfoView
     BindableProperty.Create(
     nameof(IsEdit),
     typeof(bool),
-    typeof(BusinessInfoView));
+    typeof(BusinessInfoView), false);
 
     public bool IsEdit
     {
@@ -45,7 +45,7 @@ public partial class BusinessInfoView
     BindableProperty.Create(
     nameof(IsNotEdit),
     typeof(bool),
-    typeof(BusinessInfoView));
+    typeof(BusinessInfoView), true);
 
     public bool IsNotEdit
     {

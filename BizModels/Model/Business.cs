@@ -26,12 +26,11 @@ namespace BizModels.Model
 
     public class BusinessLocation
     {
-        public string Country { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
         public override string ToString()
         {
-            return $"{Country}, {City}, {Street}";
+            return $"{City}, {Street}";
         }
     }
 

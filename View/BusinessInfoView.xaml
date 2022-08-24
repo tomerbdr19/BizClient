@@ -10,24 +10,48 @@
              HorizontalOptions="StartAndExpand"
              x:DataType="model:BusinessInfo"
              >
+    <VerticalStackLayout.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="0,12,0,0"/>
+                <Setter Property="WidthRequest" Value="600"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="IsVisible" Value="{Binding IsEdit, Source={x:Reference self}}"/>
+            </Style>
+            <Style TargetType="Label" x:Key="title">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextDecorations" Value="Underline"/>
+            </Style>
+            <Style TargetType="Label" x:Key="body">
+                <Setter Property="FontSize" Value="Body"/>
+                <Setter Property="IsVisible" Value="{Binding IsNotEdit, Source={x:Reference self}}"/>
+            </Style>
+            <Style TargetType="VerticalStackLayout">
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="Spacing" Value="6"/>
+            </Style>
+        </ResourceDictionary>
+    </VerticalStackLayout.Resources>
     <VerticalStackLayout StyleClass="formField">
-        <Label Style="{StaticResource title}" Text="About us"/>
-        <Label Style="{StaticResource body}" Text="{Binding Info.Description, Source={x:Reference self}}" IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"/>
-        <Entry Text="{Binding EditedInfo.Description, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}"/>
+        <Label Style="{DynamicResource title}" Text="About us"/>
+        <Label Style="{DynamicResource body}" Text="{Binding Info.Description, Source={x:Reference self}}"/>
+        <Entry Text="{Binding EditedInfo.Description, Source={x:Reference self}}"/>
     </VerticalStackLayout>
     <VerticalStackLayout StyleClass="formField">
-        <Label Style="{StaticResource title}" Text="Address"/>
-        <Label Style="{StaticResource body}" Text="{Binding Info.Location, Source={x:Reference self}}" IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"/>
-        <Entry Text="{Binding EditedInfo.Location, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}"/>
+        <Label Style="{DynamicResource title}" Text="Address"/>
+        <Label Style="{DynamicResource body}" Text="{Binding Info.Location, Source={x:Reference self}}"/>
+        <Entry Text="{Binding EditedInfo.Location.City, Source={x:Reference self}}" Placeholder="City"/>
+        <Entry Text="{Binding EditedInfo.Location.Street, Source={x:Reference self}}" Placeholder="Street"/>
     </VerticalStackLayout>
     <VerticalStackLayout StyleClass="formField">
-        <Label Style="{StaticResource title}" Text="UserRegisterPage Number"/>
-        <Label Style="{StaticResource body}" Text="{Binding Info.Contact.Phone, Source={x:Reference self}}" IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"/>
-        <Entry Text="{Binding EditedInfo.Contact.Phone, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}"/>
+        <Label Style="{DynamicResource title}" Text="UserRegisterPage Number"/>
+        <Label Style="{DynamicResource body}" Text="{Binding Info.Contact.Phone, Source={x:Reference self}}"/>
+        <Entry Text="{Binding EditedInfo.Contact.Phone, Source={x:Reference self}}"/>
     </VerticalStackLayout>
     <VerticalStackLayout StyleClass="formField">
-        <Label Style="{StaticResource title}" Text="Email"/>
-        <Label Style="{StaticResource body}" Text="{Binding Info.Contact.Email, Source={x:Reference self}}" IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"/>
-        <Entry Text="{Binding EditedInfo.Contact.Email, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}"/>
+        <Label Style="{DynamicResource title}" Text="Email"/>
+        <Label Style="{DynamicResource body}" Text="{Binding Info.Contact.Email, Source={x:Reference self}}"/>
+        <Entry Text="{Binding EditedInfo.Contact.Email, Source={x:Reference self}}"/>
     </VerticalStackLayout>
 </VerticalStackLayout>
