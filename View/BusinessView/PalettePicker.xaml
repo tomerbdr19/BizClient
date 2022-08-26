@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.View.PalettePicker"
+             xmlns:model="clr-namespace:BizClient.Helpers"
+             x:Name="self"
+             WidthRequest="600">
+    <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="36" Padding="24">
+        <Label Text="Choose a theme:" FontSize="Title"/>
+        <Button Text="Apply" Clicked="OnApplyClickHandler"/>
+        <CollectionView x:Name="PaletteCollection"
+                        ItemsSource="{Binding Palettes, Source={x:Reference self}}"
+                        SelectionMode="Single"
+                        SelectionChanged="OnCheckedChange">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Palette">
+                    <HorizontalStackLayout Spacing="12" Padding="0,12">
+                        <Frame CornerRadius="8" Padding="0" Margin="0">
+                            <BoxView CornerRadius="8" WidthRequest="100" HeightRequest="100" Color="{Binding PaletteDark}"/>
+                        </Frame>
+                        <Frame CornerRadius="8" Padding="0" Margin="0">
+                            <BoxView CornerRadius="8" WidthRequest="100" HeightRequest="100" Color="{Binding PaletteMed}"/>
+                        </Frame>
+                        <Frame CornerRadius="8" Padding="0" Margin="0">
+                            <BoxView CornerRadius="8" WidthRequest="100" HeightRequest="100" Color="{Binding PaletteLight}"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</Frame>
+

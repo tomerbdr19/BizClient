@@ -7,51 +7,49 @@ public partial class BusinessInfoView
         InitializeComponent();
     }
 
-    public static readonly BindableProperty DescriptionProperty =
-    BindableProperty.Create(
-    nameof(Description),
-    typeof(string),
-    typeof(BusinessInfoView));
+    public static readonly BindableProperty InfoProperty =
+                       BindableProperty.Create(nameof(Info),
+                                              typeof(BusinessInfo),
+                                              typeof(BusinessInfoView));
 
-    public string Description
+    public BusinessInfo Info
     {
-        get { return (string)GetValue(DescriptionProperty); }
-        set { SetValue(DescriptionProperty, value); }
+        get { return (BusinessInfo)GetValue(InfoProperty); }
+        set { SetValue(InfoProperty, value); }
     }
 
-    public static readonly BindableProperty AddressProperty =
-    BindableProperty.Create(
-    nameof(Address),
-    typeof(string),
-    typeof(BusinessInfoView));
+    public static readonly BindableProperty EditedInfoProperty =
+                   BindableProperty.Create(nameof(EditedInfo),
+                                          typeof(BusinessInfo),
+                                          typeof(BusinessInfoView));
 
-    public string Address
+    public BusinessInfo EditedInfo
     {
-        get { return (string)GetValue(AddressProperty); }
-        set { SetValue(AddressProperty, value); }
+        get { return (BusinessInfo)GetValue(EditedInfoProperty); }
+        set { SetValue(EditedInfoProperty, value); }
     }
 
-    public static readonly BindableProperty PhoneProperty =
+    public static readonly BindableProperty IsEditProperty =
     BindableProperty.Create(
-    nameof(Phone),
-    typeof(string),
-    typeof(BusinessInfoView));
+    nameof(IsEdit),
+    typeof(bool),
+    typeof(BusinessInfoView), false);
 
-    public string Phone
+    public bool IsEdit
     {
-        get { return (string)GetValue(PhoneProperty); }
-        set { SetValue(PhoneProperty, value); }
+        get { return (bool)GetValue(IsEditProperty); }
+        set { SetValue(IsEditProperty, value); }
     }
 
-    public static readonly BindableProperty EmailProperty =
+    public static readonly BindableProperty IsNotEditProperty =
     BindableProperty.Create(
-    nameof(Email),
-    typeof(string),
-    typeof(BusinessInfoView));
+    nameof(IsNotEdit),
+    typeof(bool),
+    typeof(BusinessInfoView), true);
 
-    public string Email
+    public bool IsNotEdit
     {
-        get { return (string)GetValue(EmailProperty); }
-        set { SetValue(EmailProperty, value); }
+        get { return (bool)GetValue(IsNotEditProperty); }
+        set { SetValue(IsNotEditProperty, value); }
     }
 }
