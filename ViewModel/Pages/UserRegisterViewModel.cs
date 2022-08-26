@@ -1,4 +1,6 @@
-﻿namespace BizClient.ViewModel;
+﻿using BizService.Services;
+
+namespace BizClient.ViewModel;
 
 public partial class UserRegisterViewModel : BaseViewModel
 {
@@ -7,10 +9,12 @@ public partial class UserRegisterViewModel : BaseViewModel
     {
         authService = Store.ServicesStore.AuthService;
         userService = Store.ServicesStore.UserService;
+        fileService = Store.ServicesStore.FileService;
     }
 
     private readonly AuthService authService;
     private readonly UserService userService;
+    private readonly FileService fileService;
 
     public User User { get; } = new();
 
@@ -26,15 +30,23 @@ public partial class UserRegisterViewModel : BaseViewModel
     [ObservableProperty]
     private bool isRegisterButtonEnabled = false;
 
+    [ObservableProperty]
+    private String imageUrl = "http://localhost:3000/profile.jpeg";
+
+
+
 
     [ICommand]
     async Task OnRegisterClick()
     {
         try
         {
-            var auth = await authService.Register(Email, Password);
+            IsLoading = true;
+            await this.UploadAndSetImage();
+            var auth = await authService.Register(Email, Password, "user");
             User.Id = auth.User.Id;
             auth.User = await userService.UpdateUser(User);
+            IsLoading = false;
 
             Store.Auth = auth;
             Application.Current.MainPage = new MobileCustomerShell();
@@ -43,6 +55,42 @@ public partial class UserRegisterViewModel : BaseViewModel
         {
             // TODO: handle error
             Console.WriteLine(err);
+        }
+    }
+
+    [ICommand]
+    async Task OnAddPictureClick()
+    {
+        var result = await FilePicker.PickAsync();
+        if (result != null)
+        {
+            if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
+                result.FileName.EndsWith("jpeg", StringComparison.OrdinalIgnoreCase) ||
+                result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
+            {
+                ImageUrl = result.FullPath;
+            }
+            else
+            {
+                //TODO hnadle ERROR 
+            }
+        }
+        else
+        {
+            //TODO hnadle ERROR 
+        }
+    }
+
+    async private Task UploadAndSetImage()
+    {
+        if(!ImageUrl.StartsWith("http"))
+        {
+            var url = await fileService.UploadImage(imageUrl);
+            User.ImageUrl = url;
+        }
+        else
+        {
+            User.ImageUrl = imageUrl;
         }
     }
 

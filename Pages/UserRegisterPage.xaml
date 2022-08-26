@@ -4,6 +4,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BizClient.Pages.UserRegisterPage"
              xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
+             xmlns:avatarview="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:views="clr-namespace:BizClient.View"
              x:DataType="viewmodel:UserRegisterViewModel">
     <VerticalStackLayout
         Spacing="18"
@@ -11,6 +13,21 @@
         HorizontalOptions="Center"
         VerticalOptions="Center"
         WidthRequest="300">
+        <views:ActivityIndicatorView Grid.Column="0" Grid.Row="0" IsVisible="{Binding IsLoading}"/>
+        <Grid >
+            <avatarview:SfAvatarView 
+                           HorizontalOptions="Start"
+                           ContentType="Custom"
+                           ImageSource="{Binding ImageUrl,Mode=TwoWay }"
+                           HeightRequest="70"
+                           WidthRequest="70"
+                           CornerRadius="35" />
+            <Button
+                Text="Upload a profile picture"
+                HorizontalOptions="End" 
+                Command="{Binding OnAddPictureClickCommand}"
+            />
+        </Grid>
         <VerticalStackLayout StyleClass="formField">
             <Label Text="First name"/>
             <Entry 
@@ -31,7 +48,7 @@
         </VerticalStackLayout>
         <VerticalStackLayout StyleClass="formField">
             <Label Text="Birth Date"/>
-            <DatePicker 
+            <DatePicker WidthRequest="300"
                 Date="{Binding User.Info.BirthDate, Mode=OneWayToSource}"
                 />
         </VerticalStackLayout>
