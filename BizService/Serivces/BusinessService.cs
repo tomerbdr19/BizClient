@@ -32,5 +32,11 @@ namespace BizService.Services
             var businessesList = await GetAsync<List<Business>>($"{Path}/search", new Dictionary<string, string> { { "name", name } });
             return businessesList;
         }
+
+        async public Task<Business> UpdateBusiness(Business newBusiness)
+        {
+            var business = await PostAsync<Business>(Path, new { business = newBusiness });
+            return business;
+        }
     }
 }
