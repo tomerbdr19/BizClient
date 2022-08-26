@@ -9,7 +9,6 @@ namespace BizModels.Model
         public new string Name { get; set; }
         public new string ImageUrl { get; set; }
         public BusinessInfo Info { get; set; }
-        public string OwnerId { get; set; }
     }
 
     public class BusinessInfo
@@ -32,8 +31,8 @@ namespace BizModels.Model
 
     public class BusinessContact
     {
-        public List<string> Phones { get; set; } = new();
-        public List<string> Email { get; set; } = new();
+        public string Phone { get; set; }
+        public string Email { get; set; }
     }
 }
 

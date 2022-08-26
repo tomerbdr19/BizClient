@@ -20,7 +20,7 @@
     </VerticalStackLayout>
     <VerticalStackLayout StyleClass="formField">
         <Label Text="Phone Number"/>
-        <Label Text="{Binding Contact.Phones}"/>
+        <Label Text="{Binding Contact.Phone}"/>
     </VerticalStackLayout>
     <VerticalStackLayout StyleClass="formField">
         <Label Text="Email"/>
