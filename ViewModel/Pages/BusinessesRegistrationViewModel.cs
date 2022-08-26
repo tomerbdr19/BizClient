@@ -57,7 +57,7 @@ public partial class BusinessesRegistrationViewModel : BaseViewModel
             IsLoading = false;
 
             Store.Auth = auth;
-            Application.Current.MainPage = new MobileCustomerShell();
+            Application.Current.MainPage = new MobileAdminShell();
         }
         catch (Exception err)
         {
