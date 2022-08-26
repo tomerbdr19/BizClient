@@ -45,7 +45,7 @@
         <Entry Text="{Binding EditedInfo.Location.Street, Source={x:Reference self}}" Placeholder="Street"/>
     </VerticalStackLayout>
     <VerticalStackLayout StyleClass="formField">
-        <Label Style="{DynamicResource title}" Text="UserRegisterPage Number"/>
+        <Label Style="{DynamicResource title}" Text="Phone"/>
         <Label Style="{DynamicResource body}" Text="{Binding Info.Contact.Phone, Source={x:Reference self}}"/>
         <Entry Text="{Binding EditedInfo.Contact.Phone, Source={x:Reference self}}"/>
     </VerticalStackLayout>
