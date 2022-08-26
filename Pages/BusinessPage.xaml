@@ -36,59 +36,59 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <FlexLayout HorizontalOptions="Fill" VerticalOptions="Fill">
-        <views:PalettePicker x:Name="PalettePicker" IsVisible="{Binding IsPalettePickerOpen}" HeightRequest="1000" ZIndex="1000" HorizontalOptions="Center" Selected="{Binding Palette}"/>
-        <ScrollView>
-            <Grid x:Name="PageGrid" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*" RowSpacing="12">
-                <Grid.Style>
-                    <Style TargetType="Grid">
-                        <Style.Triggers>
-                            <DataTrigger TargetType="Grid" Binding="{Binding IsBusinessMode}" Value="true">
-                                <Setter Property="Padding" Value="400,0"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <Frame StyleClass="card" Grid.Row="0">
-                    <HorizontalStackLayout HorizontalOptions="End" Spacing="6">
-                        <Button Style="{DynamicResource primary}" IsVisible="{Binding IsBusinessMode}" Text="Change Theme" Command="{Binding OnChangePaletteClickCommand}"/>
-                        <Button Style="{DynamicResource secondary}" IsVisible="{Binding IsUserMode}" Text="Message"/>
-                        <Button Style="{DynamicResource primary}" IsVisible="{Binding IsUserMode}" Text="{Binding SubscribeButtonText}" Command="{Binding OnSubscriptionClickCommand}"/>
-                    </HorizontalStackLayout>
-                </Frame>
-                <Frame StyleClass="card" Grid.Row="1">
-                    <VerticalStackLayout Spacing="6">
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" HorizontalOptions="Fill" ColumnSpacing="6" RowSpacing="3">
-                            <Button Grid.Column="0" Grid.Row="0" Text="Info" FontSize="Large" Command="{Binding OnInfoClickCommand}">
-                                <Button.Style>
-                                    <Style TargetType="Button" BasedOn="{StaticResource secondary}">
-                                        <Style.Triggers>
-                                            <DataTrigger TargetType="Button" Binding="{Binding IsInfo}" Value="true">
-                                                <Setter Property="BorderWidth" Value="3"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
-                            <Button Grid.Column="1" Grid.Row="0" Text="Posts" FontSize="Large" Command="{Binding OnPostsClickCommand}">
-                                <Button.Style>
-                                    <Style TargetType="Button" BasedOn="{StaticResource secondary}">
-                                        <Style.Triggers>
-                                            <DataTrigger TargetType="Button" Binding="{Binding IsPosts}" Value="true">
-                                                <Setter Property="BorderWidth" Value="3"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
-                            <Line Grid.Row="1"/>
-                        </Grid>
-                    </VerticalStackLayout>
-                </Frame>
-                <Frame StyleClass="card" IsVisible="{Binding IsInfo}" Grid.Row="2">
-                    <VerticalStackLayout Spacing="36">
-                        <VerticalStackLayout>
-                            <ImageButton
+    <AbsoluteLayout>
+        <FlexLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0,1,1" HorizontalOptions="Fill" VerticalOptions="Fill">
+            <ScrollView>
+                <Grid x:Name="PageGrid" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*" RowSpacing="12">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Style.Triggers>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsBusinessMode}" Value="true">
+                                    <Setter Property="Padding" Value="400,0"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <Frame StyleClass="card" Grid.Row="0">
+                        <HorizontalStackLayout HorizontalOptions="End" Spacing="6">
+                            <Button Style="{DynamicResource primary}" IsVisible="{Binding IsBusinessMode}" Text="Change Theme" Command="{Binding OnChangePaletteClickCommand}"/>
+                            <Button Style="{DynamicResource secondary}" IsVisible="{Binding IsUserMode}" Text="Message"/>
+                            <Button Style="{DynamicResource primary}" IsVisible="{Binding IsUserMode}" Text="{Binding SubscribeButtonText}" Command="{Binding OnSubscriptionClickCommand}"/>
+                        </HorizontalStackLayout>
+                    </Frame>
+                    <Frame StyleClass="card" Grid.Row="1">
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" HorizontalOptions="Fill" ColumnSpacing="6" RowSpacing="3">
+                                <Button Grid.Column="0" Grid.Row="0" Text="Info" FontSize="Large" Command="{Binding OnInfoClickCommand}">
+                                    <Button.Style>
+                                        <Style TargetType="Button" BasedOn="{StaticResource secondary}">
+                                            <Style.Triggers>
+                                                <DataTrigger TargetType="Button" Binding="{Binding IsInfo}" Value="true">
+                                                    <Setter Property="BorderWidth" Value="3"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <Button Grid.Column="1" Grid.Row="0" Text="Posts" FontSize="Large" Command="{Binding OnPostsClickCommand}">
+                                    <Button.Style>
+                                        <Style TargetType="Button" BasedOn="{StaticResource secondary}">
+                                            <Style.Triggers>
+                                                <DataTrigger TargetType="Button" Binding="{Binding IsPosts}" Value="true">
+                                                    <Setter Property="BorderWidth" Value="3"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <Line Grid.Row="1"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Frame StyleClass="card" IsVisible="{Binding IsInfo}" Grid.Row="2">
+                        <VerticalStackLayout Spacing="36">
+                            <VerticalStackLayout>
+                                <ImageButton
                             Padding="6" IsVisible="{Binding IsBusinessMode}"
                             Command="{Binding OnUploadImageClickCommand}"
                             Source="uploadicon.png"
@@ -96,7 +96,7 @@
                             HeightRequest="50"
                             WidthRequest="50"
                         />
-                            <CarouselView x:Name="carouselView"
+                                <CarouselView x:Name="carouselView"
                                       ItemsSource="{Binding Business.Images}"
                                       IndicatorView="indicatorView"
                                       HeightRequest="300"
@@ -104,34 +104,34 @@
                                       HorizontalScrollBarVisibility="Never"
                                       VerticalScrollBarVisibility="Never"
                                       HorizontalOptions="Center">
-                                <CarouselView.ItemTemplate>
-                                    <DataTemplate>
-                                        <FlexLayout HorizontalOptions="Center">
-                                            <AbsoluteLayout MaximumWidthRequest="300" MaximumHeightRequest="300" HorizontalOptions="Center" IsClippedToBounds="True">
-                                                <Image Source="{Binding}" 
+                                    <CarouselView.ItemTemplate>
+                                        <DataTemplate>
+                                            <FlexLayout HorizontalOptions="Center">
+                                                <AbsoluteLayout MaximumWidthRequest="300" MaximumHeightRequest="300" HorizontalOptions="Center" IsClippedToBounds="True">
+                                                    <Image Source="{Binding}" 
                                                            Aspect="AspectFit"
                                                            AbsoluteLayout.LayoutBounds="0,0,300,300"
                                                            HorizontalOptions="Center"
                                                            />
-                                                <ImageButton Source="deleteicon.png"
+                                                    <ImageButton Source="deleteicon.png"
                                                          IsVisible="{Binding Source={x:Reference carouselView}, Path=BindingContext.IsBusinessMode}"
                                                          AbsoluteLayout.LayoutFlags="XProportional"
                                                          AbsoluteLayout.LayoutBounds="0.9,10,50,50"
                                                          Command="{Binding Source={x:Reference carouselView}, Path=BindingContext.OnDeleteImageClickCommand}"
                                                          CommandParameter="{Binding}" />
-                                            </AbsoluteLayout>
-                                        </FlexLayout>
-                                    </DataTemplate>
-                                </CarouselView.ItemTemplate>
-                            </CarouselView>
-                            <IndicatorView x:Name="indicatorView"
+                                                </AbsoluteLayout>
+                                            </FlexLayout>
+                                        </DataTemplate>
+                                    </CarouselView.ItemTemplate>
+                                </CarouselView>
+                                <IndicatorView x:Name="indicatorView"
                                        Padding="24"
                                        IndicatorColor="{Binding Palette.TextColor}"
                                        SelectedIndicatorColor="{Binding Palette.ButtonColor}"
                                        HorizontalOptions="Center" />
-                        </VerticalStackLayout>
-                        <VerticalStackLayout Spacing="6">
-                            <ImageButton
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Spacing="6">
+                                <ImageButton
                             Padding="6"
                             Source="editicon.png"
                             HorizontalOptions="End" 
@@ -140,25 +140,27 @@
                             IsVisible="{Binding IsEditVisible}"
                             Command="{Binding OnEditInfoClickCommand}"
                             />
-                            <views:BusinessInfoView Padding="100,0,0,100" IsEdit="{Binding IsEditInfo}" IsNotEdit="{Binding IsNotEditInfo}" Info="{Binding Business.Info}" EditedInfo="{Binding EditedInfo}"/>
-                            <HorizontalStackLayout Spacing="12" HorizontalOptions="End" IsVisible="{Binding IsEditInfo}">
-                                <Button Style="{StaticResource secondary}" Text="Cancel" Command="{Binding OnCancelEditCommand}"/>
-                                <Button Style="{StaticResource primary}" Text="Save" Command="{Binding OnSaveEditCommand}"/>
-                            </HorizontalStackLayout>
+                                <views:BusinessInfoView Padding="100,0,0,100" IsEdit="{Binding IsEditInfo}" IsNotEdit="{Binding IsNotEditInfo}" Info="{Binding Business.Info}" EditedInfo="{Binding EditedInfo}"/>
+                                <HorizontalStackLayout Spacing="12" HorizontalOptions="End" IsVisible="{Binding IsEditInfo}">
+                                    <Button Style="{StaticResource secondary}" Text="Cancel" Command="{Binding OnCancelEditCommand}"/>
+                                    <Button Style="{StaticResource primary}" Text="Save" Command="{Binding OnSaveEditCommand}"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
-                    </VerticalStackLayout>
-                </Frame>
-                <CollectionView Grid.Row="2" ItemsSource="{Binding Posts}" IsVisible="{Binding IsPosts}" ZIndex="-1">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Post">
-                            <views:PostView Post="{Binding}"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Grid>
-        </ScrollView>
-    </FlexLayout>
+                    </Frame>
+                    <CollectionView Grid.Row="2" ItemsSource="{Binding Posts}" IsVisible="{Binding IsPosts}" ZIndex="-1">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Post">
+                                <views:PostView Post="{Binding}"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </ScrollView>
+        </FlexLayout>
+        <views:PalettePicker x:Name="PalettePicker" AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,100" IsVisible="{Binding IsPalettePickerOpen}" HeightRequest="1000" ZIndex="1000" HorizontalOptions="Center" Selected="{Binding Palette}"/>
+    </AbsoluteLayout>
 </ContentPage>
