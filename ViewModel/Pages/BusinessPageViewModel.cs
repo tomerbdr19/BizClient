@@ -19,6 +19,7 @@ public partial class BusinessPageViewModel : BaseViewModel
         this.businessService = Store.ServicesStore.BusinessService;
         this.subscriptionService = Store.ServicesStore.SubscriptionService;
         this.chatService = Store.ServicesStore.ChatService;
+        this.fileService = Store.ServicesStore.FileService;
         initPage();
     }
 
@@ -35,6 +36,7 @@ public partial class BusinessPageViewModel : BaseViewModel
     private readonly BusinessService businessService;
     private readonly SubscriptionService subscriptionService;
     private readonly ChatService chatService;
+    private readonly FileService fileService;
     public Subscription subscription;
 
     [ObservableProperty]
@@ -149,6 +151,35 @@ public partial class BusinessPageViewModel : BaseViewModel
     {
         this.IsEditInfo = false;
         this.editedInfo = CloneHelper.Clone<BusinessInfo>(Business.Info);
+    }
+
+    [ICommand]
+    public async void OnDeleteImageClick(string imageUrl)
+    {
+        var IsConfirmed = await Shell.Current.DisplayAlert("Delte confirmation", "Are you sure?", "Yes", "Cancel");
+
+        if (IsConfirmed)
+        {
+            this.Business = await businessService.DeleteBusinessImage(this.Business.Id, imageUrl);
+            Store.Auth.Business = this.Business;
+        }
+    }
+
+    [ICommand]
+    public async void OnUploadImageClick()
+    {
+        var pickedImage = await FilePicker.PickAsync();
+        if (pickedImage != null)
+        {
+            if (pickedImage.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
+                pickedImage.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase) ||
+                pickedImage.FileName.EndsWith("jpeg", StringComparison.OrdinalIgnoreCase))
+            {
+                var imageUrl = await this.fileService.UploadImage(pickedImage.FullPath);
+                this.Business = await businessService.AddBusinessImage(this.Business.Id, imageUrl);
+                Store.Auth.Business = this.Business;
+            }
+        }
     }
 
     [ICommand]

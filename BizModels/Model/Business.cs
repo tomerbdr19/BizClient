@@ -8,6 +8,7 @@ namespace BizModels.Model
         public string Id { get; set; }
         public new string Name { get; set; }
         public new string ImageUrl { get; set; }
+        public List<string> Images { get; set; } = new();
         public BusinessInfo Info { get; set; } = new();
         public BusinessTheme Theme { get; set; } = new();
     }

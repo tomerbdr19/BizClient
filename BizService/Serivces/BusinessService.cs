@@ -44,5 +44,17 @@ namespace BizService.Services
             var business = await PostAsync<Business>($"{Path}/theme", new { business = businessId, key });
             return business;
         }
+
+        async public Task<Business> AddBusinessImage(string businessId, string imageUrl)
+        {
+            var business = await PostAsync<Business>($"{Path}/add-image", new { business = businessId, imageUrl });
+            return business;
+        }
+
+        async public Task<Business> DeleteBusinessImage(string businessId, string imageUrl)
+        {
+            var business = await PostAsync<Business>($"{Path}/delete-image", new { business = businessId, imageUrl });
+            return business;
+        }
     }
 }
