@@ -223,6 +223,9 @@
 	  <MauiXaml Update="View\PublishPostView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\BusinessView\PalettePicker.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Remove="BizModels\Class1.cs" />

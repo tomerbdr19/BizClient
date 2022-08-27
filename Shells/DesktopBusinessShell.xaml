@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:BizClient.Pages.BusinessPages"
+    xmlns:page="clr-namespace:BizClient.Pages"
     x:Name="self"
     Shell.TabBarIsVisible="False"
     >
@@ -13,7 +14,7 @@
             <ShellContent ContentTemplate="{DataTemplate pages:BusinessHomePage}"/>
         </Tab>
         <Tab Title="My Hub" Route="Hub">
-            <ShellContent/>
+            <ShellContent ContentTemplate="{DataTemplate page:BusinessPage}"/>
         </Tab>
         <Tab Title="Subscribers" Route="Subscribers">
             <ShellContent ContentTemplate="{DataTemplate pages:BusinessSubscribersPage}"/>

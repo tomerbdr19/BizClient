@@ -8,32 +8,37 @@ namespace BizModels.Model
         public string Id { get; set; }
         public new string Name { get; set; }
         public new string ImageUrl { get; set; }
-        public BusinessInfo Info { get; set; }
-        public string OwnerId { get; set; }
+        public List<string> Images { get; set; } = new();
+        public BusinessInfo Info { get; set; } = new();
+        public BusinessTheme Theme { get; set; } = new();
     }
 
     public class BusinessInfo
     {
         public string Description { get; set; }
-        public BusinessLocation Location { get; set; }
-        public BusinessContact Contact { get; set; }
+        public BusinessLocation Location { get; set; } = new();
+        public BusinessContact Contact { get; set; } = new();
+    }
+
+    public class BusinessTheme
+    {
+        public string Key { get; set; }
     }
 
     public class BusinessLocation
     {
-        public string Country { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
         public override string ToString()
         {
-            return $"{Country}, {City}, {Street}";
+            return $"{City}, {Street}";
         }
     }
 
     public class BusinessContact
     {
-        public List<string> Phones { get; set; } = new();
-        public List<string> Email { get; set; } = new();
+        public string Phone { get; set; }
+        public string Email { get; set; }
     }
 }
 

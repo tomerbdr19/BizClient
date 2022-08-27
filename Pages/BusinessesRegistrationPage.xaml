@@ -5,6 +5,7 @@
              x:Class="BizClient.Pages.BusinessesRegistrationPage"
              xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
              x:DataType="viewmodel:BusinessesRegistrationViewModel"
+             xmlns:views="clr-namespace:BizClient.View"
              Title="Businesses registration">
     <ScrollView>
         <VerticalStackLayout
@@ -13,40 +14,28 @@
         HorizontalOptions="Center"
         VerticalOptions="Center"
         WidthRequest="300">
+        <views:ActivityIndicatorView Grid.Column="0" Grid.Row="0" IsVisible="{Binding IsLoading}"/>
         <Label 
             Text="Hi, Please sign in"/>
-        <VerticalStackLayout>
-            <Label Text="First name"/>
-            <Entry 
-                Text="{Binding FirstName, Mode=TwoWay}"
+            <VerticalStackLayout>
+                <Label Text="Business name"/>
+                <Entry 
+                Text="{Binding Business.Name, Mode=TwoWay}"
                 />
-        </VerticalStackLayout>
-        <VerticalStackLayout>
-            <Label Text="Last name"/>
-            <Entry 
-                Text="{Binding LastName, Mode=TwoWay}"
-                />
-        </VerticalStackLayout>
-        <VerticalStackLayout>
-            <Label Text="Owner phone"/>
-            <Entry 
-                Text="{Binding OwnerPhone, Mode=TwoWay}"
-                />
-        </VerticalStackLayout>
-        <VerticalStackLayout>
-            <Label Text="Enter the password again please"/>
-            <Entry 
-                Text="{Binding Password2, Mode=TwoWay}"
-                IsPassword="True"
-                />
-        </VerticalStackLayout>
-        <VerticalStackLayout>
+            </VerticalStackLayout>
+            <VerticalStackLayout>
             <Label Text="Email"/>
             <Entry 
                 Text="{Binding Email, Mode=TwoWay}"
                 />
         </VerticalStackLayout>
-        <VerticalStackLayout>
+            <VerticalStackLayout>
+                <Label Text="Phone"/>
+                <Entry 
+                Text="{Binding Business.Info.Contact.Phone, Mode=TwoWay}"
+                />
+            </VerticalStackLayout>
+            <VerticalStackLayout>
             <Label Text="Password"/>
             <Entry 
                 Text="{Binding Password1, Mode=TwoWay}"
@@ -61,31 +50,31 @@
                 />
         </VerticalStackLayout>
         <VerticalStackLayout>
-                <Label Text="Street"/>
-            <Entry 
-                Text="{Binding Street, Mode=TwoWay}"
-                />
-        </VerticalStackLayout>
-        <VerticalStackLayout>
                 <Label Text="City"/>
             <Entry 
-                Text="{Binding City, Mode=TwoWay}"
+                Text="{Binding Business.Info.Location.City, Mode=TwoWay}"
                 />
         </VerticalStackLayout>
         <VerticalStackLayout>
-                <Label Text="Description"/>
+                <Label Text="Street"/>
             <Entry 
-                Text="{Binding Description, Mode=TwoWay}"
+                Text="{Binding Business.Info.Location.Street, Mode=TwoWay}"
                 />
         </VerticalStackLayout>
-        <!--<VerticalStackLayout>
-            <Label Text="Owner phone"/>
-            <Entry 
-                Text="{Binding LogoUrl, Mode=TwoWay}"
+            <VerticalStackLayout>
+                <Label Text="Description"/>
+                <Entry 
+                Text="{Binding Business.Info.Description, Mode=TwoWay}"
                 />
-        </VerticalStackLayout>-->
-        <Button
-            Text="Add picture "
+            </VerticalStackLayout>
+            <Image Source="{Binding ImageUrl,Mode=TwoWay }"
+                   x:Name="image"
+                   IsVisible="{Binding IsLogoVisible,Mode=OneWay}"
+                   Aspect="AspectFill"
+                   HeightRequest="100"
+                   WidthRequest="100" />
+            <Button
+            Text="Add picture"
             Command="{Binding OnAddPictureClickCommand}"
             />
         <Button
