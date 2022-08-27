@@ -63,6 +63,8 @@ public partial class PublishPostViewModel : BaseViewModel
         var post = await postService.PublishPost(PublishPost);
         OnPublishSuccess.Invoke(post);
         PublishPost = new();
+        ImageUrl = "";
+        IsVisible = false;
         this.IsLoading = false;
     }
 }
