@@ -30,10 +30,10 @@ namespace BizService.Services
             return Task.CompletedTask;
         }
 
-        public Task DeletePost(string postId)
+        public async Task DeletePost(string postId)
         {
-            // TODO implement
-            return Task.CompletedTask;
+           await PostAsync<Post>($"{Path}/delete", new { post = postId });
+            return;
         }
 
         async public Task<Post> PublishPost(Post Post)
