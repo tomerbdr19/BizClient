@@ -8,6 +8,7 @@ namespace BizModels.Model
         public string Caption { get; set; }
         public string ImageUrl { get; set; }
         public DateTime CreatedAt { get; set; }
+        public bool IsImage => ImageUrl != null && ImageUrl != String.Empty
     }
 }
 
