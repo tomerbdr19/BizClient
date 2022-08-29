@@ -52,7 +52,7 @@
                     <Frame StyleClass="card" Grid.Row="0">
                         <HorizontalStackLayout HorizontalOptions="End" Spacing="6">
                             <Button Style="{DynamicResource primary}" IsVisible="{Binding IsBusinessMode}" Text="Change Theme" Command="{Binding OnChangePaletteClickCommand}"/>
-                            <Button Style="{DynamicResource secondary}" IsVisible="{Binding IsUserMode}" Text="Message"/>
+                            <Button Style="{DynamicResource secondary}" IsVisible="{Binding IsUserMode}" Text="Message" Command="{Binding OnMessageClickCommand}"/>
                             <Button Style="{DynamicResource primary}" IsVisible="{Binding IsUserMode}" Text="{Binding SubscribeButtonText}" Command="{Binding OnSubscriptionClickCommand}"/>
                         </HorizontalStackLayout>
                     </Frame>
