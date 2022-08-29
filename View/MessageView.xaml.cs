@@ -7,7 +7,6 @@ public partial class MessageView
         InitializeComponent();
     }
 
-
     public static readonly BindableProperty MessageProperty =
     BindableProperty.Create(
     nameof(Message),
@@ -17,6 +16,9 @@ public partial class MessageView
     public Message Message
     {
         get { return (Message)GetValue(MessageProperty); }
-        set { SetValue(MessageProperty, value); }
+        set
+        {
+            SetValue(MessageProperty, value);
+        }
     }
 }
