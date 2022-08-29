@@ -130,16 +130,18 @@
 	  <Folder Include="Pages\BusinessPages\" />
 	  <Folder Include="View\BusinessView\" />
 	  <Folder Include="BizModels\Helpers\" />
-	  <Folder Include="Helpers\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiXaml Update="Pages\AdminChatPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Pages\AdminHomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\BusinessesRegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ccc.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ChatsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\CustomerRegistrationPage.xaml">
@@ -152,6 +154,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\ActivityIndicatorView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\ChatView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\PostView.xaml">
@@ -245,5 +250,10 @@
 	<ItemGroup>
 	  <ProjectReference Include="BizModels\BizModels.csproj" />
 	  <ProjectReference Include="BizService\BizService.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Pages\ccc.xaml.cs">
+	    <DependentUpon>ccc.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 </Project>

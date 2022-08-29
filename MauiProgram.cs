@@ -1,4 +1,5 @@
-﻿using Syncfusion.Maui.Core.Hosting;
+﻿using BizClient.Pages;
+using Syncfusion.Maui.Core.Hosting;
 using ZXing.Net.Maui;
 
 namespace BizClient;
@@ -25,11 +26,11 @@ public static class MauiProgram
         builder.Services.AddSingleton<HomePage>();
         builder.Services.AddSingleton<CouponsPage>();
         builder.Services.AddSingleton<ChatPage>();
+        builder.Services.AddSingleton<ChatsPage>();
         builder.Services.AddSingleton<UserRegisterPage>();
         builder.Services.AddSingleton<BusinessesRegistrationPage>();
 
         builder.Services.AddSingleton<AdminHomePage>();
-        //builder.Services.AddSingleton<AdminChatPage>();
         builder.Services.AddSingleton<QRScannerPage>();
 
         // View Models
@@ -39,9 +40,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<CouponsPageViewModel>();
         builder.Services.AddSingleton<UserRegisterViewModel>();
         builder.Services.AddSingleton<BusinessesRegistrationViewModel>();
+        builder.Services.AddSingleton<ChatsPageViewModel>();
 
         builder.Services.AddSingleton<AdminHomePageViewModel>();
-        //builder.Services.AddSingleton<AdminChatPageViewModel>();
         builder.Services.AddSingleton<QRScannerPageViewModel>();
 
         // Dekstop Business Pages
