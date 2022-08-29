@@ -21,8 +21,17 @@
                 </CollectionView>
             </VerticalStackLayout>
             <Grid ColumnDefinitions="3*,Auto,*" Grid.Row="1">
-                <Entry Grid.Column="0"/>
+                <Entry Grid.Column="0" />
                 <Button Grid.Column="1" Text="Send"/>
+                <Picker Grid.Column="2" x:Name="picker" Title="Chat status">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>new</x:String>
+                            <x:String>in-progress</x:String>
+                            <x:String>resolved</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
             </Grid>
         </Grid>
     </Grid>
