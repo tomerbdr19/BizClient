@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.View.ChatView"
+             xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
+             xmlns:model="clr-namespace:BizModels.Model"
+             xmlns:avatarview="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             x:Name="self"
+             StyleClass="card"
+             >
+    <Frame.GestureRecognizers>
+        <TapGestureRecognizer 
+          Command="{Binding Source={x:Reference self}, Path=GoToChatCommand}"
+         />
+    </Frame.GestureRecognizers>
+    <Grid WidthRequest="380" HeightRequest="90" ColumnSpacing="7" >
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <avatarview:SfAvatarView 
+                   Grid.Column="0"     
+                   ImageSource="{Binding Chat.User.ImageUrl ,Source={x:Reference self}}"
+                   ContentType="Custom"
+                   HeightRequest="60"
+                   WidthRequest="60"
+                   CornerRadius="30"
+                   HorizontalOptions="Center"/>
+        <VerticalStackLayout  
+                   VerticalOptions="Center"
+                   Grid.Row="0"
+                   Grid.Column="1">
+            <Label
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                   Text="{Binding Chat.User.Name, Source={x:Reference self}}"/>
+            <Label Text="{Binding Chat.UpdatedAt, Source={x:Reference self}}"/>
+        </VerticalStackLayout>
+        <Entry 
+                x:Name="statusMsg"
+                Grid.Row="0"
+                Grid.Column="2"
+                Text="{Binding Chat.Status, Source={x:Reference self}}"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Start"
+                WidthRequest="96"
+                HeightRequest="30">
+            <Entry.Triggers>
+                <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="new">
+                    <Setter Property="BackgroundColor" Value="Green"/>
+                </DataTrigger>
+                <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="in-progress">
+                    <Setter Property="BackgroundColor" Value="Orange"/>
+                </DataTrigger>
+                <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="resolved">
+                    <Setter Property="BackgroundColor" Value="Red"/>
+                </DataTrigger>
+            </Entry.Triggers>
+        </Entry>
+    </Grid>
+
+</Frame>
