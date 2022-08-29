@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:view="clr-namespace:BizClient.View"
+             xmlns:viewmodels="clr-namespace:BizClient.ViewModel.BusinessViewModel"
              x:Class="BizClient.Pages.BusinessPages.BusinessHomePage"
+             x:DataType="viewmodels:BusinessHomePageViewModel"
              Title="BusinessHomePage">
     <ContentPage.Resources>
         <Style TargetType="Button">
@@ -31,8 +33,8 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
                <HorizontalStackLayout Spacing="100" VerticalOptions="Center" HorizontalOptions="Center">
-                    <view:GraphView Title="Subscribers Dashboard" Description="You have reached 3 new users this week"/>
-                    <view:GraphView Title="Coupons Dashboard" Description="10 Copoun has been redeemed this week"/>
+                    <view:GraphView Title="Subscribers Dashboard" Data="{Binding SubscriptionsActivity}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Description="You have reached 3 new users this week"/>
+                    <view:GraphView Title="Coupons Dashboard" Data="{Binding CouponsActivity}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Description="10 Copoun has been redeemed this week"/>
                 </HorizontalStackLayout>
         </VerticalStackLayout>
         <VerticalStackLayout Spacing="24">

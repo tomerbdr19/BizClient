@@ -113,6 +113,7 @@
 	  <None Remove="BizModels\Helpers\" />
 	  <None Remove="Microsoft.Maui.Dependencies" />
 	  <None Remove="Helpers\" />
+	  <None Remove="Syncfusion.Maui.Charts" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -122,6 +123,7 @@
 	  <PackageReference Include="Xamarin.CommunityToolkit.MauiCompat" Version="2.0.2-preview1013" />
 	  <PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.486" />
 	  <PackageReference Include="ZXing.Net.Maui" Version="0.1.0-preview.5" />
+	  <PackageReference Include="Syncfusion.Maui.Charts" Version="20.2.45" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Store\" />

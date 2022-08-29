@@ -31,4 +31,43 @@ public partial class GraphView
         get { return (string)GetValue(DescriptionProperty); }
         set { SetValue(DescriptionProperty, value); }
     }
+
+    public static readonly BindableProperty DataProperty =
+                       BindableProperty.Create(nameof(Data),
+                                              typeof(List<ChartData>),
+                                              typeof(GraphView));
+
+    public List<ChartData> Data
+    {
+        get { return (List<ChartData>)GetValue(DataProperty); }
+        set { SetValue(DataProperty, value); }
+    }
+
+    public static readonly BindableProperty IsLoadingProperty =
+                       BindableProperty.Create(nameof(IsLoading),
+                                              typeof(bool),
+                                              typeof(GraphView));
+
+    public static readonly BindableProperty IsNotLoadingProperty =
+                       BindableProperty.Create(nameof(IsNotLoading),
+                                              typeof(bool),
+                                              typeof(GraphView));
+
+    public bool IsLoading
+    {
+        get { return (bool)GetValue(IsLoadingProperty); }
+        set
+        {
+            SetValue(IsLoadingProperty, value);
+        }
+    }
+
+    public bool IsNotLoading
+    {
+        get { return (bool)GetValue(IsNotLoadingProperty); }
+        set
+        {
+            SetValue(IsNotLoadingProperty, value);
+        }
+    }
 }
