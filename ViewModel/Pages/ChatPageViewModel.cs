@@ -30,5 +30,10 @@ public partial class ChatPageViewModel : BaseViewModel
         messages.ForEach(_ => Messages.Add(_));
         IsLoading = false;
     }
+
+    async public void OnDisappearing(string status) 
+    {
+        //TODO post new status
+    }
 }
 
