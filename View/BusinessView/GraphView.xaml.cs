@@ -20,28 +20,20 @@ public partial class GraphView
     }
 
 
-    public static readonly BindableProperty DescriptionProperty =
-    BindableProperty.Create(
-    nameof(Description),
-    typeof(string),
-    typeof(GraphView));
-
-    public string Description
-    {
-        get { return (string)GetValue(DescriptionProperty); }
-        set { SetValue(DescriptionProperty, value); }
-    }
-
     public static readonly BindableProperty DataProperty =
-                       BindableProperty.Create(nameof(Data),
-                                              typeof(List<ChartData>),
-                                              typeof(GraphView));
+    BindableProperty.Create(
+    nameof(Data),
+    typeof(Statistic),
+    typeof(GraphView),
+    new Statistic());
 
-    public List<ChartData> Data
+    public Statistic Data
     {
-        get { return (List<ChartData>)GetValue(DataProperty); }
+        get { return (Statistic)GetValue(DataProperty); }
         set { SetValue(DataProperty, value); }
     }
+
+
 
     public static readonly BindableProperty IsLoadingProperty =
                        BindableProperty.Create(nameof(IsLoading),

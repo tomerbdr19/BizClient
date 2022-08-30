@@ -26,12 +26,54 @@
                 <chart:SfCartesianChart.TooltipBehavior>
                     <chart:ChartTooltipBehavior Duration="5000"/>
                 </chart:SfCartesianChart.TooltipBehavior>
-                <chart:ColumnSeries ItemsSource="{Binding Data, Source={x:Reference self}}" XBindingPath="Label" YBindingPath="Value" />
+                <chart:ColumnSeries ItemsSource="{Binding Data.ActivityList, Source={x:Reference self}}" XBindingPath="Label" YBindingPath="Value" />
             </chart:SfCartesianChart>
-            <Label 
-            Text="{Binding Description, Source={x:Reference self}}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            <FlexLayout Direction="Row" AlignItems="Center" JustifyContent="SpaceEvenly">
+                <VerticalStackLayout VerticalOptions="Center" Spacing="12">
+                    <Label HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" Text="{Binding Data.Total, Source={x:Reference self}}"/>
+                    <Label HorizontalOptions="Center" FontSize="Medium" Text="Total"/>
+                </VerticalStackLayout>
+                <Line WidthRequest="1" Y2="150" BackgroundColor="{StaticResource D30}"/>
+                <VerticalStackLayout VerticalOptions="Center" Spacing="12">
+                    <Label HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" Text="{Binding Data.Average, Source={x:Reference self}}"/>
+                    <Label HorizontalOptions="Center" FontSize="Medium" Text="Average"/>
+                </VerticalStackLayout>
+                <Line WidthRequest="1" Y2="150" BackgroundColor="{StaticResource D30}"/>
+                <VerticalStackLayout VerticalOptions="Center" Spacing="12">                    
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="6">
+                        <Label HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" Text="{Binding Data.Current, Source={x:Reference self}}"/>
+                        <Label FontSize="Medium"  Text="{Binding Data.PercentageFromAverage, StringFormat='({0}%)' , Source={x:Reference self}}">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Data.IsCurrentMoreThenAverage, Source={x:Reference self}}" Value="true">
+                                            <Setter Property="TextColor" Value="{StaticResource G00}"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Data.IsCurrentMoreThenAverage, Source={x:Reference self}}" Value="false">
+                                            <Setter Property="TextColor" Value="{StaticResource R10}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                        <Image Source="arrowup.png">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Style.Triggers>
+                                        <DataTrigger TargetType="Image" Binding="{Binding Data.IsCurrentMoreThenAverage, Source={x:Reference self}}" Value="true">
+                                            <Setter Property="Source" Value="arrowup.png"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Image" Binding="{Binding Data.IsCurrentMoreThenAverage, Source={x:Reference self}}" Value="false">
+                                            <Setter Property="Source" Value="arrowdown.png"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                    </HorizontalStackLayout>
+                    <Label HorizontalOptions="Center" FontSize="Medium" Text="Current"/>
+                </VerticalStackLayout>
+            </FlexLayout>
         </VerticalStackLayout>
     </VerticalStackLayout>
 </Frame>

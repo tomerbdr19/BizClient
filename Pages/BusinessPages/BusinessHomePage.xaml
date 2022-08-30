@@ -43,9 +43,9 @@
                 </HorizontalStackLayout>
             </Frame>
             <HorizontalStackLayout Spacing="24" VerticalOptions="Center" HorizontalOptions="Center">
-                <view:GraphView Title="New Subscribers" Data="{Binding SubscriptionsStat.ActivityList}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Description="{Binding SubscriptionsStat.Average}"/>
-                <view:GraphView Title="Coupons Redeemed" Data="{Binding CouponsStat.ActivityList}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Description="{Binding CouponsStat.Average}"/>
-                <view:GraphView Title="Business Views" Data="{Binding ViewsStat.ActivityList}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Description="{Binding ViewsStat.Average}"/>
+                <view:GraphView Title="New Subscribers" Data="{Binding SubscriptionsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
+                <view:GraphView Title="Coupons Redeemed" Data="{Binding CouponsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
+                <view:GraphView Title="Business Views" Data="{Binding ViewsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
         <VerticalStackLayout Spacing="24">
