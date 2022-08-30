@@ -56,5 +56,10 @@ namespace BizService.Services
             var business = await PostAsync<Business>($"{Path}/delete-image", new { business = businessId, imageUrl });
             return business;
         }
+        async public Task<StatisticsResponse> GetStatics(string businessId, string period, DateTime fromDate)
+        {
+            var statistics = await GetAsync<StatisticsResponse>($"{Path}/statistics", new Dictionary<string, string> { { "business", businessId }, { "period", period }, { "fromDate", JsonConvert.SerializeObject(fromDate) } });
+            return statistics;
+        }
     }
 }

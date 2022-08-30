@@ -7,7 +7,7 @@
              x:DataType="viewmodels:BusinessHomePageViewModel"
              Title="BusinessHomePage">
     <ContentPage.Resources>
-        <Style TargetType="Button">
+        <Style TargetType="Button" x:Key="quick">
             <Setter Property="WidthRequest" Value="150"/>
             <Setter Property="HeightRequest" Value="80"/>
         </Style>
@@ -19,35 +19,46 @@
                 Text="Quick Actions"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
-           <HorizontalStackLayout Spacing="48" VerticalOptions="Center" HorizontalOptions="Center">
-                <Button Text="New Post"/>
-                <Button Text="New Discount"/>
-                <Button Text="Announce"/>
-                <Button Text="New Copoun"/>
+            <HorizontalStackLayout Spacing="48" VerticalOptions="Center" HorizontalOptions="Center">
+                <Button Style="{StaticResource quick}" Text="New Post"/>
+                <Button Style="{StaticResource quick}" Text="New Discount"/>
+                <Button Style="{StaticResource quick}" Text="Announce"/>
+                <Button Style="{StaticResource quick}" Text="New Copoun"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
         <VerticalStackLayout Spacing="24">
-                <Label 
+            <Label 
                     Style="{StaticResource title}"
                     Text="Statistics"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
-               <HorizontalStackLayout Spacing="100" VerticalOptions="Center" HorizontalOptions="Center">
-                    <view:GraphView Title="Subscribers Dashboard" Data="{Binding SubscriptionsActivity}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Description="You have reached 3 new users this week"/>
-                    <view:GraphView Title="Coupons Dashboard" Data="{Binding CouponsActivity}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Description="10 Copoun has been redeemed this week"/>
+            <Frame Style="{StaticResource card}" HorizontalOptions="Center" Padding="24">
+                <HorizontalStackLayout Spacing="24" WidthRequest="652" HorizontalOptions="Center">
+                    <Label VerticalOptions="Center" FontSize="Large" Text="Period:"/>
+                    <Picker FontSize="Large" HorizontalTextAlignment="Center" ItemsSource="{Binding Options}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}"/>
+                    <Label VerticalOptions="Center" FontSize="Large" Text="From last:"/>
+                    <Picker FontSize="Large" HorizontalTextAlignment="Center" ItemsSource="{Binding FromOptions}" SelectedItem="{Binding SelectedFrom, Mode=TwoWay}"/>
+                    <Label VerticalOptions="Center" FontSize="Large" Text="{Binding SelectedPeriod.PeriodOptionsString}"/>
+                    <Button Margin="100,0,0,0" Text="Apply" Command="{Binding ApplyPeriodClickCommand}"/>
                 </HorizontalStackLayout>
+            </Frame>
+            <HorizontalStackLayout Spacing="24" VerticalOptions="Center" HorizontalOptions="Center">
+                <view:GraphView Title="New Subscribers" Data="{Binding SubscriptionsStat.ActivityList}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Description="{Binding SubscriptionsStat.Average}"/>
+                <view:GraphView Title="Coupons Redeemed" Data="{Binding CouponsStat.ActivityList}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Description="{Binding CouponsStat.Average}"/>
+                <view:GraphView Title="Business Views" Data="{Binding ViewsStat.ActivityList}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Description="{Binding ViewsStat.Average}"/>
+            </HorizontalStackLayout>
         </VerticalStackLayout>
         <VerticalStackLayout Spacing="24">
-                <Label 
+            <Label 
                     Style="{StaticResource title}"
                     Text="Activity"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
-               <HorizontalStackLayout Spacing="30" VerticalOptions="Center" HorizontalOptions="Center">
-                    <view:ActivityView Description="Average Response Time"/>
-                    <view:ActivityView Description="Business Views"/>
-                    <view:ActivityView Description="Place holder"/>
-                </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="30" VerticalOptions="Center" HorizontalOptions="Center">
+                <view:ActivityView Description="Average Response Time"/>
+                <view:ActivityView Description="Business Views"/>
+                <view:ActivityView Description="Place holder"/>
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

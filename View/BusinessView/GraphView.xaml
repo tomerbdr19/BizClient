@@ -5,7 +5,7 @@
              xmlns:views="clr-namespace:BizClient.View"
              x:Class="BizClient.View.GraphView"
              x:Name="self"
-             WidthRequest="563"
+             WidthRequest="700"
              HeightRequest="563"
              >
     <VerticalStackLayout Spacing="42" HorizontalOptions="Fill" VerticalOptions="Fill">
@@ -26,7 +26,7 @@
                 <chart:SfCartesianChart.TooltipBehavior>
                     <chart:ChartTooltipBehavior Duration="5000"/>
                 </chart:SfCartesianChart.TooltipBehavior>
-                <chart:LineSeries ItemsSource="{Binding Data, Source={x:Reference self}}" XBindingPath="Label" YBindingPath="Value" />
+                <chart:ColumnSeries ItemsSource="{Binding Data, Source={x:Reference self}}" XBindingPath="Label" YBindingPath="Value" />
             </chart:SfCartesianChart>
             <Label 
             Text="{Binding Description, Source={x:Reference self}}"
