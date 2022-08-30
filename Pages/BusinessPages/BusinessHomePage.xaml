@@ -5,7 +5,8 @@
              xmlns:viewmodels="clr-namespace:BizClient.ViewModel.BusinessViewModel"
              x:Class="BizClient.Pages.BusinessPages.BusinessHomePage"
              x:DataType="viewmodels:BusinessHomePageViewModel"
-             Title="BusinessHomePage">
+             Title="BusinessHomePage"
+             Padding="100,0">
     <ContentPage.Resources>
         <Style TargetType="Button" x:Key="quick">
             <Setter Property="WidthRequest" Value="150"/>
@@ -26,28 +27,34 @@
                 <Button Style="{StaticResource quick}" Text="New Copoun"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
-        <VerticalStackLayout Spacing="24">
-            <Label 
-                    Style="{StaticResource title}"
-                    Text="Statistics"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-            <Frame Style="{StaticResource card}" HorizontalOptions="Center" Padding="24">
-                <HorizontalStackLayout Spacing="24" WidthRequest="652" HorizontalOptions="Center">
-                    <Label VerticalOptions="Center" FontSize="Large" Text="Period:"/>
-                    <Picker FontSize="Large" HorizontalTextAlignment="Center" ItemsSource="{Binding Options}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}"/>
-                    <Label VerticalOptions="Center" FontSize="Large" Text="From last:"/>
-                    <Picker FontSize="Large" HorizontalTextAlignment="Center" ItemsSource="{Binding FromOptions}" SelectedItem="{Binding SelectedFrom, Mode=TwoWay}"/>
-                    <Label VerticalOptions="Center" FontSize="Large" Text="{Binding SelectedPeriod.PeriodOptionsString}"/>
-                    <Button Margin="100,0,0,0" Text="Apply" Command="{Binding ApplyPeriodClickCommand}"/>
+        <Frame x:Name="statCard" Style="{StaticResource card}" HorizontalOptions="FillAndExpand">
+            <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto">
+                <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource title}"
+                        Text="Statistics"
+                        VerticalOptions="Center" 
+                        Padding="12"/>
+                <HorizontalStackLayout Padding="12" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Spacing="6">
+                    <Label VerticalOptions="Center" FontSize="Micro" Text="By:"/>
+                    <Picker FontSize="Small" HorizontalTextAlignment="Center" ItemsSource="{Binding Options}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}"/>
+                    <Label VerticalOptions="Center" FontSize="Micro" Text="From:"/>
+                    <Picker FontSize="Micro" HorizontalTextAlignment="Center" ItemsSource="{Binding FromOptions}" SelectedItem="{Binding SelectedFrom, Mode=TwoWay}"/>
+                    <Label VerticalOptions="Center" FontSize="Micro" Text="{Binding SelectedPeriod.PeriodOptionsString}"/>
+                    <Button HorizontalOptions="End" Text="Apply" Command="{Binding ApplyPeriodClickCommand}"/>
                 </HorizontalStackLayout>
-            </Frame>
-            <HorizontalStackLayout Spacing="24" VerticalOptions="Center" HorizontalOptions="Center">
-                <view:GraphView Title="New Subscribers" Data="{Binding SubscriptionsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
-                <view:GraphView Title="Coupons Redeemed" Data="{Binding CouponsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
-                <view:GraphView Title="Business Views" Data="{Binding ViewsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+                <Line Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" X2="400" BackgroundColor="{StaticResource D30}"/>
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="48" Padding="60" Grid.Row="2" Grid.ColumnSpan="3">
+                    <view:GraphView Title="New Subscribers" Data="{Binding SubscriptionsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
+                    <Line WidthRequest="1" Y2="300" BackgroundColor="{StaticResource D30}"/>
+                    <view:GraphView Title="Coupons Redeemed" Data="{Binding CouponsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
+                    <Line WidthRequest="1" Y2="300" BackgroundColor="{StaticResource D30}"/>
+                    <view:GraphView Title="Business Views" Data="{Binding ViewsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
+                </HorizontalStackLayout>
+            </Grid>
+        </Frame>
         <VerticalStackLayout Spacing="24">
             <Label 
                     Style="{StaticResource title}"
