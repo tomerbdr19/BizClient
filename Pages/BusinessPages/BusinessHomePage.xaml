@@ -2,10 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:view="clr-namespace:BizClient.View"
+             xmlns:viewmodels="clr-namespace:BizClient.ViewModel.BusinessViewModel"
              x:Class="BizClient.Pages.BusinessPages.BusinessHomePage"
-             Title="BusinessHomePage">
+             x:DataType="viewmodels:BusinessHomePageViewModel"
+             Title="BusinessHomePage"
+             Padding="100,0">
     <ContentPage.Resources>
-        <Style TargetType="Button">
+        <Style TargetType="Button" x:Key="quick">
             <Setter Property="WidthRequest" Value="150"/>
             <Setter Property="HeightRequest" Value="80"/>
         </Style>
@@ -17,35 +20,59 @@
                 Text="Quick Actions"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
-           <HorizontalStackLayout Spacing="48" VerticalOptions="Center" HorizontalOptions="Center">
-                <Button Text="New Post"/>
-                <Button Text="New Discount"/>
-                <Button Text="Announce"/>
-                <Button Text="New Copoun"/>
+            <HorizontalStackLayout Spacing="48" VerticalOptions="Center" HorizontalOptions="Center">
+                <Button Style="{StaticResource quick}" Text="New Post"/>
+                <Button Style="{StaticResource quick}" Text="New Discount"/>
+                <Button Style="{StaticResource quick}" Text="Announce"/>
+                <Button Style="{StaticResource quick}" Text="New Copoun"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
-        <VerticalStackLayout Spacing="24">
-                <Label 
-                    Style="{StaticResource title}"
-                    Text="Statistics"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-               <HorizontalStackLayout Spacing="100" VerticalOptions="Center" HorizontalOptions="Center">
-                    <view:GraphView Title="Subscribers Dashboard" Description="You have reached 3 new users this week"/>
-                    <view:GraphView Title="Coupons Dashboard" Description="10 Copoun has been redeemed this week"/>
+        <Frame x:Name="statCard" Style="{StaticResource card}" HorizontalOptions="FillAndExpand">
+            <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto">
+                <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource title}"
+                        Text="Statistics"
+                        VerticalOptions="Center" 
+                        Padding="12"/>
+                <HorizontalStackLayout Padding="12" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Spacing="6">
+                    <Label VerticalOptions="Center" FontSize="Micro" Text="By:"/>
+                    <Picker FontSize="Small" HorizontalTextAlignment="Center" ItemsSource="{Binding Options}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}"/>
+                    <Label VerticalOptions="Center" FontSize="Micro" Text="From:"/>
+                    <Picker FontSize="Micro" HorizontalTextAlignment="Center" ItemsSource="{Binding FromOptions}" SelectedItem="{Binding SelectedFrom, Mode=TwoWay}"/>
+                    <Label VerticalOptions="Center" FontSize="Micro" Text="{Binding SelectedPeriod.PeriodOptionsString}"/>
+                    <Button HorizontalOptions="End" Text="Apply" Command="{Binding ApplyPeriodClickCommand}"/>
                 </HorizontalStackLayout>
-        </VerticalStackLayout>
-        <VerticalStackLayout Spacing="24">
-                <Label 
-                    Style="{StaticResource title}"
-                    Text="Activity"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-               <HorizontalStackLayout Spacing="30" VerticalOptions="Center" HorizontalOptions="Center">
-                    <view:ActivityView Description="Average Response Time"/>
-                    <view:ActivityView Description="Business Views"/>
-                    <view:ActivityView Description="Place holder"/>
+                <Line Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" X2="400" BackgroundColor="{StaticResource D30}"/>
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="48" Padding="60" Grid.Row="2" Grid.ColumnSpan="3">
+                    <view:GraphView Title="New Subscribers" Data="{Binding SubscriptionsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
+                    <Line WidthRequest="1" Y2="300" BackgroundColor="{StaticResource D30}"/>
+                    <view:GraphView Title="Coupons Redeemed" Data="{Binding CouponsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
+                    <Line WidthRequest="1" Y2="300" BackgroundColor="{StaticResource D30}"/>
+                    <view:GraphView Title="Business Views" Data="{Binding ViewsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
                 </HorizontalStackLayout>
-        </VerticalStackLayout>
+            </Grid>
+        </Frame>
+        <Frame x:Name="activityCard" Style="{StaticResource card}" HorizontalOptions="FillAndExpand">
+            <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="12">
+                <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource title}"
+                        Text="Business Activity"
+                        VerticalOptions="Center" 
+                        Padding="0,12,0,0"/>
+                <Line Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" X2="400" BackgroundColor="{StaticResource D30}"/>
+                
+                    <view:ActivityView Grid.Row="2" Grid.Column="0" VerticalOptions="CenterAndExpand" Data="{Binding ChatsActivity.Data}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Title="Chats Status"/>
+                    <Line Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="1" Y2="80" BackgroundColor="{StaticResource D30}"/>
+                    <view:ActivityView Grid.Row="2" Grid.Column="1" VerticalOptions="CenterAndExpand" Data="{Binding DiscountsActivity.Data}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"  Title="Discounts"/>
+                    <Line Grid.Row="2" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="1" Y2="80" BackgroundColor="{StaticResource D30}"/>
+                    <view:ActivityView Grid.Row="20" Grid.Column="2" VerticalOptions="CenterAndExpand" Data="{Binding DiscountsActivity.Max.Data}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"  Title="Hottest Discount"/>
+            </Grid>
+        </Frame>
     </VerticalStackLayout>
 </ContentPage>

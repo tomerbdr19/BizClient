@@ -1,16 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:views="clr-namespace:BizClient.View"
+             xmlns:models="clr-namespace:BizModels.Model"
              x:Class="BizClient.View.ActivityView"
              x:Name="self"
-             WidthRequest="433"
-             HeightRequest="166"
+             HeightRequest="200"
+             RowDefinitions="Auto,*"
+             ColumnDefinitions="*,*"
              >
-    <VerticalStackLayout Spacing="42">
-        <BoxView/>
-        <Label 
-            Text="{Binding Description, Source={x:Reference self}}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
-</Frame>
+    <Label
+        Grid.Row="0"
+        Grid.ColumnSpan="2"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Text="{Binding Title, Source={x:Reference self}}"
+        FontSize="Large"/>
+    <views:ActivityIndicatorView Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsLoading, Source={x:Reference self}}"/>
+    <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnDefinitions="*,*" HorizontalOptions="Fill" IsVisible="{Binding IsNotLoading, Source={x:Reference self}}">
+        <VerticalStackLayout BindableLayout.ItemsSource="{Binding Data, Source={x:Reference self}}" Spacing="12" Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate x:DataType="models:ChartData">
+                    <Label FontSize="Medium" FontAttributes="Bold" TextTransform="Uppercase">
+                        <Label.Text>
+                            <MultiBinding StringFormat='{}{0} : {1}'>
+                                <Binding Path="Label"/>
+                                <Binding Path="Value"/>
+                            </MultiBinding>
+                        </Label.Text>
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Label}" Value="new">
+                                        <Setter Property="TextColor" Value="{StaticResource R10}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Label}" Value="in-progress">
+                                        <Setter Property="TextColor" Value="{StaticResource O00}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Label}" Value="resolved">
+                                        <Setter Property="TextColor" Value="{StaticResource G10}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Label}" Value="active">
+                                        <Setter Property="TextColor" Value="{StaticResource G10}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Label}" Value="expired">
+                                        <Setter Property="TextColor" Value="{StaticResource O00}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Label}" Value="available">
+                                        <Setter Property="TextColor" Value="{StaticResource O00}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Label}" Value="redeemed">
+                                        <Setter Property="TextColor" Value="{StaticResource G10}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </VerticalStackLayout>
+        <chart:SfCircularChart x:Name="Chart2" Grid.Column="1" Margin="0,0,0,0" HeightRequest="300" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsNotLoading, Source={x:Reference self}}">
+            <chart:DoughnutSeries x:Name="Chart" StartAngle="180" EndAngle="360"
+                                  ShowDataLabels="True"
+                                  ItemsSource="{Binding Data, Source={x:Reference self}}"
+                                  XBindingPath="Label"
+                                  YBindingPath="Value">
+            </chart:DoughnutSeries>
+        </chart:SfCircularChart>
+    </Grid>
+</Grid>
