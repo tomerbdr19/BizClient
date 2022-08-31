@@ -61,5 +61,10 @@ namespace BizService.Services
             var statistics = await GetAsync<StatisticsResponse>($"{Path}/statistics", new Dictionary<string, string> { { "business", businessId }, { "period", period }, { "fromDate", JsonConvert.SerializeObject(fromDate) } });
             return statistics;
         }
+        async public Task<ActivityResponse> GetActivity(string businessId)
+        {
+            var activity = await GetAsync<ActivityResponse>($"{Path}/activity", new Dictionary<string, string> { { "business", businessId } });
+            return activity;
+        }
     }
 }

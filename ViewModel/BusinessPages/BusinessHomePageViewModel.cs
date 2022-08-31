@@ -10,6 +10,7 @@ public partial class BusinessHomePageViewModel : BaseViewModel
     async public void OnAppearing()
     {
         await FetchStatistics();
+        await FetchActivity();
     }
 
     async private Task FetchStatistics()
@@ -21,6 +22,24 @@ public partial class BusinessHomePageViewModel : BaseViewModel
         SubscriptionsStat = statistics.Subscriptions;
         CouponsStat = statistics.Coupons;
         ViewsStat = statistics.Views;
+
+        IsLoading = false;
+    }
+
+    async private Task FetchActivity()
+    {
+        IsLoading = true;
+
+        try
+        {
+            var statistics = await this.businessService.GetActivity(Store.BusinessId);
+            DiscountsActivity = statistics.Discounts;
+            ChatsActivity = statistics.Chats;
+        }
+        catch (Exception err)
+        {
+            Console.WriteLine(err);
+        }
 
         IsLoading = false;
     }
@@ -57,6 +76,12 @@ public partial class BusinessHomePageViewModel : BaseViewModel
     [ObservableProperty]
     public Statistic viewsStat = new();
 
+    [ObservableProperty]
+    public DiscountsActivity discountsActivity = new();
+
+    [ObservableProperty]
+    public ChatsActivity chatsActivity = new();
+
     private DateTime GetFromDate()
     {
         if (SelectedPeriod.PeriodOptionsString == "week")
@@ -68,6 +93,8 @@ public partial class BusinessHomePageViewModel : BaseViewModel
             return DateTime.Now.AddMonths(-1 * SelectedFrom);
         }
     }
+
+    public Statistic Pie { get; } = new() { ActivityList = new() { new() { Value = 100, Label = "A" }, new() { Value = 150, Label = "A" } } };
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs e)
     {
