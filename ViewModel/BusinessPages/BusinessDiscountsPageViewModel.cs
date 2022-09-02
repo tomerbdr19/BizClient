@@ -1,4 +1,6 @@
 ﻿using System;
+using BizService.Services;
+
 namespace BizClient.ViewModel.BusinessViewModel
 {
     public partial class BusinessDiscountsPageViewModel : BaseViewModel
@@ -21,7 +23,88 @@ namespace BizClient.ViewModel.BusinessViewModel
 
         public async void OnAppearing()
         {
+            IsActionShown = false;
+            selectedDiscount = null;
             await GetDiscounts();
+        }
+
+        [ICommand]
+        public async void OnDeleteClick()
+        {
+            var IsConfirmed = await Shell.Current.DisplayAlert("Delte confirmation", "Are you sure?", "Yes", "Cancel");
+
+            if (IsConfirmed)
+            {
+                try
+                {
+                    IsLoading = true;
+                    var deleted = await discountService.DeleteDiscount(Store.BusinessId, selectedDiscount.Id);
+
+                    Discounts.Remove(selectedDiscount);
+                    IsActionShown = false;
+                    selectedDiscount = null;
+                }
+                catch
+                {
+
+                }
+            }
+
+            IsLoading = false;
+        }
+
+        [ICommand]
+        public async void OnExtendClick()
+        {
+            var days = await Shell.Current.DisplayPromptAsync("Discount extenstion", "number of days", initialValue: "0", keyboard: Keyboard.Numeric);
+
+            if (Int32.Parse(days) > 0)
+            {
+                try
+                {
+                    var newDate = selectedDiscount.ExpiredAt.AddDays(Int32.Parse(days));
+                    IsLoading = true;
+                    var discount = await discountService.ExtendDiscount(Store.BusinessId, selectedDiscount.Id, newDate);
+
+                    var index = Discounts.IndexOf(selectedDiscount);
+                    Discounts.Remove(selectedDiscount);
+                    Discounts.Insert(index, discount);
+                }
+                catch
+                {
+
+                }
+            }
+
+            IsLoading = false;
+        }
+
+        [ICommand]
+        public async void OnShareClick()
+        {
+            if (!selectedDiscount.IsPublic)
+            {
+                var IsConfirmed = await Shell.Current.DisplayAlert("Share discount", "Share this discount will make it public", "Ok", "Cancel");
+
+                if (!IsConfirmed)
+                    return;
+            }
+
+            try
+            {
+                IsLoading = true;
+                var discount = await discountService.ShareDiscount(Store.BusinessId, selectedDiscount.Id);
+
+                var index = Discounts.IndexOf(selectedDiscount);
+                Discounts.Remove(selectedDiscount);
+                Discounts.Insert(index, discount);
+            }
+            catch
+            {
+
+            }
+
+            IsLoading = false;
         }
 
         public void DataGrid_SelectionChanging(object sender, Syncfusion.Maui.DataGrid.DataGridSelectionChangedEventArgs e)
