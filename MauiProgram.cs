@@ -1,4 +1,5 @@
 ﻿using Syncfusion.Maui.Core.Hosting;
+using Syncfusion.Maui.DataGrid.Hosting;
 using ZXing.Net.Maui;
 
 namespace BizClient;
@@ -12,6 +13,7 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .UseBarcodeReader()
             .ConfigureSyncfusionCore()
+            .ConfigureSyncfusionDataGrid()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -47,10 +49,12 @@ public static class MauiProgram
         // Dekstop Business Pages
         builder.Services.AddSingleton<BusinessHomePage>();
         builder.Services.AddSingleton<BusinessSubscribersPage>();
+        builder.Services.AddSingleton<BusinessDiscountsPage>();
 
         // Desktop View Models
         builder.Services.AddSingleton<BusinessHomePageViewModel>();
         builder.Services.AddSingleton<BusinessSubscribersPageViewModel>();
+        builder.Services.AddSingleton<BusinessDiscountsPageViewModel>();
 
 
 

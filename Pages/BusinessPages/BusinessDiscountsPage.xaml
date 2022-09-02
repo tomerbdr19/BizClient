@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:viewmodels="clr-namespace:BizClient.ViewModel.BusinessViewModel"
+             xmlns:views="clr-namespace:BizClient.View"
+             x:Class="BizClient.Pages.BusinessPages.BusinessDiscountsPage"
+             x:DataType="viewmodels:BusinessDiscountsPageViewModel"
+             Title="Your Discounts">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <syncfusion:DataGridStyle x:Key="customStyle" 
+                                  HeaderRowBackground="{StaticResource B10}"
+                                  HeaderRowTextColor="White"
+                                  GridLineColor="{StaticResource D30}"
+                                  HeaderRowFontSize="16"
+                                  HeaderRowFontAttributes="Bold"
+                                  />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*" ColumnDefinitions="*" Padding="200,0">
+        <views:ActivityIndicatorView Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}"/>
+        <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" Spacing="24" Padding="0,45" IsVisible="{Binding IsNotLoading}">
+            <Frame Padding="100,24" MaximumHeightRequest="1200">
+                <Grid HorizontalOptions="FillAndExpand" ColumnDefinitions="*,Auto">
+                    <syncfusion:SfDataGrid x:Name="dataGrid"
+                               DefaultStyle="{StaticResource customStyle}"
+                               Grid.Column="0"
+                               HorizontalOptions="StartAndExpand"
+                               ItemsSource="{Binding Discounts}"
+                               ColumnWidthMode="Auto"
+                               GridLinesVisibility="Both"
+                               AutoGenerateColumnsMode="None"
+                               RowHeight="200">
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:DataGridImageColumn CellTextAlignment="Center" HeaderTextAlignment="Center" HeaderText="Image" MappingName="ImageUrl" Width="200"/>
+                            <syncfusion:DataGridTemplateColumn HeaderTextAlignment="Center" HeaderText="Status" MappingName="IsExpired" Width="100">
+                                <syncfusion:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Frame BackgroundColor="#13CF13" Padding="5" HorizontalOptions="Center" WidthRequest="80" HeightRequest="40">
+                                            <Frame.Style>
+                                                <Style TargetType="Frame">
+                                                    <Style.Triggers>
+                                                        <DataTrigger TargetType="Frame" Binding="{Binding IsExpired}" Value="false">
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource G10}"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="Frame" Binding="{Binding IsExpired}" Value="true">
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource O10}"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Frame.Style>
+                                            <Label TextColor="White" WidthRequest="40" Text="Backlog" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                                                <Label.Style>
+                                                    <Style TargetType="Label">
+                                                        <Style.Triggers>
+                                                            <DataTrigger TargetType="Label" Binding="{Binding IsExpired}" Value="false">
+                                                                <Setter Property="Text" Value="Active"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="Label" Binding="{Binding IsExpired}" Value="true">
+                                                                <Setter Property="Text" Value="Expired"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Label.Style>
+                                            </Label>
+                                        </Frame>
+                                    </DataTemplate>
+                                </syncfusion:DataGridTemplateColumn.CellTemplate>
+                            </syncfusion:DataGridTemplateColumn>
+                            <syncfusion:DataGridTextColumn HeaderTextAlignment="Center" CellTextAlignment="Center"  HeaderText="Description" MappingName="Description" ColumnWidthMode="Auto"/>
+                            <syncfusion:DataGridDateColumn AllowSorting="True" HeaderTextAlignment="Center" CellTextAlignment="Center" HeaderText="Created at" MappingName="CreatedAt"/>
+                            <syncfusion:DataGridDateColumn AllowSorting="True" HeaderTextAlignment="Center" CellTextAlignment="Center" HeaderText="Expired at" MappingName="ExpiredAt"/>
+                            <syncfusion:DataGridTextColumn AllowSorting="True" HeaderTextAlignment="Center" CellTextAlignment="Center"  HeaderText="Days left" MappingName="DaysToEnd"/>
+                            <syncfusion:DataGridCheckBoxColumn AllowSorting="True" HeaderTextAlignment="Center" CellTextAlignment="Center" HeaderText="Public" MappingName="IsPublic"/>
+                            <syncfusion:DataGridTextColumn AllowSorting="True" HeaderTextAlignment="Center" CellTextAlignment="Center"  HeaderText="Coupons" MappingName="Statistics.Total"/>
+                            <syncfusion:DataGridTextColumn AllowSorting="True" HeaderTextAlignment="Center" CellTextAlignment="Center"  HeaderText="Redeems" MappingName="Statistics.Redeemed"/>
+                            <syncfusion:DataGridTextColumn AllowSorting="True" HeaderTextAlignment="Center" CellTextAlignment="Center"  HeaderText="Percentage" MappingName="Statistics.Percentage"/>
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                    <HorizontalStackLayout Grid.Column="1" Spacing="18" VerticalOptions="Center">
+                        <Button VerticalOptions="Center" WidthRequest="75" Text="Delete" TextColor="{StaticResource R10}" BorderColor="{StaticResource R10}" BorderWidth="1" BackgroundColor="White"/>
+                        <Button VerticalOptions="Center" WidthRequest="75" Text="Extend"/>
+                        <Button VerticalOptions="Center" WidthRequest="75" Text="Share"/>
+                    </HorizontalStackLayout>
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
