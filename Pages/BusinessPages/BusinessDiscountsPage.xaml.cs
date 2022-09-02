@@ -16,4 +16,9 @@ public partial class BusinessDiscountsPage : ContentPage
         base.OnAppearing();
         viewModel.OnAppearing();
     }
+
+    void dataGrid_SelectionChanged(System.Object sender, Syncfusion.Maui.DataGrid.DataGridSelectionChangedEventArgs e)
+    {
+        viewModel.DataGrid_SelectionChanging(sender, e);
+    }
 }

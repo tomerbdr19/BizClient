@@ -13,6 +13,7 @@ namespace BizModels.Model
         public int Limit { get; set; }
 
         public bool IsExpired => DateTime.Now > ExpiredAt;
+        public bool IsActive => !IsExpired;
         public int DaysToEnd => (ExpiredAt - DateTime.Now).Days;
         public DiscountStat Statistics { get; set; } = new();
 

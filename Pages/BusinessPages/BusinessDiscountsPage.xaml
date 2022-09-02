@@ -12,6 +12,7 @@
             <syncfusion:DataGridStyle x:Key="customStyle" 
                                   HeaderRowBackground="{StaticResource B10}"
                                   HeaderRowTextColor="White"
+                                  CurrentCellBorderWidth="0"
                                   GridLineColor="{StaticResource D30}"
                                   HeaderRowFontSize="16"
                                   HeaderRowFontAttributes="Bold"
@@ -25,6 +26,8 @@
                 <Grid HorizontalOptions="FillAndExpand" ColumnDefinitions="*,Auto">
                     <syncfusion:SfDataGrid x:Name="dataGrid"
                                DefaultStyle="{StaticResource customStyle}"
+                               SelectionMode="SingleDeselect"
+                               SelectionChanged="dataGrid_SelectionChanged"
                                Grid.Column="0"
                                HorizontalOptions="StartAndExpand"
                                ItemsSource="{Binding Discounts}"
@@ -78,7 +81,7 @@
                             <syncfusion:DataGridTextColumn AllowSorting="True" HeaderTextAlignment="Center" CellTextAlignment="Center"  HeaderText="Percentage" MappingName="Statistics.Percentage"/>
                         </syncfusion:SfDataGrid.Columns>
                     </syncfusion:SfDataGrid>
-                    <HorizontalStackLayout Grid.Column="1" Spacing="18" VerticalOptions="Center">
+                    <HorizontalStackLayout Grid.Column="1" VerticalOptions="Start" Margin="{Binding ActionMargin}" HorizontalOptions="Center" Spacing="18" IsVisible="{Binding IsActionShown}">
                         <Button VerticalOptions="Center" WidthRequest="75" Text="Delete" TextColor="{StaticResource R10}" BorderColor="{StaticResource R10}" BorderWidth="1" BackgroundColor="White"/>
                         <Button VerticalOptions="Center" WidthRequest="75" Text="Extend"/>
                         <Button VerticalOptions="Center" WidthRequest="75" Text="Share"/>

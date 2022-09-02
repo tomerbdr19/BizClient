@@ -11,9 +11,34 @@ namespace BizClient.ViewModel.BusinessViewModel
 
         public ObservableCollection<Discount> Discounts { get; } = new();
 
+        [ObservableProperty]
+        public Thickness actionMargin;
+
+        [ObservableProperty]
+        public bool isActionShown = false;
+
+        private Discount selectedDiscount { get; set; }
+
         public async void OnAppearing()
         {
             await GetDiscounts();
+        }
+
+        public void DataGrid_SelectionChanging(object sender, Syncfusion.Maui.DataGrid.DataGridSelectionChangedEventArgs e)
+        {
+            var grid = sender as Syncfusion.Maui.DataGrid.SfDataGrid;
+            selectedDiscount = (Discount)grid.CurrentRow;
+
+            if (selectedDiscount != null && selectedDiscount.IsActive)
+            {
+                IsActionShown = true;
+                var marginTop = (grid.HeaderRowHeight + (grid.SelectedIndex * grid.RowHeight)) - grid.RowHeight / 2;
+                ActionMargin = new Thickness(0, marginTop, 0, 0);
+            }
+            else
+            {
+                IsActionShown = false;
+            }
         }
 
         private async Task GetDiscounts()
