@@ -1,5 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
@@ -10,18 +10,14 @@
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
-
 		<!-- Display name -->
 		<ApplicationTitle>BizClient</ApplicationTitle>
-
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.bizclient</ApplicationId>
 		<ApplicationIdGuid>b3c5c415-be21-402f-9752-274500bb6a30</ApplicationIdGuid>
-
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
@@ -37,217 +33,235 @@
 		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
 		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 	</PropertyGroup>
-
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\bluelogo.svg" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#FFFFFF" />
 		<MauiIcon Include="Resources\Images\uploadicon.svg" />
-
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\bluelogo.svg" Color="White" BaseSize="128,128" />
-
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiFont Include="Resources\Fonts\*" />
-
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
-
 	<ItemGroup>
-	  <None Remove="Newtonsoft.Json" />
-	  <None Remove="CommunityToolkit.Mvvm" />
-	  <None Remove="Resources\AppIcon\bluelogo.svg" />
-	  <None Remove="Resources\Images\genericprofile.jpg" />
-	  <None Remove="View\" />
-	  <None Remove="Pages\" />
-	  <None Remove="ViewModel\Pages\" />
-	  <None Remove="Shells\" />
-	  <None Remove="CommunityToolkit.Maui" />
-	  <None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.csproj.AssemblyReference.cache" />
-	  <None Remove="BizModels\obj\BizModels.csproj.nuget.g.props" />
-	  <None Remove="BizModels\obj\BizModels.csproj.nuget.g.targets" />
-	  <None Remove="BizModels\obj\project.assets.json" />
-	  <None Remove="BizModels\obj\project.nuget.cache" />
-	  <None Remove="BizModels\obj\BizModels.csproj.nuget.dgspec.json" />
-	  <None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.assets.cache" />
-	  <None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.GeneratedMSBuildEditorConfig.editorconfig" />
-	  <None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.AssemblyInfoInputs.cache" />
-	  <None Remove="BizService\obj\Debug\netstandard2.1\BizService.csproj.AssemblyReference.cache" />
-	  <None Remove="BizService\obj\BizService.csproj.nuget.g.props" />
-	  <None Remove="BizService\obj\BizService.csproj.nuget.g.targets" />
-	  <None Remove="BizService\obj\project.assets.json" />
-	  <None Remove="BizService\obj\project.nuget.cache" />
-	  <None Remove="BizService\obj\BizService.csproj.nuget.dgspec.json" />
-	  <None Remove="BizService\obj\Debug\netstandard2.1\BizService.assets.cache" />
-	  <None Remove="BizService\obj\Debug\netstandard2.1\BizService.GeneratedMSBuildEditorConfig.editorconfig" />
-	  <None Remove="BizService\obj\Debug\netstandard2.1\BizService.AssemblyInfoInputs.cache" />
-	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.AssemblyReference.cache" />
-	  <None Remove="BizTest\obj\BizTest.csproj.nuget.g.props" />
-	  <None Remove="BizTest\obj\BizTest.csproj.nuget.g.targets" />
-	  <None Remove="BizTest\obj\project.assets.json" />
-	  <None Remove="BizTest\obj\project.nuget.cache" />
-	  <None Remove="BizTest\obj\BizTest.csproj.nuget.dgspec.json" />
-	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.assets.cache" />
-	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.GeneratedMSBuildEditorConfig.editorconfig" />
-	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.AssemblyInfoInputs.cache" />
-	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.CoreCompileInputs.cache" />
-	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.dll" />
-	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.pdb" />
-	  <None Remove="BizTest\obj\Debug\net6.0\refint\BizTest.dll" />
-	  <None Remove="BizTest\obj\Debug\net6.0\apphost" />
-	  <None Remove="BizTest\bin\Debug\net6.0\BizTest" />
-	  <None Remove="BizTest\bin\Debug\net6.0\BizTest.deps.json" />
-	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.genruntimeconfig.cache" />
-	  <None Remove="BizTest\bin\Debug\net6.0\BizTest.runtimeconfig.json" />
-	  <None Remove="BizTest\bin\Debug\net6.0\BizTest.dll" />
-	  <None Remove="BizTest\obj\Debug\net6.0\ref\BizTest.dll" />
-	  <None Remove="BizTest\bin\Debug\net6.0\BizTest.pdb" />
-	  <None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.FileListAbsolute.txt" />
-	  <None Remove="Store\" />
-	  <None Remove="Controls\" />
-	  <None Remove="ViewModel\BusinessPages\" />
-	  <None Remove="Pages\BusinessPages\" />
-	  <None Remove="View\BusinessView\" />
-	  <None Remove="Xamarin.CommunityToolkit.MauiCompat" />
-	  <None Remove="BizModels\Helpers\" />
-	  <None Remove="Microsoft.Maui.Dependencies" />
-	  <None Remove="Helpers\" />
-	  <None Remove="Syncfusion.Maui.Charts" />
-	  <None Remove="SkiaSharp" />
+		<None Remove="Newtonsoft.Json" />
+		<None Remove="CommunityToolkit.Mvvm" />
+		<None Remove="Resources\AppIcon\bluelogo.svg" />
+		<None Remove="Resources\Images\genericprofile.jpg" />
+		<None Remove="View\" />
+		<None Remove="Pages\" />
+		<None Remove="ViewModel\Pages\" />
+		<None Remove="Shells\" />
+		<None Remove="CommunityToolkit.Maui" />
+		<None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.csproj.AssemblyReference.cache" />
+		<None Remove="BizModels\obj\BizModels.csproj.nuget.g.props" />
+		<None Remove="BizModels\obj\BizModels.csproj.nuget.g.targets" />
+		<None Remove="BizModels\obj\project.assets.json" />
+		<None Remove="BizModels\obj\project.nuget.cache" />
+		<None Remove="BizModels\obj\BizModels.csproj.nuget.dgspec.json" />
+		<None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.assets.cache" />
+		<None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.GeneratedMSBuildEditorConfig.editorconfig" />
+		<None Remove="BizModels\obj\Debug\netstandard2.1\BizModels.AssemblyInfoInputs.cache" />
+		<None Remove="BizService\obj\Debug\netstandard2.1\BizService.csproj.AssemblyReference.cache" />
+		<None Remove="BizService\obj\BizService.csproj.nuget.g.props" />
+		<None Remove="BizService\obj\BizService.csproj.nuget.g.targets" />
+		<None Remove="BizService\obj\project.assets.json" />
+		<None Remove="BizService\obj\project.nuget.cache" />
+		<None Remove="BizService\obj\BizService.csproj.nuget.dgspec.json" />
+		<None Remove="BizService\obj\Debug\netstandard2.1\BizService.assets.cache" />
+		<None Remove="BizService\obj\Debug\netstandard2.1\BizService.GeneratedMSBuildEditorConfig.editorconfig" />
+		<None Remove="BizService\obj\Debug\netstandard2.1\BizService.AssemblyInfoInputs.cache" />
+		<None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.AssemblyReference.cache" />
+		<None Remove="BizTest\obj\BizTest.csproj.nuget.g.props" />
+		<None Remove="BizTest\obj\BizTest.csproj.nuget.g.targets" />
+		<None Remove="BizTest\obj\project.assets.json" />
+		<None Remove="BizTest\obj\project.nuget.cache" />
+		<None Remove="BizTest\obj\BizTest.csproj.nuget.dgspec.json" />
+		<None Remove="BizTest\obj\Debug\net6.0\BizTest.assets.cache" />
+		<None Remove="BizTest\obj\Debug\net6.0\BizTest.GeneratedMSBuildEditorConfig.editorconfig" />
+		<None Remove="BizTest\obj\Debug\net6.0\BizTest.AssemblyInfoInputs.cache" />
+		<None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.CoreCompileInputs.cache" />
+		<None Remove="BizTest\obj\Debug\net6.0\BizTest.dll" />
+		<None Remove="BizTest\obj\Debug\net6.0\BizTest.pdb" />
+		<None Remove="BizTest\obj\Debug\net6.0\refint\BizTest.dll" />
+		<None Remove="BizTest\obj\Debug\net6.0\apphost" />
+		<None Remove="BizTest\bin\Debug\net6.0\BizTest" />
+		<None Remove="BizTest\bin\Debug\net6.0\BizTest.deps.json" />
+		<None Remove="BizTest\obj\Debug\net6.0\BizTest.genruntimeconfig.cache" />
+		<None Remove="BizTest\bin\Debug\net6.0\BizTest.runtimeconfig.json" />
+		<None Remove="BizTest\bin\Debug\net6.0\BizTest.dll" />
+		<None Remove="BizTest\obj\Debug\net6.0\ref\BizTest.dll" />
+		<None Remove="BizTest\bin\Debug\net6.0\BizTest.pdb" />
+		<None Remove="BizTest\obj\Debug\net6.0\BizTest.csproj.FileListAbsolute.txt" />
+		<None Remove="Store\" />
+		<None Remove="Controls\" />
+		<None Remove="ViewModel\BusinessPages\" />
+		<None Remove="Pages\BusinessPages\" />
+		<None Remove="View\BusinessView\" />
+		<None Remove="Xamarin.CommunityToolkit.MauiCompat" />
+		<None Remove="BizModels\Helpers\" />
+		<None Remove="Microsoft.Maui.Dependencies" />
+		<None Remove="Helpers\" />
+		<None Remove="Syncfusion.Maui.Charts" />
+		<None Remove="SkiaSharp" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
-	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
-	  <PackageReference Include="Syncfusion.Maui.Core" Version="20.2.45" />
-	  <PackageReference Include="Xamarin.CommunityToolkit.MauiCompat" Version="2.0.2-preview1013" />
-	  <PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.486" />
-	  <PackageReference Include="ZXing.Net.Maui" Version="0.1.0-preview.5" />
-	  <PackageReference Include="Syncfusion.Maui.Charts" Version="20.2.45" />
-	  <PackageReference Include="SkiaSharp" Version="2.88.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
+		<PackageReference Include="Syncfusion.Maui.Core" Version="20.2.45" />
+		<PackageReference Include="Xamarin.CommunityToolkit.MauiCompat" Version="2.0.2-preview1013" />
+		<PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.486" />
+		<PackageReference Include="ZXing.Net.Maui" Version="0.1.0-preview.5" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="20.2.45" />
+		<PackageReference Include="SkiaSharp" Version="2.88.1" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Store\" />
-	  <Folder Include="Controls\" />
-	  <Folder Include="ViewModel\BusinessPages\" />
-	  <Folder Include="Pages\BusinessPages\" />
-	  <Folder Include="View\BusinessView\" />
-	  <Folder Include="BizModels\Helpers\" />
-	  <Folder Include="Helpers\" />
+		<Folder Include="Store\" />
+		<Folder Include="Controls\" />
+		<Folder Include="ViewModel\BusinessPages\" />
+		<Folder Include="Pages\BusinessPages\" />
+		<Folder Include="View\BusinessView\" />
+		<Folder Include="BizModels\Helpers\" />
+		<Folder Include="Helpers\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiXaml Update="Pages\AdminChatPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminHomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\BusinessesRegistrationPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\CustomerRegistrationPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\QRScannerPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Shells\MobileAdminShell.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="View\ActivityIndicatorView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="View\PostView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\HomePage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Pages\BusinessesPageView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Pages\LoginPageView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Shells\MobileCustomerShell.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Shells\BootstrapShell.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\CouponsPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="View\CouponView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\BusinessPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="View\BusinessInfoView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\ChatPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="View\MessageView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\UserRegisterPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\QRPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\BusinessPages\BusinessHomePage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="View\BusinessView\GraphView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Shells\DesktopBusinessShell.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="View\BusinessView\ActivityView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="View\BusinessView\SubscriberView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\BusinessPages\BusinessSubscribersPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Controls\Field.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Controls\FilterCheckBox.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="View\PublishPostView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="View\BusinessView\PalettePicker.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
+		<MauiXaml Update="Pages\AdminChatPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\AdminHomePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\BusinessesRegistrationPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\CustomerRegistrationPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\QRScannerPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Shells\MobileAdminShell.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\ActivityIndicatorView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\PostView.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Pages\HomePage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Pages\BusinessesPageView.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Pages\LoginPageView.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Shells\MobileCustomerShell.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Shells\BootstrapShell.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Pages\CouponsPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="View\CouponView.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Pages\BusinessPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="View\BusinessInfoView.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Pages\ChatPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="View\MessageView.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Pages\UserRegisterPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Pages\QRPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Pages\BusinessPages\BusinessHomePage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="View\BusinessView\GraphView.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Shells\DesktopBusinessShell.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="View\BusinessView\ActivityView.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="View\BusinessView\SubscriberView.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Pages\BusinessPages\BusinessSubscribersPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Controls\Field.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Controls\FilterCheckBox.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="View\PublishPostView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\BusinessView\PalettePicker.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
-	  <Compile Remove="BizModels\Class1.cs" />
-	  <Compile Remove="BizModels\obj\Debug\netstandard2.1\.NETStandard,Version=v2.1.AssemblyAttributes.cs" />
-	  <Compile Remove="BizModels\obj\Debug\netstandard2.1\BizModels.AssemblyInfo.cs" />
-	  <Compile Remove="BizService\Class1.cs" />
-	  <Compile Remove="BizService\obj\Debug\netstandard2.1\.NETStandard,Version=v2.1.AssemblyAttributes.cs" />
-	  <Compile Remove="BizService\obj\Debug\netstandard2.1\BizService.AssemblyInfo.cs" />
-	  <Compile Remove="BizTest\Program.cs" />
-	  <Compile Remove="BizTest\obj\Debug\net6.0\BizTest.GlobalUsings.g.cs" />
-	  <Compile Remove="BizTest\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
-	  <Compile Remove="BizTest\obj\Debug\net6.0\BizTest.AssemblyInfo.cs" />
+		<Compile Remove="BizModels\Class1.cs" />
+		<Compile Remove="BizModels\obj\Debug\netstandard2.1\.NETStandard,Version=v2.1.AssemblyAttributes.cs" />
+		<Compile Remove="BizModels\obj\Debug\netstandard2.1\BizModels.AssemblyInfo.cs" />
+		<Compile Remove="BizService\Class1.cs" />
+		<Compile Remove="BizService\obj\Debug\netstandard2.1\.NETStandard,Version=v2.1.AssemblyAttributes.cs" />
+		<Compile Remove="BizService\obj\Debug\netstandard2.1\BizService.AssemblyInfo.cs" />
+		<Compile Remove="BizTest\Program.cs" />
+		<Compile Remove="BizTest\obj\Debug\net6.0\BizTest.GlobalUsings.g.cs" />
+		<Compile Remove="BizTest\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
+		<Compile Remove="BizTest\obj\Debug\net6.0\BizTest.AssemblyInfo.cs" />
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\uploadicon.svg" />
+		<MauiImage Remove="Resources\Images\uploadicon.svg" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="BizModels\BizModels.csproj" />
-	  <ProjectReference Include="BizService\BizService.csproj" />
+		<ProjectReference Include="BizModels\BizModels.csproj" />
+		<ProjectReference Include="BizService\BizService.csproj" />
 	</ItemGroup>
 </Project>
