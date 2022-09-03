@@ -13,9 +13,11 @@
   <ItemGroup>
     <None Remove="Model\" />
     <None Remove="CommunityToolkit.Mvvm" />
+    <None Remove="Model\Response\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
+    <Folder Include="Model\Response\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
