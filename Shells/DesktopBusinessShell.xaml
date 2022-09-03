@@ -23,7 +23,7 @@
             <ShellContent/>
         </Tab>
         <Tab Title="Chats" Route="Chats">
-            <ShellContent/>
+            <ShellContent ContentTemplate="{DataTemplate page:ChatsPage}"/>
         </Tab>
     </FlyoutItem>
 </Shell>
