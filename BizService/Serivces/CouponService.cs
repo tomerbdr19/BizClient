@@ -24,8 +24,14 @@ namespace BizService.Services
         }
         public async Task<Coupon> RedeemCoupon(string redeemCode, string businessId)
         {
-            var coupons = await PostAsync<Coupon>($"{Path}/redeem", new  { redeemCode,business = businessId  });
+            var coupons = await PostAsync<Coupon>($"{Path}/redeem", new { redeemCode, business = businessId });
             return coupons;
+        }
+
+        public async Task<Coupon> CreateCoupon(string user, string discount)
+        {
+            var coupon = await PostAsync<Coupon>($"{Path}", new { user, discount });
+            return coupon;
         }
     }
 }

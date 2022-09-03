@@ -8,7 +8,7 @@ namespace BizModels.Model
         public User User { get; set; }
         public string RedeemCode { get; set; }
         public bool IsRedeemed { get; set; }
-        public bool IsAvailable => DateTime.Now < Discount.ExpiredAt && !IsRedeemed;
+        public bool IsAvailable => Discount.IsActive && !IsRedeemed;
     }
 }
 
