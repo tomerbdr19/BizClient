@@ -11,6 +11,12 @@ namespace BizService.Services
     {
         protected override string Path => "chat";
 
+        async public Task<Chat> UpdateChat(Chat chat)
+        {
+            var retChat = await PostAsync<Chat>($"{Path}/status", new { business = chat.Business.Id ,  chat = chat.Id ,  status = chat.Status });
+            return retChat;
+        }
+
         public async Task<List<Chat>> GetAllChats(User user)
         {
             var chats = await GetAsync<List<Chat>>($"{Path}/all", new Dictionary<string, string> { { "user", user.Id } });

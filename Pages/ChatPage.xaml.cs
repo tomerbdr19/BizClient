@@ -21,15 +21,15 @@ public partial class ChatPage : ContentPage
 
     private ChatPageViewModel viewModel { get; set; }
 
-    protected override void OnDisappearing()
+    [ICommand]
+    async Task SetStatusClick()
     {
-        base.OnDisappearing();
-
         var selectedIndex = picker.SelectedIndex;
         if (selectedIndex != -1)
         {
             var status = (string)picker.ItemsSource[selectedIndex];
-            viewModel.OnDisappearing(status);
+            viewModel.SetStatus(status);
         }
     }
+
 }

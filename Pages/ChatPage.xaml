@@ -6,6 +6,7 @@
              xmlns:model="clr-namespace:BizModels.Model"
              x:DataType="viewmodel:ChatPageViewModel"
              x:Class="BizClient.Pages.ChatPage"
+             x:Name="self"
              Title="ChatPage">
 
     <Grid RowDefinitions="*" ColumnDefinitions="*" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -20,10 +21,16 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>
-            <Grid ColumnDefinitions="3*,Auto,*" Grid.Row="1">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="95"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="95"/>
+                </Grid.ColumnDefinitions>
                 <Entry Grid.Column="0" />
                 <Button Grid.Column="1" Text="Send"/>
-                <Picker Grid.Column="2" x:Name="picker" Title="Chat status">
+                <Picker Grid.Column="2" x:Name="picker" Title="Chat status" WidthRequest="150">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>new</x:String>
@@ -32,6 +39,7 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
+                <Button Grid.Column="3" Text="Set status" Command="{Binding SetStatusClickCommand,Source={x:Reference self}}"/>
             </Grid>
         </Grid>
     </Grid>

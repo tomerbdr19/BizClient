@@ -7,6 +7,7 @@ public partial class ChatsPage : ContentPage
 		InitializeComponent();
         this.viewModel = viewModel;
         BindingContext = viewModel;
+        filterGrid.IsVisible = Store.IsBusiness;
     }
 
     private ChatsPageViewModel viewModel { get; set; }

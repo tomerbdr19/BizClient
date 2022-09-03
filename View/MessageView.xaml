@@ -8,6 +8,22 @@
              x:Name="self"
              Margin="5"
              IsClippedToBounds="True">
+    <Frame.Triggers>
+        <MultiTrigger TargetType="Frame">
+            <MultiTrigger.Conditions>
+                <BindingCondition Binding="{Binding Message.SenderType, Source={x:Reference self}}" Value="user"/>
+                <BindingCondition Binding="{Binding IsSelfUser, Source={x:Reference self}}" Value="true"/>
+            </MultiTrigger.Conditions>
+            <Setter Property="BackgroundColor" Value="LightBlue"/>
+        </MultiTrigger>
+        <MultiTrigger TargetType="Frame">
+            <MultiTrigger.Conditions>
+                <BindingCondition Binding="{Binding Message.SenderType, Source={x:Reference self}}" Value="business"/>
+                <BindingCondition Binding="{Binding IsSelfBusiness, Source={x:Reference self}}" Value="true"/>
+            </MultiTrigger.Conditions>
+                <Setter Property="BackgroundColor" Value="LightBlue"/>
+        </MultiTrigger>
+    </Frame.Triggers>
 
 
     <Grid RowDefinitions="Auto,*" RowSpacing="12" ColumnDefinitions="Auto,Auto,Auto" ColumnSpacing="6" >

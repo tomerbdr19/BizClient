@@ -51,13 +51,13 @@
                 HeightRequest="30">
             <Entry.Triggers>
                 <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="new">
-                    <Setter Property="BackgroundColor" Value="Green"/>
+                    <Setter Property="BackgroundColor" Value="Red"/>
                 </DataTrigger>
                 <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="in-progress">
                     <Setter Property="BackgroundColor" Value="Orange"/>
                 </DataTrigger>
                 <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="resolved">
-                    <Setter Property="BackgroundColor" Value="Red"/>
+                    <Setter Property="BackgroundColor" Value="Green"/>
                 </DataTrigger>
             </Entry.Triggers>
         </Entry>
