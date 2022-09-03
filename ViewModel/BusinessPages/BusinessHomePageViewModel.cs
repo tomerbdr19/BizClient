@@ -82,6 +82,9 @@ public partial class BusinessHomePageViewModel : BaseViewModel
     [ObservableProperty]
     public ChatsActivity chatsActivity = new();
 
+    [ObservableProperty]
+    public bool isNewPostOpen;
+
     private DateTime GetFromDate()
     {
         if (SelectedPeriod.PeriodOptionsString == "week")
@@ -144,4 +147,10 @@ public partial class BusinessHomePageViewModel : BaseViewModel
             return this.PeriodString;
         }
     }
+
+    //[ICommand]
+    //public void OnNewPostClick()
+    //{
+    //    IsNewPostOpen = true;
+    //}
 }
