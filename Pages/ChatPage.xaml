@@ -12,8 +12,8 @@
     <Grid RowDefinitions="*" ColumnDefinitions="*" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <view:ActivityIndicatorView IsVisible="{Binding IsLoading}"/>
         <Grid Grid.Column="0" Grid.Row="0" RowDefinitions="*,Auto">
-            <VerticalStackLayout Grid.Row="0">
-                <CollectionView ItemsSource="{Binding Messages}">
+            <VerticalStackLayout Grid.Row="0" >
+                <CollectionView ItemsSource="{Binding Messages}" HorizontalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Message">
                             <view:MessageView Message="{Binding}"/>

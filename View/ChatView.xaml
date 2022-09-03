@@ -13,14 +13,15 @@
           Command="{Binding Source={x:Reference self}, Path=GoToChatCommand}"
          />
     </Frame.GestureRecognizers>
-    <Grid WidthRequest="380" HeightRequest="90" ColumnSpacing="7" >
+    <Grid HeightRequest="90" ColumnSpacing="7" >
         <Grid.RowDefinitions>
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <avatarview:SfAvatarView 
                    Grid.Column="0"     
@@ -43,7 +44,7 @@
         <Entry 
                 x:Name="statusMsg"
                 Grid.Row="0"
-                Grid.Column="2"
+                Grid.Column="3"
                 Text="{Binding Chat.Status, Source={x:Reference self}}"
                 HorizontalTextAlignment="Center"
                 HorizontalOptions="Start"

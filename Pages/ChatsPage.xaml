@@ -53,7 +53,7 @@
                 </HorizontalStackLayout>
             </Grid>
         <Grid IsVisible="{Binding IsNotLoading}">
-            <CollectionView ItemsSource="{Binding Chats}">
+            <CollectionView ItemsSource="{Binding Chats}" BackgroundColor="Red">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
                 </CollectionView.ItemsLayout>

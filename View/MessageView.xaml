@@ -7,7 +7,8 @@
              x:DataType="model:Message"
              x:Name="self"
              Margin="5"
-             IsClippedToBounds="True">
+             IsClippedToBounds="True"
+             >
     <Frame.Triggers>
         <MultiTrigger TargetType="Frame">
             <MultiTrigger.Conditions>
@@ -26,7 +27,7 @@
     </Frame.Triggers>
 
 
-    <Grid RowDefinitions="Auto,*" RowSpacing="12" ColumnDefinitions="Auto,Auto,Auto" ColumnSpacing="6" >
+    <Grid RowDefinitions="Auto,*" RowSpacing="12" ColumnDefinitions="Auto,Auto,Auto,*" ColumnSpacing="6" HorizontalOptions="FillAndExpand">
         <avatarview:SfAvatarView 
                 Grid.Column="0"     
                 ImageSource="{Binding Message.Sender.ImageUrl ,Source={x:Reference self}}"
@@ -34,8 +35,10 @@
                 HeightRequest="24"
                 WidthRequest="24"
                 CornerRadius="12" />
-        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Message.Sender.Name ,Source={x:Reference self}}"/>
-        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Message.CreatedAt ,Source={x:Reference self}}"/>
+        <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+            <Label Text="{Binding Message.Sender.Name ,Source={x:Reference self}}"/>
+            <Label Text="{Binding Message.CreatedAt ,Source={x:Reference self}}"/>
+        </VerticalStackLayout>
         <Label Grid.Row="1" Text="{Binding Message.Content ,Source={x:Reference self}}"/>
     </Grid>
 </Frame>
