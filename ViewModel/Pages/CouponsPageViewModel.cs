@@ -12,11 +12,18 @@ namespace BizClient.ViewModel
 
         async public void OnAppearing()
         {
-            Coupons.Clear();
-
             IsLoading = true;
-            var coupons = await couponService.GetUserCoupons(Store.UserId);
-            coupons.ForEach(_ => Coupons.Add(_));
+            try
+            {
+                var coupons = await couponService.GetUserCoupons(Store.UserId);
+                Coupons.Clear();
+                coupons.ForEach(_ => Coupons.Add(_));
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp);
+            }
+
             IsLoading = false;
         }
 

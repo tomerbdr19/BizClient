@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
@@ -106,6 +106,7 @@
 		<None Remove="Helpers\" />
 		<None Remove="Syncfusion.Maui.Charts" />
 		<None Remove="SkiaSharp" />
+	  	<None Remove="Syncfusion.Maui.DataGrid" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -117,6 +118,7 @@
 		<PackageReference Include="ZXing.Net.Maui" Version="0.1.0-preview.5" />
 		<PackageReference Include="Syncfusion.Maui.Charts" Version="20.2.45" />
 		<PackageReference Include="SkiaSharp" Version="2.88.1" />
+	  	<PackageReference Include="Syncfusion.Maui.DataGrid" Version="20.2.45" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Store\" />
@@ -246,6 +248,9 @@
 		</MauiXaml>
 		<MauiXaml Update="View\ChatView.xaml">
 			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\BusinessPages\BusinessDiscountsPage.xaml">
+			<SubType></SubType>
 		</MauiXaml>
 	</ItemGroup>
 	<ItemGroup>

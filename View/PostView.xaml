@@ -41,6 +41,6 @@
                WidthRequest="360"
                Aspect="AspectFit"
                Margin="5"/>
-        <Button Text="Like" Margin="5"/>
+        <Button x:Name="GetCouponButton" Text="Get Coupon" Margin="5" Clicked="OnGetCouponClick"/>
     </VerticalStackLayout>
 </Frame>

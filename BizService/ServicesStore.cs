@@ -13,6 +13,7 @@ namespace BizService
         public CouponService CouponService { get; } = new();
         public ChatService ChatService { get; } = new();
         public FileService FileService { get; } = new();
+        public DiscountService DiscountService { get; } = new();
     }
 }
 
