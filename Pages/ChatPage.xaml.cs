@@ -1,4 +1,6 @@
-﻿namespace BizClient.Pages;
+﻿
+
+namespace BizClient.Pages;
 
 [QueryProperty(nameof(Chat), "Chat")]
 public partial class ChatPage : ContentPage
@@ -12,7 +14,22 @@ public partial class ChatPage : ContentPage
     {
         set
         {
-            BindingContext = new ChatPageViewModel(value);
+            viewModel = new ChatPageViewModel(value);
+            BindingContext = viewModel;
         }
     }
+
+    private ChatPageViewModel viewModel { get; set; }
+
+    [ICommand]
+    async Task SetStatusClick()
+    {
+        var selectedIndex = picker.SelectedIndex;
+        if (selectedIndex != -1)
+        {
+            var status = (string)picker.ItemsSource[selectedIndex];
+            viewModel.SetStatus(status);
+        }
+    }
+
 }

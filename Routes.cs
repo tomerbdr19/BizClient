@@ -10,6 +10,7 @@ namespace BizClient
         public static readonly String Business = "Business";
         public static readonly String Coupons = "Coupons";
         public static readonly String Chat = "Chat";
+        public static readonly String Chats = "Chats";
         public static readonly String QRCode = "QRCode";
         public static readonly String UserRegister = "UserRegister";
         public static readonly String BusinessesRegistration = "Businesse registration";

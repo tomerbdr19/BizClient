@@ -2,15 +2,43 @@
 <Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:BizModels.Model"
+             xmlns:avatarview="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              x:Class="BizClient.View.MessageView"
              x:DataType="model:Message"
-             x:Name="self">
-    <Grid RowDefinitions="Auto,*" RowSpacing="12" ColumnDefinitions="Auto,Auto,Auto" ColumnSpacing="6">
-        <Frame Grid.Row="0" Grid.Column="0" WidthRequest="24" HeightRequest="24" CornerRadius="12"  IsClippedToBounds="True">
-            <Image Source="{Binding Message.Sender.ImageUrl ,Source={x:Reference self}}" Aspect="AspectFill" Margin="-20"/>
-        </Frame>
-        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Message.Sender.Name ,Source={x:Reference self}}"/>
-        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Message.CreatedAt ,Source={x:Reference self}}"/>
+             x:Name="self"
+             Margin="5"
+             IsClippedToBounds="True"
+             >
+    <Frame.Triggers>
+        <MultiTrigger TargetType="Frame">
+            <MultiTrigger.Conditions>
+                <BindingCondition Binding="{Binding Message.SenderType, Source={x:Reference self}}" Value="user"/>
+                <BindingCondition Binding="{Binding IsSelfUser, Source={x:Reference self}}" Value="true"/>
+            </MultiTrigger.Conditions>
+            <Setter Property="BackgroundColor" Value="LightBlue"/>
+        </MultiTrigger>
+        <MultiTrigger TargetType="Frame">
+            <MultiTrigger.Conditions>
+                <BindingCondition Binding="{Binding Message.SenderType, Source={x:Reference self}}" Value="business"/>
+                <BindingCondition Binding="{Binding IsSelfBusiness, Source={x:Reference self}}" Value="true"/>
+            </MultiTrigger.Conditions>
+                <Setter Property="BackgroundColor" Value="LightBlue"/>
+        </MultiTrigger>
+    </Frame.Triggers>
+
+
+    <Grid RowDefinitions="Auto,*" RowSpacing="12" ColumnDefinitions="Auto,Auto,Auto,*" ColumnSpacing="6" HorizontalOptions="FillAndExpand">
+        <avatarview:SfAvatarView 
+                Grid.Column="0"     
+                ImageSource="{Binding Message.Sender.ImageUrl ,Source={x:Reference self}}"
+                ContentType="Custom"
+                HeightRequest="24"
+                WidthRequest="24"
+                CornerRadius="12" />
+        <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+            <Label Text="{Binding Message.Sender.Name ,Source={x:Reference self}}"/>
+            <Label Text="{Binding Message.CreatedAt ,Source={x:Reference self}}"/>
+        </VerticalStackLayout>
         <Label Grid.Row="1" Text="{Binding Message.Content ,Source={x:Reference self}}"/>
     </Grid>
 </Frame>

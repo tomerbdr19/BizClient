@@ -48,7 +48,7 @@ public partial class BusinessSubscribersPageViewModel : BaseViewModel
         Subscriptions.Clear();
 
         IsLoading = true;
-        var subscriptions = await this.subscriptionService.GetFilteredSubscriptions("62dea60742831efed2e07c7a", filters.FindAll((_) => _.IsChecked == true));
+        var subscriptions = await this.subscriptionService.GetFilteredSubscriptions(Store.Auth.Business.Id, filters.FindAll((_) => _.IsChecked == true));
         subscriptions.ForEach((_) => Subscriptions.Add(_));
         IsLoading = false;
 

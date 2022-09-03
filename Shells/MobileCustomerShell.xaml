@@ -17,5 +17,8 @@
         <Tab Title="Coupons" Route="Coupons">
             <ShellContent ContentTemplate="{DataTemplate pages:CouponsPage}"/>
         </Tab>
+        <Tab Title="Chats" Route="Chats">
+            <ShellContent ContentTemplate="{DataTemplate pages:ChatsPage}"/>
+        </Tab>
     </TabBar>
 </Shell>

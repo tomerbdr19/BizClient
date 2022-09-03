@@ -14,8 +14,8 @@
         <Tab Title="QR scanner" Route="QRScanner">
             <ShellContent ContentTemplate="{DataTemplate pages:QRScannerPage}"/>
         </Tab>
-        <Tab Title="Chat" Route="AdminChat">
-            <ShellContent ContentTemplate="{DataTemplate pages:AdminChatPage}"/>
+        <Tab Title="Chats" Route="AdminChat">
+            <ShellContent ContentTemplate="{DataTemplate pages:ChatsPage}"/>
         </Tab>
     </TabBar>
 </Shell>
