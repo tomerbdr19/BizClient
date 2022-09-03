@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
@@ -244,6 +245,9 @@
 		<MauiXaml Update="View\BusinessView\PalettePicker.xaml">
 			<SubType>
 			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="View\ChatView.xaml">
+			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Pages\BusinessPages\BusinessDiscountsPage.xaml">
 			<SubType></SubType>

@@ -23,6 +23,14 @@ public partial class ChatPageViewModel : BaseViewModel
 
     }
 
+    public async void SetStatus(string status)
+    {
+        IsLoading = true;
+        chat.Status = status;
+        await chatService.UpdateChat(chat);
+        IsLoading = false;
+    }
+
     private async void initPage()
     {
         IsLoading = true;
@@ -30,5 +38,6 @@ public partial class ChatPageViewModel : BaseViewModel
         messages.ForEach(_ => Messages.Add(_));
         IsLoading = false;
     }
+
 }
 

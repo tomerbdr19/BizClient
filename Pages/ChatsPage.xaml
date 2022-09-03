@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.Pages.ChatsPage"
+             xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
+             xmlns:views="clr-namespace:BizClient.View"
+             xmlns:models="clr-namespace:BizModels.Model"
+             x:DataType="viewmodels:ChatsPageViewModel"
+             Title="Your Chats">
+    <Grid RowDefinitions="*" ColumnDefinitions="*" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <views:ActivityIndicatorView Grid.Column="0" Grid.Row="0" IsVisible="{Binding IsLoading}"/>
+        <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" Spacing="24" Padding="0,45">
+            <Grid  x:Name="filterGrid" Grid.Column="0"   BackgroundColor="White" VerticalOptions="Start">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="570"/>
+                    <ColumnDefinition Width="620"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Filter by:"/>
+                <FlexLayout Grid.Row="1" Grid.Column="0" Direction="Row" AlignItems="Center">
+                    <CheckBox IsChecked="{Binding StatusFilter.IsChecked,Mode=TwoWay}"/>
+                    <Label FontSize="Medium" Text="Status:" Padding="0,0,24,0"/>
+                    <Picker
+                            WidthRequest="200"
+                            ItemsSource="{Binding StatusFilter.Options, Mode=TwoWay}"
+                            SelectedItem="{Binding StatusFilter.Value, Mode=TwoWay}"
+                            />
+                </FlexLayout>
+                <FlexLayout Grid.Row="2" Grid.Column="0" Direction="Row" AlignItems="Center">
+                    <CheckBox IsChecked="{Binding UpdateDateFilter.IsChecked,Mode=TwoWay}"/>
+                    <Label FontSize="Medium" Text="Update Date:"/>
+                    <Label FontSize="Medium" Text="From" Padding="24,0"/>
+                    <DatePicker
+                            WidthRequest="120"
+                            Date="{Binding UpdateDateFilter.From, Mode=TwoWay}"
+                            />
+                    <Label FontSize="Medium" Text="To" Padding="24,0"/>
+                    <DatePicker
+                            WidthRequest="120"
+                            Date="{Binding UpdateDateFilter.To, Mode=TwoWay}"
+                            />
+                </FlexLayout>
+                <HorizontalStackLayout Grid.Row="3" Grid.Column="3" HorizontalOptions="End" Spacing="6">
+                    <Button Style="{StaticResource secondary}" Text="Reset" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnResetClickCommand}" />
+                    <Button Text="Apply" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnApplyFiltersCommand}"/>
+                </HorizontalStackLayout>
+            </Grid>
+        <Grid IsVisible="{Binding IsNotLoading}">
+            <CollectionView ItemsSource="{Binding Chats}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Chat">
+                        <views:ChatView Chat="{Binding}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

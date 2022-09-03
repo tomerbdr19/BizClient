@@ -29,7 +29,7 @@ public partial class LoginPageViewModel : BaseViewModel
         // TODO: handle login
         var auth = await this.authService.Login(email, password);
         Store.Auth = auth;
-        Application.Current.MainPage = Store.IsUser ? new MobileCustomerShell() : new MobileAdminShell();
+        Application.Current.MainPage = Store.IsUser ? new MobileCustomerShell() : new DesktopBusinessShell();
     }
 
     [ICommand]
