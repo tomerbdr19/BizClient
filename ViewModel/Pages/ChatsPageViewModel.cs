@@ -52,7 +52,7 @@ public partial class ChatsPageViewModel : BaseViewModel
 
     private void resetFilters()
     {
-        statusFilter = new() { Key = "city", Options = new List<string> { "new", "in-progress", "resolved" } };
+        statusFilter = new() { Key = "status", Options = new List<string> { "new", "in-progress", "resolved" } };
         updateDateFilter = new() { Key = "createdAt", From = DateTime.Today, To = DateTime.Today };
 
         filters.Add(StatusFilter);
