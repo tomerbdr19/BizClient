@@ -23,6 +23,20 @@
             </VerticalStackLayout>
         </Grid>
         <Label Grid.Row="1" Text="{Binding Coupon.Discount.Description, Source={x:Reference self}}"/>
-        <Button Grid.Row="2" Text="Redeem" IsEnabled="{Binding Coupon.IsAvailable,Source={x:Reference self}}" Clicked="OnRedeemClick"/>
+        <Button Grid.Row="2" Clicked="OnRedeemClick">
+            <Button.Triggers>
+                <DataTrigger TargetType="Button" Binding="{Binding Coupon.IsAvailable,Source={x:Reference self}}" Value="true">
+                    <Setter Property="Text" Value="Redeem"/>
+                </DataTrigger>
+                <DataTrigger TargetType="Button" Binding="{Binding Coupon.Discount.IsExpired,Source={x:Reference self}}" Value="true">
+                    <Setter Property="Text" Value="Expired"/>
+                    <Setter Property="IsEnabled" Value="false"/>
+                </DataTrigger>
+                <DataTrigger TargetType="Button" Binding="{Binding Coupon.IsRedeemed,Source={x:Reference self}}" Value="true">
+                    <Setter Property="Text" Value="Redeemed"/>
+                    <Setter Property="IsEnabled" Value="false"/>
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
     </Grid>
 </Frame>
