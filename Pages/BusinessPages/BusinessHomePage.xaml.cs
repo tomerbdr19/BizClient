@@ -35,6 +35,10 @@ public partial class BusinessHomePage : ContentPage
                 AnnounceFrame.IsVisible = true;
                 Announce.IsVisible = true;
                 break;
+            case ("discount"):
+                DiscountFrame.IsVisible = true;
+                PublishDiscount.IsVisible = true;
+                break;
         }
         
     }
@@ -47,5 +51,7 @@ public partial class BusinessHomePage : ContentPage
         PublishPost.IsVisible = false;
         AnnounceFrame.IsVisible = false;
         Announce.IsVisible = false;
+        DiscountFrame.IsVisible = false;
+        PublishDiscount.IsVisible = false;
     }
 }

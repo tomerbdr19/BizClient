@@ -8,6 +8,9 @@
              StyleClass="card"
              >
     <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="36" Padding="24">
+        <Label 
+                   FontSize="Large" Text="New post"
+            />
         <Entry 
                 Placeholder="What do you want to share?"
                 HeightRequest="100" 

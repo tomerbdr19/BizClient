@@ -151,6 +151,9 @@
 		<MauiXaml Update="View\BusinessView\AnnounceView.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="View\BusinessView\PublishDiscountDesktopView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="View\BusinessView\PublishPostDesktopView.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>

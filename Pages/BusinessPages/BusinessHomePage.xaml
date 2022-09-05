@@ -27,9 +27,10 @@
                         Text="Quick Actions"
                         VerticalOptions="Center" 
                         Padding="12"/>
+                    <Line Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" X2="400" BackgroundColor="{StaticResource D30}"/>
                     <HorizontalStackLayout  HorizontalOptions="CenterAndExpand" Spacing="48" Padding="60" Grid.Row="2" Grid.ColumnSpan="3" >
                         <Button Style="{StaticResource quick}" Text="New Post" Command="{Binding OnQuickActionClickCommand, Source={x:Reference self}}" CommandParameter="post"/>
-                        <Button Style="{StaticResource quick}" Text="New Discount"/>
+                        <Button Style="{StaticResource quick}" Text="New Discount" Command="{Binding OnQuickActionClickCommand, Source={x:Reference self}}" CommandParameter="discount"/>
                         <Button Style="{StaticResource quick}" Text="Announce" Command="{Binding OnQuickActionClickCommand, Source={x:Reference self}}" CommandParameter="annonce"/>
                     </HorizontalStackLayout>
                 </Grid>
@@ -89,6 +90,9 @@
             </Frame>
             <Frame x:Name="AnnounceFrame" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5" ZIndex="1000" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                 <views:AnnounceView x:Name="Announce" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            </Frame>
+            <Frame x:Name="DiscountFrame" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5" ZIndex="1000" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <views:PublishDiscountDesktopView x:Name="PublishDiscount" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             </Frame>
         </AbsoluteLayout>
     </AbsoluteLayout>

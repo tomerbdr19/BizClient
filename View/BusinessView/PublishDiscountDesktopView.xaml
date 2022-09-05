@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.View.PublishDiscountDesktopView"
+             xmlns:model="clr-namespace:BizModels.Model"
+             xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
+             x:DataType="viewmodel:PublishDiscountDesktopViewModel"
+             StyleClass="card"
+             >
+    <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="36" Padding="24">
+        <Label 
+                   FontSize="Large" Text="New discount"
+            />
+        <Entry 
+                Placeholder="Description"
+                HeightRequest="100" 
+                WidthRequest="550"
+                Text="{Binding PublishDiscount.Description,Mode=TwoWay }"
+                />
+        <Image Source="{Binding ImageUrl,Mode=TwoWay }"
+                   x:Name="image"
+                   IsVisible="{Binding IsVisible,Mode=OneWay}"
+                   Aspect="AspectFill"
+                   HeightRequest="100"
+                   WidthRequest="100" />
+        <Grid  RowDefinitions="Auto,Auto">
+            <Grid Grid.Row="0" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,Auto" ColumnSpacing="5" >
+            <Label Grid.Row="0" Grid.Column="0"
+                   FontSize="Medium" Text="Expired at:"
+            />
+            <DatePicker Grid.Row="0" Grid.Column="1"
+                HorizontalOptions="Start" 
+                WidthRequest="110"
+                MinimumDate="{Binding MinDate}"
+                Date="{Binding PublishDiscount.ExpiredAt, Mode=TwoWay}"
+            />
+            <Label Grid.Row="1" Grid.Column="0"
+                   FontSize="Medium" Text="Limit:"
+            />
+            <Entry Grid.Row="1" Grid.Column="1"
+                   HorizontalOptions="Start" 
+                   Text="{Binding PublishDiscount.Limit,Mode=TwoWay}"
+            />
+           
+        </Grid>
+        
+        <Grid Grid.Row="1" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,Auto"  ColumnSpacing="5">
+            <CheckBox Grid.Row="0" Grid.Column="0"
+                   IsChecked="{Binding PublishDiscount.IsPublic}"
+            />
+            <Label Grid.Row="0" Grid.Column="1"
+                   HorizontalOptions="Start" 
+                   FontSize="Medium" Text="Public"
+            />
+            <CheckBox Grid.Row="1" Grid.Column="0"
+                   IsChecked="{Binding SendToAllSubscribers, Mode=OneWayToSource}"
+            />
+            <Label Grid.Row="1" Grid.Column="1"
+                   HorizontalOptions="Start" 
+                   FontSize="Medium" Text="Send to all subscribers"
+            />
+        </Grid>
+        </Grid>
+        <ImageButton Grid.Column="1"
+                Source="uploadicon.png"
+                HorizontalOptions="End" 
+                HeightRequest="35"
+                WidthRequest="50"
+                Command="{Binding OnAddPictureClickCommand}"
+            />
+        <Button
+            Text="Publish"
+            HorizontalOptions="End"   
+            Command="{Binding OnPublishClickCommand}"
+            />
+    </VerticalStackLayout>
+</Frame>

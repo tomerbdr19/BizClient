@@ -1,15 +1,16 @@
 ﻿namespace BizClient.ViewModel;
 
-public partial class PublishPostViewModel : BaseViewModel
+public partial class PublishDiscountDesktopViewModel : BaseViewModel
 {
-    public PublishPostViewModel()
+    public PublishDiscountDesktopViewModel()
     {
-        postService = Store.ServicesStore.PostService;
+       
         fileService = Store.ServicesStore.FileService;
+        discountService = Store.ServicesStore.DiscountService;
     }
 
     [ObservableProperty]
-    private Post publishPost = new();
+    private Discount publishDiscount = new();
 
     [ObservableProperty]
     private String imageUrl;
@@ -17,7 +18,13 @@ public partial class PublishPostViewModel : BaseViewModel
     [ObservableProperty]
     private bool isVisible = false;
 
-    private readonly PostService postService;
+    [ObservableProperty]
+    private bool sendToAllSubscribers;
+
+    [ObservableProperty]
+    private DateTime minDate = DateTime.Today;
+
+    private readonly DiscountService discountService;
     private readonly FileService fileService;
 
 
@@ -48,23 +55,24 @@ public partial class PublishPostViewModel : BaseViewModel
     async private Task UploadAndSetImage()
     {
         var url = await fileService.UploadImage(imageUrl);
-        PublishPost.ImageUrl = url;
+        PublishDiscount.ImageUrl = url;
     }
 
-    public Action<Post> OnPublishSuccess { get; set; }
+    public Action<Discount> OnPublishSuccess { get; set; }
 
 
     [ICommand]
     async Task OnPublishClick()
     {
         this.IsLoading = true;
-       // await this.UploadAndSetImage();
-        PublishPost.Business = Store.Auth.Business;
-        var post = await postService.PublishPost(PublishPost);
-        OnPublishSuccess.Invoke(post);
-        PublishPost = new();
+       //await this.UploadAndSetImage();
+        PublishDiscount.Business = Store.Auth.Business;
+        var discount = await discountService.CreateDiscount(PublishDiscount, SendToAllSubscribers);
+        OnPublishSuccess.Invoke(discount);
+        PublishDiscount = new();
         ImageUrl = "";
         IsVisible = false;
         this.IsLoading = false;
     }
 }
+

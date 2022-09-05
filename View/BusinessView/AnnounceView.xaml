@@ -5,6 +5,9 @@
              x:Name="self"
              WidthRequest="600">
     <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="36" Padding="24">
+        <Label 
+                   FontSize="Large" Text="Announce"
+            />
         <Entry 
                 Placeholder="What do you want to announce?"
                 HeightRequest="100" 
