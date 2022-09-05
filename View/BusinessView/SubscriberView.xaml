@@ -20,7 +20,7 @@
                         <Label VerticalOptions="Center" FontSize="Large" Text="{Binding Subscription.User.Name ,Source={x:Reference self}}"/>
                     </HorizontalStackLayout>
                     <HorizontalStackLayout Spacing="12">
-                        <Button VerticalOptions="Center" Text="Message"/>
+                        <Button VerticalOptions="Center" Text="Message" Clicked="OnMessageClick"/>
                     </HorizontalStackLayout>
                 </FlexLayout>
             </xct:Expander.Header>
