@@ -38,7 +38,7 @@ namespace BizService.Services
 
         async public Task<Message> PostChatMessages(string messageSender, string messageSenderType, string chatId,string messageContent)
         {
-            var message = await PostAsync<Message>($"{Path}/messages", new { sender = messageSender, senderType = messageSenderType, chat = chatId, content = messageContent });
+            var message = await PostAsync<Message>($"{Path}/message", new { sender = messageSender, senderType = messageSenderType, chat = chatId, content = messageContent });
             return message;
         }
 
