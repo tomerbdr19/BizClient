@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BizModels.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -17,22 +18,28 @@ namespace BizService.Services
             return retChat;
         }
 
-        public async Task<List<Chat>> GetAllChats(User user)
+        public async Task<List<Chat>> GetAllChats(User user, string status)
         {
-            var chats = await GetAsync<List<Chat>>($"{Path}/all", new Dictionary<string, string> { { "user", user.Id } });
+            var chats = await GetAsync<List<Chat>>($"{Path}/all", new Dictionary<string, string> { { "user", user.Id }, {"status", status } });
             return chats;
         }
 
-        public async Task<List<Chat>> GetAllChats(Business business)
+        public async Task<List<Chat>> GetAllChats(Business business,string status)
         {
-            var chats = await GetAsync<List<Chat>>($"{Path}/all", new Dictionary<string, string> { { "business", business.Id } });
+            var chats = await GetAsync<List<Chat>>($"{Path}/all", new Dictionary<string, string> { { "business", business.Id }, { "status", status } });
             return chats;
         }
 
         public async Task<Chat> GetChatByParticipants(User user, Business business)
         {
-            var chats = await GetAsync<List<Chat>>($"{Path}/all", new Dictionary<string, string> { { "user", user.Id }, { "business", business.Id } });
+            var chats = await GetAsync<List<Chat>>($"{Path}", new Dictionary<string, string> { { "user", user.Id }, { "business", business.Id } });
             return chats[0];
+        }
+
+        async public Task<Message> PostChatMessages(string messageSender, string messageSenderType, string chatId,string messageContent)
+        {
+            var message = await PostAsync<Message>($"{Path}/messages", new { sender = messageSender, senderType = messageSenderType, chat = chatId, content = messageContent });
+            return message;
         }
 
         async public Task<List<Message>> GetChatMessages(Chat chat)
