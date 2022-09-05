@@ -15,8 +15,7 @@ public partial class ChatsPageViewModel : BaseViewModel
     [ObservableProperty]
     public OptionsFilter<string> statusFilter;
 
-    [ObservableProperty]
-    public RangeFilter<DateTime> updateDateFilter;
+
 
 
     async public void OnAppearing()
@@ -24,18 +23,6 @@ public partial class ChatsPageViewModel : BaseViewModel
         Chats.Clear();
         resetFilters();
         await OnApplyFilters();
-        this.IsLoading = true;
-        List<Chat> chats = new();
-        if (Store.IsBusiness)
-        {
-            chats = await this.chatService.GetAllChats(Store.Auth.Business);
-        }
-        else
-        {
-            chats = await this.chatService.GetAllChats(Store.Auth.User);
-        }
-        chats.ForEach(_ => Chats.Add(_));
-        this.IsLoading = false;
     }
 
     [ICommand]
@@ -52,11 +39,9 @@ public partial class ChatsPageViewModel : BaseViewModel
 
     private void resetFilters()
     {
-        statusFilter = new() { Key = "status", Options = new List<string> { "new", "in-progress", "resolved" } };
-        updateDateFilter = new() { Key = "createdAt", From = DateTime.Today, To = DateTime.Today };
+        StatusFilter = new() { Key = "status", Options = new List<string> { "new", "in-progress", "resolved" } , Value = null };
 
         filters.Add(StatusFilter);
-        filters.Add(UpdateDateFilter);
 
         filters.ForEach((_) => _.IsChecked = false);
     }
@@ -65,21 +50,19 @@ public partial class ChatsPageViewModel : BaseViewModel
     public async Task OnApplyFilters()
     {
         Chats.Clear();
-
-        //IsLoading = true;
-        //List<Chat> chats = new();
-        //if (Store.IsBusiness)
-        //{
-        //    chats = await this.chatService.GetAllChats(Store.Auth.Business);
-        //}
-        //else
-        //{
-        //    chats = await this.chatService.GetAllChats(Store.Auth.User);
-        //}
-        //var subscriptions = await this.subscriptionService.GetFilteredSubscriptions("62dea60742831efed2e07c7a", filters.FindAll((_) => _.IsChecked == true));
-        //subscriptions.ForEach((_) => Subscriptions.Add(_));
-        //IsLoading = false;
-
+        this.IsLoading = true;
+        List<Chat> chats = new();
+        string status = StatusFilter.IsChecked ? StatusFilter.Value : null;
+        if (Store.IsBusiness)
+        {
+            chats = await this.chatService.GetAllChats(Store.Auth.Business, status);
+        }
+        else
+        {
+            chats = await this.chatService.GetAllChats(Store.Auth.User, status);
+        }
+        chats.ForEach(_ => Chats.Add(_));
+        this.IsLoading = false;
     }
 
     [ICommand]
