@@ -10,10 +10,9 @@
     <Grid RowDefinitions="*" ColumnDefinitions="*" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <views:ActivityIndicatorView Grid.Column="0" Grid.Row="0" IsVisible="{Binding IsLoading}"/>
         <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" Spacing="24" Padding="0,45">
-            <Grid  x:Name="filterGrid" Grid.Column="0"   BackgroundColor="White" VerticalOptions="Start">
+            <Grid  x:Name="filterGrid" Grid.Column="0"   BackgroundColor="White" VerticalOptions="Start" Padding="24">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40" />
-                    <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
@@ -33,21 +32,7 @@
                             SelectedItem="{Binding StatusFilter.Value, Mode=TwoWay}"
                             />
                 </FlexLayout>
-                <FlexLayout Grid.Row="2" Grid.Column="0" Direction="Row" AlignItems="Center">
-                    <CheckBox IsChecked="{Binding UpdateDateFilter.IsChecked,Mode=TwoWay}"/>
-                    <Label FontSize="Medium" Text="Update Date:"/>
-                    <Label FontSize="Medium" Text="From" Padding="24,0"/>
-                    <DatePicker
-                            WidthRequest="120"
-                            Date="{Binding UpdateDateFilter.From, Mode=TwoWay}"
-                            />
-                    <Label FontSize="Medium" Text="To" Padding="24,0"/>
-                    <DatePicker
-                            WidthRequest="120"
-                            Date="{Binding UpdateDateFilter.To, Mode=TwoWay}"
-                            />
-                </FlexLayout>
-                <HorizontalStackLayout Grid.Row="3" Grid.Column="3" HorizontalOptions="End" Spacing="6">
+                <HorizontalStackLayout Grid.Row="2" Grid.Column="3" HorizontalOptions="End" Spacing="6">
                     <Button Style="{StaticResource secondary}" Text="Reset" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnResetClickCommand}" />
                     <Button Text="Apply" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnApplyFiltersCommand}"/>
                 </HorizontalStackLayout>
