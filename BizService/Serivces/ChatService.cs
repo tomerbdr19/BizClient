@@ -32,8 +32,8 @@ namespace BizService.Services
 
         public async Task<Chat> GetChatByParticipants(User user, Business business)
         {
-            var chats = await GetAsync<List<Chat>>($"{Path}", new Dictionary<string, string> { { "user", user.Id }, { "business", business.Id } });
-            return chats[0];
+            var chat = await GetAsync<Chat>($"{Path}", new Dictionary<string, string> { { "user", user.Id }, { "business", business.Id } });
+            return chat;
         }
 
         async public Task<Message> PostChatMessages(string messageSender, string messageSenderType, string chatId,string messageContent)
