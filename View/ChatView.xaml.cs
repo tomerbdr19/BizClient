@@ -6,6 +6,7 @@ public partial class ChatView
 	{
 		InitializeComponent();
         statusMsg.IsVisible = Store.IsBusiness;
+        IsSelfUser = Store.IsUser; 
     }
 
     public static readonly BindableProperty ChatProperty =
@@ -15,6 +16,17 @@ public partial class ChatView
     {
         get { return (Chat)GetValue(ChatProperty); }
         set { SetValue(ChatProperty, value); }
+    }
+
+    public static readonly BindableProperty IsSelfUserProperty =
+                     BindableProperty.Create(nameof(IsSelfUser),
+                                            typeof(bool),
+                                            typeof(MessageView));
+
+    public bool IsSelfUser
+    {
+        get { return (bool)GetValue(IsSelfUserProperty); }
+        set { SetValue(IsSelfUserProperty, value); }
     }
 
     [ICommand]

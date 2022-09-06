@@ -25,12 +25,20 @@
         </Grid.ColumnDefinitions>
         <avatarview:SfAvatarView 
                    Grid.Column="0"     
-                   ImageSource="{Binding Chat.User.ImageUrl ,Source={x:Reference self}}"
                    ContentType="Custom"
                    HeightRequest="60"
                    WidthRequest="60"
                    CornerRadius="30"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center">
+            <avatarview:SfAvatarView.Triggers>
+                <DataTrigger TargetType="avatarview:SfAvatarView" Binding="{Binding IsSelfUser, Source={x:Reference self}}" Value="true">
+                    <Setter Property="ImageSource"  Value="{Binding Chat.Business.ImageUrl, Source={x:Reference self}}"/>
+                </DataTrigger>
+                <DataTrigger TargetType="avatarview:SfAvatarView" Binding="{Binding IsSelfUser, Source={x:Reference self}}" Value="false">
+                    <Setter Property="ImageSource"  Value="{Binding Chat.User.ImageUrl, Source={x:Reference self}}"/>
+                </DataTrigger>
+            </avatarview:SfAvatarView.Triggers>
+        </avatarview:SfAvatarView>
         <VerticalStackLayout  
                    VerticalOptions="Center"
                    Grid.Row="0"
@@ -38,7 +46,17 @@
             <Label
                 HorizontalOptions="Start"
                 VerticalOptions="Center"
-                   Text="{Binding Chat.User.Name, Source={x:Reference self}}"/>
+                Text="{Binding Chat.User.Name, Source={x:Reference self}}">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsSelfUser, Source={x:Reference self}}" Value="true">
+                        <Setter Property="Text" Value="{Binding Chat.Business.Name, Source={x:Reference self}}"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsSelfUser, Source={x:Reference self}}" Value="false">
+                        <Setter Property="Text" Value="{Binding Chat.User.Name, Source={x:Reference self}}"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            
             <Label Text="{Binding Chat.UpdatedAt, Source={x:Reference self}}"/>
         </VerticalStackLayout>
         <Entry 
@@ -49,7 +67,7 @@
                 HorizontalTextAlignment="Center"
                 HorizontalOptions="Start"
                 WidthRequest="96"
-                HeightRequest="30">
+                HeightRequest="35">
             <Entry.Triggers>
                 <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="new">
                     <Setter Property="BackgroundColor" Value="Red"/>
