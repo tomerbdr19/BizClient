@@ -7,75 +7,77 @@
              xmlns:avatarview="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:views="clr-namespace:BizClient.View"
              x:DataType="viewmodel:UserRegisterViewModel">
-    <VerticalStackLayout
+    <ScrollView>
+        <VerticalStackLayout
         Spacing="18"
         Margin="40"
         HorizontalOptions="Center"
         VerticalOptions="Center"
         WidthRequest="300">
-        <views:ActivityIndicatorView Grid.Column="0" Grid.Row="0" IsVisible="{Binding IsLoading}"/>
-        <Grid >
-            <avatarview:SfAvatarView 
+            <views:ActivityIndicatorView Grid.Column="0" Grid.Row="0" IsVisible="{Binding IsLoading}"/>
+            <Grid >
+                <avatarview:SfAvatarView 
                            HorizontalOptions="Start"
                            ContentType="Custom"
                            ImageSource="{Binding ImageUrl,Mode=TwoWay }"
                            HeightRequest="70"
                            WidthRequest="70"
                            CornerRadius="35" />
-            <Button
+                <Button
                 Text="Upload a profile picture"
                 HorizontalOptions="End" 
                 Command="{Binding OnAddPictureClickCommand}"
             />
-        </Grid>
-        <VerticalStackLayout StyleClass="formField">
-            <Label Text="First name"/>
-            <Entry 
+            </Grid>
+            <VerticalStackLayout StyleClass="formField">
+                <Label Text="First name"/>
+                <Entry 
                 Text="{Binding User.Info.FirstName, Mode=TwoWay}"
                 />
-        </VerticalStackLayout>
-        <VerticalStackLayout StyleClass="formField">
-            <Label Text="Last name"/>
-            <Entry 
+            </VerticalStackLayout>
+            <VerticalStackLayout StyleClass="formField">
+                <Label Text="Last name"/>
+                <Entry 
                 Text="{Binding User.Info.LastName, Mode=TwoWay}"
                 />
-        </VerticalStackLayout>
-        <VerticalStackLayout StyleClass="formField">
-            <Label Text="City"/>
-            <Entry 
+            </VerticalStackLayout>
+            <VerticalStackLayout StyleClass="formField">
+                <Label Text="City"/>
+                <Entry 
                 Text="{Binding User.Info.City, Mode=TwoWay}"
                 />
-        </VerticalStackLayout>
-        <VerticalStackLayout StyleClass="formField">
-            <Label Text="Birth Date"/>
-            <DatePicker WidthRequest="300"
+            </VerticalStackLayout>
+            <VerticalStackLayout StyleClass="formField">
+                <Label Text="Birth Date"/>
+                <DatePicker WidthRequest="300"
                 Date="{Binding User.Info.BirthDate, Mode=OneWayToSource}"
                 />
-        </VerticalStackLayout>
-        <VerticalStackLayout StyleClass="formField">
-            <Label Text="Email"/>
-            <Entry 
+            </VerticalStackLayout>
+            <VerticalStackLayout StyleClass="formField">
+                <Label Text="Email"/>
+                <Entry 
                 Text="{Binding Email, Mode=TwoWay}"
                 />
-        </VerticalStackLayout>
+            </VerticalStackLayout>
             <VerticalStackLayout StyleClass="formField">
                 <Label Text="Password"/>
                 <Entry 
                 Text="{Binding Password, Mode=TwoWay}"
                 IsPassword="True"
                 />
-        </VerticalStackLayout>
-        <VerticalStackLayout StyleClass="formField">
-            <Label Text="Enter the password again please"/>
-            <Entry 
+            </VerticalStackLayout>
+            <VerticalStackLayout StyleClass="formField">
+                <Label Text="Enter the password again please"/>
+                <Entry 
                 Text="{Binding ConfirmPassword, Mode=TwoWay}"
                 IsPassword="True"
                 />
-        </VerticalStackLayout>
-        <Button
+            </VerticalStackLayout>
+            <Button
             Text="Register"
             IsEnabled="{Binding IsRegisterButtonEnabled}"
             Command="{Binding OnRegisterClickCommand}"
             />
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
