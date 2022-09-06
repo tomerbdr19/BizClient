@@ -17,6 +17,9 @@ public partial class ChatPageViewModel : BaseViewModel
     [ObservableProperty]
     public string inputText;
 
+    [ObservableProperty]
+    public bool isBusiness = Store.IsBusiness;
+
     public async void sendMessage(string messageContent)
     {
         IsLoading = true;

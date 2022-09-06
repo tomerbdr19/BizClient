@@ -47,8 +47,11 @@ public partial class PublishPostViewModel : BaseViewModel
 
     async private Task UploadAndSetImage()
     {
-        var url = await fileService.UploadImage(imageUrl);
-        PublishPost.ImageUrl = url;
+        if(imageUrl != String.Empty && imageUrl != null)
+        {
+            var url = await fileService.UploadImage(imageUrl);
+            PublishPost.ImageUrl = url;
+        }
     }
 
     public Action<Post> OnPublishSuccess { get; set; }
@@ -58,10 +61,10 @@ public partial class PublishPostViewModel : BaseViewModel
     async Task OnPublishClick()
     {
         this.IsLoading = true;
-       // await this.UploadAndSetImage();
+        await this.UploadAndSetImage();
         PublishPost.Business = Store.Auth.Business;
         var post = await postService.PublishPost(PublishPost);
-        OnPublishSuccess.Invoke(post);
+        OnPublishSuccess?.Invoke(post);
         PublishPost = new();
         ImageUrl = "";
         IsVisible = false;
