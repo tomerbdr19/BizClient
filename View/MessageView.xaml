@@ -32,9 +32,9 @@
                 Grid.Column="0"     
                 ImageSource="{Binding Message.Sender.ImageUrl ,Source={x:Reference self}}"
                 ContentType="Custom"
-                HeightRequest="24"
-                WidthRequest="24"
-                CornerRadius="12" />
+                HeightRequest="40"
+                WidthRequest="40"
+                CornerRadius="20" />
         <VerticalStackLayout Grid.Row="0" Grid.Column="1">
             <Label Text="{Binding Message.Sender.Name ,Source={x:Reference self}}"/>
             <Label Text="{Binding Message.CreatedAt ,Source={x:Reference self}}"/>
