@@ -15,11 +15,12 @@
             <Setter Property="HeightRequest" Value="80"/>
         </Style>
     </ContentPage.Resources>
-    <AbsoluteLayout >
-        <VerticalStackLayout x:Name="HomePage" Spacing="36" Padding="0,36,0,0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0,1,1" HorizontalOptions="Fill" VerticalOptions="Fill">
-            <Frame x:Name="actionCard" Style="{StaticResource card}" HorizontalOptions="FillAndExpand">
-                <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto">
-                    <Label
+    <ScrollView>
+        <Grid >
+            <VerticalStackLayout x:Name="HomePage" Spacing="36" Padding="0,36,0,0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0,1,1" HorizontalOptions="Fill" VerticalOptions="Fill">
+                <Frame x:Name="actionCard" Style="{StaticResource card}" HorizontalOptions="FillAndExpand">
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto">
+                        <Label
                         Grid.Row="0"
                         Grid.Column="1"
                         HorizontalOptions="Center"
@@ -27,17 +28,17 @@
                         Text="Quick Actions"
                         VerticalOptions="Center" 
                         Padding="12"/>
-                    <Line Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" X2="400" BackgroundColor="{StaticResource D30}"/>
-                    <HorizontalStackLayout  HorizontalOptions="CenterAndExpand" Spacing="48" Padding="60" Grid.Row="2" Grid.ColumnSpan="3" >
-                        <Button Style="{StaticResource quick}" Text="New Post" Command="{Binding OnQuickActionClickCommand, Source={x:Reference self}}" CommandParameter="post"/>
-                        <Button Style="{StaticResource quick}" Text="New Discount" Command="{Binding OnQuickActionClickCommand, Source={x:Reference self}}" CommandParameter="discount"/>
-                        <Button Style="{StaticResource quick}" Text="Announce" Command="{Binding OnQuickActionClickCommand, Source={x:Reference self}}" CommandParameter="annonce"/>
-                    </HorizontalStackLayout>
-                </Grid>
-            </Frame>
-            <Frame x:Name="statCard" Style="{StaticResource card}" HorizontalOptions="FillAndExpand">
-                <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto">
-                    <Label
+                        <Line Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" X2="400" BackgroundColor="{StaticResource D30}"/>
+                        <HorizontalStackLayout  HorizontalOptions="CenterAndExpand" Spacing="48" Padding="60" Grid.Row="2" Grid.ColumnSpan="3" >
+                            <Button Style="{StaticResource quick}" Text="New Post" Command="{Binding OnQuickActionClickCommand, Source={x:Reference self}}" CommandParameter="post"/>
+                            <Button Style="{StaticResource quick}" Text="New Discount" Command="{Binding OnQuickActionClickCommand, Source={x:Reference self}}" CommandParameter="discount"/>
+                            <Button Style="{StaticResource quick}" Text="Announce" Command="{Binding OnQuickActionClickCommand, Source={x:Reference self}}" CommandParameter="annonce"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </Frame>
+                <Frame x:Name="statCard" Style="{StaticResource card}" HorizontalOptions="FillAndExpand">
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto">
+                        <Label
                         Grid.Row="0"
                         Grid.Column="1"
                         HorizontalOptions="Center"
@@ -45,27 +46,27 @@
                         Text="Statistics"
                         VerticalOptions="Center" 
                         Padding="12"/>
-                    <HorizontalStackLayout Padding="12" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Spacing="6">
-                        <Label VerticalOptions="Center" FontSize="Micro" Text="By:"/>
-                        <Picker FontSize="Small" HorizontalTextAlignment="Center" ItemsSource="{Binding Options}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}"/>
-                        <Label VerticalOptions="Center" FontSize="Micro" Text="From:"/>
-                        <Picker FontSize="Micro" HorizontalTextAlignment="Center" ItemsSource="{Binding FromOptions}" SelectedItem="{Binding SelectedFrom, Mode=TwoWay}"/>
-                        <Label VerticalOptions="Center" FontSize="Micro" Text="{Binding SelectedPeriod.PeriodOptionsString}"/>
-                        <Button HorizontalOptions="End" Text="Apply" Command="{Binding ApplyPeriodClickCommand}"/>
-                    </HorizontalStackLayout>
-                    <Line Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" X2="400" BackgroundColor="{StaticResource D30}"/>
-                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="48" Padding="60" Grid.Row="2" Grid.ColumnSpan="3">
-                        <view:GraphView Title="New Subscribers" Data="{Binding SubscriptionsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
-                        <Line WidthRequest="1" Y2="300" BackgroundColor="{StaticResource D30}"/>
-                        <view:GraphView Title="Coupons Redeemed" Data="{Binding CouponsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
-                        <Line WidthRequest="1" Y2="300" BackgroundColor="{StaticResource D30}"/>
-                        <view:GraphView Title="Business Views" Data="{Binding ViewsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
-                    </HorizontalStackLayout>
-                </Grid>
-            </Frame>
-            <Frame x:Name="activityCard" Style="{StaticResource card}" HorizontalOptions="FillAndExpand">
-                <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="12">
-                    <Label
+                        <HorizontalStackLayout Padding="12" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Spacing="6">
+                            <Label VerticalOptions="Center" FontSize="Micro" Text="By:"/>
+                            <Picker FontSize="Small" HorizontalTextAlignment="Center" ItemsSource="{Binding Options}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}"/>
+                            <Label VerticalOptions="Center" FontSize="Micro" Text="From:"/>
+                            <Picker FontSize="Micro" HorizontalTextAlignment="Center" ItemsSource="{Binding FromOptions}" SelectedItem="{Binding SelectedFrom, Mode=TwoWay}"/>
+                            <Label VerticalOptions="Center" FontSize="Micro" Text="{Binding SelectedPeriod.PeriodOptionsString}"/>
+                            <Button HorizontalOptions="End" Text="Apply" Command="{Binding ApplyPeriodClickCommand}"/>
+                        </HorizontalStackLayout>
+                        <Line Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" X2="400" BackgroundColor="{StaticResource D30}"/>
+                        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="48" Padding="60" Grid.Row="2" Grid.ColumnSpan="3">
+                            <view:GraphView Title="New Subscribers" Data="{Binding SubscriptionsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
+                            <Line WidthRequest="1" Y2="300" BackgroundColor="{StaticResource D30}"/>
+                            <view:GraphView Title="Coupons Redeemed" Data="{Binding CouponsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
+                            <Line WidthRequest="1" Y2="300" BackgroundColor="{StaticResource D30}"/>
+                            <view:GraphView Title="Business Views" Data="{Binding ViewsStat}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </Frame>
+                <Frame x:Name="activityCard" Style="{StaticResource card}" HorizontalOptions="FillAndExpand">
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="12">
+                        <Label
                         Grid.Row="0"
                         Grid.Column="1"
                         HorizontalOptions="Center"
@@ -73,27 +74,28 @@
                         Text="Business Activity"
                         VerticalOptions="Center" 
                         Padding="0,12,0,0"/>
-                    <Line Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" X2="400" BackgroundColor="{StaticResource D30}"/>
+                        <Line Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" X2="400" BackgroundColor="{StaticResource D30}"/>
 
-                    <view:ActivityView Grid.Row="2" Grid.Column="0" VerticalOptions="CenterAndExpand" Data="{Binding ChatsActivity.Data}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Title="Chats Status"/>
-                    <Line Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="1" Y2="80" BackgroundColor="{StaticResource D30}"/>
-                    <view:ActivityView Grid.Row="2" Grid.Column="1" VerticalOptions="CenterAndExpand" Data="{Binding DiscountsActivity.Data}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"  Title="Discounts"/>
-                    <Line Grid.Row="2" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="1" Y2="80" BackgroundColor="{StaticResource D30}"/>
-                    <view:ActivityView Grid.Row="20" Grid.Column="2" VerticalOptions="CenterAndExpand" Data="{Binding DiscountsActivity.Max.Data}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"  Title="Hottest Discount"/>
-                </Grid>
-            </Frame>
-        </VerticalStackLayout>
-        <AbsoluteLayout x:Name="modal" BackgroundColor="Black" Opacity="0.9" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Button AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.8, 100" Text="Close" Command="{Binding OnCloseModalClickCommand, Source={x:Reference self}}"/>
-            <Frame x:Name="PublishPostFrame" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5" ZIndex="1000" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                <views:PublishPostDesktopView x:Name="PublishPost" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-            </Frame>
-            <Frame x:Name="AnnounceFrame" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5" ZIndex="1000" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                <views:AnnounceView x:Name="Announce" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-            </Frame>
-            <Frame x:Name="DiscountFrame" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5" ZIndex="1000" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                <views:PublishDiscountDesktopView x:Name="PublishDiscount" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-            </Frame>
-        </AbsoluteLayout>
-    </AbsoluteLayout>
+                        <view:ActivityView Grid.Row="2" Grid.Column="0" VerticalOptions="CenterAndExpand" Data="{Binding ChatsActivity.Data}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}" Title="Chats Status"/>
+                        <Line Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="1" Y2="80" BackgroundColor="{StaticResource D30}"/>
+                        <view:ActivityView Grid.Row="2" Grid.Column="1" VerticalOptions="CenterAndExpand" Data="{Binding DiscountsActivity.Data}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"  Title="Discounts"/>
+                        <Line Grid.Row="2" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="1" Y2="80" BackgroundColor="{StaticResource D30}"/>
+                        <view:ActivityView Grid.Row="20" Grid.Column="2" VerticalOptions="CenterAndExpand" Data="{Binding DiscountsActivity.Max.Data}" IsLoading="{Binding IsLoading}" IsNotLoading="{Binding IsNotLoading}"  Title="Hottest Discount"/>
+                    </Grid>
+                </Frame>
+            </VerticalStackLayout>
+            <AbsoluteLayout x:Name="modal" BackgroundColor="Black" Opacity="0.9" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Button AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.8, 100" Text="Close" Command="{Binding OnCloseModalClickCommand, Source={x:Reference self}}"/>
+                <Frame x:Name="PublishPostFrame" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5" ZIndex="1000" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <views:PublishPostDesktopView x:Name="PublishPost" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                </Frame>
+                <Frame x:Name="AnnounceFrame" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5" ZIndex="1000" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <views:AnnounceView x:Name="Announce" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                </Frame>
+                <Frame x:Name="DiscountFrame" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5" ZIndex="1000" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <views:PublishDiscountDesktopView x:Name="PublishDiscount" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                </Frame>
+            </AbsoluteLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>
