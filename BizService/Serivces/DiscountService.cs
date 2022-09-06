@@ -37,7 +37,7 @@ namespace BizService.Services
 
         public async Task<Discount> CreateDiscount(Discount discount,bool sendToAllSubscribers)
         {
-            var discounts = await PostAsync<Discount>($"{Path}", new { discount.Business.Id, discount.Description, discount.ImageUrl, discount.ExpiredAt, sendToAllSubscribers, discount.IsPublic,discount.Limit });
+            var discounts = await PostAsync<Discount>($"{Path}", new { business = discount.Business.Id, description = discount.Description, imageUrl = discount.ImageUrl, expiredAt = discount.ExpiredAt, sendToAllSubscribers = sendToAllSubscribers, isPublic = discount.IsPublic, limit = discount.Limit });
             return discounts;
         }
     }

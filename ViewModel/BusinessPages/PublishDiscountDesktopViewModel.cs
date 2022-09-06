@@ -54,8 +54,11 @@ public partial class PublishDiscountDesktopViewModel : BaseViewModel
 
     async private Task UploadAndSetImage()
     {
-        var url = await fileService.UploadImage(imageUrl);
-        PublishDiscount.ImageUrl = url;
+        if(imageUrl != String.Empty && imageUrl != null)
+        {
+            var url = await fileService.UploadImage(imageUrl);
+            PublishDiscount.ImageUrl = url;
+        }
     }
 
     public Action<Discount> OnPublishSuccess { get; set; }
@@ -65,10 +68,10 @@ public partial class PublishDiscountDesktopViewModel : BaseViewModel
     async Task OnPublishClick()
     {
         this.IsLoading = true;
-       //await this.UploadAndSetImage();
+       await this.UploadAndSetImage();
         PublishDiscount.Business = Store.Auth.Business;
         var discount = await discountService.CreateDiscount(PublishDiscount, SendToAllSubscribers);
-        OnPublishSuccess.Invoke(discount);
+        OnPublishSuccess?.Invoke(discount);
         PublishDiscount = new();
         ImageUrl = "";
         IsVisible = false;
