@@ -22,7 +22,20 @@
                 <Label Text="{Binding Coupon.Discount.ExpiredAt, Source={x:Reference self}}"/>
             </VerticalStackLayout>
         </Grid>
-        <Label Grid.Row="1" Text="{Binding Coupon.Discount.Description, Source={x:Reference self}}"/>
+        <VerticalStackLayout Grid.Row="1" Spacing="6">
+            <Label Text="{Binding Coupon.Discount.Description, Source={x:Reference self}}"/>
+            <Image Source="{Binding Coupon.Discount.ImageUrl, Source={x:Reference self}}"
+               HeightRequest="250" 
+               WidthRequest="360"
+               Aspect="AspectFit"
+               Margin="5">
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Coupon.Discount.ImageUrl, Source={x:Reference self}}" Value="">
+                        <Setter Property="IsVisible" Value="false"/>
+                    </DataTrigger>
+                </Image.Triggers>
+            </Image>
+        </VerticalStackLayout>
         <Button Grid.Row="2" Clicked="OnRedeemClick">
             <Button.Triggers>
                 <DataTrigger TargetType="Button" Binding="{Binding Coupon.IsAvailable,Source={x:Reference self}}" Value="true">

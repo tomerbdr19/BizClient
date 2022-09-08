@@ -17,6 +17,7 @@ namespace BizService.Services
         }
 
         // TODO: get from consumer
+        //private readonly string _baseUrl = "http://10.0.2.2:3000/api/";
         private readonly string _baseUrl = "http://localhost:3000/api/";
         protected abstract string Path { get; }
 

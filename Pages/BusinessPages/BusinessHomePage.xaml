@@ -15,7 +15,7 @@
             <Setter Property="HeightRequest" Value="80"/>
         </Style>
     </ContentPage.Resources>
-    <ScrollView>
+    <ScrollView VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
         <Grid >
             <VerticalStackLayout x:Name="HomePage" Spacing="36" Padding="0,36,0,0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0,1,1" HorizontalOptions="Fill" VerticalOptions="Fill">
                 <Frame x:Name="actionCard" Style="{StaticResource card}" HorizontalOptions="FillAndExpand">

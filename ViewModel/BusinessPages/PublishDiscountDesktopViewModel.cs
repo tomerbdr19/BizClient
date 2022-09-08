@@ -4,13 +4,13 @@ public partial class PublishDiscountDesktopViewModel : BaseViewModel
 {
     public PublishDiscountDesktopViewModel()
     {
-       
+
         fileService = Store.ServicesStore.FileService;
         discountService = Store.ServicesStore.DiscountService;
     }
 
     [ObservableProperty]
-    private Discount publishDiscount = new();
+    private Discount publishDiscount = new() { ExpiredAt = DateTime.Now.AddMonths(3) };
 
     [ObservableProperty]
     private String imageUrl;
@@ -54,7 +54,7 @@ public partial class PublishDiscountDesktopViewModel : BaseViewModel
 
     async private Task UploadAndSetImage()
     {
-        if(imageUrl != String.Empty && imageUrl != null)
+        if (imageUrl != String.Empty && imageUrl != null)
         {
             var url = await fileService.UploadImage(imageUrl);
             PublishDiscount.ImageUrl = url;
@@ -68,7 +68,7 @@ public partial class PublishDiscountDesktopViewModel : BaseViewModel
     async Task OnPublishClick()
     {
         this.IsLoading = true;
-       await this.UploadAndSetImage();
+        await this.UploadAndSetImage();
         PublishDiscount.Business = Store.Auth.Business;
         var discount = await discountService.CreateDiscount(PublishDiscount, SendToAllSubscribers);
         OnPublishSuccess?.Invoke(discount);

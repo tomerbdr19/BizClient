@@ -2,11 +2,11 @@ namespace BizClient.View;
 
 public partial class ChatView
 {
-	public ChatView()
-	{
-		InitializeComponent();
+    public ChatView()
+    {
+        InitializeComponent();
         statusMsg.IsVisible = Store.IsBusiness;
-        IsSelfUser = Store.IsUser; 
+        IsSelfUser = Store.IsUser;
     }
 
     public static readonly BindableProperty ChatProperty =

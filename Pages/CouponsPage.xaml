@@ -9,19 +9,21 @@
              Title="My Coupons">
     <Grid RowDefinitions="*" ColumnDefinitions="*" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <views:ActivityIndicatorView IsVisible="{Binding IsLoading}"/>
-        <VerticalStackLayout Grid.Column="0" Grid.Row="0" IsVisible="{Binding IsNotLoading}">
-            <Grid ColumnDefinitions="*">
-                <CollectionView ItemsSource="{Binding Coupons}">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Coupon">
-                            <views:CouponView Coupon="{Binding}"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Grid>
-     </VerticalStackLayout>
+        <ScrollView>
+            <VerticalStackLayout Grid.Column="0" IsVisible="{Binding IsNotLoading}">
+                <Grid ColumnDefinitions="*">
+                    <CollectionView ItemsSource="{Binding Coupons}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Coupon">
+                                <views:CouponView Coupon="{Binding}"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
     </Grid>
 </ContentPage>
