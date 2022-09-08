@@ -1,47 +1,65 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VerticalStackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BizClient.View.ChatView"
              xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
              xmlns:model="clr-namespace:BizModels.Model"
              xmlns:avatarview="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              x:Name="self"
-             StyleClass="card"
              >
-    <Frame.GestureRecognizers>
-        <TapGestureRecognizer 
+    <Frame>
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer 
           Command="{Binding Source={x:Reference self}, Path=GoToChatCommand}"
          />
-    </Frame.GestureRecognizers>
-    <Grid HeightRequest="90" ColumnSpacing="7" >
-        <Grid.RowDefinitions>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <avatarview:SfAvatarView 
+        </Frame.GestureRecognizers>
+        <Grid HeightRequest="90" ColumnSpacing="7" >
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <avatarview:SfAvatarView 
                    Grid.Column="0"     
-                   ImageSource="{Binding Chat.User.ImageUrl ,Source={x:Reference self}}"
                    ContentType="Custom"
                    HeightRequest="60"
                    WidthRequest="60"
                    CornerRadius="30"
-                   HorizontalOptions="Center"/>
-        <VerticalStackLayout  
+                   HorizontalOptions="Center">
+                <avatarview:SfAvatarView.Triggers>
+                    <DataTrigger TargetType="avatarview:SfAvatarView" Binding="{Binding IsSelfUser, Source={x:Reference self}}" Value="true">
+                        <Setter Property="ImageSource"  Value="{Binding Chat.Business.ImageUrl, Source={x:Reference self}}"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="avatarview:SfAvatarView" Binding="{Binding IsSelfUser, Source={x:Reference self}}" Value="false">
+                        <Setter Property="ImageSource"  Value="{Binding Chat.User.ImageUrl, Source={x:Reference self}}"/>
+                    </DataTrigger>
+                </avatarview:SfAvatarView.Triggers>
+            </avatarview:SfAvatarView>
+            <VerticalStackLayout  
                    VerticalOptions="Center"
                    Grid.Row="0"
                    Grid.Column="1">
-            <Label
+                <Label
                 HorizontalOptions="Start"
                 VerticalOptions="Center"
-                   Text="{Binding Chat.User.Name, Source={x:Reference self}}"/>
-            <Label Text="{Binding Chat.UpdatedAt, Source={x:Reference self}}"/>
-        </VerticalStackLayout>
-        <Entry 
+                Text="{Binding Chat.User.Name, Source={x:Reference self}}">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label" Binding="{Binding IsSelfUser, Source={x:Reference self}}" Value="true">
+                            <Setter Property="Text" Value="{Binding Chat.Business.Name, Source={x:Reference self}}"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Label" Binding="{Binding IsSelfUser, Source={x:Reference self}}" Value="false">
+                            <Setter Property="Text" Value="{Binding Chat.User.Name, Source={x:Reference self}}"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+
+                <Label Text="{Binding Chat.UpdatedAt, Source={x:Reference self}}"/>
+            </VerticalStackLayout>
+            <Entry 
                 x:Name="statusMsg"
                 Grid.Row="0"
                 Grid.Column="3"
@@ -49,19 +67,19 @@
                 HorizontalTextAlignment="Center"
                 HorizontalOptions="Start"
                 WidthRequest="96"
-                HeightRequest="30">
-            <Entry.Triggers>
-                <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="new">
-                    <Setter Property="BackgroundColor" Value="Red"/>
-                </DataTrigger>
-                <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="in-progress">
-                    <Setter Property="BackgroundColor" Value="Orange"/>
-                </DataTrigger>
-                <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="resolved">
-                    <Setter Property="BackgroundColor" Value="Green"/>
-                </DataTrigger>
-            </Entry.Triggers>
-        </Entry>
-    </Grid>
-
-</Frame>
+                HeightRequest="35">
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="new">
+                        <Setter Property="BackgroundColor" Value="Red"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="in-progress">
+                        <Setter Property="BackgroundColor" Value="Orange"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Chat.Status, Source={x:Reference self}}" Value="resolved">
+                        <Setter Property="BackgroundColor" Value="Green"/>
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+        </Grid>
+    </Frame>
+</VerticalStackLayout>

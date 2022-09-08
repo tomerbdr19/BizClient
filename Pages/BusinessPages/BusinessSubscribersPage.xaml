@@ -13,43 +13,43 @@
             <Frame HorizontalOptions="FillAndExpand" Padding="24">
                 <VerticalStackLayout Spacing="30">
                     <Label Text="Filter by:"/>
-                    <FlexLayout Direction="Row" AlignItems="Center">
-                        <CheckBox IsChecked="{Binding CityFilter.IsChecked,Mode=TwoWay}"/>
-                        <Label FontSize="Medium" Text="City:" Padding="0,0,24,0"/>
-                        <Picker
+                    <Grid ColumnDefinitions="Auto,Auto,Auto">
+                        <CheckBox Grid.Column="0" IsChecked="{Binding CityFilter.IsChecked,Mode=TwoWay}"/>
+                        <Label Grid.Column="1" FontSize="Medium" Text="City:" Padding="0,0,24,0"/>
+                        <Picker Grid.Column="2"
                             WidthRequest="400"
                             ItemsSource="{Binding CityFilter.Options, Mode=TwoWay}"
                             SelectedItem="{Binding CityFilter.Value, Mode=TwoWay}"
                             />
-                    </FlexLayout>
-                    <FlexLayout Direction="Row" AlignItems="Center">
-                        <CheckBox IsChecked="{Binding SubscriptionDateFilter.IsChecked,Mode=TwoWay}"/>
-                        <Label FontSize="Medium" Text="Subscription Date:"/>
-                        <Label FontSize="Medium" Text="From" Padding="24,0"/>
-                        <DatePicker
-                            WidthRequest="100"
+                    </Grid>
+                    <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                        <CheckBox Grid.Column="0" IsChecked="{Binding SubscriptionDateFilter.IsChecked,Mode=TwoWay}"/>
+                        <Label Grid.Column="1" FontSize="Medium" Text="Subscription Date:"/>
+                        <Label Grid.Column="2" FontSize="Medium" Text="From" Padding="24,0"/>
+                        <DatePicker Grid.Column="3"
+                            WidthRequest="110"
                             Date="{Binding SubscriptionDateFilter.From, Mode=TwoWay}"
                             />
-                        <Label FontSize="Medium" Text="To" Padding="24,0"/>
-                        <DatePicker
-                            WidthRequest="100"
+                        <Label Grid.Column="4" FontSize="Medium" Text="To" Padding="24,0"/>
+                        <DatePicker Grid.Column="5"
+                            WidthRequest="110"
                             Date="{Binding SubscriptionDateFilter.To, Mode=TwoWay}"
                             />
-                    </FlexLayout>
-                    <FlexLayout Direction="Row" AlignItems="Center">
-                        <CheckBox IsChecked="{Binding AgeFilter.IsChecked,Mode=TwoWay}"/>
-                        <Label FontSize="Medium" Text="Age:"/>
-                        <Label FontSize="Medium" Text="From" Padding="24,0"/>
-                        <Entry
+                    </Grid>
+                    <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                        <CheckBox Grid.Column="0" IsChecked="{Binding AgeFilter.IsChecked,Mode=TwoWay}"/>
+                        <Label Grid.Column="1" FontSize="Medium" Text="Age:"/>
+                        <Label Grid.Column="2" FontSize="Medium" Text="From" Padding="24,0"/>
+                        <Entry Grid.Column="3"
                             WidthRequest="100"
                             Text="{Binding AgeFilter.From, Mode=TwoWay}"
                             />
-                        <Label FontSize="Medium" Text="To" Padding="24,0"/>
-                        <Entry
+                        <Label Grid.Column="4" FontSize="Medium" Text="To" Padding="24,0"/>
+                        <Entry Grid.Column="5"
                             WidthRequest="100"
                             Text="{Binding AgeFilter.To, Mode=TwoWay}"
                             />
-                    </FlexLayout>
+                    </Grid>
                     <HorizontalStackLayout HorizontalOptions="End" Spacing="6">
                         <Button Style="{StaticResource secondary}" Text="Reset" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnResetClickCommand}" />
                         <Button Text="Apply" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnApplyFiltersCommand}"/>

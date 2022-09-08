@@ -17,10 +17,21 @@ public partial class ChatPageViewModel : BaseViewModel
     [ObservableProperty]
     public string inputText;
 
-    [ICommand]
-    public void OnSendClick()
-    {
+    [ObservableProperty]
+    public bool isBusiness = Store.IsBusiness;
 
+    public async void sendMessage(string messageContent)
+    {
+        IsLoading = true;
+        if(Store.IsBusiness)
+        {
+            await chatService.PostChatMessages(Store.Auth.Business.Id, "business", chat.Id, messageContent);
+        }
+        else
+        {
+            await chatService.PostChatMessages(Store.Auth.User.Id, "user", chat.Id, messageContent);
+        }
+        IsLoading = false;
     }
 
     public async void SetStatus(string status)

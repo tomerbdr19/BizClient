@@ -5,6 +5,6 @@
              x:Name="self">
     <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="Center">
         <Label Text="Ask the business to scan this QR code"/>
-        <Image Margin="12" Source="{Binding QRImageUrl,Source={x:Reference self}}"/>
+        <Image Margin="12" WidthRequest="300" HeightRequest="300" Source="{Binding QRImageUrl,Source={x:Reference self}}"/>
     </FlexLayout>
 </ContentPage>

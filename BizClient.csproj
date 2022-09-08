@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
@@ -36,7 +36,6 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#FFFFFF" />
-		<MauiIcon Include="Resources\Images\uploadicon.svg" />
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\bluelogo.svg" Color="White" BaseSize="128,128" />
 		<!-- Images -->
@@ -123,9 +122,7 @@
 	<ItemGroup>
 		<Folder Include="Store\" />
 		<Folder Include="Controls\" />
-		<Folder Include="ViewModel\BusinessPages\" />
 		<Folder Include="Pages\BusinessPages\" />
-		<Folder Include="View\BusinessView\" />
 		<Folder Include="BizModels\Helpers\" />
 		<Folder Include="Helpers\" />
 	</ItemGroup>
@@ -150,6 +147,15 @@
 		</MauiXaml>
 		<MauiXaml Update="View\ActivityIndicatorView.xaml">
 			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\BusinessView\AnnounceView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\BusinessView\PublishDiscountDesktopView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\BusinessView\PublishPostDesktopView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="View\PostView.xaml">
 			<SubType>
@@ -239,9 +245,6 @@
 			<SubType>
 			</SubType>
 		</MauiXaml>
-		<MauiXaml Update="View\PublishPostView.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
 		<MauiXaml Update="View\BusinessView\PalettePicker.xaml">
 			<SubType>
 			</SubType>
@@ -264,9 +267,6 @@
 		<Compile Remove="BizTest\obj\Debug\net6.0\BizTest.GlobalUsings.g.cs" />
 		<Compile Remove="BizTest\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
 		<Compile Remove="BizTest\obj\Debug\net6.0\BizTest.AssemblyInfo.cs" />
-	</ItemGroup>
-	<ItemGroup>
-		<MauiImage Remove="Resources\Images\uploadicon.svg" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="BizModels\BizModels.csproj" />

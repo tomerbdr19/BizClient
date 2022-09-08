@@ -10,46 +10,22 @@
     <Grid RowDefinitions="*" ColumnDefinitions="*" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <views:ActivityIndicatorView Grid.Column="0" Grid.Row="0" IsVisible="{Binding IsLoading}"/>
         <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" Spacing="24" Padding="0,45">
-            <Grid  x:Name="filterGrid" Grid.Column="0"   BackgroundColor="White" VerticalOptions="Start">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="570"/>
-                    <ColumnDefinition Width="620"/>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+            <Grid  x:Name="filterGrid" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto, Auto" RowSpacing="10" Grid.Column="0"   BackgroundColor="White" VerticalOptions="Start" Padding="24">
+   
                 <Label Grid.Row="0" Grid.Column="0" Text="Filter by:"/>
                 <FlexLayout Grid.Row="1" Grid.Column="0" Direction="Row" AlignItems="Center">
                     <CheckBox IsChecked="{Binding StatusFilter.IsChecked,Mode=TwoWay}"/>
                     <Label FontSize="Medium" Text="Status:" Padding="0,0,24,0"/>
                     <Picker
-                            WidthRequest="200"
+                            Title="Chat status"
+                            
                             ItemsSource="{Binding StatusFilter.Options, Mode=TwoWay}"
                             SelectedItem="{Binding StatusFilter.Value, Mode=TwoWay}"
                             />
                 </FlexLayout>
-                <FlexLayout Grid.Row="2" Grid.Column="0" Direction="Row" AlignItems="Center">
-                    <CheckBox IsChecked="{Binding UpdateDateFilter.IsChecked,Mode=TwoWay}"/>
-                    <Label FontSize="Medium" Text="Update Date:"/>
-                    <Label FontSize="Medium" Text="From" Padding="24,0"/>
-                    <DatePicker
-                            WidthRequest="120"
-                            Date="{Binding UpdateDateFilter.From, Mode=TwoWay}"
-                            />
-                    <Label FontSize="Medium" Text="To" Padding="24,0"/>
-                    <DatePicker
-                            WidthRequest="120"
-                            Date="{Binding UpdateDateFilter.To, Mode=TwoWay}"
-                            />
-                </FlexLayout>
-                <HorizontalStackLayout Grid.Row="3" Grid.Column="3" HorizontalOptions="End" Spacing="6">
-                    <Button Style="{StaticResource secondary}" Text="Reset" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnResetClickCommand}" />
-                    <Button Text="Apply" WidthRequest="150" HorizontalOptions="End" Command="{Binding OnApplyFiltersCommand}"/>
+                <HorizontalStackLayout Grid.Row="2" Grid.Column="2" HorizontalOptions="End" Spacing="6">
+                    <Button Style="{StaticResource secondary}" Text="Reset"  HorizontalOptions="End" Command="{Binding OnResetClickCommand}" />
+                    <Button Text="Apply"  HorizontalOptions="End" Command="{Binding OnApplyFiltersCommand}"/>
                 </HorizontalStackLayout>
             </Grid>
         <Grid IsVisible="{Binding IsNotLoading}">

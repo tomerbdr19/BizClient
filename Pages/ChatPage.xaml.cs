@@ -22,6 +22,12 @@ public partial class ChatPage : ContentPage
     private ChatPageViewModel viewModel { get; set; }
 
     [ICommand]
+    public void OnSendClick()
+    {
+        viewModel.sendMessage(messageContent.Text);
+    }
+
+    [ICommand]
     async Task SetStatusClick()
     {
         var selectedIndex = picker.SelectedIndex;

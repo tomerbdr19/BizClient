@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BizClient.View.AnnounceView"
+             x:Name="self"
+             WidthRequest="600">
+    <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="36" Padding="24">
+        <Label 
+                   FontSize="Large" Text="Announce"
+            />
+        <Entry 
+                Placeholder="What do you want to announce?"
+                HeightRequest="100" 
+                WidthRequest="550"
+                Text="{Binding ContentAnnounce,Mode=TwoWay, Source={x:Reference self}}"
+                />
+        <Button
+            Text="Announce"
+            HorizontalOptions="End"   
+            Command="{Binding OnAnnounceClickCommand, Source={x:Reference self}}"
+            />
+    </VerticalStackLayout>
+</Frame>
