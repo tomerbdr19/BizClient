@@ -58,7 +58,7 @@
                     </Frame>
                     <Frame StyleClass="card" Grid.Row="1">
                         <VerticalStackLayout Spacing="6">
-                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" HorizontalOptions="Fill" ColumnSpacing="6" RowSpacing="3">
+                            <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto" HorizontalOptions="Fill" ColumnSpacing="6" RowSpacing="3">
                                 <Button Grid.Column="0" Grid.Row="0" Text="Info" FontSize="Large" Command="{Binding OnInfoClickCommand}">
                                     <Button.Style>
                                         <Style TargetType="Button" BasedOn="{StaticResource secondary}">
@@ -75,6 +75,17 @@
                                         <Style TargetType="Button" BasedOn="{StaticResource secondary}">
                                             <Style.Triggers>
                                                 <DataTrigger TargetType="Button" Binding="{Binding IsPosts}" Value="true">
+                                                    <Setter Property="BorderWidth" Value="3"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <Button Grid.Column="2" Grid.Row="0" Text="Products" FontSize="Large" Command="{Binding OnProductsClickCommand}">
+                                    <Button.Style>
+                                        <Style TargetType="Button" BasedOn="{StaticResource secondary}">
+                                            <Style.Triggers>
+                                                <DataTrigger TargetType="Button" Binding="{Binding IsProducts}" Value="true">
                                                     <Setter Property="BorderWidth" Value="3"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -155,6 +166,16 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:Post">
                                 <views:PostView Post="{Binding}"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <CollectionView Grid.Row="2" ItemsSource="{Binding Products}" IsVisible="{Binding IsProducts}" ZIndex="-1">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Product">
+                                <views:ProductView Product="{Binding}"/>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

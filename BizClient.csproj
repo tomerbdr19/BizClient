@@ -259,6 +259,9 @@
 		<MauiXaml Update="Pages\BusinessPages\BusinessDiscountsPage.xaml">
 			<SubType></SubType>
 		</MauiXaml>
+		<MauiXaml Update="View\ProductView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="BizModels\Class1.cs" />
