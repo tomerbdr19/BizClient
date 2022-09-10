@@ -11,6 +11,8 @@ namespace BizClient
         public static bool IsBusiness => Auth.Business != null;
         public static string UserId => Auth.User?.Id;
         public static string BusinessId => Auth.Business?.Id;
+
+        public static string NewDeviceToken { get; set; }
     }
 }
 

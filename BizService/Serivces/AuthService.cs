@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BizModels.Model;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -25,6 +26,19 @@ namespace BizService.Services
             var auth = await PostAsync<Auth>($"{Path}/register", new { email, password, type });
             return auth;
         }
+
+        public async Task<Auth> PostToken(User user, string token)
+        {
+            var auth = await PostAsync<Auth>($"{Path}/all", new { user.Id, token });
+            return auth;
+        }
+
+        public async Task<Auth> PostToken(Business business, string token)
+        {
+            var auth = await PostAsync<Auth>($"{Path}/all", new { business.Id, token });
+            return auth;
+        }
+
     }
 }
 

@@ -47,6 +47,8 @@
 	<ItemGroup>
 		<None Remove="Newtonsoft.Json" />
 		<None Remove="CommunityToolkit.Mvvm" />
+		<None Remove="Platforms\Android\google-services.json" />
+		<None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
 		<None Remove="Resources\AppIcon\bluelogo.svg" />
 		<None Remove="Resources\Images\genericprofile.jpg" />
 		<None Remove="View\" />
@@ -108,9 +110,11 @@
 	  	<None Remove="Syncfusion.Maui.DataGrid" />
 	</ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="FirebaseAdmin" Version="2.3.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
+		<PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.25" />
 		<PackageReference Include="Syncfusion.Maui.Core" Version="20.2.45" />
 		<PackageReference Include="Xamarin.CommunityToolkit.MauiCompat" Version="2.0.2-preview1013" />
 		<PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.486" />
@@ -269,7 +273,15 @@
 		<Compile Remove="BizTest\obj\Debug\net6.0\BizTest.AssemblyInfo.cs" />
 	</ItemGroup>
 	<ItemGroup>
+	  <GoogleServicesJson Include="Platforms\Android\google-services.json" />
+	</ItemGroup>
+	<ItemGroup>
 		<ProjectReference Include="BizModels\BizModels.csproj" />
 		<ProjectReference Include="BizService\BizService.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
+	  <PackageReference Include="Xamarin.Firebase.Messaging">
+	    <Version>123.0.7</Version>
+	  </PackageReference>
 	</ItemGroup>
 </Project>

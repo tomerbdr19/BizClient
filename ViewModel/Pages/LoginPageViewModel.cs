@@ -1,4 +1,7 @@
-﻿namespace BizClient.ViewModel;
+﻿using Firebase.Installations;
+using Firebase.Messaging;
+
+namespace BizClient.ViewModel;
 
 public partial class LoginPageViewModel : BaseViewModel
 {
@@ -29,6 +32,18 @@ public partial class LoginPageViewModel : BaseViewModel
         // TODO: handle login
         var auth = await this.authService.Login(email, password);
         Store.Auth = auth;
+        Store.NewDeviceToken = FirebaseMessaging.Instance.GetToken().GetResult(Java.Lang.Class.FromType(typeof(InstallationTokenResult))).ToString();
+        if(Store.NewDeviceToken != Store.Auth.DeviceToken)
+        {
+            //if(Store.IsBusiness)
+            //{
+            //    await this.authService.PostToken(Store.Auth.Business, Store.NewDeviceToken);
+            //}
+            //else
+            //{
+            //    await this.authService.PostToken(Store.Auth.Business, Store.NewDeviceToken);
+            //}
+        }
         Application.Current.MainPage = Store.IsUser ? new MobileCustomerShell() : new DesktopBusinessShell();
     }
 
