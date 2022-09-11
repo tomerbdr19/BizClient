@@ -40,8 +40,8 @@
             <Button Grid.Row="0" Grid.Column="1" Text="Set status" Command="{Binding SetStatusClickCommand,Source={x:Reference self}}"/>
         </Grid>
         <Grid Grid.Row="2" RowDefinitions="*,Auto" ColumnDefinitions="*, Auto">
-            <Entry x:Name="messageContent" Grid.Row="1" Grid.Column="0"/>
-            <Button Grid.Row="1" Grid.Column="1" Text="Send" Command="{Binding OnSendClickCommand,Source={x:Reference self}}"/>
+            <Entry x:Name="messageContent" Text="{Binding InputText, Mode=TwoWay}" Grid.Row="1" Grid.Column="0"/>
+            <Button Grid.Row="1" Grid.Column="1" Text="Send" Command="{Binding SendMessageCommand}" CommandParameter="{Binding InputText}"/>
         </Grid>
 
     </Grid>

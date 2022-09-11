@@ -1,4 +1,4 @@
-﻿namespace BizClient.ViewModel;
+namespace BizClient.ViewModel;
 
 public partial class LoginPageViewModel : BaseViewModel
 {
@@ -29,6 +29,7 @@ public partial class LoginPageViewModel : BaseViewModel
         // TODO: handle login
         var auth = await this.authService.Login(email, password);
         Store.Auth = auth;
+        await new SignalRConnector().Connect();
         Application.Current.MainPage = Store.IsUser ? new MobileCustomerShell() : new DesktopBusinessShell();
     }
 

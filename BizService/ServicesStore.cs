@@ -14,6 +14,7 @@ namespace BizService
         public ChatService ChatService { get; } = new();
         public FileService FileService { get; } = new();
         public DiscountService DiscountService { get; } = new();
+        public SignalR SignalRService { get; } = new();
     }
 }
 
