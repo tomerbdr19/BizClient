@@ -109,23 +109,9 @@ public partial class BusinessPageViewModel : BaseViewModel
         IsProducts = true;
 
         Products.Clear();
-
-        Product product1 = new();
-        product1.Name = "chair";
-        product1.Price = "350";
-        product1.ImageUrl = "https://www.google.co.il/imgres?imgurl=https%3A%2F%2Fwww.ikea.com%2Fom%2Fen%2Fimages%2Fproducts%2Fmammut-childrens-chair-in-outdoor-red__0727924_pe735940_s5.jpg%3Ff%3Ds&imgrefurl=https%3A%2F%2Fwww.ikea.com%2Fom%2Fen%2Fp%2Fmammut-childrens-chair-in-outdoor-red-40365366%2F&tbnid=u0k6mpm5Jo0_5M&vet=12ahUKEwjysIzElov6AhWvk_0HHUcCD1kQMygDegUIARCMAg..i&docid=gqMwX3LsLm_vfM&w=600&h=600&q=chair&ved=2ahUKEwjysIzElov6AhWvk_0HHUcCD1kQMygDegUIARCMAg";
-
-        Product product2 = new();
-        product2.Name = "table";
-        product2.Price = "1550";
-        product2.ImageUrl = "https://www.google.co.il/imgres?imgurl=https%3A%2F%2Fwww.ikea.com%2Fom%2Fen%2Fimages%2Fproducts%2Fmammut-childrens-table-in-outdoor-blue__0735844_pe740211_s5.jpg%3Ff%3Ds&imgrefurl=https%3A%2F%2Fwww.ikea.com%2Fom%2Fen%2Fp%2Fmammut-childrens-table-in-outdoor-blue-90365180%2F&tbnid=2UKSKjFbncrm-M&vet=12ahUKEwj4lcb1lov6AhX97rsIHSCvDx8QMygiegUIARC2Ag..i&docid=NlQmwcU6aZ69MM&w=600&h=600&q=table&ved=2ahUKEwj4lcb1lov6AhX97rsIHSCvDx8QMygiegUIARC2Ag";
-        Products.Add(product1);
-        Products.Add(product2);
-
-
         this.IsLoading = true;
-      //  var products = await TODO!!
-      //  products.ForEach(_ => Products.Add(_));
+        var products = await this.businessService.GetAllProducts(business.Id);
+        products.ForEach(_ => Products.Add(_));
         this.IsLoading = false;
     }
 

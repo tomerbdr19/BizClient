@@ -6,6 +6,7 @@
              xmlns:views="clr-namespace:BizClient.View"
              xmlns:models="clr-namespace:BizModels.Model"
              x:DataType="viewmodels:BusinessPageViewModel"
+             x:Name="self"
              Title="{Binding Business.Name}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -171,19 +172,36 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                    <CollectionView Grid.Row="3" ItemsSource="{Binding Products}" IsVisible="{Binding IsProducts}" ZIndex="-1">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="models:Product">
-                                <views:ProductView Product="{Binding}"/>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                    <VerticalStackLayout  Grid.Row="3" IsVisible="{Binding IsProducts}" ZIndex="-1">
+                        <ImageButton
+                            x:Name="addButton"
+                            HorizontalOptions="End"
+                            Source="plusicon.png"
+                            HeightRequest="50"
+                            WidthRequest="50"
+                            Command="{Binding OnAddProductClickCommand, Source={x:Reference self}}"
+                            />
+                        <CollectionView  ItemsSource="{Binding Products}" IsVisible="{Binding IsProducts}" >
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Product">
+                                    <views:ProductView Product="{Binding}" EditPrice="{Binding Price}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
                 </Grid>
             </ScrollView>
         </FlexLayout>
         <views:PalettePicker x:Name="PalettePicker" AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,100" IsVisible="{Binding IsPalettePickerOpen}" HeightRequest="1000" ZIndex="1000" HorizontalOptions="Center" Selected="{Binding Palette}"/>
+
+        <AbsoluteLayout x:Name="AddProduct" BackgroundColor="Black" Opacity="0.9" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Button AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.8, 100" Text="Close" Command="{Binding OnCloseProductClickCommand, Source={x:Reference self}}"/>
+            <Frame x:Name="PublishPostFrame" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5" ZIndex="1000" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <views:PublishProductView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            </Frame>
+        </AbsoluteLayout>
     </AbsoluteLayout>
 </ContentPage>

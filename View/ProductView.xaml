@@ -6,29 +6,46 @@
              x:Name="self"
              StyleClass="card"
              >
-    <VerticalStackLayout HorizontalOptions="FillAndExpand">
-        <Grid RowDefinitions="Auto" RowSpacing="12" ColumnDefinitions="Auto,Auto,Auto,*" ColumnSpacing="6" HorizontalOptions="FillAndExpand">
+
+    <VerticalStackLayout  StyleClass="formField" HorizontalOptions="FillAndExpand">
+        <Grid RowDefinitions="Auto" RowSpacing="12" ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="6" HorizontalOptions="FillAndExpand">
             <avatarview:SfAvatarView
                 Grid.Column="0"     
                 ImageSource="{Binding Product.ImageUrl ,Source={x:Reference self}}"
                 ContentType="Custom"
-                HeightRequest="50"
-                WidthRequest="50"
-                CornerRadius="10" />
+                HeightRequest="90"
+                WidthRequest="90"
+                CornerRadius="30" />
             <Grid Grid.Row="0" Grid.Column="1" ColumnSpacing="5" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,Auto">
-                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Product.Name ,Source={x:Reference self}}"/>
-                <Label Grid.Row="1" Grid.Column="0" Text="Price:"/>
-                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Product.Price ,Source={x:Reference self}}"/>
+                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Product.Name ,Source={x:Reference self}}" FontSize="Medium" TextDecorations="Underline"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Price:" FontSize="Medium" TextDecorations="Underline"/>
+                <Label x:Name="priceLabel" Grid.Row="1" Grid.Column="1" Text="{Binding Product.Price ,Source={x:Reference self}}" FontSize="Medium"  IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"/>
+                <Entry Grid.Row="1" Grid.Column="1" Text="{Binding EditPrice, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}" VerticalOptions="Start"/>
             </Grid>
             <ImageButton
+             Grid.Column="2"
+             x:Name="editButton"
+             Padding="6"
+             Source="editicon.png"
+             HorizontalOptions="End" 
+             HeightRequest="50"
+             WidthRequest="50"
+             Command="{Binding OnEditClickCommand, Source={x:Reference self}}"
+             IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"
+             />
+            <ImageButton
+                Grid.Column="3"
                 x:Name="deleteButton"
                 HorizontalOptions="End" 
                 Source="deleteicon.png"
-                 Grid.Column="3"
                 HeightRequest="35"
                 WidthRequest="50"
                 Command="{Binding OnDeleteClickCommand, Source={x:Reference self}}"
+                IsVisible="{Binding IsNotEdit, Source={x:Reference self}}"
                 />
+
+            <ImageButton Grid.Column="2"  Source="xicon.png" Command="{Binding OnCancelEditCommand, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}" HeightRequest="40" WidthRequest="50" BackgroundColor="White"/>
+            <ImageButton Grid.Column="3"  Source="checkicon.png" Command="{Binding OnSaveEditCommand, Source={x:Reference self}}" IsVisible="{Binding IsEdit, Source={x:Reference self}}" HeightRequest="40" WidthRequest="50" BackgroundColor="White"/>
         </Grid>
     </VerticalStackLayout>
 </Frame>
