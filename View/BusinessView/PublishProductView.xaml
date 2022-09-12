@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Frame       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:BizModels.Model"
-             x:Class="BizClient.View.PublishPostDesktopView"
+             x:Class="BizClient.View.PublishProductView"
              xmlns:viewmodel="clr-namespace:BizClient.ViewModel"
-             x:DataType="viewmodel:PublishPostViewModel"
+             x:DataType="viewmodel:PublishProductViewModel"
              StyleClass="card"
              >
     <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="36" Padding="24">
         <Label 
-                   FontSize="Large" Text="New post"
+                   FontSize="Large" Text="New product"
             />
         <Entry 
-                Placeholder="What do you want to share?"
-                HeightRequest="100" 
+                Placeholder="Name"
+                HeightRequest="50" 
                 WidthRequest="550"
-                Text="{Binding PublishPost.Caption,Mode=TwoWay }"
+                Text="{Binding PublishProduct.Name,Mode=TwoWay }"
+                />
+        <Entry 
+                Placeholder="Price"
+                HeightRequest="50" 
+                WidthRequest="550"
+                Text="{Binding PublishProduct.Price,Mode=TwoWay }"
                 />
         <Image Source="{Binding ImageUrl,Mode=TwoWay }"
                    x:Name="image"
@@ -23,7 +29,6 @@
                    Aspect="AspectFill"
                    HeightRequest="100"
                    WidthRequest="100" />
-
         <HorizontalStackLayout HorizontalOptions="End">
             <ImageButton  
                 Source="xicon.png" 
@@ -39,6 +44,7 @@
                 Command="{Binding OnAddPictureClickCommand}"
             />
         </HorizontalStackLayout>
+
         <Button
             Text="Publish"
             HorizontalOptions="End"   

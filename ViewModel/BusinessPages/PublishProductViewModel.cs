@@ -1,15 +1,18 @@
-﻿namespace BizClient.ViewModel;
+﻿using BizService.Services;
 
-public partial class PublishPostViewModel : BaseViewModel
+namespace BizClient.ViewModel;
+
+
+public partial class PublishProductViewModel : BaseViewModel
 {
-    public PublishPostViewModel()
+    public PublishProductViewModel()
     {
-        postService = Store.ServicesStore.PostService;
+        this.businessService = Store.ServicesStore.BusinessService;
         fileService = Store.ServicesStore.FileService;
     }
 
     [ObservableProperty]
-    private Post publishPost = new();
+    private Product publishProduct = new();
 
     [ObservableProperty]
     private String imageUrl;
@@ -17,9 +20,8 @@ public partial class PublishPostViewModel : BaseViewModel
     [ObservableProperty]
     private bool isVisible = false;
 
-    private readonly PostService postService;
+    private readonly BusinessService businessService;
     private readonly FileService fileService;
-
 
     [ICommand]
     async Task OnAddPictureClick()
@@ -47,25 +49,20 @@ public partial class PublishPostViewModel : BaseViewModel
 
     async private Task UploadAndSetImage()
     {
-        if(imageUrl != String.Empty && imageUrl != null)
+        if (imageUrl != String.Empty && imageUrl != null)
         {
             var url = await fileService.UploadImage(imageUrl);
-            PublishPost.ImageUrl = url;
+            publishProduct.ImageUrl = url;
         }
     }
-
-    public Action<Post> OnPublishSuccess { get; set; }
-
 
     [ICommand]
     async Task OnPublishClick()
     {
         this.IsLoading = true;
         await this.UploadAndSetImage();
-        PublishPost.Business = Store.Auth.Business;
-        var post = await postService.PublishPost(PublishPost);
-        OnPublishSuccess?.Invoke(post);
-        PublishPost = new();
+        var product = await businessService.AddProduct(Store.BusinessId, publishProduct.Name, publishProduct.ImageUrl, publishProduct.Price);
+        publishProduct = new();
         ImageUrl = "";
         IsVisible = false;
         this.IsLoading = false;
@@ -77,4 +74,6 @@ public partial class PublishPostViewModel : BaseViewModel
         ImageUrl = "";
         IsVisible = false;
     }
+
 }
+

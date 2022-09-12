@@ -1,4 +1,4 @@
-﻿#if ANDROID
+#if ANDROID
 using Firebase.Installations;
 using Firebase.Messaging;
 #endif
@@ -34,6 +34,7 @@ public partial class LoginPageViewModel : BaseViewModel
         // TODO: handle login
         var auth = await this.authService.Login(email, password);
         Store.Auth = auth;
+
 #if ANDROID
     Store.NewDeviceToken = FirebaseMessaging.Instance.GetToken().GetResult(Java.Lang.Class.FromType(typeof(InstallationTokenResult))).ToString();
 

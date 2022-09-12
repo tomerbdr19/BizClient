@@ -59,13 +59,22 @@ public partial class BusinessPageViewModel : BaseViewModel
 
     public ObservableCollection<Post> Posts { get; } = new();
 
+    public ObservableCollection<Product> Products { get; } = new();
+
     [ObservableProperty]
     [AlsoNotifyChangeFor(nameof(IsPosts))]
+    [AlsoNotifyChangeFor(nameof(IsProducts))]
     public bool isInfo = true;
 
     [ObservableProperty]
     [AlsoNotifyChangeFor(nameof(IsInfo))]
+    [AlsoNotifyChangeFor(nameof(IsProducts))]
     public bool isPosts = false;
+
+    [ObservableProperty]
+    [AlsoNotifyChangeFor(nameof(IsInfo))]
+    [AlsoNotifyChangeFor(nameof(IsPosts))]
+    public bool isProducts = false;
 
 
     [ICommand]
@@ -73,6 +82,7 @@ public partial class BusinessPageViewModel : BaseViewModel
     {
         IsInfo = true;
         IsPosts = false;
+        IsProducts = false;
 
     }
 
@@ -81,12 +91,27 @@ public partial class BusinessPageViewModel : BaseViewModel
     {
         IsInfo = false;
         IsPosts = true;
+        IsProducts = false;
 
         Posts.Clear();
 
         this.IsLoading = true;
         var posts = await this.postService.GetBusinessPosts(business.Id);
         posts.ForEach(_ => Posts.Add(_));
+        this.IsLoading = false;
+    }
+
+    [ICommand]
+    async public void OnProductsClick()
+    {
+        IsInfo = false;
+        IsPosts = false;
+        IsProducts = true;
+
+        Products.Clear();
+        this.IsLoading = true;
+        var products = await this.businessService.GetAllProducts(business.Id);
+        products.ForEach(_ => Products.Add(_));
         this.IsLoading = false;
     }
 
