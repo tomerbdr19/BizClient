@@ -28,7 +28,7 @@
             </Grid>
         </ScrollView>
         <Grid Grid.Row="1" ColumnDefinitions="*,Auto" RowDefinitions="*" IsVisible="{Binding IsBusiness}">
-            <Picker Grid.Row="0" Grid.Column="0" x:Name="picker" Title="Chat status" WidthRequest="150" HorizontalOptions="Center">
+            <Picker Grid.Row="0" Grid.Column="0" x:Name="picker" Title="Chat status" WidthRequest="150" HorizontalOptions="End">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>new</x:String>

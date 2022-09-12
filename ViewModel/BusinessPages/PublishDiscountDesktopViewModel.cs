@@ -77,5 +77,12 @@ public partial class PublishDiscountDesktopViewModel : BaseViewModel
         IsVisible = false;
         this.IsLoading = false;
     }
+
+    [ICommand]
+    public void OnCancelEdit()
+    {
+        ImageUrl = "";
+        IsVisible = false;
+    }
 }
 
