@@ -161,6 +161,9 @@
 		<MauiXaml Update="View\BusinessView\PublishPostDesktopView.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="View\BusinessView\PublishProductView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="View\PostView.xaml">
 			<SubType>
 			</SubType>
