@@ -34,9 +34,9 @@ public partial class LoginPageViewModel : BaseViewModel
         // TODO: handle login
         var auth = await this.authService.Login(email, password);
         Store.Auth = auth;
-
+        await new SignalRConnector().Connect();
 #if ANDROID
-    Store.NewDeviceToken = FirebaseMessaging.Instance.GetToken().GetResult(Java.Lang.Class.FromType(typeof(InstallationTokenResult))).ToString();
+        Store.NewDeviceToken = FirebaseMessaging.Instance.GetToken().GetResult(Java.Lang.Class.FromType(typeof(InstallationTokenResult))).ToString();
 
      //if(Store.IsBusiness)
      //{
@@ -47,8 +47,15 @@ public partial class LoginPageViewModel : BaseViewModel
      //    await this.authService.PostToken(Store.Auth.Business, Store.NewDeviceToken);
      //}
          
+        Application.Current.MainPage = Store.IsUser ? new MobileCustomerShell() : new MobileAdminShell();
+        return;
 #endif
-        Application.Current.MainPage = Store.IsUser ? new MobileCustomerShell() : new DesktopBusinessShell();
+
+        if (Store.IsUser)
+        {
+            return;
+        }
+        Application.Current.MainPage = new DesktopBusinessShell();
     }
 
     [ICommand]

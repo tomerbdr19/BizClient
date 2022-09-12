@@ -23,13 +23,13 @@ public partial class CouponView
     {
         try
         {
-            var url = await Store.ServicesStore.CouponService.GetRedeemCode(Coupon.Id);
-            if (url == String.Empty)
+            var redeemRes = await Store.ServicesStore.CouponService.GetRedeemCode(Coupon.Id);
+            if (redeemRes.QrUrl == String.Empty)
             {
                 throw new Exception();
             }
 
-            await Shell.Current.GoToAsync(Routes.QRCode, true, new Dictionary<string, object> { { "QRImageUrl", url } });
+            await Shell.Current.GoToAsync(Routes.QRCode, true, new Dictionary<string, object> { { "QRImageUrl", redeemRes.QrUrl }, { "RedeemCode", redeemRes.RedeemCode } });
         }
         catch
         {

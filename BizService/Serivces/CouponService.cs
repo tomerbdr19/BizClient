@@ -17,10 +17,10 @@ namespace BizService.Services
             return coupons;
         }
 
-        public async Task<string> GetRedeemCode(string couponId)
+        public async Task<GetRedeemCodeResponse> GetRedeemCode(string couponId)
         {
-            var coupons = await GetAsync<string>($"{Path}/redeem-qr-code", new Dictionary<string, string> { { "coupon", couponId } });
-            return coupons;
+            var res = await GetAsync<GetRedeemCodeResponse>($"{Path}/redeem-qr-code", new Dictionary<string, string> { { "coupon", couponId } });
+            return res;
         }
         public async Task<Coupon> RedeemCoupon(string redeemCode, string businessId)
         {

@@ -108,6 +108,7 @@
 		<None Remove="Syncfusion.Maui.Charts" />
 		<None Remove="SkiaSharp" />
 	  	<None Remove="Syncfusion.Maui.DataGrid" />
+	  	<None Remove="Microsoft.AspNetCore.SignalR.Client" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="FirebaseAdmin" Version="2.3.0" />
@@ -122,6 +123,7 @@
 		<PackageReference Include="Syncfusion.Maui.Charts" Version="20.2.45" />
 		<PackageReference Include="SkiaSharp" Version="2.88.1" />
 	  	<PackageReference Include="Syncfusion.Maui.DataGrid" Version="20.2.45" />
+	  	<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.0-preview.7.22376.6" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Store\" />

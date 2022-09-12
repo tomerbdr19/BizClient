@@ -1,10 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:BizClient.View"
+             xmlns:viewmodels="clr-namespace:BizClient.ViewModel"
              x:Class="BizClient.Pages.QRPage"
+             x:DataType="viewmodels:QRPageViewModel"
              x:Name="self">
-    <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="Center">
-        <Label Text="Ask the business to scan this QR code"/>
-        <Image Margin="12" WidthRequest="300" HeightRequest="300" Source="{Binding QRImageUrl,Source={x:Reference self}}"/>
-    </FlexLayout>
+    <Grid HorizontalOptions="Fill" VerticalOptions="Fill" RowDefinitions="*" ColumnDefinitions="*">
+        <FlexLayout x:Name="CodeLayout" IsVisible="{Binding IsCode}" Grid.Row="0" Grid.Column="0" Direction="Column"  AlignItems="Center" JustifyContent="Center">
+            <Label Text="Ask the business to scan this QR code"/>
+            <Image Margin="12" WidthRequest="300" HeightRequest="300" Source="{Binding QRImageUrl,Source={x:Reference self}}"/>
+            <Label Margin="24" FontSize="Large" Text="{Binding RedeemCode,Source={x:Reference self}}"/>
+        </FlexLayout>
+        <Label x:Name="RedeemedLabel" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsRedeemed}" Text="Redeemed Successfully!" FontSize="Large" Grid.Row="0" Grid.Column="0"/>
+        <views:ActivityIndicatorView x:Name="Spinner" IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.Column="0"/>
+    </Grid>
 </ContentPage>

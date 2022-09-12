@@ -12,18 +12,29 @@ public partial class QRScannerPageViewModel : BaseViewModel
     public string Description { get; set; }
 
 
-    public async void ReadAndUpdateCoupon(string couponId)
+    public async Task ReadAndUpdateCoupon(string redeemCode)
     {
-        CouponToUpdate = await CouponService.RedeemCoupon(couponId, Store.Auth.Business.Id);
-        Description = CouponToUpdate.Discount.Description;
-        if (CouponToUpdate == null)
+        try
         {
-            Description = "Invalid coupon";
+            await CouponService.RedeemCoupon(redeemCode, Store.Auth.Business.Id);
+            Shell.Current.DisplayAlert("Redeem Status", "Coupon has been redeemed successfully", "OK");
         }
-        else
+        catch
         {
-            Description = CouponToUpdate.Discount.Description;
+            Shell.Current.DisplayAlert("Redeem Status", "Coupon has been redeemed successfully", "OK");
         }
+    }
+
+    async public Task OnEnterCode()
+    {
+        string redeemCode = await Shell.Current.DisplayPromptAsync("Redeem Coupon", "Enter client 4-digit code", initialValue: "", keyboard: Keyboard.Text);
+
+        if (redeemCode == "" || redeemCode == null)
+        {
+            return;
+        }
+
+        await ReadAndUpdateCoupon(redeemCode);
     }
 }
 

@@ -15,8 +15,12 @@ public partial class QRScannerPage : ContentPage
         Dispatcher.Dispatch(() =>
         {
             viewModel.ReadAndUpdateCoupon(e.Results[0].Value);
-            barcodeResult.Text = viewModel.Description;
         });
 
+    }
+
+    void OnEnterCode(System.Object sender, System.EventArgs e)
+    {
+        viewModel.OnEnterCode();
     }
 }

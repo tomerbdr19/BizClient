@@ -7,6 +7,8 @@ public partial class ChatPageViewModel : BaseViewModel
         this.chatService = Store.ServicesStore.ChatService;
         this.chat = chat;
         initPage();
+
+        MessagingCenter.Subscribe<SignalRConnector, Message>(this, "newMessage", (sender, _) => Messages.Add(_));
     }
 
     private readonly ChatService chatService;
@@ -20,17 +22,24 @@ public partial class ChatPageViewModel : BaseViewModel
     [ObservableProperty]
     public bool isBusiness = Store.IsBusiness;
 
-    public async void sendMessage(string messageContent)
+    [ICommand]
+    public async void SendMessage(string messageContent)
     {
         IsLoading = true;
-        if(Store.IsBusiness)
+        Message message;
+        var sendToId = Store.IsUser ? chat.Business.Id : chat.User.Id;
+
+        InputText = String.Empty;
+
+        if (Store.IsBusiness)
         {
-            await chatService.PostChatMessages(Store.Auth.Business.Id, "business", chat.Id, messageContent);
+            message = await chatService.PostChatMessages(Store.Auth.Business.Id, "business", chat.Id, messageContent);
         }
         else
         {
-            await chatService.PostChatMessages(Store.Auth.User.Id, "user", chat.Id, messageContent);
+            message = await chatService.PostChatMessages(Store.Auth.User.Id, "user", chat.Id, messageContent);
         }
+        Messages.Add(message);
         IsLoading = false;
     }
 
@@ -49,6 +58,5 @@ public partial class ChatPageViewModel : BaseViewModel
         messages.ForEach(_ => Messages.Add(_));
         IsLoading = false;
     }
-
 }
 
