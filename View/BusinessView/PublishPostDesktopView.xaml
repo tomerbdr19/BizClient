@@ -23,13 +23,22 @@
                    Aspect="AspectFill"
                    HeightRequest="100"
                    WidthRequest="100" />
-        <ImageButton
+
+        <HorizontalStackLayout HorizontalOptions="End">
+            <ImageButton  
+                Source="xicon.png" 
+                Command="{Binding OnCancelEditCommand}"
+                IsVisible="{Binding IsVisible,Mode=OneWay}"
+                HeightRequest="40"
+                WidthRequest="50"
+                BackgroundColor="White"/>
+            <ImageButton
                 Source="uploadicon.png"
-                HorizontalOptions="End" 
                 HeightRequest="35"
                 WidthRequest="50"
                 Command="{Binding OnAddPictureClickCommand}"
             />
+        </HorizontalStackLayout>
         <Button
             Text="Publish"
             HorizontalOptions="End"   

@@ -70,4 +70,11 @@ public partial class PublishPostViewModel : BaseViewModel
         IsVisible = false;
         this.IsLoading = false;
     }
+
+    [ICommand]
+    public void OnCancelEdit()
+    {
+        ImageUrl = "";
+        IsVisible = false;
+    }
 }
