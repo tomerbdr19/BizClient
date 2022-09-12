@@ -30,7 +30,16 @@ public partial class LoginPageViewModel : BaseViewModel
         var auth = await this.authService.Login(email, password);
         Store.Auth = auth;
         await new SignalRConnector().Connect();
-        Application.Current.MainPage = Store.IsUser ? new MobileCustomerShell() : new DesktopBusinessShell();
+#if ANDROID
+        Application.Current.MainPage = Store.IsUser ? new MobileCustomerShell() : new MobileAdminShell();
+        return;
+#endif
+
+        if (Store.IsUser)
+        {
+            return;
+        }
+        Application.Current.MainPage = new DesktopBusinessShell();
     }
 
     [ICommand]

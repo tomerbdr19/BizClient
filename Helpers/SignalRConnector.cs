@@ -32,13 +32,17 @@ namespace BizClient.Helpers
 
         private void OnNewMessage(Message message)
         {
+            if (message == null)
+            {
+                OnRedeem();
+            }
+
             MessagingCenter.Send<SignalRConnector, Message>(this, "newMessage", message);
         }
 
         private void OnRedeem()
         {
-            MessagingCenter.Send<SignalRConnector>(this, "redeem");
-
+            MessagingCenter.Send<SignalRConnector>(this, "redeemCoupon");
         }
     }
 }
