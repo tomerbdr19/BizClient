@@ -11,6 +11,7 @@ namespace BizModels.Model
         public List<string> Images { get; set; } = new();
         public BusinessInfo Info { get; set; } = new();
         public BusinessTheme Theme { get; set; } = new();
+        public List<Product> Products { get; set; } = new();
     }
 
     public class BusinessInfo

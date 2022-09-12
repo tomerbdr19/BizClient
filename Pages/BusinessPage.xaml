@@ -6,6 +6,7 @@
              xmlns:views="clr-namespace:BizClient.View"
              xmlns:models="clr-namespace:BizModels.Model"
              x:DataType="viewmodels:BusinessPageViewModel"
+             x:Name="self"
              Title="{Binding Business.Name}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -39,7 +40,7 @@
     <AbsoluteLayout>
         <FlexLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0,1,1" HorizontalOptions="Fill" VerticalOptions="Fill">
             <ScrollView>
-                <Grid x:Name="PageGrid" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*" RowSpacing="12">
+                <Grid x:Name="PageGrid" RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*" >
                     <Grid.Style>
                         <Style TargetType="Grid">
                             <Style.Triggers>
@@ -55,10 +56,12 @@
                             <Button Style="{DynamicResource secondary}" IsVisible="{Binding IsUserMode}" Text="Message" Command="{Binding OnMessageClickCommand}"/>
                             <Button Style="{DynamicResource primary}" IsVisible="{Binding IsUserMode}" Text="{Binding SubscribeButtonText}" Command="{Binding OnSubscriptionClickCommand}"/>
                         </HorizontalStackLayout>
-                    </Frame>
-                    <Frame StyleClass="card" Grid.Row="1">
+                    </Frame >
+                    <Image MaximumHeightRequest="170" Aspect="Fill" Grid.Row="1" Source="{Binding Business.ImageUrl}" />
+
+                    <Frame StyleClass="card" Grid.Row="2">
                         <VerticalStackLayout Spacing="6">
-                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" HorizontalOptions="Fill" ColumnSpacing="6" RowSpacing="3">
+                            <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto" HorizontalOptions="Fill" ColumnSpacing="6" RowSpacing="3">
                                 <Button Grid.Column="0" Grid.Row="0" Text="Info" FontSize="Large" Command="{Binding OnInfoClickCommand}">
                                     <Button.Style>
                                         <Style TargetType="Button" BasedOn="{StaticResource secondary}">
@@ -81,21 +84,32 @@
                                         </Style>
                                     </Button.Style>
                                 </Button>
+                                <Button Grid.Column="2" Grid.Row="0" Text="Products" FontSize="Large" Command="{Binding OnProductsClickCommand}">
+                                    <Button.Style>
+                                        <Style TargetType="Button" BasedOn="{StaticResource secondary}">
+                                            <Style.Triggers>
+                                                <DataTrigger TargetType="Button" Binding="{Binding IsProducts}" Value="true">
+                                                    <Setter Property="BorderWidth" Value="3"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
                                 <Line Grid.Row="1"/>
                             </Grid>
                         </VerticalStackLayout>
                     </Frame>
-                    <Frame StyleClass="card" IsVisible="{Binding IsInfo}" Grid.Row="2">
-                        <VerticalStackLayout Spacing="36">
+                    <Frame StyleClass="card" IsVisible="{Binding IsInfo}" Grid.Row="3" Margin="0,12">
+                        <VerticalStackLayout Spacing="36" >
                             <VerticalStackLayout>
                                 <ImageButton
-                            Padding="6" IsVisible="{Binding IsBusinessMode}"
-                            Command="{Binding OnUploadImageClickCommand}"
-                            Source="uploadicon.png"
-                            HorizontalOptions="End" 
-                            HeightRequest="50"
-                            WidthRequest="50"
-                        />
+                                     Padding="6" IsVisible="{Binding IsBusinessMode}"
+                                     Command="{Binding OnUploadImageClickCommand}"
+                                     Source="uploadicon.png"
+                                     HorizontalOptions="End" 
+                                     HeightRequest="50"
+                                     WidthRequest="50"
+                                     />
                                 <CarouselView x:Name="carouselView"
                                       ItemsSource="{Binding Business.Images}"
                                       IndicatorView="indicatorView"
@@ -109,26 +123,26 @@
                                             <FlexLayout HorizontalOptions="Center">
                                                 <AbsoluteLayout MaximumWidthRequest="300" MaximumHeightRequest="300" HorizontalOptions="Center" IsClippedToBounds="True">
                                                     <Image Source="{Binding}" 
-                                                           Aspect="AspectFit"
-                                                           AbsoluteLayout.LayoutBounds="0,0,300,300"
-                                                           HorizontalOptions="Center"
-                                                           />
+                                       Aspect="AspectFit"
+                                       AbsoluteLayout.LayoutBounds="0,0,300,300"
+                                       HorizontalOptions="Center"
+                                       />
                                                     <ImageButton Source="deleteicon.png"
-                                                         IsVisible="{Binding Source={x:Reference carouselView}, Path=BindingContext.IsBusinessMode}"
-                                                         AbsoluteLayout.LayoutFlags="XProportional"
-                                                         AbsoluteLayout.LayoutBounds="0.9,10,50,50"
-                                                         Command="{Binding Source={x:Reference carouselView}, Path=BindingContext.OnDeleteImageClickCommand}"
-                                                         CommandParameter="{Binding}" />
+                                     IsVisible="{Binding Source={x:Reference carouselView}, Path=BindingContext.IsBusinessMode}"
+                                     AbsoluteLayout.LayoutFlags="XProportional"
+                                     AbsoluteLayout.LayoutBounds="0.9,10,50,50"
+                                     Command="{Binding Source={x:Reference carouselView}, Path=BindingContext.OnDeleteImageClickCommand}"
+                                     CommandParameter="{Binding}" />
                                                 </AbsoluteLayout>
                                             </FlexLayout>
                                         </DataTemplate>
                                     </CarouselView.ItemTemplate>
                                 </CarouselView>
                                 <IndicatorView x:Name="indicatorView"
-                                       Padding="24"
-                                       IndicatorColor="{Binding Palette.TextColor}"
-                                       SelectedIndicatorColor="{Binding Palette.ButtonColor}"
-                                       HorizontalOptions="Center" />
+                            Padding="24"
+                            IndicatorColor="{Binding Palette.TextColor}"
+                            SelectedIndicatorColor="{Binding Palette.ButtonColor}"
+                            HorizontalOptions="Center" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Spacing="6">
                                 <ImageButton
@@ -148,7 +162,7 @@
                             </VerticalStackLayout>
                         </VerticalStackLayout>
                     </Frame>
-                    <CollectionView Grid.Row="2" ItemsSource="{Binding Posts}" IsVisible="{Binding IsPosts}" ZIndex="-1">
+                    <CollectionView Grid.Row="3" ItemsSource="{Binding Posts}" IsVisible="{Binding IsPosts}" ZIndex="-1">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
                         </CollectionView.ItemsLayout>
@@ -158,9 +172,36 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+                    <VerticalStackLayout  Grid.Row="3" IsVisible="{Binding IsProducts}" ZIndex="-1">
+                        <ImageButton
+                            x:Name="addButton"
+                            HorizontalOptions="End"
+                            Source="plusicon.png"
+                            HeightRequest="50"
+                            WidthRequest="50"
+                            Command="{Binding OnAddProductClickCommand, Source={x:Reference self}}"
+                            />
+                        <CollectionView  ItemsSource="{Binding Products}" IsVisible="{Binding IsProducts}" >
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Product">
+                                    <views:ProductView Product="{Binding}" EditPrice="{Binding Price}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
                 </Grid>
             </ScrollView>
         </FlexLayout>
         <views:PalettePicker x:Name="PalettePicker" AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,100" IsVisible="{Binding IsPalettePickerOpen}" HeightRequest="1000" ZIndex="1000" HorizontalOptions="Center" Selected="{Binding Palette}"/>
+
+        <AbsoluteLayout x:Name="AddProduct" BackgroundColor="Black" Opacity="0.9" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Button AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.8, 100" Text="Close" Command="{Binding OnCloseProductClickCommand, Source={x:Reference self}}"/>
+            <Frame x:Name="PublishPostFrame" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5" ZIndex="1000" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <views:PublishProductView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            </Frame>
+        </AbsoluteLayout>
     </AbsoluteLayout>
 </ContentPage>

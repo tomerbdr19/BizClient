@@ -1,3 +1,8 @@
+#if ANDROID
+using Firebase.Installations;
+using Firebase.Messaging;
+#endif
+
 namespace BizClient.ViewModel;
 
 public partial class LoginPageViewModel : BaseViewModel
@@ -31,6 +36,17 @@ public partial class LoginPageViewModel : BaseViewModel
         Store.Auth = auth;
         await new SignalRConnector().Connect();
 #if ANDROID
+        Store.NewDeviceToken = FirebaseMessaging.Instance.GetToken().GetResult(Java.Lang.Class.FromType(typeof(InstallationTokenResult))).ToString();
+
+     //if(Store.IsBusiness)
+     //{
+     //    await this.authService.PostToken(Store.Auth.Business, Store.NewDeviceToken);
+     //}
+     //else
+     //{
+     //    await this.authService.PostToken(Store.Auth.Business, Store.NewDeviceToken);
+     //}
+         
         Application.Current.MainPage = Store.IsUser ? new MobileCustomerShell() : new MobileAdminShell();
         return;
 #endif
