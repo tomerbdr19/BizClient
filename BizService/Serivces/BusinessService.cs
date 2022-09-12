@@ -66,5 +66,29 @@ namespace BizService.Services
             var activity = await GetAsync<ActivityResponse>($"{Path}/activity", new Dictionary<string, string> { { "business", businessId } });
             return activity;
         }
+
+        async public Task<List<Product>> GetAllProducts(string businessId)
+        {
+            var products = await GetAsync<List<Product>>($"{Path}/products", new Dictionary<string, string> { { "business", businessId } });
+            return products;
+        }
+
+        async public Task<Product> AddProduct(string businessId, string name, string imageUrl,string price)
+        {
+            var product = await PostAsync<Product>($"{Path}/product", new { business = businessId, name, imageUrl, price });
+            return product;
+        }
+
+        async public Task<Product> DeleteProduct(string businessId, string productId)
+        {
+            var retProduct = await PostAsync<Product>($"{Path}/delete-product", new { business = businessId, product = productId });
+            return retProduct;
+        }
+
+        async public Task<Product> UpdateProductPrice(string businessId, string productId, string price)
+        {
+            var retProduct = await PostAsync<Product>($"{Path}/product-price", new { business = businessId, product = productId, price });
+            return retProduct;
+        }
     }
 }
