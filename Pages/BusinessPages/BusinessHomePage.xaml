@@ -6,7 +6,7 @@
              xmlns:views="clr-namespace:BizClient.View"
              x:Class="BizClient.Pages.BusinessPages.BusinessHomePage"
              x:DataType="viewmodels:BusinessHomePageViewModel"
-             Title="BusinessHomePage"
+             Title="Business Dashboard"
              x:Name="self"
              Padding="100,0">
     <ContentPage.Resources>

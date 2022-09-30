@@ -4,7 +4,7 @@
              x:Class="BizClient.Pages.QRScannerPage"
              xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI"
              x:Name="self"
-             Title="QRScannerPage">
+             Title="Redeem Page">
     <ScrollView>
         <VerticalStackLayout
             Spacing="70"
